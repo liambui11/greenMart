@@ -12,13 +12,16 @@ body{
     overflow: hidden;
 }
 
+/* header */
+
 header{
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    height: 150px;
+    height: auto;
     width: 100%;
+    overflow: hidden;
 }
 
 .top-header{
@@ -53,20 +56,19 @@ header{
     align-items: center;
     justify-content: space-between;
     width: 80%;
+    height: auto;
 }
 
 header img{
-    width: 200px;
-    height: 100px;
-    margin-right: 200px;
-    
+    width: 250px;
+    height: auto;
+    margin-right: 100px;
 }
 
 .search-box{
-    height: 30px;
-    width: 400px;
+    height: 40px;
+    width: 500px;
     margin-right: 100px;
-    border: dashed;
     border-radius: 10px;
 }
 
@@ -77,3 +79,73 @@ header img{
 .Wish-List, .Shopping-Cart, .login-icon {
     margin-left: 20px;
 }
+
+/* nav */
+
+nav{
+    height: 50px;
+}
+
+.navbar{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 80%; /* Điều chỉnh chiều rộng */
+    margin-left: 110px;
+}
+
+
+nav .navbar ul{
+    list-style-type: none;
+    display: flex;
+    /* margin-left: 30px; */
+    font-size: 15px;
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    margin-top: 15px;
+    background: chartreuse;
+    border-radius: 10px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease-in-out, visibility 0s ease-in-out 0.5s;
+}
+
+.content a{
+    margin-top: 20px;
+}
+
+.content.show {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.5s ease-in-out;
+}
+
+nav .navbar ul li{
+    margin-right: 50px;
+    font-weight: bold;
+    
+}
+
+nav .navbar ul li a{
+    text-decoration: none;
+}
+
+.Delivery, .Technical-Consultation, .Announcement{
+    margin-right: 30px;
+    
+}
+
+.navbar ul li button{
+    width: 150px;
+    height: 30px;
+    font-size: 18px;
+    background: rgb(107, 156, 34);
+    border: none;
+    border-radius: 10px;
+    margin-right: 70px;
+}
+
