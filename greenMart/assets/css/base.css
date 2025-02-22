@@ -10,9 +10,11 @@
 
 body {
   height: 100vh;
-  font-family: "Courier New", Courier, monospace;
+  font-family: "Inter", sans-serif;
   background-color: white;
   overflow: hidden;
+  font-size: 1.5rem;
+  color: brown !important;
 }
 
 html {
