@@ -1,13 +1,225 @@
-body {
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  /* box-sizing: border-box; */
+  font-family: "Inter", sans-serif;
+  /* border: 1px solid black; */
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  height: 100vh;
+  font-family: "Inter", sans-serif;
+  background-color: white !important;
+  font-size: 1.5rem !important;
+  /* width: 80% !important; */
+  margin: auto !important;
+  /* color: black !important; */
+}
+
+html {
+  /* Để quy đổi 1rem = 10px, nay mai dễ thay đổi toàn bộ trang web */
+  font-size: 62.5%;
+}
+
+
+.list-inline-item a i {
+  padding-right: 5px;
+}
+
+.list-inline-item>a {
+  margin: 0 5px;
+  text-decoration: none;
+}
+
+/* ---hover cho My_Account-WishList HotLine */
+
+.container .row div a:hover {
+  color: green !important;
+}
+
+.container .row div .dropdown :hover {
+  color: green !important;
+}
+
+/* Thanh điều hướng khi nhỏ màn hình */
+@media (max-width: 768px) {
+
+  /* Khi màn hình nhỏ hơn 768px */
+  /* Định dnag lại thanh search và btn */
+  .input-group input[type="search"] {
+    height: 3.5rem !important;
+    font-size: 1.25rem;
+  }
+
+  .input-group-append button {
+    height: 3.5rem !important;
+    ;
+  }
+
+  /* --------- */
+
+  /* Định dạng lại btn Menu */
+  .directory1 .btn {
+    height: 3.5rem !important;
+    font-weight: bold;
+    font-size: 1.25rem;
+  }
+
+  /* ---------- */
+
+  /* Định dạng lại form cho nav */
+  .nvb {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 80%;
+  }
+
+  .navbar-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 2rem;
+  }
+
+  .navbar-nav .nav-item {
+    width: auto;
+    text-align: center;
+    /* border: 1px solid black; */
+    margin-bottom: 3rem;
+  }
+
+  .navbar-nav .nav-item:not(:last-child),
+  .navbar-nav .nav-item:last-child {
+    border-bottom: 1px solid #ccc;
+    width: 50%;
+  }
+
+  .nvb ul li a:hover {
+    color: green !important;
+  }
+
+  /* ---------- */
+}
+
+/* ---------- */
+
+/* Màn hình lớn */
+@media (min-width: 768px) {
+
+  /* Áp dụng cho màn hình lớn */
+  /* Dinh dang lai thanh search và btn*/
+  .input-group input[type="search"],
+  .input-group button {
+    height: 5rem !important;
+    /* width: 20rem; */
+    font-size: 1.5rem;
+    background-color: #ddd;
+  }
+
+  .input-group button {
+    width: 5rem !important;
+  }
+
+  /* ---------- */
+
+  /* Căn chữ và icon ngang hàng */
+  .navbar-nav .nav-item a {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    /* Tạo khoảng cách giữa icon và chữ */
+  }
+
+  .midnav {
+    background-color: #fafafa;
+    width: 100%;
+    padding: 0% 10% !important;
+    /* margin: 0 10%; */
+  }
+
+  .navbottom {
+    /* background-color: #fafafa; */
+    width: 80% !important;
+    margin: auto;
+  }
+
+  /* ---------- */
+
+  /* .navbar {
+    background-color: #C8E6C9 !important;
+  } */
+
+  /* Dinh dang lai nut va dropdown*/
+  .directory2 .btn {
+    border: 2px solid #198754 !important;
+    border-radius: 2rem !important;
+    /* font-weight: 800 !important; */
+    /* Màu xanh của Bootstrap Success */
+  }
+
+  .directory2 .btn {
+    width: 23rem;
+    height: 5rem;
+    color: rgb(80, 155, 80);
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+
+  .directory2 .btn:hover {
+    background-color: #0aad0a !important;
+    color: white !important;
+    border: 1px solid #0aad0a !important;
+  }
+
+  .directory2 .dropdown-menu {
+    margin-top: 3.75rem !important;
+    height: 40rem;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    background-color: #ddd;
+  }
+
+  .directory2 .dropdown-menu .dropdown-item {
+    /* background-color: #0aad0a; */
+    height: 4rem;
+    margin-top: 1rem;
+    font-weight: 550;
+    font-size: 1.75rem;
+  }
+
+  .navbar .dropdown-menu {
+    border-radius: 1rem;
+    width: 25rem;
+    font-size: 1.5rem;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  /* .nvb ul li:hover {
+    background-color: #717171;
+  } */
+
+  .nvb ul li a:hover {
+    color: green !important;
+  }
+
+  /* ---------- */
+
+  .navbar {
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    /* margin: 0 10%; */
+    /* Giúp navbar nổi trên các phần tử khác */
+    background-color: white;
+    /* Đảm bảo không bị trong suốt */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* Hiệu ứng bóng */
+
+  }
+
+
+
 }

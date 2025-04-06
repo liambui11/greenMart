@@ -1,0 +1,207 @@
+/* ------TopSectionMain----- */
+.topSectionMain {
+    background-color: aliceblue;
+}
+
+.topSectionMain ul {
+    list-style: none;
+    display: flex;
+    margin: 2rem 0;
+}
+
+.topSectionMain ul li i {
+    margin-right: 2rem;
+}
+
+.topSectionMain ul li a {
+    text-decoration: none;
+    color: black;
+    margin-right: 2rem;
+}
+
+/* ---------- */
+/* ------MidSectionMain------ */
+
+/* ------ImgSectionMain----- */
+.MidSectionMain {
+    margin: 5rem 0;
+    width: 100%;
+    display: flex;
+    gap: 1;
+}
+
+.imgSectionMain {
+    width: 50%;
+    display: flex;
+    /* overflow: hidden; */
+    position: relative;
+}
+
+.imgSectionMain img {
+    width: 100%;
+    height: 500px;
+    margin-right: 2rem;
+}
+
+.discount {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    color: white;
+    background-color: #ff4e00;
+    width: 5rem;
+    text-align: center;
+}
+
+/* .btnLeft {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    background-color: whitesmoke;
+    border: none;
+    width: 3rem;
+    height: 4rem;
+} */
+
+/* .btnRight {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    background-color: whitesmoke;
+    border: none;
+    width: 3rem;
+    height: 4rem;
+} */
+
+/* .btnLeft:hover,
+.btnRight:hover {
+    background-color: green;
+} */
+
+/*------contentSectionMain-----  */
+
+.contentSectionMain {
+    width: 40%;
+    margin-left: 10%;
+    height: auto;
+    margin: auto;
+}
+
+.contentSectionMain h4 {
+    color: rgb(94, 210, 94);
+}
+
+.contentSectionMain h1 {
+    color: black;
+    margin: auto 0;
+    font-weight: bold;
+    font-size: 5rem;
+}
+
+.price {
+    display: flex;
+}
+
+.price .Promotional {
+    color: green;
+}
+
+.price .Promotional,
+.price .List {
+    margin-top: 3rem;
+    font-weight: bold;
+    font-size: 2rem;
+    margin-left: 3rem;
+}
+
+.price p {
+    margin-top: 3rem;
+    font-weight: bold;
+    font-size: 2rem;
+
+}
+
+.price .List {
+    color: #D3D3D3;
+    text-decoration-line: line-through;
+}
+
+.availability p {
+    margin-top: 2rem;
+}
+
+.availability p span {
+    font-weight: bold;
+    margin-right: 3rem;
+    color: #D3D3D3;
+
+}
+
+.Quantity {
+    display: flex;
+    background-color: white;
+
+}
+
+.Quantity button {
+    width: 2rem;
+    border: 0.5px solid black;
+    background-color: white;
+}
+
+.Quantity__num {
+    text-align: center;
+    width: 4rem;
+    border-top: 0.5px solid black;
+    border-bottom: 0.5px solid black;
+}
+
+/* .border {
+    margin-top: 2rem;
+    margin-left: 1rem;
+    text-align: center;
+    width: 5rem;
+} */
+
+.btnAddHeart {
+    display: flex;
+}
+
+.btnAdd {
+    margin-top: 2rem;
+    width: 50%;
+    height: 3rem;
+    border-radius: 5px;
+    background-color: rgb(94, 210, 94);
+    color: white;
+    border: none;
+}
+
+.btnAddHeart .heart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #D3D3D3;
+    margin-top: 2rem;
+    margin-left: 5rem;
+    width: 4rem;
+    height: 3rem;
+}
+
+.btnAddHeart .heart i {
+    color: black;
+    width: 50%;
+    font-size: 2rem;
+}
+
+.btnAdd:hover,
+.heart:hover {
+    background: green;
+}
+
+.describe {
+    margin-top: 3rem;
+    color: #D3D3D3;
+}
+
+/* ---------- */

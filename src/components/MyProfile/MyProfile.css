@@ -1,0 +1,77 @@
+/* ----------My Profile---------- */
+.Profile {
+    margin: 4rem auto;
+    height: 100vh;
+    color: green;
+
+
+}
+
+.Profile__infor {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Profile__infor__form {
+    width: 60%;
+    margin-left: 2%;
+    margin-right: 20%;
+}
+
+.Profile__infor__form__btn {
+    height: 3rem;
+    /* margin-top: 2rem; */
+    width: 20rem;
+    border: none;
+    background-color: green;
+    color: white;
+}
+
+.Profile__infor__Fullname,
+.Profile__infor__Email,
+.Profile__infor__Address,
+.Profile__infor__Phone {
+    margin-bottom: 2rem;
+}
+
+.Profile__infor__Fullname input,
+.Profile__infor__Email input,
+.Profile__infor__Address input,
+.Profile__infor__Phone input {
+    height: 4rem;
+    font-size: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+/* .Profile__infor__line {
+    width: 100px;
+    color: black !important;
+    height: 100%;
+} */
+
+.Profile__infor__avatar {
+    width: 40%;
+    margin: auto;
+}
+
+.Profile__infor__avatar__img {
+    border-radius: "50%";
+    object-fit: "cover";
+    /* border: "2px solid #aaa"; */
+    border-radius: 50%;
+    display: block;
+}
+
+.Profile__infor__avatar #fileInput {
+    display: none;
+}
+
+.Profile__infor__avatar__btn {
+    background: green;
+    border: none;
+    /* border-radius: 1rem; */
+    margin-top: 2rem;
+    color: white;
+    width: 20rem;
+}
