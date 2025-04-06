@@ -1,0 +1,46 @@
+/* Định dạng chung cho trang Wishlist */
+.wishlist-page {
+    margin-top: 50px;
+    margin-bottom: 80px;
+    background: #f4f9f4;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.wishlist__title {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: #2d6a4f;
+}
+
+.wishlist__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.wishlist__count {
+    font-size: 1rem;
+    color: #1b4332;
+}
+.wishlist__count span{
+    font-weight: bold;
+    color: #2d6a4f;
+}
+
+.wishlist__btn {
+    background: none;
+    border: none;
+    color: #40916c;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.wishlist__btn--delete {
+    color: #40916c;
+}
+
+.wishlist__btn--delete:hover {
+    color: #b71c1c;
+}

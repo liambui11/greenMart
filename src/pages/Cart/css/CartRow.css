@@ -1,0 +1,59 @@
+/* Định dạng cho từng hàng trong bảng giỏ hàng */
+.table td, .table th {
+    vertical-align: middle !important;
+    border-top: none !important;
+}
+
+.cart-row {
+    text-align: center;
+    border-bottom: 1px solid #95d5b2 !important;
+}
+
+.cart-row__checkbox input {
+    cursor: pointer;
+}
+
+.cart-row__product {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cart-row__image {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+}
+
+.cart-row__name {
+    font-size: 1rem;
+    color: #1b4332;
+}
+
+.cart-row__price,
+.cart-row__total {
+    font-weight: bold;
+    color: #2d6a4f;
+}
+
+.cart-row__quantity input {
+    width: 60px;
+    text-align: center;
+    border: 1px solid #74c69d;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.cart-row__delete button {
+    background: none;
+    border: none;
+    color: #40916c;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.cart-row__delete button:hover {
+    color: #d62828;
+}
+
+

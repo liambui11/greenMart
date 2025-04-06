@@ -1,0 +1,72 @@
+.otp-container {
+  max-width: 400px;
+  margin: 50px auto;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.otp-title {
+  color: #006400; /* Màu xanh lá đậm */
+  font-weight: bold;
+  font-size: 27px;
+}
+
+.otp-description {
+  font-size: 16px;
+  color: #333;
+}
+
+.otp-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.otp-label {
+  font-weight: bold;
+  color: #006400;
+  text-align: left;
+}
+
+.otp-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.otp-email {
+  background-color: #f3f3f3;
+  color: #555;
+}
+
+.otp-input-container {
+  position: relative;
+  width: 100%;
+}
+
+.otp-resend {
+  position: absolute;
+  right: 0px;
+  top: -10px;
+  transform: translateY(-50%);
+  color: #006400;
+  font-size: 12px;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.otp-button {
+  background-color: #006400;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.otp-button:hover {
+  background-color: #004d00;
+}

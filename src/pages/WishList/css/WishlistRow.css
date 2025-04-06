@@ -1,0 +1,107 @@
+.wishlist__table td, .table th {
+    vertical-align: middle !important;
+    border-bottom: none !important;
+}
+
+.wishlist-row {
+    text-align: center;
+    border-bottom: 1px solid #95d5b2 !important;
+    background-color: white;
+}
+
+.wishlist__btn {
+    padding: 8px 15px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 5px;
+}
+
+.wishlist__btn--primary {
+    background-color: #28a745;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+}
+
+.wishlist__btn--contact {
+    background-color: #212529;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+}
+
+/* Sửa lỗi trùng lặp, giữ lại đúng định dạng */
+.wishlist__btn--delete {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: #555;
+}
+
+.wishlist__btn--delete:hover {
+    color: red;
+}
+
+.wishlist__status--in-stock {
+    background-color: #28a745;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.wishlist__status--out-stock {
+    background-color: #dc3545;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+/* Căn giữa tất cả trừ cột Name */
+.wishlist-row__price,
+.wishlist-row__status,
+.wishlist-row__actions,
+.wishlist-row__button {
+    text-align: center !important;
+    font-weight: bold;
+    color: #2D6A4F;
+}
+
+/* Cột sản phẩm (Name) sẽ căn trái */
+.wishlist-row__product {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-align: left;
+}
+
+/* Nút Add to Cart */
+.wishlist__btn--primary {
+    background-color: #0aad0a;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+}
+
+.wishlist__btn--primary:hover {
+    background-color: #006400; /* Màu xanh lá đậm hơn khi hover */
+}
+
+/* Nút Contact us */
+.wishlist__btn--contact {
+    background-color: #001f3f; /* Màu xanh đậm */
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+}
+
+.wishlist__btn--contact:hover {
+    background-color: #000c1a; /* Màu xanh đậm hơn khi hover */
+}

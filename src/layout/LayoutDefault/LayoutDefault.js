@@ -1,27 +1,26 @@
-import { React, useEffect } from 'react'
-import { Outlet } from 'react-router-dom'
-import HomeContent from "../../components/HomeContent/HomeContent";
-
-import NavbarMiddle from "../../components/Header/NavbarMiddle";
-import NavbarBottom from "../../components/Header/NavbarBottom";
-
-import Footer1 from "../../components/Footer/Footer1";
-import Footer2 from "../../components/Footer/Footer2";
-import Footer3 from "../../components/Footer/Footer3";
-import Line from "../../components/Line";
+import { React, useEffect } from 'react';
+import { Outlet } from 'react-router-dom';
+import NavbarBottom from "../../pages/Home/Header/NavbarBottom";
+import NavbarMiddle from "../../pages/Home/Header/NavbarMiddle"
+import Footer1 from "../../pages/Home/Footer/Footer1";
+import Footer2 from "../../pages/Home/Footer/Footer2";
+import Footer3 from "../../pages/Home/Footer/Footer3";
+import Line from "../../pages/Home/Line";
 
 function LayoutDefault() {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
 
+
+
     return (
         <>
             <NavbarMiddle />
             <NavbarBottom />
 
-            {/* <Outlet /> */}
-            <HomeContent />
+            <Outlet />
+            {/* <HomeContent /> */}
 
             <Footer1 />
             <Line />
