@@ -1,0 +1,43 @@
+.Hotproduct {
+    width: 80%;
+    /* border: 1px solid black; */
+    margin: 5rem auto;
+    position: relative;
+}
+
+.hotproduct__Tittle {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+
+.hotproduct__Tittle__viewAll {
+    border: 1px solid #ccc;
+    width: 10rem;
+    height: 4rem;
+    border-radius: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    color: #ccc;
+    text-decoration: none;
+}
+
+.hotproduct__Card {
+    /* border: 1px solid black; */
+    display: flex;
+    transition: transform 1s ease-in-out;
+    gap: 0.25rem;
+    overflow: hidden;
+}
+
+.hotproduct__Card__item {
+    /* border: 1px solid black; */
+    background: orange;
+    width: 50%;
+    height: 300px !important;
+    flex: 0 0 auto;
+    border-radius: 3rem;
+}

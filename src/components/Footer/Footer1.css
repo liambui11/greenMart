@@ -1,0 +1,154 @@
+/* ---Section1--- */
+.ss1 {
+    /* background-color: #eee; */
+
+    padding-top: 50px;
+    height: auto;
+    background-color: #f5f5f5;
+}
+
+.top-footer {
+    /* width: 80%; */
+    display: flex;
+    justify-content: flex-start;
+    /* align-items: center; */
+}
+
+.footer-content {
+    /* width: 20%; */
+    margin: auto;
+    /* background-color: aquamarine; */
+}
+
+.footer-content .logo-footer,
+.footer-content .tieuDe,
+.footer-content .location,
+.footer-content .call,
+.footer-content .email,
+.footer-content .hours {
+    margin: 2rem 0;
+}
+
+.footer-content .logo-footer span,
+.footer-content .tieuDe span,
+.footer-content .location span,
+.footer-content .call span,
+.footer-content .email span,
+.footer-content .hours span {
+    font-weight: bold;
+}
+
+.footer-content h3 {
+    margin-top: 3.25rem;
+}
+
+/* -----infor----- */
+/* .infor {
+    margin-right: 5rem;
+  } */
+
+/* -----Categories----- */
+
+.listProduct {
+    margin: 5.75rem 0;
+}
+
+.listProduct ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+}
+
+.listProduct ul li {
+    margin-bottom: 1rem;
+}
+
+.listProduct ul li a {
+    text-decoration: none;
+    color: black;
+    transition: color 0.4s;
+}
+
+.listProduct ul li a:hover {
+    color: green;
+}
+
+/* ----- Get to know us-----*/
+
+.about {
+    margin: 5.75rem 0;
+}
+
+.about ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+}
+
+.about ul li {
+    margin-bottom: 1rem;
+}
+
+.about ul li a {
+    text-decoration: none;
+    color: black;
+}
+
+.about ul li a:hover {
+    color: green;
+}
+
+/* -----Policy----- */
+
+.policy {
+    margin: 5.75rem 0;
+}
+
+.policy ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+}
+
+.policy ul li {
+    margin-bottom: 1rem;
+}
+
+.policy ul li a {
+    text-decoration: none;
+    color: black;
+}
+
+.policy ul li a:hover {
+    color: green;
+}
+
+/* -----Customers----- */
+.customer {
+    margin: 5.75rem 0;
+}
+
+.customer ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+}
+
+.customer ul li {
+    margin-bottom: 1rem;
+}
+
+.customer ul li a {
+    text-decoration: none;
+    color: black;
+}
+
+.customer ul li a:hover {
+    color: green;
+}
+
+/* ---------- */

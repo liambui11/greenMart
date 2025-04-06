@@ -1,0 +1,28 @@
+/* --section2--- */
+
+.ss2 {
+    padding: 3rem 0;
+    background-color: #f5f5f5;
+}
+
+.partners {
+    width: 50%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-right: auto;
+}
+
+.partners .imgVisa img,
+.partners .imgAmazon img,
+.partners .imgMasterCard img,
+.partners .imgAmerican img {
+    width: 50px;
+}
+
+.partners .imgVisa,
+.partners .imgAmazon,
+.partners .imgMasterCard,
+.partners .imgAmerican {
+    margin: 0 1.5rem;
+}
