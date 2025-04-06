@@ -1,0 +1,151 @@
+.offcanvas {
+  position: fixed;
+  top: 0;
+  right: -560px; /* Ẩn mặc định */
+  width: 560px;
+  max-width: 100%;
+  height: 100vh;
+  background: #fff;
+  color: white;
+  padding: 15px;
+  transition: all 0.3s ease-in-out;
+  z-index: 1050;
+  display: flex;
+  flex-direction: column;
+}
+
+.offcanvas.show {
+  right: 0;
+}
+
+/* Overlay nền mờ khi mở */
+.offcanvas-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1040;
+}
+
+/* Header Offcanvas */
+.offcanvas-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 25px;
+  margin-bottom: 15px;
+  color: black;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+/* Nút đóng */
+.close-btn {
+  background: none;
+  border: none;
+  color: black;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* Nội dung */
+.offcanvas-body {
+  flex: 1;
+  overflow-y: auto;
+  color: black;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Footer cố định ở dưới cùng */
+.cart__footer {
+  margin-top: auto;
+  padding-top: 15px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.cart__total {
+  font-size: 18px;
+  font-weight: bold;
+  text-align: right;
+  margin-bottom: 15px;
+}
+
+.cart__total span {
+  color: #007bff;
+}
+
+.cart__actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.cart__actions .btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.cart__actions .btn-danger {
+  background-color: #8ecf89;
+  color: white;
+}
+
+.cart__actions .btn-danger:hover {
+  background-color: #6db06a;
+}
+
+.cart__actions .btn-info {
+  background-color: #17a2b8;
+  color: white;
+}
+
+.cart__actions .btn-info:hover {
+  background-color: #138496;
+}
+
+.cart-button {
+  position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+}
+
+.cart-icon {
+  font-size: 32px;
+  color: black;
+}
+
+.cart-badge {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  background: rgb(3, 82, 13);
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.empty-cart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #555;
+}

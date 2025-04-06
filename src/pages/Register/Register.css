@@ -1,0 +1,140 @@
+/* Thiết lập chung */
+body {
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    max-width: 80% !important;
+}
+
+/* Layout chính */
+.register .register__content {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 100%;
+    height: auto;
+    min-height: 568px;
+    margin: 50px auto;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Phần hình ảnh */
+.register .register__image-section {
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+    padding: 30px;
+    background-color: #e9f5e9;
+}
+
+.register .register__image-section img {
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Phần form */
+.register .register__form-box {
+    padding: 30px;
+    background-color: #fff;
+    flex: 1;
+}
+
+.register .register__form-box h1 {
+    font-size: 40px;
+    font-weight: bold;
+    color: #333;
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+.register .register__form-box p {
+    font-size: 18px;
+    color: #666;
+    text-align: left;
+}
+
+.register .register__form-box a {
+    color: #28a745;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.register .register__form-box a:hover {
+    text-decoration: underline;
+}
+
+/* Form inputs */
+.register .form-group {
+    margin-bottom: 20px;
+}
+
+.register .form-group label {
+    font-weight: 500;
+    color: #333;
+    font-size: 16px;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.register .form-control {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 18px;
+    transition: border-color 0.3s;
+}
+
+.register .form-control:focus {
+    border-color: #28a745;
+    outline: none;
+}
+
+/* Hiển thị lỗi */
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+    display: block;
+}
+
+.is-invalid {
+    border-color: red;
+    background-color: #ffe6e6;
+}
+
+/* Nút tạo tài khoản */
+.register .btn-success {
+    width: 100%;
+    background-color: #28a745;
+    color: white;
+    padding: 12px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.register .btn-success:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .register .register__content {
+        flex-direction: column;
+    }
+
+    .register .register__image-section {
+        display: none;
+    }
+}

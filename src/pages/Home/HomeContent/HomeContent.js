@@ -1,14 +1,14 @@
 import { React, useEffect } from 'react'
 
 import SlideSection1 from "../slideSection/SlideSection1";
-
-import Line from "../Line";
 import ContentHome2 from '../Popular/ContentHome2';
+import Line from "../Line";
 import BestSeller from "../BestSeller/BestSeller";
-import HotProduct from "../HotProduct/HotProduct";
+import HotProduct from '../HotProduct/HotProduct';
 import Banner from "../Banner/Banner";
 import CreateAccount from "../Createaccount/CreateAccount";
 import MyCategory from "../myCategory/MyCategory";
+import HomeQuan from '../../ProductCuaQuan';
 
 function HomeContent() {
     useEffect(() => {
@@ -17,6 +17,7 @@ function HomeContent() {
 
     return (
         <>
+            <HomeQuan />
 
             <SlideSection1 />
             <Line />

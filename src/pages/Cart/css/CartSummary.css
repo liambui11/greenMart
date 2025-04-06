@@ -1,0 +1,44 @@
+/* Định dạng chung cho phần tóm tắt giỏ hàng */
+.cart-summary {
+    background: #ffffff;
+    padding: 20px;
+    margin-top: 47px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.cart-summary__table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.cart-summary__row {
+    border-bottom: 1px solid #95d5b2;
+}
+
+.cart-summary__cell {
+    padding: 10px;
+    font-size: 1rem;
+}
+
+.cart-summary__cell:last-child {
+    font-weight: bold;
+    color: #2d6a4f;
+    text-align: right;
+}
+
+.cart-summary__button {
+    background-color: #2d6a4f;
+    color: #87e5a0;
+    border: 1px solid #87e5a0 !important;
+    font-size: 1.1rem;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.cart-summary__button:hover {
+    background-color: #86d490;
+}

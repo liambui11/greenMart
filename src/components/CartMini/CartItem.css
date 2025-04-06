@@ -1,0 +1,88 @@
+.cart__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.cart__item .cart__image img {
+  width: 50px;
+  height: auto;
+  border-radius: 8px; /* Thêm border-radius để làm đẹp hình ảnh */
+}
+
+.cart__item .cart__content {
+  flex: 1;
+  margin-left: 10px;
+}
+
+.cart__item .cart__content .cart__title {
+  font-size: 18px;
+  font-weight: 550;
+  margin: 0; /* Đảm bảo không có margin thừa */
+}
+
+.cart__item .cart__content .cart__price-per-unit {
+  font-size: 14px;
+  color: #888;
+  margin: 5px 0 0; /* Thêm margin để tách biệt với tiêu đề */
+}
+
+.cart__item .cart__quantity {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow: hidden;
+  margin: 0 10px; /* Thêm margin để tách biệt với các phần khác */
+}
+
+.cart__item .cart__quantity button {
+  width: 30px;
+  height: 30px;
+  border: none;
+  background: #f5f5f5;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart__item .cart__quantity button:hover {
+  background: #ddd;
+}
+
+.cart__item .cart__quantity input {
+  width: 40px;
+  height: 30px;
+  text-align: center;
+  border: none;
+  font-size: 16px;
+  outline: none;
+  background: transparent; /* Đảm bảo input không có nền */
+}
+
+.cart__item .cart__price {
+  font-size: 16px;
+  color: #000;
+  margin-left: 10px; /* Thêm margin để tách biệt với phần quantity */
+}
+
+.cart__item .cart__delete-btn {
+  background: none;
+  border: none;
+  color: #60bc71; /* Thay đổi màu sắc để phù hợp với hình ảnh */
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-left: 10px; /* Thêm margin để tách biệt với phần price */
+}
+
+.cart__item .cart__delete-btn:hover {
+  color: #094f28; /* Màu hover đậm hơn */
+}

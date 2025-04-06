@@ -2,18 +2,23 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-// import reportWebVitals from './reportWebVitals';
-// import Home from './Home'
-// import My_Profile from './My_Profile';
+import reportWebVitals from './reportWebVitals';
+import { BrowserRouter } from 'react-router-dom';
+import { createStore } from "redux";
+import allReducers from "./reducers";
+import { Provider } from "react-redux";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min";
 
+const store = createStore(allReducers);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <App />
-    {/* <Home /> */}
-    {/* <My_Profile /> */}
-  </React.StrictMode>
+  <Provider store = {store}>
+        <BrowserRouter>
+            <App />
+        </BrowserRouter>
+  </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function

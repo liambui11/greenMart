@@ -16,6 +16,26 @@ body {
   /* color: black !important; */
 }
 
+.list-inline-item {
+  position: relative;
+}
+
+.wishlist-badge {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  background: rgb(3, 82, 13);
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 html {
   /* Để quy đổi 1rem = 10px, nay mai dễ thay đổi toàn bộ trang web */
   font-size: 62.5%;

@@ -1,15 +1,17 @@
 import React from 'react'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass, faHeart } from "@fortawesome/free-solid-svg-icons";
-import { HiOutlineShoppingBag } from "react-icons/hi2";
+import { useSelector} from "react-redux";
+import { faMagnifyingGlass} from "@fortawesome/free-solid-svg-icons";
 import { RxAvatar } from "react-icons/rx";
 import { IoMdHeartEmpty } from "react-icons/io";
 import { LuSquareMenu } from "react-icons/lu";
 import { Link } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import CartMini from "../../../components/CartMini/index";
+
 
 function NavbarMiddle() {
+    const wishlist = useSelector((state) => state.wishlistReducer);
+    const totalQuantity = wishlist.length;
     return (
         <div className="midnav py-4">
             <div className="container">
@@ -46,19 +48,15 @@ function NavbarMiddle() {
                         <div className="list-inline d-flex">
                             {/* <!-- Heart --> */}
                             <div className="list-inline-item gap-3">
-                                <Link className="position-relative text-dark">
-                                    {/* <i class="fa-regular fa-heart fs-2"></i> */}
-                                    <IoMdHeartEmpty style={{ fontSize: "3rem" }} />
+                                <Link className="position-relative text-dark" to="/wishlist">
+                                <IoMdHeartEmpty style={{ fontSize: "3rem" }} />
+                                {totalQuantity > 0 && <span className="wishlist-badge">{totalQuantity}</span>}
                                 </Link>
                             </div>
 
                             {/* <!-- Cart --> */}
                             <div className="list-inline-item">
-                                <Link href="" className="position-relative text-dark">
-                                    {/* <i className="fa-solid fa-cart-shopping fs-2"></i> */}
-                                    {/* <i className="klbth-icon-shopping-bag"></i> */}
-                                    <HiOutlineShoppingBag style={{ fontSize: "3rem" }} />
-                                </Link>
+                                <CartMini />
                             </div>
 
                             {/* <!-- LogIn --> */}
@@ -71,8 +69,8 @@ function NavbarMiddle() {
                                     {/* <i className="fa-regular fa-circle-user fs-2" data-bs-toggle="dropdown" aria-expanded="false"></i> */}
                                     <RxAvatar data-bs-toggle="dropdown" aria-expanded="false" style={{ fontSize: "3rem" }} />
                                     <ul className="dropdown-menu border-0" style={{ overflow: "hidden", zIndex: 1050 }}>
-                                        <li><Link className="dropdown-item fs-4"  ><strong>SignIn</strong></Link></li>
-                                        <li><Link className="dropdown-item fs-4" ><strong>SignUp</strong></Link></li>
+                                        <li><Link className="dropdown-item fs-4" to="/login"  ><strong>SignIn</strong></Link></li>
+                                        <li><Link className="dropdown-item fs-4" to="/register" ><strong>SignUp</strong></Link></li>
                                     </ul>
                                 </div>
                             </div>

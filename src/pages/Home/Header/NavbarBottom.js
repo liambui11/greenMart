@@ -128,9 +128,9 @@ function NavbarBottom() {
                             <div className="nvb">
                                 <ul className="navbar-nav d-flex align-items-center ms-5">
                                     <li className="nav-item dropdown w-100 w-md-auto me-4 ms-5">
-                                        <a href="https://freshcart.codescandy.com/pages/shop-single.html" className="text-decoration-none text-dark">
+                                        <Link to="/" className="text-decoration-none text-dark">
                                             <strong>HOME</strong>
-                                        </a>
+                                        </Link>
                                     </li>
                                     <li className="nav-item dropdown w-100 w-md-auto me-4 ms-5">
                                         <a href="#" className="text-decoration-none text-dark"><strong>ABOUT</strong></a>
