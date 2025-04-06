@@ -1,8 +1,6 @@
 import React from 'react'
 import { useState, useEffect, useRef } from "react";
 import { Link } from 'react-router-dom';
-import "bootstrap/dist/css/bootstrap.min.css";
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 function NavbarBottom() {
     const [isSticky, setSticky] = useState(false);

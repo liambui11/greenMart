@@ -6,8 +6,7 @@ import { RxAvatar } from "react-icons/rx";
 import { IoMdHeartEmpty } from "react-icons/io";
 import { LuSquareMenu } from "react-icons/lu";
 import { Link } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+
 
 function NavbarMiddle() {
     return (
