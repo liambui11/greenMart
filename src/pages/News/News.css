@@ -1,0 +1,266 @@
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+  /* border: 1px solid black; */
+}
+
+body {
+  height: 100vh;
+  font-family: "Inter", sans-serif;
+  background-color: white;
+  font-size: 1.5rem;
+}
+
+html {
+  /* Để quy đổi 1rem = 10px, nay mai dễ thay đổi toàn bộ trang web */
+  font-size: 62.5%;
+}
+
+.parts-title__title {
+  font-weight: 600;
+  font-size: 2.5rem;
+}
+
+.categories-container {
+  margin: 3rem 10% 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.categories-card-container {
+  width: 20rem;
+  height: 23rem;
+  border: 0.2rem solid rgba(0, 0, 0, 0.098);
+  border-radius: 1rem;
+  margin-top: 3rem;
+}
+
+.categories-card {
+  height: 19rem;
+  text-decoration: none;
+  font-size: 1.7rem;
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  color: rgba(0, 0, 0, 0.572);
+  margin-top: 3rem;
+  position: relative;
+}
+
+.categories-product-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.categories-card__quantity {
+  font-size: 1.5rem;
+}
+
+.shop-now-button {
+  background-color: black;
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 1.3rem;
+  padding-left: 2rem;
+  padding-right: 1.8rem;
+  border-radius: 0.75rem;
+  cursor: pointer;
+}
+
+.shop-now-button > i {
+  padding-left: 0.7rem;
+}
+
+.categories-banner-container {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 6rem;
+}
+
+.categories-banner {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.5rem;
+}
+
+.categories-banner-content {
+  position: absolute;
+  top: 3rem;
+  left: 3rem;
+  padding: 20px;
+}
+
+.banner-content__title {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.banner-content__detail {
+  font-size: 1.5rem;
+  margin-top: 0.8rem;
+}
+
+.banner-content__button {
+  margin-top: 3.5rem;
+}
+
+/* ==== weekly-deal ==== */
+.weekly-deals-container {
+  margin: 6rem 10% 2rem;
+}
+
+.weekly-deals__card {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.card-product {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 1rem;
+  border: 0.2rem solid rgba(0, 0, 0, 0.098);
+  height: 30rem;
+  width: 23rem;
+  position: relative;
+  margin-top: 2rem;
+}
+
+.card-product:hover {
+  border: 0.2rem solid rgba(25, 88, 46, 0.743);
+  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.6);
+  transform: translateY(-5px); /* Nhấc lên */
+}
+
+.card-product__image {
+  position: absolute;
+  top: 4rem;
+}
+
+.card-product__name {
+  height: 4.3rem;
+  max-width: 19rem;
+  text-align: center;
+  margin-top: 1.3rem;
+  font-weight: 500;
+  font-size: 1.7rem;
+  color: rgba(0, 0, 0, 0.572);
+  position: absolute;
+  top: 16rem;
+}
+
+.card-product__price {
+  position: absolute;
+  margin-top: 0.5rem;
+  top: 25rem;
+  left: 3rem;
+}
+
+.card-product__price > span {
+  margin-left: 0.7rem;
+  color: rgba(0, 0, 0, 0.451);
+  text-decoration: line-through;
+}
+
+.card-product__badge {
+  position: absolute;
+  background-color: #db3030;
+  color: white;
+  padding: 0.1rem 1rem;
+  border-radius: 0.3rem;
+  top: 2rem;
+  left: 1.2rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.card-product__add-button {
+  position: absolute;
+  margin-top: 0.5rem;
+  top: 24.5rem;
+  right: 1.5rem;
+  text-decoration: none;
+  padding: 0.5rem 0.8rem;
+  border-radius: 0.3rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: white;
+  background-color: #0aad0a;
+}
+
+.card-product__hover {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.card-product-hovered {
+  height: 30rem;
+  width: 23rem;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 1rem;
+  left: 8rem;
+  z-index: 2;
+}
+
+.fa-heart {
+  color: rgba(0, 0, 0, 0.5);
+  height: 1.2rem;
+  padding: 1.2rem;
+  border: 0.2rem solid rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  margin: 0 1.2rem;
+  /* z-index: 2; */
+  background-color: white;
+  position: relative;
+}
+
+.fa-heart:hover {
+  transform: scale(1.1);
+  background-color: #0aad0a;
+  color: white;
+  border: 0.2rem solid #0aad0a;
+}
+
+/* ==== live chat ==== */
+
+.live-chat-widget-container {
+  position: fixed;
+  bottom: 0px;
+  right: 0px;
+}
+
+.live-chat-widget {
+  display: flex;
+  width: 35rem;
+  height: 3.5rem;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #0aad0a;
+  border-radius: 1.5rem 1.5rem 0 0;
+  border: 0.1rem solid white;
+  z-index: 999;
+}
+
+.live-chat-widget__icon {
+  color: white;
+  padding: 0 1rem 0 1.2rem;
+}
+
+.live-chat-widget__title {
+  color: white;
+  font-weight: 500;
+}

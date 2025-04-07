@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./Register.css";
-import loginImage from "../../assets/image/register_img.jpg";
 import { Link } from "react-router-dom";
 
 const RegisterPage = () => {
@@ -115,7 +114,7 @@ const RegisterPage = () => {
           </div>
 
           <div className="col-6 register__image-section">
-            <img src={loginImage} alt="Social Login Options" />
+            <img src="/image/login-register/register_img.jpg" alt="Social Login Options" />
           </div>
         </div>
       </div>

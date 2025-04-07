@@ -8,6 +8,8 @@ import OtpPage from "../pages/PassWord/OtpPage";
 import ResetPWPage from "../pages/PassWord/ResetPWPage";
 import CheckoutPage from "../pages/CheckOut/CheckoutPage";
 import HomeContent from '../pages/Home/HomeContent/HomeContent';
+import About from '../pages/About/About';
+import New from '../pages/News/News';
 
 export const routes = [
   {
@@ -17,6 +19,14 @@ export const routes = [
       {
         path: "/",
         element: <HomeContent />,
+      },
+      {
+        path: "about",
+        element: <About />,
+      },
+      {
+        path: "news",
+        element: <New />,
       },
       {
         path: "login",

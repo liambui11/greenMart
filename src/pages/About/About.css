@@ -1,0 +1,45 @@
+
+.about {
+  font-size: 2rem;
+  margin: 2rem 10%;
+}
+
+.about__content {
+  background-color: #dfe2e1;
+  padding: 2rem;
+  border-radius: 2rem;
+}
+
+.about__content--intro {
+  font-style: italic;
+}
+
+.about__content--ordering > svg {
+  color: #006838;
+  margin-right: 1.2rem;
+}
+
+.about__content--signature {
+  margin-left: 85%;
+}
+
+.about__content--signature > span {
+  margin-top: 5rem;
+}
+
+.highlight-text {
+  font-weight: 600;
+  color: #006838;
+}
+
+.about__image {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 0;
+}
+.about__image > img {
+  width: 60%;
+  border-radius: 2rem;
+}

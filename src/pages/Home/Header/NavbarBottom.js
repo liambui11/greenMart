@@ -134,10 +134,10 @@ function NavbarBottom() {
                                         </Link>
                                     </li>
                                     <li className="nav-item dropdown w-100 w-md-auto me-4 ms-5">
-                                        <a href="#" className="text-decoration-none text-dark"><strong>ABOUT</strong></a>
+                                        <Link to="/about" className="text-decoration-none text-dark"><strong>ABOUT</strong></Link>
                                     </li>
                                     <li className="nav-item dropdown w-100 w-md-auto me-4 ms-5">
-                                        <a href="#" className="text-decoration-none text-dark"><strong>NEWS</strong></a>
+                                        <Link to="/news" className="text-decoration-none text-dark"><strong>NEWS</strong></Link>
                                     </li>
                                     <li className="nav-item dropdown w-100 w-md-auto me-4 ms-5">
                                         <a href="#" className="text-decoration-none text-dark">

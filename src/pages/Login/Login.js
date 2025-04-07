@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./Login.css";
-import loginImage from "../../assets/image/login_img.jpg";
 import { Link } from "react-router-dom";
 
 const LoginPage = () => {
@@ -56,7 +55,7 @@ const LoginPage = () => {
         <div className="row login__content">
           {/* Image Section */}
           <div className="col-6 login__image-section">
-            <img src={loginImage} alt="Login Illustration" />
+            <img src="/image/login-register/login_img.jpg" alt="Login Illustration" />
           </div>
           {/* Login Form Section */}
           <div className="col-xl-6 col-lg-6 col-sm-12 login__form-box">
