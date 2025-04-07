@@ -79,9 +79,9 @@ const CheckoutPage = () => {
         You have {cart.length} items in your cart
       </p>
 
-      <div className="table-rezponsive">
+      <div className="table-responsive">
         <table className="table table-bordered checkout-table">
-          <thead className="table-success">
+          <thead className="table-head">
             <tr>
               <th>Product</th>
               <th>Price</th>

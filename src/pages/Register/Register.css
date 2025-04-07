@@ -1,4 +1,4 @@
-/* Thiết lập chung */
+/* chung */
 body {
     background-color: #f8f9fa;
     font-family: Arial, sans-serif;
@@ -14,7 +14,7 @@ body {
     flex-wrap: wrap;
     max-width: 100%;
     height: auto;
-    min-height: 568px;
+    min-height: 595px;
     margin: 50px auto;
     border: 1px solid #ddd;
     background-color: #fff;

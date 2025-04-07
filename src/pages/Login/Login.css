@@ -1,4 +1,4 @@
-/* Thiết lập nền chung */
+/* chung */
 body {
     background-color: #f8f9fa;
     font-family: Arial, sans-serif;
@@ -8,13 +8,13 @@ body {
     max-width: 80% !important;
 }
 
-/* Bọc toàn bộ nội dung */
+/* nội dung */
 .login .login__content {
     display: flex;
     flex-wrap: wrap;
     max-width: 100%;
     height: auto;
-    min-height: 562px;
+    min-height: 572px;
     margin: 50px auto;
     border: 1px solid #ddd;
     background-color: #fff;
@@ -70,7 +70,7 @@ body {
 .login .login__form-box a {
     color: #28a745;
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .login .login__form-box a:hover {
@@ -113,7 +113,7 @@ body {
     color: red;
     font-size: 15px;
     margin-top: 5px;
-    min-height: 20px; /* Đảm bảo không bị co lại */
+    min-height: 20px; 
     display: block;
 }
 

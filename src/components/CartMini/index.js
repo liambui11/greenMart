@@ -46,7 +46,12 @@ function CartMini() {
       {/* Nút mở giỏ hàng */}
       <button className="cart-button" onClick={handleCartClick}>
         <HiOutlineShoppingBag className="cart-icon" />
-        {totalQuantity > 0 && <span className="cart-badge">{totalQuantity}</span>}
+        {totalQuantity > 0 && (
+          <span className="cart-badge">
+            {totalQuantity > 9 ? '9+' : totalQuantity}
+          </span>
+        )}
+
       </button>
 
       {/* Overlay nền tối khi mở */}

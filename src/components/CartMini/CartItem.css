@@ -15,6 +15,7 @@
 .cart__item .cart__content {
   flex: 1;
   margin-left: 10px;
+  text-align: left;
 }
 
 .cart__item .cart__content .cart__title {
