@@ -3,7 +3,7 @@
 /* Xây dựng ảnh quảng cáo */
 .section1 {
     margin-top: 3.5rem !important;
-    width: 80%;
+    /* width: 80%; */
     margin: auto;
 }
 

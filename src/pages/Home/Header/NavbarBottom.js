@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState, useEffect, useRef } from "react";
 import { Link } from 'react-router-dom';
+import './Header.css'
 import "bootstrap/dist/css/bootstrap.min.css";
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
@@ -97,7 +98,7 @@ function NavbarBottom() {
                                         ALL CATEGORIES
                                     </span>
                                 </button>
-                                <ul className="dropdown-menu fade" aria-labelledby="dropdownMenuButton1">
+                                <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                     <li className="dropdown-item ">
                                         <Link href="#" className="text-decoration-none text-dark">Vegetables</Link>
                                     </li>

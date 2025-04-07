@@ -1,12 +1,13 @@
 import React from 'react'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useSelector} from "react-redux";
-import { faMagnifyingGlass} from "@fortawesome/free-solid-svg-icons";
+import { useSelector } from "react-redux";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { RxAvatar } from "react-icons/rx";
 import { IoMdHeartEmpty } from "react-icons/io";
 import { LuSquareMenu } from "react-icons/lu";
 import { Link } from "react-router-dom";
 import CartMini from "../../../components/CartMini/index";
+import './Header.css'
 
 
 function NavbarMiddle() {
@@ -47,10 +48,10 @@ function NavbarMiddle() {
                     <div className="col-lg-3 text-end col-md-6 col-7 d-flex justify-content-end align-items-center m-0">
                         <div className="list-inline d-flex">
                             {/* <!-- Heart --> */}
-                            <div className="list-inline-item gap-3">
+                            <div className="list-inline-item">
                                 <Link className="position-relative text-dark" to="/wishlist">
-                                <IoMdHeartEmpty style={{ fontSize: "3rem" }} />
-                                {totalQuantity > 0 && <span className="wishlist-badge">{totalQuantity}</span>}
+                                    <IoMdHeartEmpty style={{ fontSize: "3rem" }} />
+                                    {totalQuantity > 0 && <span className="wishlist-badge">{totalQuantity}</span>}
                                 </Link>
                             </div>
 
