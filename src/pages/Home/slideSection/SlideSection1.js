@@ -35,8 +35,9 @@ function SlideSection1() {
 
     useEffect(() => {
         if (listRef.current) {
+            listRef.current.style.width = `${images.length * 100}vw`;
             listRef.current.style.transition = "transform 0.5s ease-in-out";
-            listRef.current.style.transform = `translateX(-${current * 100}%)`;
+            listRef.current.style.transform = `translateX(-${current * 100}vw)`;
 
         }
     }, [current]); // Khi current thay đổi, update vị trí ảnh

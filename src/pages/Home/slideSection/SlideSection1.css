@@ -2,20 +2,20 @@
 
 /* Xây dựng ảnh quảng cáo */
 .section1 {
-    margin-top: 3.5rem !important;
+
     /* width: 80%; */
     margin: auto;
 }
 
 .slideshow {
-    width: 90%;
+    width: 80vw;
     margin: auto;
     overflow: hidden;
     position: relative !important;
 }
 
 .list-images img {
-    width: 100%;
+    width: 100vw;
     height: 600px;
     object-fit: cover;
 }
