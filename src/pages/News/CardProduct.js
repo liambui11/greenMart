@@ -14,7 +14,7 @@ function CardProduct({item}) {
     >
       <div className="card-product__image">
         <img
-          src={item.imageSrc}
+          src={item.productImage}
           alt={item.productName}
           width={120}
           height={120}
@@ -25,7 +25,7 @@ function CardProduct({item}) {
         {item.productName}
       </div>
       <div className="card-product__price">
-        ${item.originalPrice}
+        ${item.productPrice}
         <span>${item.discountedPrice}</span>
       </div>
       <div className="card-product__badge">

@@ -10,6 +10,7 @@ import CheckoutPage from "../pages/CheckOut/CheckoutPage";
 import HomeContent from '../pages/Home/HomeContent/HomeContent';
 import About from '../pages/About/About';
 import New from '../pages/News/News';
+import CategoryDetail from '../components/CategoryDetail/CategoryDetail';
 
 export const routes = [
   {
@@ -27,6 +28,10 @@ export const routes = [
       {
         path: "news",
         element: <New />,
+      },
+      {
+        path: "categorydetail/:slug",
+        element: <CategoryDetail />,
       },
       {
         path: "login",
