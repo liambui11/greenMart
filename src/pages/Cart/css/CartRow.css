@@ -2,6 +2,8 @@
 .table td, .table th {
     vertical-align: middle !important;
     border-top: none !important;
+    padding: 12px;
+    border-bottom: none;
 }
 
 .cart-row {
@@ -26,14 +28,15 @@
 }
 
 .cart-row__name {
-    font-size: 1rem;
+    font-size: 16px;
     color: #1b4332;
 }
 
 .cart-row__price,
 .cart-row__total {
     font-weight: bold;
-    color: #2d6a4f;
+    color: #2d6a4f !important;
+    font-size: 16px;
 }
 
 .cart-row__quantity input {
@@ -49,7 +52,7 @@
     border: none;
     color: #40916c;
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 16px;
 }
 
 .cart-row__delete button:hover {

@@ -8,7 +8,7 @@
 }
 
 .wishlist__title {
-    font-size: 2.5rem;
+    font-size: 40px;
     margin-bottom: 10px;
     color: #2d6a4f;
 }
@@ -21,7 +21,7 @@
 }
 
 .wishlist__count {
-    font-size: 1rem;
+    font-size: 16px;
     color: #1b4332;
 }
 .wishlist__count span{
@@ -34,7 +34,7 @@
     border: none;
     color: #40916c;
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 16px;
 }
 
 .wishlist__btn--delete {

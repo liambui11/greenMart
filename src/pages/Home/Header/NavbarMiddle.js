@@ -51,7 +51,12 @@ function NavbarMiddle() {
                             <div className="list-inline-item">
                                 <Link className="position-relative text-dark" to="/wishlist">
                                     <IoMdHeartEmpty style={{ fontSize: "3rem" }} />
-                                    {totalQuantity > 0 && <span className="wishlist-badge">{totalQuantity}</span>}
+                                    {totalQuantity > 0 && (
+                                        <span className="wishlist-badge">
+                                            {totalQuantity > 9 ? '9+' : totalQuantity}
+                                        </span>
+                                    )}
+
                                 </Link>
                             </div>
 

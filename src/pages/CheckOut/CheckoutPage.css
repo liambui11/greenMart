@@ -2,12 +2,13 @@
   background-color: #e1ffef;
   padding: 20px;
   border-radius: 10px;
-  margin-top: 50px;
+  margin: 50px auto;
 }
 
 .checkout-title {
   color: #006400;
   font-weight: bold;
+  font-size: 32px;
 }
 
 .checkout-subtitle {
@@ -26,6 +27,7 @@
 
 .checkout-summary {
   text-align: right;
+  font-size: 16px;
 }
 
 .checkout-summary__label {
@@ -37,18 +39,18 @@
   font-weight: bold;
 }
 
-
-.table-success tr {
-  background: #95d5b2;
-}
-
-.table-success tr th {
+.table-head tr th {
   text-align: center;
+  background: #95d5b2;
+  font-size: 16px;
 }
-
 
 .checkout-table {
   background: #ffffff;
+}
+
+.checkout-table td {
+  font-size: 16px;
 }
 
 .checkout-table img {
@@ -60,13 +62,25 @@
   margin-top: 20px;
 }
 
+.checkout-form label {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.checkout-form input {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
 .checkout-instruction {
   font-weight: bold;
+  font-size: 16px;
 }
 
 .btn-success {
-  background-color: #006400;
+  background-color: #59c559;
   border: none;
+  font-size: 20px;
 }
 
 .btn-success:hover {

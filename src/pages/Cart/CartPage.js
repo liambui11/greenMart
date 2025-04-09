@@ -8,6 +8,9 @@ import "./css/CartPage.css";
 
 const CartPage = () => {
   const cart = useSelector((state) => state.cartReducer);
+  const totalQuantity = cart.reduce((sum, item) => {
+    return sum + item.quantity;
+    }, 0);
   const dispatch = useDispatch();
 
   return (
@@ -17,7 +20,7 @@ const CartPage = () => {
         <div className="col-lg-8">
           <div className="cart-page__info d-flex justify-content-between">
             <h6 className="cart-page__total-items">
-            You have <span className="cart-page__highlight">{cart.length}</span> items in your cart
+            You have <span className="cart-page__highlight">{totalQuantity}</span> items in your cart
             </h6>
             <button onClick={() => dispatch(deleteAll())} className="cart-page__clear-btn">
              <FaRegTrashCan/> Clear All
