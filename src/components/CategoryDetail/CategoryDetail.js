@@ -9,6 +9,8 @@ import SubCategory from "./SubCategory";
 import SortByItem from "./SortByItem";
 import SkeletonCardProduct from "../../pages/News/SkeletonCardProduct";
 import SkeletonSubCategory from "./SkeletonSubCategory";
+import ReactPaginate from "react-paginate";
+import { BiSolidChevronRight, BiSolidChevronLeft } from "react-icons/bi";
 
 function CategoryDetail() {
   const [productsData, setProductsData] = useState([]);
@@ -177,6 +179,16 @@ function CategoryDetail() {
               </p>
             )}
           </div>
+          <div className="list-item__items--pagination"></div>
+          {/* <ReactPaginate
+            previousLabel={<BiSolidChevronLeft />}
+            nextLabel={<BiSolidChevronRight />}
+            pageCount={pageCount}
+            onPageChange={changePage}
+            containerClassName="paginationButtons"
+            disabledClassName="paginationDisable"
+            activeClassName="paginationActive"
+          /> */}
         </div>
       </div>
     </div>
