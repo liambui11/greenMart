@@ -8,19 +8,26 @@ function SlideSection1() {
     // const imgRef = useRef(null);
     // const images = ["/image/page2.jpg", "/image/page1.jpg"];
     const images = useMemo(() => [
-        "/image/page2.jpg",
-        "/image/page1.jpg",
+        "/image/slideshow/page1.webp",
+        "/image/slideshow/page2.webp",
     ], []);
     const contents = [
         {
             title: "Free Shipping-orders over $100",
-            description: "Free Shipping to First-Time Customers Only, After promotions and discounts are applied",
-            buttonText: "Shop Now"
+            description1: (
+                <>
+                    Free Shipping to<br />
+                    First-Time Customers Only
+                </>
+            ),
+            description2: "After promotions and discounts are applied",
+            buttonText: "SHOP NOW"
         },
         {
             title: "Opening Shop",
-            description: "Enjoy exclusive deals and free shipping on your first order!",
-            buttonText: "Explore Now"
+            description1: "Enjoy exclusive deals and",
+            description2: " Free shipping on your first order!",
+            buttonText: "SHOP NOW"
         }
     ];
 
@@ -56,7 +63,8 @@ function SlideSection1() {
                     {images.map((_, index) => (
                         <div key={index} className={`slideshow-content ${current === index ? "active" : ""}`}>
                             <h6>{contents[index].title}</h6>
-                            <p>{contents[index].description}</p>
+                            <h2>{contents[index].description1}</h2>
+                            <p>{contents[index].description2}</p>
                             <button>{contents[index].buttonText}</button>
                         </div>
 

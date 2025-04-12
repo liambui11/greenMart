@@ -4,8 +4,19 @@ import './HotProduct.css';
 
 function HotProduct() {
     const itemsData = [
-        { title: "Sản phẩm 1" },
-        { title: "Sản phẩm 2" },
+        {
+            discount: "WEEKEND DISCOUNT",
+            title: "Legumes & Cereals ",
+            img: "/image/bannner/hot-product3.webp",
+            describe: "Feed your family the best"
+
+        },
+        {
+            discount: "WEEKEND DISCOUNT",
+            title: "Dairys & Eggs",
+            img: "/image/bannner/hot-product4.webp",
+            describe: "A different kind of grocery store"
+        },
     ];
     return (
         <section className="Hotproduct">
@@ -24,7 +35,17 @@ function HotProduct() {
                             {itemsData.map((item, index) => (
                                 <div key={index}
                                     className="hotproduct__Card__item">
-                                    <p className="hotproduct__Card__item__title">{item.title}</p>
+                                    <img
+                                        alt=""
+                                        className='hotproduct__Card__item__img'
+                                        src={item.img}
+                                    />
+                                    <div className="hotproduct__Card__item__title">
+                                        <h4>{item.discount}</h4>
+                                        <h1>{item.title}</h1>
+                                        <p>{item.describe}</p>
+                                        <button type='button'>Go Now </button>
+                                    </div>
                                 </div>
                             ))}
 

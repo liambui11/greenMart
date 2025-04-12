@@ -1,7 +1,4 @@
 .Category {
-    /* border: 1px solid black; */
-
-    /* width: 80%; */
     margin: auto;
 }
 
@@ -63,18 +60,22 @@
 }
 
 .category__Card {
-    /* border: 1px solid black; */
     display: flex;
     transition: transform 1s ease-in-out;
     gap: 26px;
-    /* margin-left: 5px; */
 }
 
 .category__Card__item {
-    /* border: 1px solid black; */
-    background: aqua;
-    width: 200px;
-    height: 230px !important;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 20rem;
+    height: 23rem;
+    border: 0.2rem solid rgba(0, 0, 0, 0.098);
+    border-radius: 1rem;
+    margin-top: 3rem;
     flex: 0 0 auto;
 }
 

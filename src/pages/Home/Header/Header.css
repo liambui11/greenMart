@@ -18,15 +18,11 @@
     align-items: center;
 }
 
-/* .list-inline-item a i {
-    padding-right: 5px;
-} */
 
 .list-inline-item {
     margin: 0 5px;
     text-decoration: none;
 }
-
 
 /* ---hover cho My_Account-WishList HotLine */
 
@@ -39,7 +35,7 @@
 }
 
 /* Thanh điều hướng khi nhỏ màn hình */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
 
     /* Khi màn hình nhỏ hơn 768px */
     /* Định dnag lại thanh search và btn */
@@ -103,7 +99,7 @@
 /* ---------- */
 
 /* Màn hình lớn */
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
 
     /* Áp dụng cho màn hình lớn */
     /* Dinh dang lai thanh search và btn*/
@@ -126,7 +122,6 @@
         display: flex;
         align-items: center;
         gap: 5px;
-        /* Tạo khoảng cách giữa icon và chữ */
     }
 
     .midnav {
@@ -136,43 +131,32 @@
     }
 
     .navbottom {
-        /* background-color: #fafafa; */
-        /* width: 80% !important; */
         margin: auto;
     }
 
     /* ---------- */
 
-    /* .navbar {
-      background-color: #C8E6C9 !important;
-    } */
-
     /* Dinh dang lai nut va dropdown*/
     .directory2 .btn {
-        border: 2px solid #198754 !important;
-        border-radius: 2rem !important;
-        /* font-weight: 800 !important; */
-        /* Màu xanh của Bootstrap Success */
-    }
-
-    .directory2 .btn {
+        background-color: #0aad0a;
         width: 23rem;
         height: 5rem;
-        color: rgb(80, 155, 80);
+        color: white;
         font-weight: bold;
         font-size: 1.5rem;
+        border: 2px solid #198754;
+        border-radius: 2rem;
     }
 
     .directory2 .btn:hover {
-        background-color: #0aad0a !important;
-        color: white !important;
-        border: 1px solid #0aad0a !important;
+        background-color: green;
+        color: white;
     }
 
     .directory2 .dropdown-menu {
-        margin-top: 3.75rem !important;
+        margin-top: 3.75rem;
         height: 35rem;
-        flex-direction: column !important;
+        flex-direction: column;
         justify-content: space-between !important;
         background-color: #ddd;
         display: none !important;
@@ -199,10 +183,6 @@
         box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     }
 
-    /* .nvb ul li:hover {
-      background-color: #717171;
-    } */
-
     .nvb ul li a:hover {
         color: green !important;
     }
@@ -213,15 +193,7 @@
         position: fixed;
         top: 0;
         z-index: 1000;
-        /* margin: 0 10%; */
-        /* Giúp navbar nổi trên các phần tử khác */
         background-color: white;
-        /* Đảm bảo không bị trong suốt */
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        /* Hiệu ứng bóng */
-
     }
-
-
-
 }

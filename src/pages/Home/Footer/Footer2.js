@@ -9,16 +9,16 @@ function Footer2() {
                         <h4>Secured Payment Gateways</h4>
                     </div>
                     <div className="imgVisa">
-                        <img src="/image/Visa.png" alt="" />
+                        <img src="/image/foot/Visa.png" alt="" />
                     </div>
                     <div className="imgAmazon">
-                        <img src="/image/amazon-logo.png" alt="" />
+                        <img src="/image/foot/amazon-logo.png" alt="" />
                     </div>
                     <div className="imgMasterCard">
-                        <img src="/image/MasterCard-Logo.png" alt="" />
+                        <img src="/image/foot/MasterCard-Logo.png" alt="" />
                     </div>
                     <div className="imgAmerican">
-                        <img src="/image/R.png" alt="" />
+                        <img src="/image/foot/R.png" alt="" />
                     </div>
                 </div>
             </div>

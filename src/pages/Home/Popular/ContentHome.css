@@ -1,9 +1,6 @@
 /* -----Popular------------------ */
 
 .Popular {
-    /* border: 1px solid black; */
-    /* width: 80%; */
-    /* margin: ; */
     margin: 5rem auto;
 }
 
@@ -14,13 +11,9 @@
 }
 
 .popular__Card {
-    /* border: 1px solid black; */
-    display: flex;
-    flex-wrap: wrap;
-    /* align-items: center;
-    justify-content: center; */
-    gap: 0.25rem;
-    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(23rem, 1fr));
+    place-items: center;
 }
 
 .popular__Tittle__viewAll {
@@ -28,7 +21,6 @@
     width: 10rem;
     height: 4rem;
     border-radius: 2rem;
-    /* text-align: center; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -39,8 +31,8 @@
 }
 
 .popular__Card__item {
-    /* border: 1px solid black; */
-    background: aqua;
+    margin-top: 1.5rem;
+    /* background: aqua; */
     width: 220px;
     height: 300px !important;
     flex: 0 0 auto;

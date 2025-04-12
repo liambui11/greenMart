@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useSelector } from "react-redux";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
@@ -8,11 +8,21 @@ import { LuSquareMenu } from "react-icons/lu";
 import { Link } from "react-router-dom";
 import CartMini from "../../../components/CartMini/index";
 import './Header.css'
+import { useNavigate } from 'react-router-dom';
 
 
 function NavbarMiddle() {
     const wishlist = useSelector((state) => state.wishlistReducer);
     const totalQuantity = wishlist.length;
+
+    const [searchQuery, setSearchQuery] = useState('');
+    const navigate = useNavigate();
+
+    const handleSearch = () => {
+        if (searchQuery.trim() !== '') {
+            navigate(`/search/${encodeURIComponent(searchQuery)}`);
+        }
+    };
     return (
         <div className="midnav py-4">
             <div className="container">
@@ -30,14 +40,23 @@ function NavbarMiddle() {
                     </div>
                     {/* <!-- Thanh tìm kiếm --> */}
                     <div className="col-lg-6 d-none d-lg-block">
-                        <form action="#">
+                        <form onSubmit={handleSearch}>
                             <div className="input-group">
                                 {/* <!-- Ô nhập tìm kiếm --> */}
-                                <input type="search" className="form-control form-control-lg rounded-start ms-5 h-100 border-0"
-                                    placeholder="Search for products" />
+                                <input
+                                    type="search"
+                                    className="form-control form-control-lg rounded-start ms-5 h-100 border-0"
+                                    placeholder="Search for products"
+                                    value={searchQuery}
+                                    onChange={(e) => setSearchQuery(e.target.value)}
+                                />
 
                                 {/* <!-- Nút tìm kiếm --> */}
-                                <button className="btn btn-outline-secondary rounded-end h-100 border-0" type="button">
+                                <button
+                                    className="btn btn-outline-secondary rounded-end h-100 border-0"
+                                    type="submit"
+                                >
+
                                     <FontAwesomeIcon icon={faMagnifyingGlass} style={{ fontSize: "2rem" }} />
                                 </button>
                             </div>

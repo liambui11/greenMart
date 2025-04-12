@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import './Footer1.css'
 
 function Footer1() {
@@ -8,9 +9,9 @@ function Footer1() {
                 <div className="top-footer row">
                     <div className="footer-content col-md-2 col-sm-6">
                         <div className="infor">
-                            <a href="#" className="logo-footer ">
-                                <img src="/image/favicon.png" alt="" width="150px" height="100px" />
-                            </a>
+                            <Link className="logo-footer ">
+                                <img src="/image/logoGM.png" alt="" width="200px" height="100px" />
+                            </Link>
                             <div className="tieuDe">
                                 Web Shopping for Clean, Safe Food.
                                 For the health of every family.
@@ -40,14 +41,14 @@ function Footer1() {
                         <h3>Categories</h3>
                         <div className="listProduct">
                             <ul>
-                                <li><a href="#">Vegetables</a></li>
-                                <li><a href="#">Meat</a></li>
-                                <li><a href="#">Fruits</a></li>
-                                <li><a href="#">Beer and Soft Drinks</a></li>
-                                <li><a href="#">Noodles</a></li>
-                                <li><a href="#">Duck and Chicken</a></li>
-                                <li><a href="#">Eggs and Milk</a></li>
-                                <li><a href="#">Confectionery</a></li>
+                                <li><Link>Vegetables</Link></li>
+                                <li><Link>Meat</Link></li>
+                                <li><Link>Fruits</Link></li>
+                                <li><Link>Beer and Soft Drinks</Link></li>
+                                <li><Link>Noodles</Link></li>
+                                <li><Link>Duck and Chicken</Link></li>
+                                <li><Link>Eggs and Milk</Link></li>
+                                <li><Link>Confectionery</Link></li>
                             </ul>
 
                         </div>
@@ -57,10 +58,10 @@ function Footer1() {
                         <h3>Get to know us</h3>
                         <div className="about">
                             <ul>
-                                <li><a href="#">About</a></li>
-                                <li><a href="#">Hotline</a></li>
-                                <li><a href="#">Company</a></li>
-                                <li><a href="#">Help Center</a></li>
+                                <li><Link>About</Link></li>
+                                <li><Link>Hotline</Link></li>
+                                <li><Link>Company</Link></li>
+                                <li><Link>Help Center</Link></li>
                             </ul>
                         </div>
 
@@ -70,8 +71,8 @@ function Footer1() {
                         <h3>Policy</h3>
                         <div className="policy">
                             <ul>
-                                <li><a href="#">Sales Policy</a></li>
-                                <li><a href="#">Payment</a></li>
+                                <li><Link>Sales Policy</Link></li>
+                                <li><Link>Payment</Link></li>
                             </ul>
                         </div>
 
@@ -81,8 +82,8 @@ function Footer1() {
                         <h3>For Customers</h3>
                         <div className="customer">
                             <ul>
-                                <li><a href="#">Account</a></li>
-                                <li><a href="#">Shopping</a></li>
+                                <li><Link>Account</Link></li>
+                                <li><Link>Shopping</Link></li>
                             </ul>
                         </div>
 

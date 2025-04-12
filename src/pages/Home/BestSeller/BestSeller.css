@@ -106,3 +106,9 @@
     cursor: pointer;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+
+.seller__arrow__right:hover,
+.seller__arrow__left:hover {
+    background-color: rgb(80, 223, 80);
+    ;
+}

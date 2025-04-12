@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import './Header.css'
 import "bootstrap/dist/css/bootstrap.min.css";
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import { useNavigate } from 'react-router-dom';
 
 function NavbarBottom() {
     const [isSticky, setSticky] = useState(false);
@@ -19,11 +20,19 @@ function NavbarBottom() {
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
+    const [searchQuery, setSearchQuery] = useState('');
+    const navigate = useNavigate();
+
+    const handleSearch = () => {
+        if (searchQuery.trim() !== '') {
+            navigate(`/search/${encodeURIComponent(searchQuery)}`);
+        }
+    };
     return (
         <nav className={`navbar navbar-expand-lg bg-white mt-2 ${isSticky ? "fixed-top shadow-sm" : ""}`}>
             <div className="navbottom container">
                 {/* <!-- Thanh điều hướng khi thu nhỏ màn --> */}
-                <div className="offcanvas offcanvas-start" tabindex="-1" id="navbar-default"
+                <div className="offcanvas offcanvas-start" tabIndex="-1" id="navbar-default"
                     aria-labelledby="navbar-defaultLabel">
                     <div className="offcanvas-header pb-1">
                         <a href="#"><img src="/image/logo.png" alt="" width="200px" height="70px" /></a>
@@ -32,12 +41,20 @@ function NavbarBottom() {
 
                     <div className="offcanvas-body">
                         {/* <!-- Search --> */}
-                        <div className="d-block d-md-none mb-4">
+                        <div className="d-block d-lg-none mb-4">
                             <form action="#">
                                 <div className="input-group">
-                                    <input type="search" className="form-control rounded" placeholder="Search for products" />
+                                    <input
+                                        type="search"
+                                        className="form-control rounded"
+                                        placeholder="Search for products"
+                                        value={searchQuery}
+                                        onChange={(e) => setSearchQuery(e.target.value)}
+                                    />
                                     <span className="input-group-append">
-                                        <button className="btn bg-light border-bottom border-top border-end ms-n10 rounded-0 rounded-end" type="button">
+                                        <button className="btn bg-light border-bottom border-top border-end ms-n10 rounded-0 rounded-end"
+                                            type="button"
+                                            onClick={handleSearch}>
                                             <i className="fa-solid fa-magnifying-glass"></i>
                                         </button>
                                     </span>
@@ -48,7 +65,7 @@ function NavbarBottom() {
 
                         {/* <!-- Button Directory --> */}
                         {/* <!-- thanh dieu huong --> */}
-                        <div className="directory1 d-block d-md-none mb-4">
+                        <div className="directory1 d-block d-lg-none mb-4">
                             <a className="btn btn-outline-success w-100 d-flex justify-content-center align-items-center dropdown-toggle collapsed"
                                 data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
                                 aria-controls="collapseExample">
@@ -90,8 +107,8 @@ function NavbarBottom() {
 
                         {/* ---Màn hình lớn--- */}
                         <div className="directory2 d-flex align-items-center">
-                            <div className="dropdown me-5 d-none d-md-block">
-                                <button className="btn btn-success text-white" type="button" id="dropdownMenuButton1"
+                            <div className="dropdown me-5 d-none d-lg-block">
+                                <button className="btn" type="button" id="dropdownMenuButton1"
                                     data-bs-toggle="dropdown" aria-expanded="false">
                                     <span className="me-1">
                                         <i className="fa-solid fa-list me-3"></i>
@@ -140,22 +157,22 @@ function NavbarBottom() {
                                         <Link to="/news" className="text-decoration-none text-dark"><strong>NEWS</strong></Link>
                                     </li>
                                     <li className="nav-item dropdown w-100 w-md-auto me-4 ms-5">
-                                        <a href="#" className="text-decoration-none text-dark">
+                                        <Link to="contact" className="text-decoration-none text-dark">
                                             {/* <span className="me-1">
                                                   <i className="fa-solid fa-phone"></i>
                                               </span> */}
                                             <strong>CONTACT</strong>
-                                        </a>
+                                        </Link>
                                     </li>
                                     <li className="nav-item dropdown w-100 w-md-auto me-4 ms-5">
-                                        <a href="#" className="text-decoration-none text-dark">
+                                        <Link to="productdetail" className="text-decoration-none text-dark">
                                             {/* <span className="me-1">
                                                   <i className="fa-solid fa-bell"></i>
                                               </span> */}
                                             <strong>
                                                 ANNOUNCEMENT
                                             </strong>
-                                        </a>
+                                        </Link>
                                     </li>
                                 </ul>
                             </div>

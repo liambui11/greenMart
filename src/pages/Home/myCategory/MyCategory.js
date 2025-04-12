@@ -1,5 +1,6 @@
-import { useState, useEffect, useRef, React } from 'react';
+import { useState, useEffect, useRef, useContext, React } from 'react';
 import './MyCategory.css';
+import { NewsContext } from "../../../Context/NewsContext";
 
 function MyCategory() {
     const [current, setCurrent] = useState(0);
@@ -9,31 +10,78 @@ function MyCategory() {
     const gap = useRef(0);
     const isTransitioning = useRef(false);
 
-    const itemsData = [
-        { title: "Sản phẩm 1" },
-        { title: "Sản phẩm 2" },
-        { title: "Sản phẩm 3" },
-        { title: "Sản phẩm 4" },
-        { title: "Sản phẩm 5" },
-        { title: "Sản phẩm 6" },
-        { title: "Sản phẩm 7" },
-        { title: "Sản phẩm 8" },
-    ];
+    // const { categoriesData } = useContext(NewsContext);
+    // console.log("categoriesData:", categoriesData);
+
+    // const itemsData = [
+    //     {
+    //         title: "Vegetables",
+    //         img: "/image/news/categories/Chicken, Meat & Fish.jpg",
+    //         quantity: "25 items"
+    //     },
+
+    //     {
+    //         title: "Meat",
+    //         img: "/image/news/categories/Chicken, Meat & Fish.jpg",
+    //         quantity: "25 items"
+    //     },
+    //     {
+    //         title: "Fruits",
+    //         img: "/image/news/categories/Chicken, Meat & Fish.jpg",
+    //         quantity: "25 items"
+    //     },
+    //     {
+    //         title: "Beer and Soft Drinks",
+    //         img: "/image/news/categories/Chicken, Meat & Fish.jpg",
+    //         quantity: "25 items"
+    //     },
+    //     {
+    //         title: "Noodles",
+    //         img: "/image/news/categories/Chicken, Meat & Fish.jpg",
+    //         quantity: "25 items"
+    //     },
+    //     {
+    //         title: "Duck and Chicken",
+    //         img: "/image/news/categories/Chicken, Meat & Fish.jpg",
+    //         quantity: "25 items"
+    //     },
+    //     {
+    //         title: "Eggs and Milk",
+    //         img: "/image/news/categories/Chicken, Meat & Fish.jpg",
+    //         quantity: "25 items"
+    //     },
+    //     {
+    //         title: "Confectionery",
+    //         img: "/image/news/categories/Chicken, Meat & Fish.jpg",
+    //         quantity: "25 items"
+    //     },
+    // ];
+    const [itemsData, setItemsData] = useState([]);
+    // const baseURL = "https://greenmart-api.vercel.app";
+
+    useEffect(() => {
+        const fetchMyCategory = async () => {
+            try {
+                const res = await fetch('https://greenmart-api.vercel.app/api/v1/products-category');
+                const data = await res.json();
+                console.log("Dữ liệu trả về từ API:", data.info);
+
+                const rawData = data.info;
+                setItemsData(rawData);
+
+                // setItemsData(data.info || []);
+            } catch (err) {
+                console.error("Lỗi lấy dữ liệu popular:", err);
+            }
+        };
+
+        fetchMyCategory();
+    }, []);
 
     const totalItems = itemsData.length;
+    // const totalItems = 8;
 
-    const extendedItems = [...itemsData, ...itemsData]; // Clone sản phẩm đầu tiên
-
-    // useEffect(() => {
-    //     if (listRef.current) {
-    //         const firstItem = listRef.current.children[0];
-    //         if (firstItem) {
-    //             const style = window.getComputedStyle(listRef.current);
-    //             gap.current = parseFloat(style.gap) || 0;
-    //             itemWidth.current = firstItem.offsetWidth + gap.current;
-    //         }
-    //     }
-    // }, []);
+    const extendedItems = [...itemsData, ...itemsData];
 
     useEffect(() => {
         const updateItemWidth = () => {
@@ -103,7 +151,16 @@ function MyCategory() {
                         <div ref={listRef} className="category__Card" style={getTransformStyle()}>
                             {extendedItems.map((item, index) => (
                                 <div key={index} className="category__Card__item">
-                                    <p className="category__Card__item__title">{item.title}</p>
+                                    <img
+                                        src={item.categoryImage}
+
+                                        alt=""
+                                        width={120}
+                                        height={120}
+                                        style={{ objectFit: "contain" }}
+                                    />
+                                    <p className="category__Card__item__title">{item.categoryName}</p>
+                                    {/* <div>{item.quantity}</div> */}
                                 </div>
                             ))}
                         </div>

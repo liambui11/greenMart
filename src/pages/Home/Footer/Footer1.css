@@ -10,14 +10,13 @@
 .top-footer {
     /* width: 80%; */
     display: flex;
-    justify-content: flex-start;
-    /* align-items: center; */
+    justify-content: flex-start !important;
 }
 
 .footer-content {
     /* width: 20%; */
-    margin: auto;
-    /* background-color: aquamarine; */
+    margin: 0 auto;
+
 }
 
 .footer-content .logo-footer,
@@ -41,11 +40,6 @@
 .footer-content h3 {
     margin-top: 3.25rem;
 }
-
-/* -----infor----- */
-/* .infor {
-    margin-right: 5rem;
-  } */
 
 /* -----Categories----- */
 
@@ -76,8 +70,9 @@
 
 /* ----- Get to know us-----*/
 
-.about {
+.footer-content .about {
     margin: 5.75rem 0;
+    font-size: 1.5rem;
 }
 
 .about ul {

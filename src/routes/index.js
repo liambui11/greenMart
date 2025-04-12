@@ -10,6 +10,9 @@ import CheckoutPage from "../pages/CheckOut/CheckoutPage";
 import HomeContent from '../pages/Home/HomeContent/HomeContent';
 import About from '../pages/About/About';
 import New from '../pages/News/News';
+import ContactCompany from '../pages/Contact/ContactCompany';
+import Search from '../pages/Home/PageSearch/Search';
+import ProductDetail from '../pages/Home/ProductDetail/ProductDetail';
 
 export const routes = [
   {
@@ -21,12 +24,24 @@ export const routes = [
         element: <HomeContent />,
       },
       {
+        path: "productdetail",
+        element: <ProductDetail />
+      },
+      {
+        path: "search/:query",
+        element: <Search />
+      },
+      {
         path: "about",
         element: <About />,
       },
       {
         path: "news",
         element: <New />,
+      },
+      {
+        path: "contact",
+        element: <ContactCompany />
       },
       {
         path: "login",

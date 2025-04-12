@@ -23,7 +23,7 @@
 /* ------MidSectionMain------ */
 
 /* ------ImgSectionMain----- */
-.MidSectionMain {
+.ProductDetail {
     margin: 5rem 0;
     width: 100%;
     display: flex;
@@ -52,31 +52,6 @@
     width: 5rem;
     text-align: center;
 }
-
-/* .btnLeft {
-    position: absolute;
-    left: 1rem;
-    top: 50%;
-    background-color: whitesmoke;
-    border: none;
-    width: 3rem;
-    height: 4rem;
-} */
-
-/* .btnRight {
-    position: absolute;
-    right: 1rem;
-    top: 50%;
-    background-color: whitesmoke;
-    border: none;
-    width: 3rem;
-    height: 4rem;
-} */
-
-/* .btnLeft:hover,
-.btnRight:hover {
-    background-color: green;
-} */
 
 /*------contentSectionMain-----  */
 
@@ -156,13 +131,6 @@
     border-bottom: 0.5px solid black;
 }
 
-/* .border {
-    margin-top: 2rem;
-    margin-left: 1rem;
-    text-align: center;
-    width: 5rem;
-} */
-
 .btnAddHeart {
     display: flex;
 }
@@ -177,26 +145,22 @@
     border: none;
 }
 
-.btnAddHeart .heart {
+.btnAddHeart .ProductDetail__heart {
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #D3D3D3;
+    color: white;
     margin-top: 2rem;
     margin-left: 5rem;
     width: 4rem;
     height: 3rem;
 }
 
-.btnAddHeart .heart i {
-    color: black;
-    width: 50%;
-    font-size: 2rem;
-}
-
 .btnAdd:hover,
-.heart:hover {
+.ProductDetail__heart:hover {
     background: green;
+    color: white;
 }
 
 .describe {
