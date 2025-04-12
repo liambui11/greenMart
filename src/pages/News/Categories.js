@@ -10,7 +10,7 @@ import "swiper/css/navigation";
 import "./Categories.css";
 
 import { Navigation, Autoplay } from "swiper/modules";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 function Categories() {
   const { categoriesBannerData } = useContext(NewsContext);

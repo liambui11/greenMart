@@ -3,7 +3,7 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./CardProduct.css";
 
-function CardProduct({item}) {
+function CardProduct({ item }) {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -19,18 +19,21 @@ function CardProduct({item}) {
           width={120}
           height={120}
           style={{ objectFit: "contain" }}
+          loading="lazy"
         />
       </div>
-      <div className="card-product__name">
-        {item.productName}
-      </div>
+      <div className="card-product__name">{item.productName}</div>
       <div className="card-product__price">
-        ${item.productPrice}
-        <span>${item.discountedPrice}</span>
+        ${item.priceNew}
+        {item.priceNew === item.productPrice ? null : (
+          <span>${item.productPrice}</span>
+        )}
       </div>
-      <div className="card-product__badge">
-        {item.saleBadge}%
-      </div>
+      {item.productDiscountPercentage === 0 ? null : (
+        <div className="card-product__badge">
+          {item.productDiscountPercentage}%
+        </div>
+      )}
       <a href="#!" className="card-product__add-button">
         + Add
       </a>

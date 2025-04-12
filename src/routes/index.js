@@ -30,7 +30,7 @@ export const routes = [
         element: <New />,
       },
       {
-        path: "categorydetail/:slug",
+        path: "categorydetail/:categorySlug",
         element: <CategoryDetail />,
       },
       {

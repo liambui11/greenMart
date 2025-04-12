@@ -1,4 +1,4 @@
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./CategoriesCard.css";
 
 function CategoriesCard({ item }) {
@@ -7,7 +7,7 @@ function CategoriesCard({ item }) {
 
   const handleClick = () => {
     navigate(`/categorydetail/${item.categorySlug}`, {
-      state: { id: item._id },
+      state: { item },
     });
   };
 
@@ -23,13 +23,10 @@ function CategoriesCard({ item }) {
             width={120}
             height={120}
             style={{ objectFit: "contain" }}
+            loading="lazy"
           />
         </div>
         <div className="categories-card__name">{item.categoryName}</div>
-        <div className="categories-card__quantity">
-          {item.categoriesQuantity}{" "}
-          {item.categoriesQuantity === 1 ? "Item" : "Items"}
-        </div>
       </div>
     </div>
   );
