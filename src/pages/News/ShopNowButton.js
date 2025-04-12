@@ -4,7 +4,7 @@ function ShopNowButton({ link = "#!" }) {
     color: "white",
     textDecoration: "none",
     fontWeight: 600,
-    padding: "1.3rem 1.8rem 1.3rem 2rem",
+    padding: "1rem 1.5rem 1rem 1.6rem",
     borderRadius: "0.75rem",
     cursor: "pointer",
     display: "inline-flex",

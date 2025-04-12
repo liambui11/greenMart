@@ -1,0 +1,26 @@
+.sort-by-item {
+  padding: 0.7rem;
+  margin: 0.3rem;
+  background-color: #dfe2e1;
+  color: #0000009e;
+  border: 0.2rem solid #00000012;
+  border-radius: 0.8rem;
+  font-size: 1.2rem;
+  display: flex;
+}
+
+.sort-by-item.active {
+  background-color: #95d5b2;
+  color: white;
+  border: 0.2rem solid #95d5b2;
+}
+
+.sort-by-item:hover {
+  color: white;
+  border: 0.2rem solid #95d5b2;
+  background-color: #95d5b2;
+}
+
+.sort-by-item__icon {
+  margin-right: 0.5rem;
+}

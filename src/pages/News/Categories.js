@@ -1,6 +1,6 @@
 import CategoriesCard from "./CategoriesCard";
 import CategoriesBanner from "./CategoriesBanner";
-import { useContext, useRef, useEffect } from "react";
+import { useContext, useRef, useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { NewsContext } from "../../Context/NewsContext";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
@@ -10,9 +10,10 @@ import "swiper/css/navigation";
 import "./Categories.css";
 
 import { Navigation, Autoplay } from "swiper/modules";
+// import { useNavigate } from "react-router-dom";
 
 function Categories() {
-  const { categoriesData, categoriesBannerData } = useContext(NewsContext);
+  const { categoriesBannerData } = useContext(NewsContext);
 
   const swiperRef = useRef(null);
   const prevRef = useRef(null);
@@ -26,6 +27,25 @@ function Categories() {
       swiperRef.current.swiper.navigation.update();
     }
   }, []);
+
+  const [categoriesData, setCategoriesData] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch(
+          "https://greenmart-api.vercel.app/api/v1/products-category"
+        );
+        const json = await res.json();
+        setCategoriesData(json.info);
+      } catch (err) {
+        console.error("Error: ", err);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  console.log(categoriesData);
 
   return (
     <div className="categories-container">
@@ -51,7 +71,7 @@ function Categories() {
           modules={[Autoplay, Navigation]}
         >
           {categoriesData.map((item, index) => (
-            <SwiperSlide key={index} style={{ width: "200px" }}>
+            <SwiperSlide key={item._id} style={{ width: "200px" }}>
               <CategoriesCard item={item} />
             </SwiperSlide>
           ))}

@@ -1,8 +1,6 @@
-@import "../../base.css";
-
 /* ==== sub-category ==== */
 
-.sub-category__item {
+/* .sub-category__item {
   padding: 1rem;
   font-size: 2rem;
   margin: 0.4rem;
@@ -17,7 +15,7 @@
   border: 0.2rem solid #2d6a4f;
   font-weight: 600;
   cursor: pointer;
-}
+} */
 
 /* ==== sort-by-item ==== */
 
@@ -57,9 +55,9 @@
   background-color: #f3f3f2;
   padding: 6rem 7rem;
   border-radius: 1rem;
-  background-image: url("https://i.pinimg.com/736x/b9/4b/1a/b94b1a16fab7624a6e79ca0748555191.jpg");
-  background-size: 40%;
-  background-position:90% center;
+
+  background-size: 20%;
+  background-position: 90% center;
   background-repeat: no-repeat;
 }
 
@@ -77,11 +75,11 @@
   box-shadow: 0 0 0.6rem 0.1rem #00000031;
 } */
 
-.sort__number-item{
+.sort__number-item {
   font-size: 1.4rem;
   font-weight: 600;
   color: #0000009e;
-  margin: 1rem 0 2rem 0 ;
+  margin: 1rem 0 2rem 0;
 }
 
 .sort__title {

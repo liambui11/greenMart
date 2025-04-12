@@ -10,6 +10,7 @@ import CheckoutPage from "../pages/CheckOut/CheckoutPage";
 import HomeContent from '../pages/Home/HomeContent/HomeContent';
 import About from '../pages/About/About';
 import New from '../pages/News/News';
+import CategoryDetail from '../components/CategoryDetail/CategoryDetail';
 import ContactCompany from '../pages/Contact/ContactCompany';
 import Search from '../pages/Home/PageSearch/Search';
 import ProductDetail from '../pages/Home/ProductDetail/ProductDetail';
@@ -38,6 +39,10 @@ export const routes = [
       {
         path: "news",
         element: <New />,
+      },
+      {
+        path: "categorydetail/:categorySlug",
+        element: <CategoryDetail />,
       },
       {
         path: "contact",

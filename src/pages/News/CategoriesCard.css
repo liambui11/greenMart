@@ -8,6 +8,12 @@
   margin-top: 3rem;
 }
 
+.categories-card-container:hover {
+  border: 0.2rem solid rgba(25, 88, 46, 0.743);
+  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.6);
+  transform: translateY(-5px);
+}
+
 .categories-card {
   height: 19rem;
   text-decoration: none;
@@ -22,12 +28,6 @@
   position: relative;
 }
 
-.categories-card-container:hover {
-  border: 0.2rem solid rgba(25, 88, 46, 0.743);
-  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.6);
-  transform: translateY(-5px); /* Nhấc lên */
-}
-
-.categories-card__quantity {
-  font-size: 1.5rem;
+.categories-card__name{
+  margin-bottom: 2rem;
 }

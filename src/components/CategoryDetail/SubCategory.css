@@ -1,0 +1,16 @@
+.sub-category__item {
+    padding: 1rem;
+    font-size: 2rem;
+    margin: 0.4rem;
+    border: 0.2rem solid #0000009e;
+    border-radius: 0.6rem;
+    color: #0000009e;
+  }
+  
+  .sub-category__item:hover {
+    background-color: #2d6a4f;
+    color: white;
+    border: 0.2rem solid #2d6a4f;
+    font-weight: 600;
+    cursor: pointer;
+  }

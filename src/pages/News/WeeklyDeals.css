@@ -29,7 +29,7 @@
 .paginationButtons a {
   display: block;
   text-align: center;
-  color: rgb(99, 94, 94);
+  color: rgb(99, 94, 94) !important;
   width: 4rem;
   padding: 0.5rem 0.9rem;
   margin: 0.4rem;
@@ -40,13 +40,13 @@
 }
 
 .paginationButtons a:hover {
-  color: white;
+  color: white !important;
   background-color: #0aad0a;
   border: 0.2rem solid #0aad0a;
 }
 
-.paginationActive a {
-  color: white;
+.paginationActive > a {
+  color: white !important;
   background-color: #0aad0a;
   border: 0.2rem solid #0aad0a;
 }
