@@ -4,15 +4,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./CardProduct.css";
 import { useNavigate } from "react-router-dom";
 
-
 function CardProduct({ item }) {
   const [isHovered, setIsHovered] = useState(false);
 
   const navigate = useNavigate();
   const handleClick = () => {
-    // navigate(`/productdetail`, {
-    //   state: { item },
-    // });
+    navigate(`/productdetail/${item.productSlug}`, {
+      state: { item },
+    });
   };
   return (
     <div
