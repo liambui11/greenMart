@@ -7,6 +7,10 @@
 
 }
 
+.Profile__tittle {
+    margin: 2rem auto;
+}
+
 .Profile__infor {
     display: flex;
     justify-content: space-between;

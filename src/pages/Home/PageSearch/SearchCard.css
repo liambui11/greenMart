@@ -101,3 +101,7 @@
     color: white;
     border: 0.2rem solid #0aad0a;
 }
+
+.card-product div.active {
+    display: none;
+}

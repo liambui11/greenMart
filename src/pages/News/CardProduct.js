@@ -3,6 +3,7 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./CardProduct.css";
 
+
 function CardProduct({ item }) {
   const [isHovered, setIsHovered] = useState(false);
 

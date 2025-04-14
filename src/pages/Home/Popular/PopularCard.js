@@ -37,12 +37,14 @@ function PopularCard({ item }) {
                 ${item.productPrice}
                 <span>${item.priceNew}</span>
             </div>
-            <div className="card-product__badge">
+            {/* <div className="card-product__badge"> */}
+            <div className={item.productDiscountPercentage == 0 ? 'active' : 'card-product__badge'}>
                 {item.productDiscountPercentage}%
             </div>
-            <a href="#!" className="card-product__add-button">
+           
+            <button type="button" className="card-product__add-button">
                 + Add
-            </a>
+            </button>
             <div className="card-product__hover">
                 {isHovered && <CardProductHovered />}
             </div>

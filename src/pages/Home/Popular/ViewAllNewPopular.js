@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import { Link, useNavigate } from "react-router-dom";
-import './ContentHome.css'
-// import PopularCard from './PopularCard';
+import { useParams, Link } from 'react-router-dom';
+// import SearchCard from './SearchCard'
+import { FaSortAmountUp } from "react-icons/fa";
+import { FaSortAmountDown } from "react-icons/fa";
 import { fetchPopular } from './PopularAPI';
-import Pagination from './Pagination';
-import CardProduct from '../../News/CardProduct';
+import PopularCard from './PopularCard';
 
-function ContentHome2() {
-
+function ViewAllNewPopular() {
     const navigate = useNavigate();
 
     const handleViewAllPopular = () => {
@@ -51,7 +50,7 @@ function ContentHome2() {
                     <div className="popular__Card">
                         {currentPosts.map((item, index) => (
                             <div key={index} className="popular__Card__item">
-                                <CardProduct item={item} />
+                                <PopularCard item={item} />
                             </div>
                         ))}
 
@@ -70,4 +69,5 @@ function ContentHome2() {
     )
 }
 
-export default ContentHome2
+export default ViewAllNewPopular
+

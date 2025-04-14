@@ -72,6 +72,7 @@
     font-weight: 600;
     color: white;
     background-color: #0aad0a;
+    border: none;
 }
 
 .card-product__hover {
@@ -100,4 +101,8 @@
     background-color: #0aad0a;
     color: white;
     border: 0.2rem solid #0aad0a;
+}
+
+.card-product div.active {
+    display: none;
 }

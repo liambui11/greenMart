@@ -35,7 +35,7 @@
 }
 
 /* Thanh điều hướng khi nhỏ màn hình */
-@media (max-width: 1024px) {
+@media (max-width: 992px) {
 
     /* Khi màn hình nhỏ hơn 768px */
     /* Định dnag lại thanh search và btn */
@@ -99,7 +99,7 @@
 /* ---------- */
 
 /* Màn hình lớn */
-@media (min-width: 1024px) {
+@media (min-width: 992px) {
 
     /* Áp dụng cho màn hình lớn */
     /* Dinh dang lai thanh search và btn*/
@@ -139,12 +139,13 @@
     /* Dinh dang lai nut va dropdown*/
     .directory2 .btn {
         background-color: #0aad0a;
+        /* background-color: #2BBef9; */
         width: 23rem;
         height: 5rem;
         color: white;
         font-weight: bold;
         font-size: 1.5rem;
-        border: 2px solid #198754;
+        border: 2px solid #0aad0a;
         border-radius: 2rem;
     }
 
@@ -154,13 +155,14 @@
     }
 
     .directory2 .dropdown-menu {
-        margin-top: 3.75rem;
-        height: 35rem;
+        margin-top: 2rem !important;
+        height: 50rem !important;
         flex-direction: column;
         justify-content: space-between !important;
         background-color: #ddd;
-        display: none !important;
+        /* display: none !important; */
         /* ẩn mặc định */
+
     }
 
     .directory2 .dropdown-menu.show {
@@ -171,7 +173,7 @@
     .directory2 .dropdown-menu .dropdown-item {
         /* background-color: #0aad0a; */
         height: 4rem;
-        margin-top: 1rem;
+        margin-top: 2rem !important;
         font-weight: 550;
         font-size: 1.75rem;
     }

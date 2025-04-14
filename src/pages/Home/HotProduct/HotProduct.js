@@ -24,9 +24,9 @@ function HotProduct() {
                 <div className="hotproduct row">
                     <div className="hotproduct__Tittle">
                         <h1><strong>HOT PRODUCTS OF WEEK</strong></h1>
-                        <Link className="hotproduct__Tittle__viewAll">
+                        {/* <Link className="hotproduct__Tittle__viewAll">
                             ViewAll
-                        </Link>
+                        </Link> */}
 
                     </div>
 

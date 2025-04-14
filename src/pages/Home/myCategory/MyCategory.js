@@ -1,6 +1,6 @@
-import { useState, useEffect, useRef, useContext, React } from 'react';
+import { useState, useEffect, useRef, React } from 'react';
 import './MyCategory.css';
-import { NewsContext } from "../../../Context/NewsContext";
+import CategoriesCard from '../../News/CategoriesCard';
 
 function MyCategory() {
     const [current, setCurrent] = useState(0);
@@ -10,54 +10,7 @@ function MyCategory() {
     const gap = useRef(0);
     const isTransitioning = useRef(false);
 
-    // const { categoriesData } = useContext(NewsContext);
-    // console.log("categoriesData:", categoriesData);
-
-    // const itemsData = [
-    //     {
-    //         title: "Vegetables",
-    //         img: "/image/news/categories/Chicken, Meat & Fish.jpg",
-    //         quantity: "25 items"
-    //     },
-
-    //     {
-    //         title: "Meat",
-    //         img: "/image/news/categories/Chicken, Meat & Fish.jpg",
-    //         quantity: "25 items"
-    //     },
-    //     {
-    //         title: "Fruits",
-    //         img: "/image/news/categories/Chicken, Meat & Fish.jpg",
-    //         quantity: "25 items"
-    //     },
-    //     {
-    //         title: "Beer and Soft Drinks",
-    //         img: "/image/news/categories/Chicken, Meat & Fish.jpg",
-    //         quantity: "25 items"
-    //     },
-    //     {
-    //         title: "Noodles",
-    //         img: "/image/news/categories/Chicken, Meat & Fish.jpg",
-    //         quantity: "25 items"
-    //     },
-    //     {
-    //         title: "Duck and Chicken",
-    //         img: "/image/news/categories/Chicken, Meat & Fish.jpg",
-    //         quantity: "25 items"
-    //     },
-    //     {
-    //         title: "Eggs and Milk",
-    //         img: "/image/news/categories/Chicken, Meat & Fish.jpg",
-    //         quantity: "25 items"
-    //     },
-    //     {
-    //         title: "Confectionery",
-    //         img: "/image/news/categories/Chicken, Meat & Fish.jpg",
-    //         quantity: "25 items"
-    //     },
-    // ];
     const [itemsData, setItemsData] = useState([]);
-    // const baseURL = "https://greenmart-api.vercel.app";
 
     useEffect(() => {
         const fetchMyCategory = async () => {
@@ -83,26 +36,49 @@ function MyCategory() {
 
     const extendedItems = [...itemsData, ...itemsData];
 
+    // useEffect(() => {
+    //     const updateItemWidth = () => {
+    //         if (listRef.current) {
+    //             const firstItem = listRef.current.children[0];
+    //             if (firstItem) {
+    //                 const style = window.getComputedStyle(listRef.current);
+    //                 gap.current = parseFloat(style.gap) || 0;
+    //                 itemWidth.current = firstItem.offsetWidth + gap.current;
+    //             }
+    //         }
+    //     };
+
+    //     updateItemWidth(); // Gọi khi component mount
+    //     window.addEventListener("resize", updateItemWidth); // Cập nhật khi thay đổi kích thước màn hình
+
+    //     return () => {
+    //         window.removeEventListener("resize", updateItemWidth);
+    //     };
+    // }, []);
+
     useEffect(() => {
         const updateItemWidth = () => {
-            if (listRef.current) {
+            if (listRef.current && listRef.current.children.length > 0) {
                 const firstItem = listRef.current.children[0];
-                if (firstItem) {
-                    const style = window.getComputedStyle(listRef.current);
-                    gap.current = parseFloat(style.gap) || 0;
-                    itemWidth.current = firstItem.offsetWidth + gap.current;
+                const style = window.getComputedStyle(listRef.current);
+                gap.current = parseFloat(style.gap) || 0;
+                itemWidth.current = firstItem.offsetWidth + gap.current;
+
+                if (itemWidth.current > 0) {
+                    setTimeout(() => {
+                        nextSlide();
+                    }, 100); // gọi sau khi DOM render ổn định
                 }
             }
         };
 
-        updateItemWidth(); // Gọi khi component mount
-        window.addEventListener("resize", updateItemWidth); // Cập nhật khi thay đổi kích thước màn hình
+        updateItemWidth();
+        window.addEventListener("resize", updateItemWidth);
 
         return () => {
             window.removeEventListener("resize", updateItemWidth);
         };
-    }, []);
-
+    }, [itemsData]);
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -151,16 +127,15 @@ function MyCategory() {
                         <div ref={listRef} className="category__Card" style={getTransformStyle()}>
                             {extendedItems.map((item, index) => (
                                 <div key={index} className="category__Card__item">
-                                    <img
+                                    {/* <img
                                         src={item.categoryImage}
-
                                         alt=""
                                         width={120}
                                         height={120}
                                         style={{ objectFit: "contain" }}
                                     />
-                                    <p className="category__Card__item__title">{item.categoryName}</p>
-                                    {/* <div>{item.quantity}</div> */}
+                                    <p className="category__Card__item__title">{item.categoryName}</p> */}
+                                    <CategoriesCard item={item} />
                                 </div>
                             ))}
                         </div>

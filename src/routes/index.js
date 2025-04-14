@@ -14,6 +14,7 @@ import CategoryDetail from '../components/CategoryDetail/CategoryDetail';
 import ContactCompany from '../pages/Contact/ContactCompany';
 import Search from '../pages/Home/PageSearch/Search';
 import ProductDetail from '../pages/Home/ProductDetail/ProductDetail';
+import My_Profile from '../pages/Home/MyProfile/My_Profile';
 
 export const routes = [
   {
@@ -79,6 +80,10 @@ export const routes = [
       {
         path: "password/reset",
         element: <ResetPWPage />,
+      },
+      {
+        path: "myprofile",
+        element: <My_Profile />,
       },
     ],
   },

@@ -9,6 +9,10 @@ import { MdOutlinePercent } from "react-icons/md";
 
 
 const ProductDetail = () => {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     const [quantity, setQuantity] = useState(0);
 
     const [productdetail, setProductdetail] = useState([]);
