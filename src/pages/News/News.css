@@ -5,7 +5,6 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Inter", sans-serif;
-  /* border: 1px solid black; */
 }
 
 body {
@@ -16,7 +15,6 @@ body {
 }
 
 html {
-  /* Để quy đổi 1rem = 10px, nay mai dễ thay đổi toàn bộ trang web */
   font-size: 62.5%;
 }
 

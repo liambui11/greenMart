@@ -3,7 +3,7 @@ import { LuChartBarDecreasing, LuChartBarIncreasing } from "react-icons/lu";
 import { MdOutlineSell } from "react-icons/md";
 import { TbChartBarPopular } from "react-icons/tb";
 import CardProduct from "../../pages/News/CardProduct";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useParams, useLocation } from "react-router-dom";
 import SubCategory from "./SubCategory";
 import SortByItem from "./SortByItem";
@@ -11,6 +11,7 @@ import SkeletonCardProduct from "../../pages/News/SkeletonCardProduct";
 import SkeletonSubCategory from "./SkeletonSubCategory";
 import ReactPaginate from "react-paginate";
 import { BiSolidChevronRight, BiSolidChevronLeft } from "react-icons/bi";
+import OverlayLoading from "../../components/OverlayLoading/OverlayLoading.js";
 
 function CategoryDetail() {
   const [productsData, setProductsData] = useState([]);
@@ -21,36 +22,68 @@ function CategoryDetail() {
     sortValue: "desc",
   });
   const [isLoading, setIsLoading] = useState(true);
+  const [isProductLoading, setIsProductLoading] = useState(true);
+  const isFirstRender = useRef(true);
+  const [currentPage, setCurrentPage] = useState(0);
 
   const { categorySlug } = useParams();
   const location = useLocation();
   const currentCategory = location.state?.item;
 
   useEffect(() => {
-    setIsLoading(true);
-    setProductsData([]);
+    isFirstRender.current = true;
+    setCurrentPage(0);
+    setSortOption({
+      sortKey: "productPosition",
+      sortValue: "desc",
+    });
+    window.scrollTo(0, 0);
+  }, [categorySlug]);
 
+  useEffect(() => {
     const fetchData = async () => {
-      try {
-        const [resProducts, resCategories] = await Promise.all([
-          fetch(
+      if (isFirstRender.current) {
+        setIsLoading(true);
+        setProductsData([]);
+        isFirstRender.current = false;
+        try {
+          const [resProducts, resCategories] = await Promise.all([
+            fetch(
+              `https://greenmart-api.vercel.app/api/v1/products/${categorySlug}?sortKey=${sortOption.sortKey}&sortValue=${sortOption.sortValue}`
+            ),
+            fetch(
+              `https://greenmart-api.vercel.app/api/v1/products-category/categorytree/${categorySlug}`
+            ),
+          ]);
+
+          const productsJson = await resProducts.json();
+          const categoriesJson = await resCategories.json();
+
+          setProductsData(productsJson.info);
+          setProductsPagination(productsJson.pagination);
+          setCategoryTree(categoriesJson.info);
+        } catch (err) {
+          console.error("Lỗi fetch:", err);
+        } finally {
+          setIsLoading(false);
+          setIsProductLoading(false);
+        }
+      } else {
+        setIsProductLoading(true);
+        setProductsData([]);
+        setCurrentPage(0);
+        try {
+          const resProducts = await fetch(
             `https://greenmart-api.vercel.app/api/v1/products/${categorySlug}?sortKey=${sortOption.sortKey}&sortValue=${sortOption.sortValue}`
-          ),
-          fetch(
-            `https://greenmart-api.vercel.app/api/v1/products-category/categorytree/${categorySlug}`
-          ),
-        ]);
+          );
 
-        const productsJson = await resProducts.json();
-        const categoriesJson = await resCategories.json();
-
-        setProductsData(productsJson.info);
-        setProductsPagination(productsJson.pagination);
-        setCategoryTree(categoriesJson.info);
-      } catch (err) {
-        console.error("Lỗi fetch:", err);
-      } finally {
-        setIsLoading(false);
+          const productsJson = await resProducts.json();
+          setProductsData(productsJson.info);
+        } catch (err) {
+          console.error("Lỗi fetch:", err);
+        } finally {
+          setIsProductLoading(false);
+        }
       }
     };
 
@@ -104,6 +137,24 @@ function CategoryDetail() {
       sortValue: "desc",
     },
   ];
+
+  const changePage = async ({ selected }) => {
+    setCurrentPage(selected);
+    const newPage = selected + 1;
+    setIsProductLoading(true);
+    setProductsData([]);
+    try {
+      const resProducts = await fetch(
+        `https://greenmart-api.vercel.app/api/v1/products/${categorySlug}?currentPage=${newPage}&limitItems=10&sortKey=${sortOption.sortKey}&sortValue=${sortOption.sortValue}`
+      );
+      const productsJson = await resProducts.json();
+      setProductsData(productsJson.info);
+    } catch (err) {
+      console.error("Lỗi fetch:", err);
+    } finally {
+      setIsProductLoading(false);
+    }
+  };
 
   return (
     <div className="category-detail-container">
@@ -163,7 +214,7 @@ function CategoryDetail() {
               productsData.map((item) => (
                 <CardProduct key={item._id} item={item} />
               ))
-            ) : isLoading ? (
+            ) : isProductLoading ? (
               Array(10)
                 .fill()
                 .map((_, index) => <SkeletonCardProduct key={index} />)
@@ -180,17 +231,19 @@ function CategoryDetail() {
             )}
           </div>
           <div className="list-item__items--pagination"></div>
-          {/* <ReactPaginate
+          <ReactPaginate
             previousLabel={<BiSolidChevronLeft />}
             nextLabel={<BiSolidChevronRight />}
-            pageCount={pageCount}
+            pageCount={productsPagination.totalPage}
             onPageChange={changePage}
             containerClassName="paginationButtons"
             disabledClassName="paginationDisable"
             activeClassName="paginationActive"
-          /> */}
+            forcePage={currentPage}
+          />
         </div>
       </div>
+      {isLoading && <OverlayLoading />}
     </div>
   );
 }

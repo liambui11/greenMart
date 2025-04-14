@@ -10,10 +10,12 @@ import "swiper/css/navigation";
 import "./Categories.css";
 
 import { Navigation, Autoplay } from "swiper/modules";
+import OverlayLoading from "../../components/OverlayLoading/OverlayLoading";
 // import { useNavigate } from "react-router-dom";
 
 function Categories() {
   const { categoriesBannerData } = useContext(NewsContext);
+  const [isLoading, setIsLoading] = useState(true);
 
   const swiperRef = useRef(null);
   const prevRef = useRef(null);
@@ -30,6 +32,7 @@ function Categories() {
 
   const [categoriesData, setCategoriesData] = useState([]);
   useEffect(() => {
+    setIsLoading(true);
     const fetchData = async () => {
       try {
         const res = await fetch(
@@ -39,6 +42,8 @@ function Categories() {
         setCategoriesData(json.info);
       } catch (err) {
         console.error("Error: ", err);
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -81,6 +86,7 @@ function Categories() {
             <CategoriesBanner key={index} item={item} />
           ))}
         </div>
+        {isLoading && <OverlayLoading />}
       </div>
     </div>
   );
