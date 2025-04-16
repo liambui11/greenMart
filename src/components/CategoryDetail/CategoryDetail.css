@@ -48,6 +48,24 @@
   cursor: pointer;
 }
 
+.category-detail__bread-crumb {
+  color: #0000009e;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 2rem;
+  font-weight: 500;
+}
+.category-detail__bread-crumb > svg {
+  color: #2d6a4f;
+  padding: 0.1rem;
+  margin: 0 1rem;
+}
+
+.category-detail__bread-crumb span:first-child:hover{
+  color: #2d6a4f;
+}
+
 .category-detail__title {
   color: black;
   font-size: 7rem;
@@ -99,6 +117,6 @@
   place-items: center;
 }
 
-.list-item__items--pagination{
+.list-item__items--pagination {
   margin-top: 2rem;
 }

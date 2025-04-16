@@ -14,6 +14,9 @@ import CategoryDetail from '../components/CategoryDetail/CategoryDetail';
 import ContactCompany from '../pages/Contact/ContactCompany';
 import Search from '../pages/Home/PageSearch/Search';
 import ProductDetail from '../pages/Home/ProductDetail/ProductDetail';
+
+import ErrorPage from '../pages/ErrorPage/ErrorPage';
+
 import MyProfile from '../pages/Home/MyProfile/MyProfile';
 
 export const routes = [
@@ -85,6 +88,15 @@ export const routes = [
         path: "myprofile",
         element: <MyProfile />,
       },
+      {
+        path: "*",
+        element: <ErrorPage/>,
+      },
     ],
   },
+  {
+    path: "*",
+    element: <ErrorPage />
+  }
+  
 ];

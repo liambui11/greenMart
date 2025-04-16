@@ -5,45 +5,86 @@ import CardProduct from "./CardProduct";
 import Title from "./Title";
 import "./WeeklyDeals.css";
 import { BiSolidChevronRight, BiSolidChevronLeft } from "react-icons/bi";
+import SkeletonCardProduct from "../../pages/News/SkeletonCardProduct";
 
 function WeeklyDeals() {
-  const { cardProductsData } = useContext(NewsContext);
-
-  const [cards, setCards] = useState([]);
-  useEffect(() => {
-    if (cardProductsData) {
-      setCards(cardProductsData.slice(0, 50));
-    }
-  }, [cardProductsData]);
-
   const [pageNumber, setPageNumber] = useState(0);
+  const [productsData, setProductsData] = useState([]);
+  const [productsPaginationData, setProductsPaginationData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const cardsPerPage = 10;
-  const pagesVisited = pageNumber * cardsPerPage;
+  useEffect(() => {
+    const fetchData = async () => {
+      setIsLoading(true);
+      try {
+        const resProducts = await fetch(
+          `https://greenmart-api.vercel.app/api/v1/products?currentPage=1&limitItems=10`
+        );
 
-  const displayCards = cards
-    .slice(pagesVisited, pagesVisited + cardsPerPage)
-    .map((item, index) => {
-      return <CardProduct key={index} item={item} />;
-    });
+        const productsJson = await resProducts.json();
+        setProductsData(productsJson.info);
+        setProductsPaginationData(productsJson.pagination);
+      } catch (err) {
+        console.error("Lỗi fetch:", err);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchData();
+  }, []);
 
-  const pageCount = Math.ceil(cards.length / cardsPerPage);
+  const changePage = async ({ selected }) => {
+    const newPage = selected + 1;
+    setIsLoading(true);
+    setProductsData([]);
+    try {
+      const resProducts = await fetch(
+        `https://greenmart-api.vercel.app/api/v1/products?currentPage=${newPage}&limitItems=10`
+      );
 
-  const changePage = ({ selected }) => {
-    setPageNumber(selected);
+      const productsJson = await resProducts.json();
+      setProductsData(productsJson.info);
+    } catch (err) {
+      console.error("Lỗi fetch:", err);
+    } finally {
+      setIsLoading(false);
+    }
   };
+
+  console.log(productsData);
   return (
     <div className="weekly-deals-container">
       <div className="weekly-deals">
         <div className="weekly-deals__title">
           <Title title="Weekly Deals" />
         </div>
-        <div className="weekly-deals__cards">{displayCards}</div>
+        <div className="weekly-deals__cards">
+          {isLoading ? (
+            Array(10)
+              .fill()
+              .map((_, index) => <SkeletonCardProduct key={index} />)
+          ) : productsData.filter((item) => item.productDiscountPercentage > 0)
+              .length > 0 ? (
+            productsData
+              .filter((item) => item.productDiscountPercentage > 0)
+              .map((item) => <CardProduct key={item._id} item={item} />)
+          ) : (
+            <p
+              style={{
+                color: "#2d6a4f",
+                fontWeight: "600",
+                fontSize: "15px",
+              }}
+            >
+              🛒 No Products Sale Found!
+            </p>
+          )}
+        </div>
         <div className="weekly-deals__pagination">
           <ReactPaginate
             previousLabel={<BiSolidChevronLeft />}
             nextLabel={<BiSolidChevronRight />}
-            pageCount={pageCount}
+            pageCount={productsPaginationData.totalPage}
             onPageChange={changePage}
             containerClassName="paginationButtons"
             disabledClassName="paginationDisable"
