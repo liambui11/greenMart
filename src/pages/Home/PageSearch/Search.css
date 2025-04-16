@@ -3,9 +3,11 @@
 }
 
 .pageSearch__Tittle {
-    background-color: aqua;
-    padding: 3rem;
+    background-color: #ccc;
+    padding: 2rem;
+    margin: auto;
 }
+
 
 .pageSearch__info {
     display: flex;

@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import './Search.css'
-import { useParams, Link } from 'react-router-dom';
-import SearchCard from './SearchCard'
+import { useParams } from 'react-router-dom';
+// import SearchCard from './SearchCard'
 import { FaSortAmountUp } from "react-icons/fa";
 import { FaSortAmountDown } from "react-icons/fa";
+import { IoHome } from "react-icons/io5";
+import CardProduct from '../../News/CardProduct';
 
 import {
     fetchProducts,
@@ -12,6 +14,7 @@ import {
     fetchProductsByPriceDescending,
     fetchProductsByPromotion
 } from './SearchAPI';
+
 
 function Search() {
     const { query } = useParams();
@@ -42,7 +45,7 @@ function Search() {
     return (
         <div className="container">
             <div className="pageSearch">
-                <div className="pageSearch__Tittle">HOME / {query}</div>
+                <div className="pageSearch__Tittle"><IoHome size={20}/> HOME / {query}</div>
                 <div className='pageSearch__info'>
                     <div className="pageSearch__Filter">
                         <div className="pageSearch__Filter__content">Sort Product</div>
@@ -68,17 +71,11 @@ function Search() {
                             className="pageSearch__Filter__btn">By Promition
                         </button>
                     </div>
-                    {/* <div className="pageSearch__featured">
-                        <div><Link>Meat-Chicken-Fish</Link></div>
-                        <div><Link>Vegettables</Link></div>
-                        <div><Link>Food-Fast</Link></div>
-                        <div><Link>Eggs and Milk</Link></div>
-                    </div> */}
                 </div>
                 <div className="productList">
                     {products.map((product) => (
                         <div key={product._id} className="productItem">
-                            <SearchCard product={product} />
+                            <CardProduct item={product} />
                         </div>
                     ))}
                 </div>

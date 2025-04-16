@@ -9,7 +9,7 @@ function Banner() {
                 <div className="banner row">
                     {/* <div className="banner col-12"> */}
                     <Link className="banner__image col-12">
-                        <img src="/image/bannner/vegetable-banner.jpg" />
+                        <img src="/image/bannner/vegetable-banner.jpg" alt=""/>
                         <div className="banner__title">
                             <h4 className="banner__title__1 ">Organic Meals Prepared</h4>
                             <h3 className="banner__title__2 ">Delivered to

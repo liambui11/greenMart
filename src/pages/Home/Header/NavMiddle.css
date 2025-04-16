@@ -1,0 +1,53 @@
+.list-inline-item {
+    position: relative;
+}
+
+.wishlist-badge {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: rgb(3, 82, 13);
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.list-inline-item {
+    margin: 0 5px;
+    text-decoration: none;
+}
+
+.container .row div a:hover {
+    color: green !important;
+}
+
+.container .row div .dropdown :hover {
+    color: green !important;
+}
+
+@media (max-width: 450px) {
+    .navbar-brand img{
+        max-width: 13rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .input-group input[type="search"],
+    .input-group button {
+        height: 5rem !important;
+        /* width: 20rem; */
+        font-size: 1.5rem;
+        background-color: #ddd;
+    }
+    .input-group button {
+        width: 5rem !important;
+    }
+
+}

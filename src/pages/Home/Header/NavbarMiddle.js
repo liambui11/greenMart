@@ -7,7 +7,7 @@ import { IoMdHeartEmpty } from "react-icons/io";
 import { LuSquareMenu } from "react-icons/lu";
 import { Link } from "react-router-dom";
 import CartMini from "../../../components/CartMini/index";
-import './Header.css'
+import './NavMiddle.css'
 import { useNavigate } from 'react-router-dom';
 
 
@@ -34,7 +34,7 @@ function NavbarMiddle() {
                         </Link>
                         <div className="d-flex justify-content-between w-100 d-lg-none">
                             <Link className="navbar-brand" >
-                                <img src="/image/logo.png" alt="" width="200px" height="90px" />
+                                <img src="/image/logoGM.png" alt="" width="200px" height="90px" />
                             </Link>
                         </div>
                     </div>
