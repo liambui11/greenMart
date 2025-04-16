@@ -1,4 +1,4 @@
-import { useContext, useRef, useEffect } from "react";
+import { useContext, useRef, useEffect, useState } from "react";
 import { NewsContext } from "../../Context/NewsContext";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Title from "./Title";
@@ -7,25 +7,53 @@ import "swiper/css";
 import "swiper/css/navigation";
 import CardProduct from "./CardProduct";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import SkeletonCardProduct from "./SkeletonCardProduct";
 
 import { Autoplay, Navigation } from "swiper/modules";
 
 function PopularProducts() {
-  const { PopularProductsBannerData, PopularProductsCardData } =
-    useContext(NewsContext);
+  const { PopularProductsBannerData } = useContext(NewsContext);
 
   const swiperRef = useRef(null);
   const prevRef = useRef(null);
   const nextRef = useRef(null);
 
+  const [productsData, setProductsData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
-    if (swiperRef.current && swiperRef.current.swiper) {
-      swiperRef.current.swiper.params.navigation.prevEl = prevRef.current;
-      swiperRef.current.swiper.params.navigation.nextEl = nextRef.current;
-      swiperRef.current.swiper.navigation.init();
-      swiperRef.current.swiper.navigation.update();
-    }
+    const fetchData = async () => {
+      setIsLoading(true);
+      try {
+        const resProducts = await fetch(
+          `https://greenmart-api.vercel.app/api/v1/products`
+        );
+
+        const productsJson = await resProducts.json();
+        setProductsData(productsJson.info);
+      } catch (err) {
+        console.error("Lỗi fetch:", err);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchData();
   }, []);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      if (swiperRef.current?.swiper && prevRef.current && nextRef.current) {
+        const swiper = swiperRef.current.swiper;
+        swiper.params.navigation.prevEl = prevRef.current;
+        swiper.params.navigation.nextEl = nextRef.current;
+        swiper.navigation.destroy();
+        swiper.navigation.init();
+        swiper.navigation.update();
+      }
+    }, 1000); 
+
+    return () => clearTimeout(timeout);
+  }, [isLoading]);
 
   return (
     <div className="daily-best-sales-container">
@@ -62,15 +90,27 @@ function PopularProducts() {
               disableOnInteraction: false,
             }}
             modules={[Autoplay, Navigation]}
+            style={{ marginLeft: "5rem" }}
           >
-            {PopularProductsCardData.map((item, index) => (
-              <SwiperSlide
-                key={index}
-                style={{ minWidth: "23rem", maxWidth: "33%" }}
-              >
-                <CardProduct item={item} />
-              </SwiperSlide>
-            ))}
+            {isLoading
+              ? Array(3)
+                  .fill()
+                  .map((_, index) => (
+                    <SwiperSlide
+                      key={index}
+                      style={{ minWidth: "23rem", maxWidth: "33%" }}
+                    >
+                      <SkeletonCardProduct />
+                    </SwiperSlide>
+                  ))
+              : productsData.slice(0, 5).map((item, index) => (
+                  <SwiperSlide
+                    key={index}
+                    style={{ minWidth: "23rem", maxWidth: "33%" }}
+                  >
+                    <CardProduct item={item} />
+                  </SwiperSlide>
+                ))}
           </Swiper>
           <div className="daily-best-sales__cards--navigation">
             <FaChevronLeft ref={prevRef} className="pre-chevron" />

@@ -1,10 +1,9 @@
-
-
 .daily-best-sales-container {
   margin: 6rem 0 2rem;
   background-color: #edf5f5;
   padding: 4rem;
 }
+
 .daily-best-sales {
   margin: 0 10%;
 }
@@ -36,17 +35,15 @@
 
 .daily-best-sales__cards--product {
   width: 100%;
-  margin-left: 5rem;
-  margin-top: 3rem;
-  display: flex;
   gap: 20px;
   z-index: 5;
+
 }
 
 .daily-best-sales__cards--navigation {
   position: absolute;
   bottom: 2.6rem;
-  right: -1.5rem;
+  right: 2rem;
   z-index: 6;
 }
 
@@ -73,7 +70,7 @@
     height: 35rem;
     width: 20rem;
   }
-  .daily-best-sales__cards--product{
+  .daily-best-sales__cards--product {
     margin-left: 2rem;
   }
 }

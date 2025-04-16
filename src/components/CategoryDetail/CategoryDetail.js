@@ -4,7 +4,7 @@ import { MdOutlineSell } from "react-icons/md";
 import { TbChartBarPopular } from "react-icons/tb";
 import CardProduct from "../../pages/News/CardProduct";
 import { useEffect, useState, useRef } from "react";
-import { useParams, useLocation } from "react-router-dom";
+import { useParams, useLocation, useNavigate } from "react-router-dom";
 import SubCategory from "./SubCategory";
 import SortByItem from "./SortByItem";
 import SkeletonCardProduct from "../../pages/News/SkeletonCardProduct";
@@ -12,6 +12,7 @@ import SkeletonSubCategory from "./SkeletonSubCategory";
 import ReactPaginate from "react-paginate";
 import { BiSolidChevronRight, BiSolidChevronLeft } from "react-icons/bi";
 import OverlayLoading from "../../components/OverlayLoading/OverlayLoading.js";
+import { FaChevronRight } from "react-icons/fa";
 
 function CategoryDetail() {
   const [productsData, setProductsData] = useState([]);
@@ -29,6 +30,9 @@ function CategoryDetail() {
   const { categorySlug } = useParams();
   const location = useLocation();
   const currentCategory = location.state?.item;
+
+  const navigateToHome = useNavigate();
+  const navigateError = useNavigate();
 
   useEffect(() => {
     isFirstRender.current = true;
@@ -59,6 +63,10 @@ function CategoryDetail() {
           const productsJson = await resProducts.json();
           const categoriesJson = await resCategories.json();
 
+          if (!productsJson.info && !categoriesJson.info) {
+            navigateError("/ErrorPage", { replace: true });
+          }
+
           setProductsData(productsJson.info);
           setProductsPagination(productsJson.pagination);
           setCategoryTree(categoriesJson.info);
@@ -78,6 +86,9 @@ function CategoryDetail() {
           );
 
           const productsJson = await resProducts.json();
+          if (!productsJson.info) {
+            navigateError("/ErrorPage", { replace: true });
+          }
           setProductsData(productsJson.info);
         } catch (err) {
           console.error("Lỗi fetch:", err);
@@ -88,7 +99,7 @@ function CategoryDetail() {
     };
 
     fetchData();
-  }, [categorySlug, sortOption]);
+  }, [categorySlug, sortOption, navigateError]);
 
   const getSubCategoryList = (nodes) => {
     let result = [];
@@ -105,7 +116,7 @@ function CategoryDetail() {
   };
 
   const subCategoryList = categoryTree?.children
-    ? getSubCategoryList(categoryTree.children)
+    ? getSubCategoryList(categoryTree?.children)
     : [];
 
   console.log(currentCategory);
@@ -148,6 +159,9 @@ function CategoryDetail() {
         `https://greenmart-api.vercel.app/api/v1/products/${categorySlug}?currentPage=${newPage}&limitItems=10&sortKey=${sortOption.sortKey}&sortValue=${sortOption.sortValue}`
       );
       const productsJson = await resProducts.json();
+      if (!productsJson.info) {
+        navigateError("/ErrorPage", { replace: true });
+      }
       setProductsData(productsJson.info);
     } catch (err) {
       console.error("Lỗi fetch:", err);
@@ -156,9 +170,16 @@ function CategoryDetail() {
     }
   };
 
+  const handleHomeClick = () => {
+    navigateToHome(`/`);
+  };
   return (
     <div className="category-detail-container">
       <div className="category-detail">
+        <div className="category-detail__bread-crumb">
+          <span onClick={handleHomeClick}>Home</span> <FaChevronRight />
+          <span>{currentCategory?.categoryName}</span>
+        </div>
         <div
           className="category-detail__title"
           style={{
@@ -183,11 +204,11 @@ function CategoryDetail() {
             <div className="sort__number-item">
               {isLoading
                 ? "Loading..."
-                : productsPagination.totalItem === 0
+                : productsPagination?.totalItem === 0
                 ? "No Products Found"
-                : productsPagination.totalItem === 1
+                : productsPagination?.totalItem === 1
                 ? "1 Product Found"
-                : `${productsPagination.totalItem} Products Found`}
+                : `${productsPagination?.totalItem} Products Found`}
             </div>
             <div className="sort__title">Sort By</div>
             <div className="sort__options">
@@ -210,7 +231,7 @@ function CategoryDetail() {
             </div>
           </div>
           <div className="list-item__items">
-            {productsData.length > 0 ? (
+            {productsData?.length > 0 ? (
               productsData.map((item) => (
                 <CardProduct key={item._id} item={item} />
               ))
@@ -234,7 +255,7 @@ function CategoryDetail() {
           <ReactPaginate
             previousLabel={<BiSolidChevronLeft />}
             nextLabel={<BiSolidChevronRight />}
-            pageCount={productsPagination.totalPage}
+            pageCount={productsPagination?.totalPage}
             onPageChange={changePage}
             containerClassName="paginationButtons"
             disabledClassName="paginationDisable"

@@ -15,6 +15,8 @@ import ContactCompany from '../pages/Contact/ContactCompany';
 import Search from '../pages/Home/PageSearch/Search';
 import ProductDetail from '../pages/Home/ProductDetail/ProductDetail';
 import My_Profile from '../pages/Home/MyProfile/My_Profile';
+import ErrorPage from '../pages/ErrorPage/ErrorPage';
+
 
 export const routes = [
   {
@@ -85,6 +87,15 @@ export const routes = [
         path: "myprofile",
         element: <My_Profile />,
       },
+      {
+        path: "*",
+        element: <ErrorPage/>,
+      },
     ],
   },
+  {
+    path: "*",
+    element: <ErrorPage />
+  }
+  
 ];
