@@ -14,6 +14,7 @@ import CategoryDetail from '../components/CategoryDetail/CategoryDetail';
 import ContactCompany from '../pages/Contact/ContactCompany';
 import Search from '../pages/Home/PageSearch/Search';
 import ProductDetail from '../pages/Home/ProductDetail/ProductDetail';
+import MyProfile from '../pages/Home/MyProfile/MyProfile';
 
 export const routes = [
   {
@@ -25,7 +26,7 @@ export const routes = [
         element: <HomeContent />,
       },
       {
-        path: "productdetail",
+        path: "productdetail/:productSlug",
         element: <ProductDetail />
       },
       {
@@ -79,6 +80,10 @@ export const routes = [
       {
         path: "password/reset",
         element: <ResetPWPage />,
+      },
+      {
+        path: "myprofile",
+        element: <MyProfile />,
       },
     ],
   },

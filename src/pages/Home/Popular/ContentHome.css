@@ -4,7 +4,7 @@
     margin: 5rem auto;
 }
 
-.popular__Tittle {
+.popular--title {
     display: flex;
     justify-content: space-between;
     margin-bottom: 2rem;

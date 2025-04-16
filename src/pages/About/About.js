@@ -1,7 +1,11 @@
 import { FaShippingFast } from "react-icons/fa";
 import "./About.css";
+import { useEffect } from "react";
 
 function About() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className="about-container">
       <div className="about">
@@ -53,7 +57,12 @@ function About() {
             <span className="highlight-text">GreenMart Team</span>
           </p>
         </div>
-        <div className="about__image"><img alt="" src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRAymK687EGokCfzgD9UTvy_6TQ7tvPlPw6xqgSbgvjDB3J9QQp"></img></div>
+        <div className="about__image">
+          <img
+            alt=""
+            src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRAymK687EGokCfzgD9UTvy_6TQ7tvPlPw6xqgSbgvjDB3J9QQp"
+          ></img>
+        </div>
       </div>
     </div>
   );

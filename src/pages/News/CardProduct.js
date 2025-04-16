@@ -2,15 +2,23 @@ import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./CardProduct.css";
+import { useNavigate } from "react-router-dom";
 
 function CardProduct({ item }) {
   const [isHovered, setIsHovered] = useState(false);
 
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate(`/productdetail/${item.productSlug}`, {
+      state: { item },
+    });
+  };
   return (
     <div
       className="card-product"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      onClick={handleClick}
     >
       <div className="card-product__image">
         <img

@@ -28,7 +28,7 @@ function SearchCard({ product }) {
                 ${product.productPrice}
                 <span>${product.priceNew}</span>
             </div>
-            <div className="card-product__badge">
+            <div className={product.productDiscountPercentage === 0 ? 'active' : 'card-product__badge'}>
                 {product.productDiscountPercentage}%
             </div>
             <a href="#!" className="card-product__add-button">

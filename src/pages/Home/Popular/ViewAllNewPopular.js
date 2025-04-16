@@ -1,14 +1,22 @@
 import React, { useState, useEffect } from 'react'
-// import { Link, useNavigate } from "react-router-dom";
-import './ContentHome.css'
+import { useParams, Link } from 'react-router-dom';
+// import SearchCard from './SearchCard'
+import { FaSortAmountUp } from "react-icons/fa";
+import { FaSortAmountDown } from "react-icons/fa";
 import { fetchPopular } from './PopularAPI';
-import Pagination from './Pagination';
-import CardProduct from '../../News/CardProduct';
+import PopularCard from './PopularCard';
 
-function ContentHome2() {
+function ViewAllNewPopular() {
+    const navigate = useNavigate();
+
+    const handleViewAllPopular = () => {
+        navigate('/view-all-popular/');
+    }
+
+
     const [products, setProducts] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
-    const [postsPerPage, setPostsPerPage] = useState(8);
+    const [postsPerPage, setPostsPerPage] = useState(8); //so san pham hienj trong 1 trang
     useEffect(() => {
         const loadProducts = async () => {
             try {
@@ -32,16 +40,17 @@ function ContentHome2() {
                 <div className="popular row">
                     <div className="popular--title col-12">
                         <h1><strong>NEW PRODUCTS</strong></h1>
-                        {/* <button
+                        <button
                             className="popular__Tittle__viewAll"
+                            onClick={handleViewAllPopular}
                         >
                             ViewAll
-                        </button> */}
+                        </button>
                     </div>
                     <div className="popular__Card">
                         {currentPosts.map((item, index) => (
                             <div key={index} className="popular__Card__item">
-                                <CardProduct item={item} />
+                                <PopularCard item={item} />
                             </div>
                         ))}
 
@@ -60,4 +69,5 @@ function ContentHome2() {
     )
 }
 
-export default ContentHome2
+export default ViewAllNewPopular
+
