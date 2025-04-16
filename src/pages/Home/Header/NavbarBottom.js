@@ -5,6 +5,7 @@ import './NavBottom.css'
 import "bootstrap/dist/css/bootstrap.min.css";
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import { useNavigate } from 'react-router-dom';
+import { MdKeyboardArrowRight } from "react-icons/md";
 
 function NavbarBottom() {
     const [isSticky, setSticky] = useState(false);
@@ -121,7 +122,10 @@ function NavbarBottom() {
                                         <Link className="text-decoration-none text-dark">Vegetables</Link>
                                     </li>
                                     <li className="dropdown-submenu ">
-                                        <Link className="text-decoration-none text-dark">Meat, Chicken & Fish</Link>
+                                        <Link className="text-decoration-none text-dark">
+                                            Meat, Chicken & Fish
+                                            <MdKeyboardArrowRight />
+                                        </Link>
                                         <ul className="submenu dropdown-menu position-absolute top-0 start-100 rounded-0">
                                             <li><Link className="dropdown-item">Meat</Link></li>
                                             <li><Link className="dropdown-item">Chicken</Link></li>
@@ -170,7 +174,7 @@ function NavbarBottom() {
                                     <li className="nav-item dropdown w-100 w-md-auto me-4 ms-5">
                                         <Link to="myprofile" className="text-decoration-none text-dark">
                                             <strong>
-                                                ANNOUNCEMENT
+                                                MYPROFILE
                                             </strong>
                                         </Link>
                                     </li>
