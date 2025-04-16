@@ -1,46 +1,4 @@
-.list-inline-item {
-    position: relative;
-}
-
-.wishlist-badge {
-    position: absolute;
-    top: -10px;
-    right: -10px;
-    background: rgb(3, 82, 13);
-    color: white;
-    font-size: 14px;
-    font-weight: bold;
-    border-radius: 50%;
-    width: 20px;
-    height: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-
-.list-inline-item {
-    margin: 0 5px;
-    text-decoration: none;
-}
-
-.container .row div a:hover {
-    color: green !important;
-}
-
-.container .row div .dropdown :hover {
-    color: green !important;
-}
-
-@media (max-width: 450px) {
-    .navbar-brand img{
-        max-width: 13rem;
-    }
-}
-
-/* Thanh điều hướng khi nhỏ màn hình */
 @media (max-width: 992px) {
-
     /* Khi màn hình nhỏ hơn 768px */
     /* Định dnag lại thanh search và btn */
     .input-group input[type="search"] {
@@ -52,17 +10,13 @@
         height: 3.5rem !important;
     }
 
-    /* --------- */
-
     /* Định dạng lại btn Menu */
     .directory1 .btn {
         height: 3.5rem !important;
         font-weight: bold;
         font-size: 1.25rem;
     }
-
     /* ---------- */
-
     /* Định dạng lại form cho nav */
     .nvb {
         display: flex;
@@ -95,54 +49,12 @@
     .nvb ul li a:hover {
         color: green !important;
     }
-
-    /* ---------- */
 }
 
-/* ---------- */
-
-/* Màn hình lớn */
 @media (min-width: 992px) {
-
-    /* Áp dụng cho màn hình lớn */
-    /* Dinh dang lai thanh search và btn*/
-    .input-group input[type="search"],
-    .input-group button {
-        height: 5rem !important;
-        /* width: 20rem; */
-        font-size: 1.5rem;
-        background-color: #ddd;
-    }
-
-    .input-group button {
-        width: 5rem !important;
-    }
-
-    /* ---------- */
-
-    /* Căn chữ và icon ngang hàng */
-    .navbar-nav .nav-item a {
-        display: flex;
-        align-items: center;
-        gap: 5px;
-    }
-
-    .midnav {
-        background-color: #fafafa;
-        width: 100% !important;
-
-    }
-
-    .navbottom {
-        margin: auto;
-    }
-
-    /* ---------- */
-
     /* Dinh dang lai nut va dropdown*/
     .directory2 .btn {
         background-color: #0aad0a;
-        /* background-color: #2BBef9; */
         width: 23rem;
         height: 5rem;
         color: white;
@@ -167,11 +79,9 @@
 
     .directory2 .dropdown-menu.show {
         display: flex !important;
-        /* chỉ hiện khi có class show */
     }
 
     .directory2 .dropdown-menu .dropdown-item {
-        /* background-color: #0aad0a; */
         height: 4rem;
         margin-top: 2rem !important;
         font-weight: 550;
@@ -200,6 +110,13 @@
     }
 }
 
+.dropdown-submenu{
+    margin-left: 1rem;
+    height: 4rem;
+    margin-top: 2rem !important;
+    font-weight: 550;
+    font-size: 1.75rem;
+}
 .dropdown-submenu:hover > .submenu {
     display: block;
 }
@@ -210,4 +127,5 @@
     top: 0;
     margin-top: -1px;
     min-width: 10rem;
+    max-height: 20rem !important;
 }

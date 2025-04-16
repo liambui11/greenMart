@@ -1,30 +1,11 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import React, { useState } from "react";
-import Validation from "./My_ProfileValidation";
+import Validation from "./MyProfileValidation";
 import './MyProfile.css'
 
-// const NavbarTop = () => {
-//     return (
-//         <div className="container">
-//             <div className="bg-light py-1">
-//                 <div className="row">
-//                     <div className="col-md-6 col-12 text-center text-md-start d-flex justify-content-start">
-//                         <a href="https://www.youtube.com/" className="text-decoration-none text-dark">My_Account-</a>
-//                         <a href="https://www.youtube.com/" className="text-decoration-none text-dark">WishList</a>
-//                     </div>
-//                     <div className="col-md-6 col-12 text-md-end d-flex justify-content-md-end">
-//                         <a href="https://www.youtube.com/" className="text-decoration-none text-dark">HotLine: 0123456789</a>
-//                     </div>
-//                 </div>
-//             </div>
-//         </div>
-//         // {/* first header */ }
-//     );
-// };
 
-
-const My_Profile = () => {
+const MyProfile = () => {
     const [file, setFile] = useState(null);
 
     const [values, setValues] = useState({
@@ -56,7 +37,6 @@ const My_Profile = () => {
     const handleButtonChange = (event) => {
         const file = event.target.files[0];
         if (file) {
-            console.log('File được chọn:', file.name);
             setFile(URL.createObjectURL(file))
         }
 
@@ -67,9 +47,10 @@ const My_Profile = () => {
             <div className="row">
                 <div className="Profile">
                     <div className="Profile__tittle">
-                        <h2><strong>My profile</strong></h2>
+                        <h1>MY PROFILE</h1>
                     </div>
                     <div className="Profile__infor">
+                        
                         <div className="Profile__infor__form">
                             <form action="" onSubmit={handleSubmit}>
                                 <div className='Profile__infor__Fullname'>
@@ -100,18 +81,17 @@ const My_Profile = () => {
 
                             </form>
                         </div>
-                        {/* <div className="Profile__infor__line"></div> */}
                         <div className="Profile__infor__avatar">
                             <label>
                                 <img
                                     className="Profile__infor__avatar__img"
-                                    src={file || "./image/avatarDefault.jpg"} // Ảnh mặc định
+                                    src={file || "./image/avatar-user/default-avatar-profile.png"}
                                     width={200}
                                     height={200}
                                     alt="Avatar"
                                 />
                                 <input
-                                    type="file" id="fileInput"
+                                type="file" id="fileInput"
                                     onChange={handleButtonChange}
                                     accept="image/*"
                                 />
@@ -127,4 +107,4 @@ const My_Profile = () => {
     );
 };
 
-export default My_Profile;
+export default MyProfile;

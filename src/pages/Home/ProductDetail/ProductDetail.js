@@ -2,8 +2,8 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "./ProductDetail.css";
-import { useState, useEffect, useRef } from "react";
-import { useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useLocation, useNavigate, Link } from "react-router-dom";
 import { FaRegHeart } from "react-icons/fa";
 import { MdOutlinePercent } from "react-icons/md";
 
@@ -12,8 +12,15 @@ const ProductDetail = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  const [quantity, setQuantity] = useState(0);
+  const navigate = useNavigate();
 
+  const handleClick =()=>{
+    navigate(`/categorydetail/${productdetail?.category?.categorySlug}`,{
+        state: productdetail.category
+    });
+  }
+
+  const [quantity, setQuantity] = useState(0);
   const [productdetail, setProductdetail] = useState([]);
   const location = useLocation();
   const product = location.state?.item;
@@ -42,26 +49,26 @@ const ProductDetail = () => {
         <div className="topSectionMain">
           <ul>
             <li>
-              <a href="#">Home</a>
+              <Link>Home</Link>
             </li>
             <li>
-              <i class="fa-solid fa-angle-right"></i>
+              <i className="fa-solid fa-angle-right"></i>
             </li>
             <li>
-              <a href="#">Product</a>
+              <Link>Product</Link>
             </li>
             <li>
-              <i class="fa-solid fa-angle-right"></i>
+              <i className="fa-solid fa-angle-right"></i>
             </li>
             <li>
-              <a>{product?.productName}</a>
+              <Link>{product?.productName}</Link>
             </li>
           </ul>
         </div>
         <div className="ProductDetail row">
           <div className="imgSectionMain">
             <img src={product?.productImage} alt="" />
-            <p className="discount">
+            <p className={product?.productDiscountPercentage===0 ? 'active':'discount'}>
               {product?.productDiscountPercentage}
               <MdOutlinePercent />
             </p>
@@ -82,9 +89,9 @@ const ProductDetail = () => {
                 {product?.productStock}
               </p>
 
-              <p>
+              <p onClick={handleClick}>
                 <span>Type:</span>
-                {productdetail?.category?.categorySlug}
+                {productdetail?.category?.categoryName}
               </p>
             </div>
 
@@ -108,10 +115,9 @@ const ProductDetail = () => {
                 Add to Cart
               </button>
               <div className="ProductDetail__heart">
-                <a href="#">
-                  {/* <i className="fa-regular fa-heart"></i> */}
+                <div>
                   <FaRegHeart />
-                </a>
+                </div>
               </div>
             </div>
 

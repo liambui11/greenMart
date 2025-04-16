@@ -6,8 +6,8 @@
 }
 
 .pagination button {
-    width: 4rem;
-    height: 4rem;
+    width: 3.5rem;
+    height: 3.5rem;
     font-weight: 600;
     font-size: 1.6rem;
     margin: 0 1rem;
@@ -19,9 +19,14 @@
     border-color: #eee;
 }
 
+.pagination button:hover{
+    border-color: #0aad0a;
+    background-color: #0aad0a;
+}
+
 .pagination button.active {
     font-weight: 900;
-    border-color: #101010;
+    border-color: #0aad0a;
     background-color: #0aad0a;
     color: #101010;
 }

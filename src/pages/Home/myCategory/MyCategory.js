@@ -21,8 +21,6 @@ function MyCategory() {
 
                 const rawData = data.info;
                 setItemsData(rawData);
-
-                // setItemsData(data.info || []);
             } catch (err) {
                 console.error("Lỗi lấy dữ liệu popular:", err);
             }
@@ -32,30 +30,10 @@ function MyCategory() {
     }, []);
 
     const totalItems = itemsData.length;
-    // const totalItems = 8;
 
     const extendedItems = [...itemsData, ...itemsData];
 
-    // useEffect(() => {
-    //     const updateItemWidth = () => {
-    //         if (listRef.current) {
-    //             const firstItem = listRef.current.children[0];
-    //             if (firstItem) {
-    //                 const style = window.getComputedStyle(listRef.current);
-    //                 gap.current = parseFloat(style.gap) || 0;
-    //                 itemWidth.current = firstItem.offsetWidth + gap.current;
-    //             }
-    //         }
-    //     };
-
-    //     updateItemWidth(); // Gọi khi component mount
-    //     window.addEventListener("resize", updateItemWidth); // Cập nhật khi thay đổi kích thước màn hình
-
-    //     return () => {
-    //         window.removeEventListener("resize", updateItemWidth);
-    //     };
-    // }, []);
-
+    
     useEffect(() => {
         const updateItemWidth = () => {
             if (listRef.current && listRef.current.children.length > 0) {
@@ -127,14 +105,6 @@ function MyCategory() {
                         <div ref={listRef} className="category__Card" style={getTransformStyle()}>
                             {extendedItems.map((item, index) => (
                                 <div key={index} className="category__Card__item">
-                                    {/* <img
-                                        src={item.categoryImage}
-                                        alt=""
-                                        width={120}
-                                        height={120}
-                                        style={{ objectFit: "contain" }}
-                                    />
-                                    <p className="category__Card__item__title">{item.categoryName}</p> */}
                                     <CategoriesCard item={item} />
                                 </div>
                             ))}

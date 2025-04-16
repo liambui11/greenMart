@@ -10,7 +10,7 @@ function Footer1() {
                     <div className="footer-content col-md-2 col-sm-6">
                         <div className="infor">
                             <Link className="logo-footer ">
-                                <img src="/image/logoGM.png" alt="" width="200px" height="100px" />
+                                <img src="/image/logoGM.png" alt="" width="170px" height="100px" />
                             </Link>
                             <div className="tieuDe">
                                 Web Shopping for Clean, Safe Food.
