@@ -15,7 +15,7 @@ function MyCategory() {
     useEffect(() => {
         const fetchMyCategory = async () => {
             try {
-                const res = await fetch('https://greenmart-api.vercel.app/api/v1/products-category');
+                const res = await fetch('http://localhost:3000/api/v1/products-category');
                 const data = await res.json();
                 console.log("Dữ liệu trả về từ API:", data.info);
 

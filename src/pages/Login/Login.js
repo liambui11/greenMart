@@ -63,7 +63,7 @@ const LoginPage = () => {
     validateField("email", email) &
     validateField("password", password);
 
-    if (!isValid) return;
+    // if (!isValid) return;
   
     if (!errors.email && !errors.password) {
       const result = await dispatch(loginUser(email, password, showAlert));

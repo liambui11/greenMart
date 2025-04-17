@@ -1,5 +1,5 @@
 
-const API_BASE_URL = "https://greenmart-api.vercel.app/api/v1/products";
+const API_BASE_URL = "http://localhost:3000/api/v1/products";
 
 export const fetchProducts = async (query) => {
     const res = await fetch(`${API_BASE_URL}?keyword=${query}&currentPage=1&limitItems=10`);

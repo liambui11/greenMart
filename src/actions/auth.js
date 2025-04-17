@@ -36,7 +36,7 @@ export const logoutUser = () => async (dispatch) => {
       "/api/v1/users/logout",
       {},
       {
-        baseURL: "http://localhost:3000",
+        baseURL: "https://localhost:3000",
         withCredentials: true,
       }
     );
@@ -51,7 +51,7 @@ export const logoutUser = () => async (dispatch) => {
 export const checkAuth = () => async (dispatch) => {
   try {
     const res = await axios.get("/api/v1/users/refresh-token", {
-      baseURL: "http://localhost:3000",  
+      baseURL: "https://localhost:3000",  
       withCredentials: true,
     });
 

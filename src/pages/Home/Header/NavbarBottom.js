@@ -29,6 +29,25 @@ function NavbarBottom() {
             navigate(`/search/${encodeURIComponent(searchQuery)}`);
         }
     };
+
+    const [categoriesData, setCategoriesData] = useState([]);
+    useEffect(() => {
+        const fetchData = async () => {
+          try {
+            const res = await fetch(
+              "http://localhost:3000/api/v1/products-category"
+            );
+            const json = await res.json();
+            setCategoriesData(json.info);
+          } catch (err) {
+            console.error("Error: ", err);
+          } finally {
+            // setIsLoading(false);
+          }
+        };
+    
+        fetchData();
+      }, []);
     return (
         <nav className={`navbar navbar-expand-lg bg-white mt-2 ${isSticky ? "fixed-top shadow-sm" : ""}`}>
             <div className="navbottom container">
@@ -118,38 +137,13 @@ function NavbarBottom() {
                                     </span>
                                 </button>
                                 <ul className="dropdown-menu rounded-0" aria-labelledby="dropdownMenuButton1">
-                                    <li className="dropdown-item ">
-                                        <Link className="text-decoration-none text-dark">Vegetables</Link>
+                                {
+                                    categoriesData.map((category,index) => (
+                                    <li key={index} className="dropdown-item">
+                                        <Link className="text-decoration-none text-dark">{category.categoryName}</Link>
                                     </li>
-                                    <li className="dropdown-submenu ">
-                                        <Link className="text-decoration-none text-dark">
-                                            Meat, Chicken & Fish
-                                            <MdKeyboardArrowRight />
-                                        </Link>
-                                        <ul className="submenu dropdown-menu position-absolute top-0 start-100 rounded-0">
-                                            <li><Link className="dropdown-item">Meat</Link></li>
-                                            <li><Link className="dropdown-item">Chicken</Link></li>
-                                            <li><Link className="dropdown-item">Fish</Link></li>
-                                        </ul>
-                                    </li>
-                                    <li className="dropdown-item px-2 ">
-                                        <Link className="text-decoration-none text-dark">Fruits</Link>
-                                    </li>
-                                    <li className="dropdown-item ">
-                                        <Link className="text-decoration-none text-dark">Beer and Soft Drinks</Link>
-                                    </li>
-                                    <li className="dropdown-item ">
-                                        <Link className="text-decoration-none text-dark">Noodles</Link>
-                                    </li>
-                                    <li className="dropdown-item ">
-                                        <Link className="text-decoration-none text-dark">Duck and Chicken</Link>
-                                    </li>
-                                    <li className="dropdown-item ">
-                                        <Link className="text-decoration-none text-dark">Eggs and Milk</Link>
-                                    </li>
-                                    <li className="dropdown-item ">
-                                        <Link className="text-decoration-none text-dark">Confectionery</Link>
-                                    </li>
+                                    ))
+                                }
                                 </ul>
                             </div>
 

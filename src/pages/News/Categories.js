@@ -36,7 +36,7 @@ function Categories() {
     const fetchData = async () => {
       try {
         const res = await fetch(
-          "https://greenmart-api.vercel.app/api/v1/products-category"
+          "http://localhost:3000/api/v1/products-category"
         );
         const json = await res.json();
         setCategoriesData(json.info);
