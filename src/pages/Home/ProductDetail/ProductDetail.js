@@ -60,6 +60,10 @@ const ProductDetail = () => {
     });
   };
 
+  const handleAddToCart = () => {
+    alert("Luân Loz tới nè cu")
+  }
+
   return (
     <nav>
       <div className="container">
@@ -123,13 +127,12 @@ const ProductDetail = () => {
             <div className="btnAddHeart">
               {
                 product?.productStock>0?
-                  (<button className="btnAdd" type="button">
+                  (<button className="btnAdd" onClick={handleAddToCart} type="button">
                     <i className="fa-solid fa-plus"></i>
                     Add to Cart
                   </button>)
                 :
                 (<button className="btnOutofStock" type="button">
-                  {/* <i className="fa-solid fa-plus"></i> */}
                   Out of Stock
                 </button>)
               }
