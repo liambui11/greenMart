@@ -7,6 +7,55 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import { useNavigate } from 'react-router-dom';
 import { MdKeyboardArrowRight } from "react-icons/md";
 
+
+const renderCategoryTreeMobile = (categories) => {
+    return categories.map((category, index) => (
+      <li key={index} className="dropdown-submenu1 mb-2">
+        <Link
+          href={`/category/${category.categorySlug}`}
+          className="text-decoration-none text-dark d-block"
+        >
+          {category.categoryName}
+          {category.children && category.children.length > 0 && (
+            <MdKeyboardArrowRight />
+          )}
+        </Link>
+  
+        {category.children && category.children.length > 0 && (
+          <ul className="submenu1 list-unstyled ps-3">
+            {renderCategoryTreeMobile(category.children)}
+          </ul>
+        )}
+      </li>
+    ));
+  };
+
+const renderCategoryTree = (categories) => {
+    return categories.map((category, index) => (
+      <li key={index} className="dropdown-submenu">
+        <Link
+          href={`/category/${category.categorySlug}`}
+          className="dropdown-item text-decoration-none"
+        >
+          {category.categoryName}
+          {category.children && category.children.length > 0 && (
+            <MdKeyboardArrowRight />
+          )}
+        </Link>
+  
+        {category.children && category.children.length > 0 && (
+          <ul className="submenu dropdown-menu">
+            {renderCategoryTree(category.children)}
+            
+          </ul>
+        )}
+      </li>
+    ));
+  };
+
+
+  
+  
 function NavbarBottom() {
     const [isSticky, setSticky] = useState(false);
 
@@ -35,7 +84,7 @@ function NavbarBottom() {
         const fetchData = async () => {
           try {
             const res = await fetch(
-              "http://localhost:3000/api/v1/products-category"
+              "http://localhost:3000/api/v1/products-category/categorytree"
             );
             const json = await res.json();
             setCategoriesData(json.info);
@@ -48,6 +97,8 @@ function NavbarBottom() {
     
         fetchData();
       }, []);
+
+
     return (
         <nav className={`navbar navbar-expand-lg bg-white mt-2 ${isSticky ? "fixed-top shadow-sm" : ""}`}>
             <div className="navbottom container">
@@ -83,7 +134,6 @@ function NavbarBottom() {
                             </form>
                         </div>
 
-
                         {/* <!-- Button Directory --> */}
                         {/* <!-- thanh dieu huong --> */}
                         <div className="directory1 d-block d-lg-none mb-4">
@@ -96,31 +146,7 @@ function NavbarBottom() {
                             <div className="mt-2 collapse" id="collapseExample">
                                 <div className="card card-body">
                                     <ul className="mb-0 list-unstyled">
-                                        <li className="dropdown-item">
-                                            <Link className="text-decoration-none text-dark">Vegetables</Link>
-                                        </li>
-                                        <li className="dropdown-item">
-                                            <Link className="text-decoration-none text-dark">Meat</Link>
-                                        </li>
-                                        <li className="dropdown-item">
-                                            <Link className="text-decoration-none text-dark">Fruits</Link>
-                                        </li>
-                                        <li className="dropdown-item">
-                                            <Link className="text-decoration-none text-dark">Beer and Soft
-                                                Drinks</Link>
-                                        </li>
-                                        <li className="dropdown-item">
-                                            <Link className="text-decoration-none text-dark">Noodles</Link>
-                                        </li>
-                                        <li className="dropdown-item">
-                                            <Link className="text-decoration-none text-dark">Duck and Chicken</Link>
-                                        </li>
-                                        <li className="dropdown-item">
-                                            <Link className="text-decoration-none text-dark">Eggs and Milk</Link>
-                                        </li>
-                                        <li className="dropdown-item">
-                                            <Link className="text-decoration-none text-dark">Confectionery</Link>
-                                        </li>
+                                    {renderCategoryTreeMobile(categoriesData)}
                                     </ul>
                                 </div>
                             </div>
@@ -137,13 +163,7 @@ function NavbarBottom() {
                                     </span>
                                 </button>
                                 <ul className="dropdown-menu rounded-0" aria-labelledby="dropdownMenuButton1">
-                                {
-                                    categoriesData.map((category,index) => (
-                                    <li key={index} className="dropdown-item">
-                                        <Link className="text-decoration-none text-dark">{category.categoryName}</Link>
-                                    </li>
-                                    ))
-                                }
+                                    {renderCategoryTree(categoriesData)}
                                 </ul>
                             </div>
 

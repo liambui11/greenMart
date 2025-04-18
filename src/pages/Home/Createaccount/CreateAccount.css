@@ -1,26 +1,27 @@
-.CreateAccount {
-    width: 100%;
-    margin: 5rem auto;
-    /* position: relative; */
-    /* margin: 0; */
-    padding: 0;
-}
-
 .createAccount {
-    position: relative;
-    left: 0;
     border: 1px solid #0aad0a;
-    padding: 5rem 15rem;
+    padding: 5rem 3rem;
     background-color: #0aad0a;
     border-radius: 1rem;
     display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    overflow: hidden;
 }
 
-.createAccount__img{
-    position: absolute;
-    left: 60%;
-    bottom: 0%;
-    /* overflow: hidden; */
+.createAccount__img {
+    position: relative; /* bỏ absolute */
+    flex: 1;
+    min-width: 300px;
+    text-align: center;
+}
+
+.createAccount__content {
+    flex: 1;
+    min-width: 300px;
+    color: white;
 }
 
 .createAccount__title h1 {
@@ -42,15 +43,20 @@
     border: none;
     font-weight: 800;
 }
-.createAccount__email__btn:hover{
+
+.createAccount__email__btn:hover {
     background-color: #bbb;
     color: white;
 }
 
 @media (max-width: 786px) {
-    .createAccount__img img{
-        width: 20rem;
-        left: 30%;
-        bottom: 30%;
+    .createAccount {
+        flex-direction: column;
+        padding: 3rem 1rem;
+    }
+
+    .createAccount__img img {
+        width: 100%;
+        max-width: 300px;
     }
 }

@@ -8,7 +8,7 @@ import HotProduct from '../HotProduct/HotProduct';
 import Banner from "../Banner/Banner";
 import CreateAccount from "../Createaccount/CreateAccount";
 import MyCategory from "../myCategory/MyCategory";
-import HomeQuan from '../../ProductCuaQuan';
+
 import { NewsProvider } from '../../../Context/NewsContext';
 import PopularProducts from '../../News/DailyBestSales';
 
@@ -19,16 +19,13 @@ function HomeContent() {
 
     return (
         <NewsProvider>
-            <HomeQuan />
-
+            
             <SlideSection1 />
-            <Line />
+            
             <MyCategory />
             <PopularProducts />
             <ContentHome2 />
             <Banner />
-            {/* <BestSeller /> */}
-
             <HotProduct />
             <CreateAccount />
 

@@ -9,9 +9,17 @@ import { Link } from "react-router-dom";
 import CartMini from "../../../components/CartMini/index";
 import './NavMiddle.css'
 import { useNavigate } from 'react-router-dom';
+import { useDispatch} from 'react-redux';
+import { checkAuth, logoutUser } from '../../../actions/auth';
 
 
 function NavbarMiddle() {
+    const dispatch = useDispatch();
+    const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);//người dùng đã đăng nhập chưa
+    const handleLogout = () => {
+        dispatch(logoutUser());
+        // window.location.reload();
+    };
     const wishlist = useSelector((state) => state.wishlistReducer);
     const totalQuantity = wishlist.length;
 
@@ -78,24 +86,31 @@ function NavbarMiddle() {
 
                                 </Link>
                             </div>
-
                             {/* <!-- Cart --> */}
                             <div className="list-inline-item">
                                 <CartMini />
                             </div>
-
                             {/* <!-- LogIn --> */}
                             <div className="list-inline-item">
-                                {/* <a href="" className="text-dark">
-                                    
-                                    <RxAvatar style={{ fontSize: "3rem" }} />
-                                </a> */}
                                 <div className="dropdown">
-                                    {/* <i className="fa-regular fa-circle-user fs-2" data-bs-toggle="dropdown" aria-expanded="false"></i> */}
                                     <RxAvatar data-bs-toggle="dropdown" aria-expanded="false" style={{ fontSize: "3rem" }} />
                                     <ul className="dropdown-menu border-0" style={{ overflow: "hidden", zIndex: 1050 }}>
-                                        <li><Link className="dropdown-item fs-4" to="/login"  ><strong>SignIn</strong></Link></li>
-                                        <li><Link className="dropdown-item fs-4" to="/register" ><strong>SignUp</strong></Link></li>
+                                        {
+                                            isAuthenticated ? 
+                                            (
+                                                <>
+                                                <li><div onClick={handleLogout} className="dropdown-item fs-4"><strong>LogOut</strong></div></li>
+                                                <li><Link to="myprofile" className="dropdown-item fs-4"><strong>MyProfile</strong></Link></li>
+                                                </>
+                                            ):
+                                            (
+                                                <>
+                                                <li><Link className="dropdown-item fs-4" to="/login"  ><strong>SignIn</strong></Link></li>
+                                                <li><Link className="dropdown-item fs-4" to="/register" ><strong>SignUp</strong></Link></li>
+                                                </>
+                                            )
+                                        }
+                                        
                                     </ul>
                                 </div>
                             </div>
