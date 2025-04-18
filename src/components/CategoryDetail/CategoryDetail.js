@@ -53,10 +53,10 @@ function CategoryDetail() {
         try {
           const [resProducts, resCategories] = await Promise.all([
             fetch(
-              `https://greenmart-api.vercel.app/api/v1/products/${categorySlug}?sortKey=${sortOption.sortKey}&sortValue=${sortOption.sortValue}`
+              `http://localhost:3000/api/v1/products/${categorySlug}?sortKey=${sortOption.sortKey}&sortValue=${sortOption.sortValue}`
             ),
             fetch(
-              `https://greenmart-api.vercel.app/api/v1/products-category/categorytree/${categorySlug}`
+              `http://localhost:3000/api/v1/products-category/categorytree/${categorySlug}`
             ),
           ]);
 
@@ -82,7 +82,7 @@ function CategoryDetail() {
         setCurrentPage(0);
         try {
           const resProducts = await fetch(
-            `https://greenmart-api.vercel.app/api/v1/products/${categorySlug}?sortKey=${sortOption.sortKey}&sortValue=${sortOption.sortValue}`
+            `http://localhost:3000/api/v1/products/${categorySlug}?sortKey=${sortOption.sortKey}&sortValue=${sortOption.sortValue}`
           );
 
           const productsJson = await resProducts.json();
@@ -156,7 +156,7 @@ function CategoryDetail() {
     setProductsData([]);
     try {
       const resProducts = await fetch(
-        `https://greenmart-api.vercel.app/api/v1/products/${categorySlug}?currentPage=${newPage}&limitItems=10&sortKey=${sortOption.sortKey}&sortValue=${sortOption.sortValue}`
+        `http://localhost:3000/api/v1/products/${categorySlug}?currentPage=${newPage}&limitItems=10&sortKey=${sortOption.sortKey}&sortValue=${sortOption.sortValue}`
       );
       const productsJson = await resProducts.json();
       if (!productsJson.info) {

@@ -3,8 +3,9 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./CardProduct.css";
 import { useNavigate } from "react-router-dom";
+import { RiProhibited2Line } from "react-icons/ri";
 
-function CardProduct({ item}) {
+function CardProduct({ item }) {
   const [isHovered, setIsHovered] = useState(false);
 
   const navigate = useNavigate();
@@ -13,6 +14,11 @@ function CardProduct({ item}) {
       state: { item },
     });
   };
+
+  const handleAddToCard = () => {
+    console.log("add to cart");
+  };
+
   return (
     <div
       className="card-product"
@@ -42,8 +48,18 @@ function CardProduct({ item}) {
           {item?.productDiscountPercentage}%
         </div>
       )}
-      <a href="#!" className="card-product__add-button">
-        + Add
+      <a
+        href="#!"
+        className={`card-product__add-button ${
+          item.productStock === 0 ? "out-of-stock" : ""
+        }`}
+        onClick={(e) => {
+          e.stopPropagation();
+          if (item.productStock === 0) return;
+          handleAddToCard();
+        }}
+      >
+        {item.productStock === 0 ? <RiProhibited2Line /> : "+ Add"}
       </a>
       <div className="card-product__hover">
         {isHovered && <CardProductHovered />}
@@ -53,10 +69,20 @@ function CardProduct({ item}) {
 }
 
 function CardProductHovered() {
+  const handleAddWishList = () => {
+    console.log("add wishlist");
+  };
   return (
     <div className="card-product-hovered-container">
       <div className="card-product-hovered">
-        <FontAwesomeIcon className="fa-heart" icon={faHeart} />
+        <FontAwesomeIcon
+          className="fa-heart"
+          icon={faHeart}
+          onClick={(e) => {
+            e.stopPropagation();
+            handleAddWishList();
+          }}
+        />
       </div>
     </div>
   );
