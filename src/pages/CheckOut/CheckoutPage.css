@@ -86,3 +86,18 @@
 .btn-success:hover {
   background-color: #004d00;
 }
+
+.my-swal-popup {
+  width: 500px !important;
+  padding: 30px;
+  font-size: 18px;
+}
+
+.my-swal-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.my-swal-content {
+  font-size: 10px;
+}

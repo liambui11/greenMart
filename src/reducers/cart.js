@@ -1,27 +1,19 @@
 const cartReducer = (state = [], action) => {
-    let newState = [...state];
-    switch (action.type) {
-        case "ADD_TO_CART":
-            return [
-            ...state,
-            {
-                id: action.id,
-                info: action.info,
-                quantity: 1,
-            }
-            ];
-        case "UPDATE_QUANTITY":
-            const itemUpdate = newState.find(item => item.id === action.id);
-            itemUpdate.quantity+= action.quantity;
-            return newState;
-        case "DELETE_ITEM":
-            newState = newState.filter(item => item.id !== action.id);
-            return newState;
-        case "DELETE_ALL":
+    switch(action.type) {
+        case "FETCH_CART_SUCCESS":
+          return action.payload;
+          case "ADD_TO_CART_SUCCESS":
+            return action.payload;
+        case "UPDATE_CART_SUCCESS":
+          return action.payload;
+        case "DELETE_CART_ITEM":
+          return state.filter(item => item.productID._id !== action.productID);
+          case "CLEAR_CART":
+          case "LOGOUT":
             return [];
         default:
-            return state;
-    }
+          return state;
+      }
   };
   
   export default cartReducer;

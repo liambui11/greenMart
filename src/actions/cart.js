@@ -1,28 +1,111 @@
-export const addToCart = (id, info) => {
-    return {
-      type: "ADD_TO_CART",
-      id: id,
-      info: info
-    };
+import axiosInstance from '../untils/axiosInstance';
+import isEqual from 'lodash/isEqual';
+
+export const fetchCart = () => async (dispatch, getState) => {
+  try {
+    const res = await axiosInstance.get('/api/v1/cart');
+    const serverCart = res.data.data;
+    const currentCart = getState().cartReducer || [];
+
+    if (serverCart.length !== currentCart.length || !isEqual(serverCart, currentCart)) {
+      dispatch({ type: 'FETCH_CART_SUCCESS', payload: serverCart });
+    }
+  } catch (err) {
+    console.error('Fetch cart failed', err);
+  }
 };
 
-export const updateQuantity = (id, quantity = 1) => {
-    return {
-      type: "UPDATE_QUANTITY",
-      id: id,
-      quantity: quantity
-    };
+export const addToCart = (productID, quantity = 1) => async (dispatch, getState) => {
+  const prevCart = getState().cartReducer || [];
+
+  const updatedCart = (() => {
+    const existing = prevCart.find(item => item.productID._id === productID);
+    if (existing) {
+      return prevCart.map(item =>
+        item.productID._id === productID
+          ? { ...item, quantity: item.quantity + quantity }
+          : item
+      );
+    }
+    return [...prevCart, { productID: { _id: productID }, quantity }];
+  })();
+
+  dispatch({ type: 'ADD_TO_CART_SUCCESS', payload: updatedCart });
+
+  try {
+    const res = await axiosInstance.post('/api/v1/cart/add', { productID, quantity });
+    const serverCart = res.data.data;
+
+    if (serverCart.length !== updatedCart.length || !isEqual(serverCart, updatedCart)) {
+      dispatch({ type: 'ADD_TO_CART_SUCCESS', payload: serverCart });
+    }
+  } catch (err) {
+    console.error('Add to cart failed', err);
+    dispatch({ type: 'ADD_TO_CART_SUCCESS', payload: prevCart }); // rollback
+  }
 };
 
-export const deleteItem = (id) => {
-    return {
-      type: "DELETE_ITEM",
-      id: id,
-    };
+export const updateQuantity = (productID, quantity) => async (dispatch, getState) => {
+  const prevCart = getState().cartReducer || [];
+
+  const optimisticCart = prevCart.map(item =>
+    item.productID._id === productID ? { ...item, quantity } : item
+  );
+
+  dispatch({ type: 'UPDATE_CART_SUCCESS', payload: optimisticCart });
+
+  try {
+    const res = await axiosInstance.put('/api/v1/cart/update', { productID, quantity });
+    const serverCart = res.data.data;
+
+    if (serverCart.length !== optimisticCart.length || !isEqual(serverCart, optimisticCart)) {
+      dispatch({ type: 'UPDATE_CART_SUCCESS', payload: serverCart });
+    }
+
+  } catch (err) {
+    console.error('Update failed', err);
+    dispatch({ type: 'UPDATE_CART_SUCCESS', payload: prevCart }); // rollback
+  }
 };
 
-export const deleteAll = () => {
-    return {
-      type: "DELETE_ALL",
-    };
+export const deleteItem = (productID) => async (dispatch, getState) => {
+  const prevCart = getState().cartReducer || [];
+
+  const updatedCart = prevCart.filter(item => item.productID._id !== productID);
+  dispatch({ type: 'DELETE_CART_ITEM', productID });
+
+  try {
+    const res = await axiosInstance.delete('/api/v1/cart/delete', {
+      data: { productID }
+    });
+
+    const serverCart = res.data.data;
+
+    if (serverCart.length !== updatedCart.length || !isEqual(serverCart, updatedCart)) {
+      dispatch({ type: 'FETCH_CART_SUCCESS', payload: serverCart });
+    }
+
+  } catch (err) {
+    console.error('Delete cart item failed', err);
+    dispatch({ type: 'ADD_TO_CART_SUCCESS', payload: prevCart }); // rollback
+  }
+};
+
+export const deleteAll = () => async (dispatch, getState) => {
+  const prevCart = getState().cartReducer || [];
+
+  dispatch({ type: 'CLEAR_CART' });
+
+  try {
+    const res = await axiosInstance.delete('/api/v1/cart/clear');
+    const serverCart = res.data.data || [];
+
+    if (serverCart.length !== 0 || !isEqual(serverCart, [])) {
+      dispatch({ type: 'FETCH_CART_SUCCESS', payload: serverCart });
+    }
+
+  } catch (err) {
+    console.error('Clear cart failed', err);
+    dispatch({ type: 'ADD_TO_CART_SUCCESS', payload: prevCart }); // rollback
+  }
 };

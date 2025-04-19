@@ -1,30 +1,21 @@
 const wishlistReducer = (state = [], action) => {
-    let newState = [...state];
+  switch (action.type) {
+    case "SET_WISHLIST":
+      return action.payload;
 
-    switch (action.type) {
-        case "ADD_TO_WISHLIST":
-            // Kiểm tra xem sản phẩm đã có trong wishlist chưa
-            if (state.some((item) => item.id === action.id)) {
-                return state; // Nếu đã có thì không thêm nữa
-            }
-            return [
-                ...state,
-                {
-                    id: action.id,
-                    info: action.info,
-                },
-            ];
+    case "ADD_WISHLIST_ITEM":
+      return [...state, action.payload];
 
-        case "REMOVE_FROM_WISHLIST":
-            newState = newState.filter((item) => item.id !== action.id);
-            return newState;
+    case "DELETE_WISHLIST_ITEM":
+      return state.filter(item => item.productID._id !== action.productID);
 
-        case "CLEAR_WISHLIST":
-            return [];
+      case "CLEAR_WISHLIST":
+      case "LOGOUT":
+        return [];
 
-        default:
-            return state;
-    }
+    default:
+      return state;
+  }
 };
 
 export default wishlistReducer;

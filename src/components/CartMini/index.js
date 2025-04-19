@@ -3,26 +3,28 @@ import { useState } from "react";
 import CartList from "./CartListMini";
 import "./Cart.css";
 import { deleteAll } from "../../actions/cart";
-// import { FiShoppingCart } from "react-icons/fi";
 import { HiOutlineShoppingBag } from "react-icons/hi2";
 import { FaBagShopping } from "react-icons/fa6";
-import { useNavigate, useLocation  } from "react-router-dom";
-
+import { useNavigate, useLocation } from "react-router-dom";
 
 function CartMini() {
   const cart = useSelector((state) => state.cartReducer);
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
 
   const total = cart.reduce((sum, item) => {
-    return sum + item.info.productPrice * item.quantity;
-    }, 0);
+    const price = item.productID.productPrice;
+    const discount = item.productID.productDiscountPercentage || 0;
+    const discountedPrice = price * (1 - discount / 100);
+    return sum + discountedPrice * item.quantity;
+  }, 0);
 
   const totalQuantity = cart.reduce((sum, item) => {
     return sum + item.quantity;
-    }, 0);
+  }, 0);
 
   const handleDeleteAll = () => {
     dispatch(deleteAll());
@@ -34,12 +36,25 @@ function CartMini() {
   };
 
   const handleCartClick = () => {
+    if (!isAuthenticated) {
+      navigate("/login"); 
+      return;
+    }
+
     if (location.pathname === "/cart" || location.pathname === "/checkout") {
       navigate("/cart");
     } else {
-      setIsOpen(true); 
+      setIsOpen(true);
     }
   };
+
+  const formatUSD = (value) =>
+    value.toLocaleString("en-US", {
+      style: "currency",
+      currency: "USD",
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 2,
+    });
 
   return (
     <>
@@ -48,10 +63,9 @@ function CartMini() {
         <HiOutlineShoppingBag className="cart-icon" />
         {totalQuantity > 0 && (
           <span className="cart-badge">
-            {totalQuantity > 9 ? '9+' : totalQuantity}
+            {totalQuantity > 9 ? "9+" : totalQuantity}
           </span>
         )}
-
       </button>
 
       {/* Overlay nền tối khi mở */}
@@ -69,7 +83,7 @@ function CartMini() {
               <CartList cart={cart} />
               <div className="cart__footer">
                 <div className="cart__total">
-                  Total: <span>{total.toFixed(0)}$</span>
+                  Total: <span>{formatUSD(total)}</span>
                 </div>
                 <div className="cart__actions">
                   <button onClick={handleDeleteAll} className="btn btn-danger">

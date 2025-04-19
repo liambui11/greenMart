@@ -8,7 +8,7 @@ function CartList(props) {
         <>
           <div className="cart">
             {cart.map((item) => (
-              <CartItemMini item = {item}  key={item.info.productID}/>
+              <CartItemMini item = {item}  key={item._id}/>
             ))}
           </div>
         </>

@@ -23,8 +23,10 @@ export const loginUser = (email, password, showAlert) => {
         return { success: false };
       }
     } catch (error) {
-      dispatch({ type: "LOGIN_FAILURE", payload: "Network error" });
-      showAlert("error", "Failed to connect to the server");
+      const message =
+        error.response?.data?.message || "Failed to connect to the server";
+      dispatch({ type: "LOGIN_FAILURE", payload: message });
+      showAlert("error", message);
       return { success: false };
     }
   };

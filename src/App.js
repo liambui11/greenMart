@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { checkAuth, logoutUser } from './actions/auth';
+import { fetchWishlist } from './actions/wishlist';
+import { fetchCart } from './actions/cart';
 import AllRoute from './components/AllRoute';
 import "bootstrap/dist/css/bootstrap.min.css";
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
@@ -33,8 +35,10 @@ const App = () => {
     
         if (isAuthenticated) {
           fetchUserDetail();
+          dispatch(fetchWishlist());
+          dispatch(fetchCart());
         }
-      }, [isAuthenticated]);
+      }, [isAuthenticated, dispatch]);
 
     const handleLogout = () => {
       dispatch(logoutUser());
