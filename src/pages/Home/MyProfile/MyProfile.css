@@ -25,12 +25,18 @@
     margin-right: 20%;
 }
 
+
 .Profile__infor__form__btn {
     height: 3rem;
     width: 20rem;
     border: none;
-    background-color: green;
+    background-color: #0aad0a;
     color: white;
+}
+
+.Profile__infor__form__btn:hover{
+    background-color: #bbb;
+    color: black;
 }
 
 .Profile__infor__Fullname,
@@ -40,13 +46,23 @@
     margin-bottom: 2rem;
 }
 
+.Profile__infor__Fullname label,
+.Profile__infor__Email label,
+.Profile__infor__Address label,
+.Profile__infor__Phone label{
+    font-size: 2rem;
+    font-weight: 500;
+}
+
 .Profile__infor__Fullname input,
 .Profile__infor__Email input,
 .Profile__infor__Address input,
 .Profile__infor__Phone input {
     height: 4rem;
-    font-size: 1.5rem;
+    /* font-size: 1.5rem; */
     margin: 1.5rem 0;
+    font-size: 1.75rem;
+    font-weight: 500;
 }
 
 
@@ -67,11 +83,16 @@
 }
 
 .Profile__infor__avatar__btn {
-    background: green;
+    background: #0aad0a;
     border: none;
     margin-top: 2rem;
     color: white;
     width: 20rem;
+}
+
+.Profile__infor__avatar__btn:hover{
+    background-color: #bbb;
+    color: black;
 }
 
 @media (max-width: 500px) {

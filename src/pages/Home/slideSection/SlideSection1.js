@@ -1,12 +1,10 @@
 import React from 'react'
 import { useMemo, useState, useEffect, useRef } from "react";
 import './SlideSection1.css';
-//Ảnh bị lệch là do kích thước max của ảnh k bằng nhau có giới hạn
+
 function SlideSection1() {
     const [current, setCurrent] = useState(0);
     const listRef = useRef(null);
-    // const imgRef = useRef(null);
-    // const images = ["/image/page2.jpg", "/image/page1.jpg"];
     const images = useMemo(() => [
         "/image/slideshow/page1.webp",
         "/image/slideshow/page2.webp",

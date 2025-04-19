@@ -1,4 +1,3 @@
-
 .card-product {
   display: flex;
   flex-direction: column;
@@ -62,6 +61,7 @@
 }
 
 .card-product__add-button {
+  width: 5.2rem;
   position: absolute;
   margin-top: 0.5rem;
   top: 24.5rem;
@@ -74,6 +74,16 @@
   color: white;
   background-color: #0aad0a;
   border: #0aad0a;
+}
+
+.card-product__add-button:hover {
+  background-color: rgb(25, 88, 46);
+}
+
+.card-product__add-button.out-of-stock {
+  background-color: #db3030;
+  text-align: center;
+  cursor: not-allowed;
 }
 
 .card-product__hover {

@@ -10,7 +10,7 @@ import axiosInstance from './untils/axiosInstance';
 
 const App = () => {
     const dispatch = useDispatch();
-    const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+    const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);//người dùng đã đăng nhập chưa
     const accessToken = useSelector((state) => state.auth.accessToken);
 
     // Nếu người dùng xóa local storage hoặc lấy token từ local chậm
@@ -46,15 +46,15 @@ const App = () => {
 
     return (
         <>
-            <div>
-      <h1>GreenMart</h1>
-      {isAuthenticated ? <>
-                        <p>Chào mừng! {userInfo?.userName || "người dùng"}</p>
-                        <button className="btn btn-danger" onClick={handleLogout}>
-                            Đăng xuất
-                        </button>
-                    </> : <p>Chưa đăng nhập</p>}
-    </div>
+          <div>
+            <h1>GreenMart</h1>
+              {isAuthenticated ? <>
+                <p>Chào mừng! {userInfo?.userName || "người dùng"}</p>
+                <button className="btn btn-danger" onClick={handleLogout}>
+                  Đăng xuất
+                </button>
+              </> : <p>Chưa đăng nhập</p>}
+          </div>
             <AllRoute/>
         </>
     );

@@ -26,7 +26,7 @@ function PopularProducts() {
       setIsLoading(true);
       try {
         const resProducts = await fetch(
-          `https://greenmart-api.vercel.app/api/v1/products`
+          `http://localhost:3000/api/v1/products`
         );
 
         const productsJson = await resProducts.json();

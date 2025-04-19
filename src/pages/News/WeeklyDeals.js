@@ -18,7 +18,7 @@ function WeeklyDeals() {
       setIsLoading(true);
       try {
         const resProducts = await fetch(
-          `https://greenmart-api.vercel.app/api/v1/products?currentPage=1&limitItems=10`
+          `http://localhost:3000/api/v1/products?currentPage=1&limitItems=10`
         );
 
         const productsJson = await resProducts.json();
@@ -39,7 +39,7 @@ function WeeklyDeals() {
     setProductsData([]);
     try {
       const resProducts = await fetch(
-        `https://greenmart-api.vercel.app/api/v1/products?currentPage=${newPage}&limitItems=10`
+        `http://localhost:3000/api/v1/products?currentPage=${newPage}&limitItems=10`
       );
 
       const productsJson = await resProducts.json();

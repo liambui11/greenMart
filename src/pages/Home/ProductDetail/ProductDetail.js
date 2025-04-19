@@ -20,28 +20,49 @@ const ProductDetail = () => {
     });
   }
 
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState(1);
   const [productdetail, setProductdetail] = useState([]);
   const location = useLocation();
   const product = location.state?.item;
 
   console.log(`product:${product}`);
-  const url = "https://greenmart-api.vercel.app/api/v1/products/detail/";
+  const url = "https://localhost3000/api/v1/products/detail/";
 
   useEffect(() => {
-    fetch(`${url}${product?.productSlug}`)
-      .then((res) => res.json())
-      .then((data) => {
+    const fetchProductDetail = async () => {
+      try {
+        const res = await fetch(`${url}${product?.productSlug}`);
+        if (!res.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await res.json();
         setProductdetail(data.info);
-      });
+      } catch (error) {
+        console.error('Fetch product detail failed:', error);
+      }
+    };
+  
+    fetchProductDetail();
   }, []);
+  
 
   const handleSubtract = () => {
     setQuantity((prevQuantity) => Math.max(1, prevQuantity - 1));
   };
   const handlePlus = () => {
-    setQuantity((prevQuantity) => prevQuantity + 1);
+    setQuantity((prevQuantity) =>{
+      if(prevQuantity<product?.productStock){
+        return prevQuantity + 1;
+      }
+      else{
+        return prevQuantity;
+      }
+    });
   };
+
+  const handleAddToCart = () => {
+    alert("Luân Loz tới nè cu")
+  }
 
   return (
     <nav>
@@ -49,13 +70,7 @@ const ProductDetail = () => {
         <div className="topSectionMain">
           <ul>
             <li>
-              <Link>Home</Link>
-            </li>
-            <li>
-              <i className="fa-solid fa-angle-right"></i>
-            </li>
-            <li>
-              <Link>Product</Link>
+              <Link to="/">Home</Link>
             </li>
             <li>
               <i className="fa-solid fa-angle-right"></i>
@@ -110,10 +125,17 @@ const ProductDetail = () => {
             </div>
 
             <div className="btnAddHeart">
-              <button className="btnAdd" type="button">
-                <i className="fa-solid fa-plus"></i>
-                Add to Cart
-              </button>
+              {
+                product?.productStock>0?
+                  (<button className="btnAdd" onClick={handleAddToCart} type="button">
+                    <i className="fa-solid fa-plus"></i>
+                    Add to Cart
+                  </button>)
+                :
+                (<button className="btnOutofStock" type="button">
+                  Out of Stock
+                </button>)
+              }
               <div className="ProductDetail__heart">
                 <div>
                   <FaRegHeart />
