@@ -1,17 +1,77 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import axios from "axios";
+import { useAlert } from "../../Context/AlertContext";
 import "./OtpPage.css";
 
 const OtpPage = () => {
   const location = useLocation();
   const email = location.state?.email || "your-email@example.com";
   const [otp, setOtp] = useState("");
+  const [errors, setErrors] = useState({});
   const navigate = useNavigate();
+  const { showAlert } = useAlert();
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 
-  const handleSubmit = (e) => {
+  useEffect(() => {
+      if (isAuthenticated) {
+          navigate("/");
+      }
+  }, [isAuthenticated, navigate]);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    navigate("/password/reset");
+
+    if (!otp) {
+      setErrors({ otp: "OTP is required" });
+      return;
+    }
+
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/api/v1/users/password/otp",
+        { email, otp },
+        { withCredentials: true }
+      );
+
+      if (response.status === 200) {
+        navigate("/password/reset");
+      } else {
+        setErrors({ otp: response.data.message || "OTP verification failed" });
+      }
+    } catch (err) {
+      if (err.response?.data?.message) {
+        setErrors({ otp: err.response.data.message });
+      } else {
+        setErrors({ otp: "Server error. Please try again later." });
+      }
+    }
   };
+
+  const handleChange = (e) => {
+    setOtp(e.target.value);
+    setErrors({ ...errors, otp: "" });
+  };
+
+  const handleResendOTP = async () => {
+    try {
+        const response = await axios.post("http://localhost:3000/api/v1/users/password/forgot", { email });
+
+        if (response.status === 200) {
+            showAlert("success", "OTP has been resent to your email.");
+        } else {
+            showAlert("error", response.data.message || "Something went wrong while resending OTP.");
+        }
+    } catch (err) {
+        if (err.response && err.response.data && err.response.data.message) {
+            showAlert("error", err.response.data.message);
+        } else {
+            showAlert("error", "Cannot connect to the server. Please try again.");
+        }
+    }
+};
+
 
   return (
     <div className="otp-container">
@@ -19,7 +79,7 @@ const OtpPage = () => {
       <p className="otp-description">
         Please check your email and enter the OTP below
       </p>
-      <form className="otp-form" onSubmit={handleSubmit}>
+      <form className="otp-form" onSubmit={handleSubmit} noValidate>
         <label className="otp-label">Email</label>
         <input
           type="email"
@@ -33,12 +93,16 @@ const OtpPage = () => {
           <input
             type="text"
             value={otp}
-            onChange={(e) => setOtp(e.target.value)}
+            onChange={handleChange}
             required
-            className="otp-input"
+            className={`otp-input ${errors.otp ? "is-invalid" : ""}`}
           />
-          <span className="otp-resend">Resend OTP</span>
+          <span className="otp-resend" onClick={handleResendOTP} style={{ cursor: "pointer" }}>
+            Resend OTP
+          </span>
+
         </div>
+        {errors.otp && <p className="error-message">{errors.otp}</p>}
 
         <button type="submit" className="otp-button">
           Confirm & Continue

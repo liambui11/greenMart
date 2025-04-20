@@ -9,7 +9,7 @@ const icons = {
   info: <FaInfoCircle />,
 };
 
-const CustomAlert = ({ type = "info", message, onClose, duration = 3000 }) => {
+const CustomAlert = ({ type = "info", message, onClose, duration = 2000 }) => {
   useEffect(() => {
     if (duration > 0) {
       const timer = setTimeout(onClose, duration);

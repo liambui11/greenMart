@@ -1,30 +1,34 @@
-const wishlistReducer = (state = [], action) => {
-    let newState = [...state];
+const initialState = {
+  items: [],
+  isLoading: false,
+};
 
-    switch (action.type) {
-        case "ADD_TO_WISHLIST":
-            // Kiểm tra xem sản phẩm đã có trong wishlist chưa
-            if (state.some((item) => item.id === action.id)) {
-                return state; // Nếu đã có thì không thêm nữa
-            }
-            return [
-                ...state,
-                {
-                    id: action.id,
-                    info: action.info,
-                },
-            ];
+const wishlistReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case "WISHLIST_LOADING":
+      return { ...state, isLoading: true };
 
-        case "REMOVE_FROM_WISHLIST":
-            newState = newState.filter((item) => item.id !== action.id);
-            return newState;
+    case "WISHLIST_DONE":
+      return { ...state, isLoading: false };
 
-        case "CLEAR_WISHLIST":
-            return [];
+    case "FETCH_WISHLIST_SUCCESS":
+    case "ADD_WISHLIST_SUCCESS":
+    case "SET_WISHLIST":
+      return { items: action.payload, isLoading: false };
 
-        default:
-            return state;
-    }
+    case "DELETE_WISHLIST_ITEM":
+      return {
+        items: state.items.filter(item => item.productID._id !== action.productID),
+        isLoading: false,
+      };
+
+    case "CLEAR_WISHLIST":
+    case "LOGOUT":
+      return { items: [], isLoading: false };
+
+    default:
+      return state;
+  }
 };
 
 export default wishlistReducer;

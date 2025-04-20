@@ -1,17 +1,35 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { deleteAll, fetchCart } from "../../actions/cart";
 import CartTable from "./CartTable";
 import CartSummary from "./CartSummary";
-import { deleteAll } from "../../actions/cart";
 import { FaRegTrashCan } from "react-icons/fa6";
 import "./css/CartPage.css";
 
 const CartPage = () => {
-  const cart = useSelector((state) => state.cartReducer);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      navigate("/login");  
+    } else {
+      dispatch(fetchCart());
+    }
+  }, [dispatch, isAuthenticated, navigate]);
+
+  const cart = useSelector((state) => state.cartReducer.items);
+
   const totalQuantity = cart.reduce((sum, item) => {
     return sum + item.quantity;
-    }, 0);
-  const dispatch = useDispatch();
+  }, 0);
+
+  const handleClearCart = () => {
+      dispatch(deleteAll());
+  };
 
   return (
     <div className="container cart-page">
@@ -22,7 +40,7 @@ const CartPage = () => {
             <h6 className="cart-page__total-items">
             You have <span className="cart-page__highlight">{totalQuantity}</span> items in your cart
             </h6>
-            <button onClick={() => dispatch(deleteAll())} className="cart-page__clear-btn">
+            <button onClick={handleClearCart} className="cart-page__clear-btn">
              <FaRegTrashCan/> Clear All
             </button>
           </div>

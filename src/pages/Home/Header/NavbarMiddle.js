@@ -22,6 +22,14 @@ function NavbarMiddle() {
   };
   const wishlist = useSelector((state) => state.wishlistReducer);
   const totalQuantity = wishlist.length;
+  const dispatch = useDispatch();
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated); //người dùng đã đăng nhập chưa
+  const handleLogout = () => {
+    dispatch(logoutUser());
+    // window.location.reload();
+  };
+  const wishlist = useSelector((state) => state.wishlistReducer.items);
+  const totalQuantity = wishlist.length;
 
   const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();

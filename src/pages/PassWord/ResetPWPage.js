@@ -1,10 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
+import axiosInstance from "../../untils/axiosInstance";
+import { useAlert } from "../../Context/AlertContext";
+import { checkAuth} from '../../actions/auth';
 import "./ResetPWPage.css";
 
 const ResetPWPage = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState({});
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { showAlert } = useAlert();
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const accessToken = useSelector((state) => state.auth.accessToken);
+
+  useEffect(() => {
+    if (!accessToken) {
+        dispatch(checkAuth());
+    }
+  }, [accessToken, dispatch]);
+  
 
   const validateField = (name, value) => {
     let error = "";
@@ -37,7 +54,7 @@ const ResetPWPage = () => {
     validateField(name, value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     
     const newErrors = {};
@@ -56,7 +73,23 @@ const ResetPWPage = () => {
     setErrors(newErrors);
   
     if (Object.keys(newErrors).length === 0) {
-      alert("Password reset successful!");
+      try {
+        console.log(password);
+        const response = await axiosInstance.post("/api/v1/users/password/reset", { newPassword: password });
+
+        if (response.status === 200) {
+          showAlert("success", "Password reset successful!");
+          navigate("/");
+        } else {
+          showAlert("error", response.data.message || "Something went wrong!");
+        }
+      } catch (err) {
+        if (err.response?.data?.message) {
+          showAlert("error", err.response.data.message);
+        } else {
+          showAlert("error", "Server error. Please try again.");
+        }
+      }
     }
   };
   

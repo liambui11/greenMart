@@ -3,12 +3,22 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./CardProduct.css";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { RiProhibited2Line } from "react-icons/ri";
+import { useAlert } from "../../Context/AlertContext";
+import { addWishlistItem } from "../../actions/wishlist";
+import { addToCart } from "../../actions/cart";
 
 function CardProduct({ item }) {
   const [isHovered, setIsHovered] = useState(false);
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { showAlert } = useAlert(); 
+  const cart = useSelector((state) => state.cartReducer.items || []);
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+
+
   const handleClick = () => {
     navigate(`/productdetail/${item.productSlug}`, {
       state: { item },
@@ -16,7 +26,20 @@ function CardProduct({ item }) {
   };
 
   const handleAddToCard = () => {
-    console.log("add to cart");
+    if (!isAuthenticated) {
+      showAlert("error", "Please login to add items to cart!");
+      return;
+    }
+    const found = cart.find((i) => i.productID._id === item._id);
+    const quantityInCart = found ? found.quantity : 0;
+
+    if (quantityInCart >= item.productStock) {
+      showAlert("error", "Exceeds available stock!");
+      return;
+    }
+
+    dispatch(addToCart(item._id));
+    showAlert("success", "Added to cart!");
   };
 
   return (
@@ -62,16 +85,33 @@ function CardProduct({ item }) {
         {item.productStock === 0 ? <RiProhibited2Line /> : "+ Add"}
       </a>
       <div className="card-product__hover">
-        {isHovered && <CardProductHovered />}
+        {isHovered && <CardProductHovered item={item} />}
       </div>
     </div>
   );
 }
 
-function CardProductHovered() {
+function CardProductHovered(item) {
+  const dispatch = useDispatch();
+  const { showAlert } = useAlert();
+  const wishlist = useSelector((state) => state.wishlistReducer.items || []);
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+
   const handleAddWishList = () => {
-    console.log("add wishlist");
+    if (!isAuthenticated) {
+      showAlert("error", "Please login to add items to wishlist!");
+      return;
+    }
+    const exists = wishlist.some((p) => p.productID._id === item.item._id);
+    if (exists) {
+      showAlert("warning", "Product already in wishlist!");
+      return;
+    }
+
+    dispatch(addWishlistItem(item.item._id)); 
+    showAlert("success", "Wishlist updated!");
   };
+
   return (
     <div className="card-product-hovered-container">
       <div className="card-product-hovered">

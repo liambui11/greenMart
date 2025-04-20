@@ -1,9 +1,50 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { deleteAll } from "../../actions/cart";
+import axiosInstance from "../../untils/axiosInstance";
+import Swal from "sweetalert2";
 import "./CheckoutPage.css";
 
 const CheckoutPage = () => {
-  const cart = useSelector((state) => state.cartReducer);
+  const cart = useSelector((state) => state.cartReducer.items);
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      navigate("/login");
+    }
+    
+    if (cart.length === 0) {
+      navigate("/cart");
+    }
+  }, [isAuthenticated, cart, navigate]);
+
+  useEffect(() => {
+    const fetchUserDetail = async () => {
+      try {
+        const res = await axiosInstance.get('/api/v1/users/detail');
+        if (res.data.code === 200) {
+          const info = res.data.info;
+          setFormValues((prev) => ({
+            ...prev,
+            fullName: info.userName || "",
+            phoneNumber: info.userPhone || "",
+            address: info.userAddress || "",
+          }));
+        }
+      } catch (error) {
+        console.error("Failed to fetch user details", error);
+      }
+    };
+  
+    if (isAuthenticated) {
+      fetchUserDetail();
+    }
+  }, [isAuthenticated]);
 
   const [formValues, setFormValues] = useState({
     fullName: "",
@@ -40,6 +81,7 @@ const CheckoutPage = () => {
     }
 
     setFormErrors((prevErrors) => ({ ...prevErrors, [name]: error }));
+    return error;
   };
 
   const handleInputChange = (e) => {
@@ -48,29 +90,110 @@ const CheckoutPage = () => {
     validateField(name, value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    validateField("fullName", formValues.fullName);
-    validateField("phoneNumber", formValues.phoneNumber);
-    validateField("address", formValues.address);
+    const fullNameError = validateField("fullName", formValues.fullName);
+    const phoneError = validateField("phoneNumber", formValues.phoneNumber);
+    const addressError = validateField("address", formValues.address);
 
-    if (
-      !formErrors.fullName &&
-      !formErrors.phoneNumber &&
-      !formErrors.address
-    ) {
-      // alert("Order Confirmed!");
-      // Gửi thông tin đi đâu đó nếu cần
+    if (!fullNameError && !phoneError && !addressError) {
+      const result = await Swal.fire({
+        title: "Are you sure?",
+        text: "Do you want to confirm your order?",
+        icon: "question",
+        showCancelButton: true,
+        confirmButtonText: "Yes, confirm it!",
+        cancelButtonText: "No, cancel",
+        customClass: {
+          popup: "my-swal-popup",
+          title: "my-swal-title",
+          content: "my-swal-content",
+        },
+      });
+  
+      if (result.isConfirmed) {
+        try {
+          const orderData = {
+            customerInfor: {
+              name: formValues.fullName,
+              address: formValues.address,
+              phone: formValues.phoneNumber,
+            },
+            orderItemList: cart.map((item) => ({
+              productID: item.productID._id,
+              productPrice: item.productID.productPrice,
+              productDiscountPercentage: item.productID.productDiscountPercentage || 0,
+              quantity: item.quantity,
+            })),
+            orderPaymentMethod: "cod",
+            promotionID: formValues.promotion || null,
+          };
+      
+          const res = await axiosInstance.post("/api/v1/orders", orderData);
+      
+          if (res.data.code === 200) {
+            Swal.fire({
+              title: "Order Confirmed!",
+              text: "Thank you for your purchase.",
+              icon: "success",
+              confirmButtonText: "OK",
+              customClass: {
+                popup: "my-swal-popup",
+                title: "my-swal-title",
+                content: "my-swal-content",
+              },
+            });
+      
+            dispatch(deleteAll());
+            navigate("/");
+          } else {
+            Swal.fire({
+              title: "Error",
+              text: res.data.message || "Something went wrong. Please try again.",
+              icon: "error",
+              customClass: {
+                popup: "my-swal-popup",
+                title: "my-swal-title",
+                content: "my-swal-content",
+              },
+            });
+          }
+        } catch (error) {
+          console.error("Order submission failed", error);
+          Swal.fire({
+            title: "Error",
+            text: "Unable to submit your order. Please try again later.",
+            icon: "error",
+            customClass: {
+              popup: "my-swal-popup",
+              title: "my-swal-title",
+              content: "my-swal-content",
+            },
+          });
+        }
+      }
+      
     }
   };
 
+  const formatPrice = (value) =>
+    value.toLocaleString("en-US", {
+      style: "currency",
+      currency: "USD",
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 2,
+  });  
+
   const calculateTotal = () => {
-    return cart.reduce(
-      (total, item) => total + item.info.productPrice * item.quantity,
-      0
-    );
+    return cart.reduce((total, item) => {
+      const price = item.productID.productPrice;
+      const discount = item.productID.productDiscountPercentage || 0;
+      const discountedPrice = price * (1 - discount / 100);
+      return total + discountedPrice * item.quantity;
+    }, 0);
   };
+  
 
   return (
     <div className="container checkout-page">
@@ -94,15 +217,25 @@ const CheckoutPage = () => {
               <tr key={item.id}>
                 <td>
                   <img
-                    src={item.info.productImage}
-                    alt={item.info.productName}
+                    src={item.productID.productImage}
+                    alt={item.productID.productName}
                     width="50"
                   />{" "}
-                  {item.info.productName}
+                  {item.productID.productName}
                 </td>
-                <td>${item.info.productPrice}</td>
+                <td>
+                  {formatPrice(
+                    item.productID.productPrice * (1 - item.productID.productDiscountPercentage / 100)
+                  )}
+                </td>
                 <td>{item.quantity}</td>
-                <td>${item.info.productPrice * item.quantity}</td>
+                <td>
+                  {formatPrice(
+                    item.productID.productPrice *
+                      (1 - item.productID.productDiscountPercentage / 100) *
+                      item.quantity
+                  )}
+                </td>
               </tr>
             ))}
           </tbody>
@@ -114,13 +247,13 @@ const CheckoutPage = () => {
           <p className="checkout-summary__label">
             Subtotal:{" "}
             <span className="checkout-summary__value">
-              ${calculateTotal()}
+            {formatPrice(calculateTotal())}
             </span>
           </p>
           <p className="checkout-summary__label">
             Total:{" "}
             <span className="checkout-summary__value">
-              ${calculateTotal()}
+            {formatPrice(calculateTotal())}
             </span>
           </p>
         </div>

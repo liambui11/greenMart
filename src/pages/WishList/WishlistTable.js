@@ -17,7 +17,7 @@ const WishlistTable = ({ wishlist }) => {
                 </thead>
                 <tbody>
                     {wishlist.map((item) => (
-                        <WishlistRow key={item.id} item={item} />
+                        <WishlistRow key={item._id} item={item.productID} />
                     ))}
                 </tbody>
             </table>
