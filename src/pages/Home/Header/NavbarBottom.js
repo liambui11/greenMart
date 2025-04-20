@@ -8,45 +8,54 @@ import { useNavigate } from 'react-router-dom';
 import { MdKeyboardArrowRight } from "react-icons/md";
 
 
-const renderCategoryTreeMobile = (categories) => {
+const renderCategoryTreeMobile = (categories,navigate) => {
+  const handleClick = (item) =>{
+    navigate(`/categorydetail/${item.categorySlug}`, {
+      state: { item },
+    });
+  }
     return categories.map((category, index) => (
       <li key={index} className="dropdown-submenu1 mb-2">
-        <Link
-          href={`/category/${category.categorySlug}`}
+        <div
+          onClick={()=>handleClick(category)}
           className="text-decoration-none text-dark d-block"
         >
           {category.categoryName}
           {category.children && category.children.length > 0 && (
             <MdKeyboardArrowRight />
           )}
-        </Link>
+        </div>
   
         {category.children && category.children.length > 0 && (
           <ul className="submenu1 list-unstyled ps-3">
-            {renderCategoryTreeMobile(category.children)}
+            {renderCategoryTreeMobile(category.children,navigate)}
           </ul>
         )}
       </li>
     ));
   };
 
-const renderCategoryTree = (categories) => {
+const renderCategoryTree = (categories,navigate) => {
+  const handleClick = (item) =>{
+    navigate(`/categorydetail/${item.categorySlug}`, {
+      state: { item },
+    });
+  }
     return categories.map((category, index) => (
       <li key={index} className="dropdown-submenu">
-        <Link
-          href={`/category/${category.categorySlug}`}
+        <div
+          onClick={()=>handleClick(category)}
           className="dropdown-item text-decoration-none"
         >
           {category.categoryName}
           {category.children && category.children.length > 0 && (
             <MdKeyboardArrowRight />
           )}
-        </Link>
+        </div>
   
         {category.children && category.children.length > 0 && (
           <ul className="submenu dropdown-menu">
-            {renderCategoryTree(category.children)}
-            
+            {renderCategoryTree(category.children,navigate)}
           </ul>
         )}
       </li>
@@ -54,8 +63,6 @@ const renderCategoryTree = (categories) => {
   };
 
 
-  
-  
 function NavbarBottom() {
     const [isSticky, setSticky] = useState(false);
 
@@ -146,7 +153,7 @@ function NavbarBottom() {
                             <div className="mt-2 collapse" id="collapseExample">
                                 <div className="card card-body">
                                     <ul className="mb-0 list-unstyled">
-                                    {renderCategoryTreeMobile(categoriesData)}
+                                    {renderCategoryTreeMobile(categoriesData,navigate)}
                                     </ul>
                                 </div>
                             </div>
@@ -163,7 +170,7 @@ function NavbarBottom() {
                                     </span>
                                 </button>
                                 <ul className="dropdown-menu rounded-0" aria-labelledby="dropdownMenuButton1">
-                                    {renderCategoryTree(categoriesData)}
+                                    {renderCategoryTree(categoriesData,navigate)}
                                 </ul>
                             </div>
 

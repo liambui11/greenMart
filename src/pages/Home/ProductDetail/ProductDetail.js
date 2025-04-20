@@ -9,60 +9,58 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../../actions/cart";
 import { addWishlistItem } from "../../../actions/wishlist";
 import { useAlert } from "../../../Context/AlertContext";
+import { useParams } from "react-router-dom";
 
 const ProductDetail = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
   const navigate = useNavigate();
-
-  const handleClick =()=>{
-    navigate(`/categorydetail/${productdetail?.category?.categorySlug}`,{
-        state: productdetail.category
-    });
-  }
+  const { productSlug } = useParams(); // lấy slug từ URL
 
   const [quantity, setQuantity] = useState(1);
-  const [productdetail, setProductdetail] = useState([]);
-  const location = useLocation();
-  const product = location.state?.item;
+  const [productdetail, setProductdetail] = useState(null);
+
   const cartItems = useSelector((state) => state.cartReducer.items);
   const wishlistItems = useSelector((state) => state.wishlistReducer.items);
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const dispatch = useDispatch();
   const { showAlert } = useAlert();
 
-  console.log(`product:${product}`);
-  const url = "https://localhost3000/api/v1/products/detail/";
+  const url = "http://localhost:3000/api/v1/products/detail/";
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   useEffect(() => {
     const fetchProductDetail = async () => {
       try {
-        const res = await fetch(`${url}${product?.productSlug}`);
+        const res = await fetch(`${url}${productSlug}`);
         if (!res.ok) {
-          throw new Error('Network response was not ok');
+          throw new Error("Network response was not ok");
         }
         const data = await res.json();
+        console.log(data.info);
         setProductdetail(data.info);
       } catch (error) {
-        console.error('Fetch product detail failed:', error);
+        console.error("Fetch product detail failed:", error);
       }
     };
-  
-    fetchProductDetail();
-  }, []);
-  
+
+    if (productSlug) fetchProductDetail();
+  }, [productSlug]);
+
+  const handleClick = () => {
+    navigate(`/categorydetail/${productdetail?.category?.categorySlug}`);
+  };
 
   const handleSubtract = () => {
     setQuantity((prevQuantity) => Math.max(1, prevQuantity - 1));
   };
+
   const handlePlus = () => {
-    setQuantity((prevQuantity) =>{
-      if(prevQuantity<product?.productStock){
+    setQuantity((prevQuantity) => {
+      if (prevQuantity < productdetail?.productStock) {
         return prevQuantity + 1;
-      }
-      else{
+      } else {
         return prevQuantity;
       }
     });
@@ -73,15 +71,18 @@ const ProductDetail = () => {
       showAlert("error", "Please login to add items to cart!");
       return;
     }
-    const existingItem = cartItems.find((i) => i.productID._id === product._id);
+
+    const existingItem = cartItems.find(
+      (i) => i.productID._id === productdetail._id
+    );
     const currentQuantity = existingItem?.quantity || 0;
 
-    if (currentQuantity + quantity > product.productStock) {
+    if (currentQuantity + quantity > productdetail.productStock) {
       showAlert("error", "Quantity in cart exceeds stock.");
       return;
     }
 
-    dispatch(addToCart(product._id, quantity));
+    dispatch(addToCart(productdetail._id, quantity));
     showAlert("success", "Added to cart!");
   };
 
@@ -90,12 +91,14 @@ const ProductDetail = () => {
       showAlert("error", "Please login to add items to wishlist!");
       return;
     }
-  
-    const exists = wishlistItems.find((i) => i.productID._id === product._id);
+
+    const exists = wishlistItems.find(
+      (i) => i.productID._id === productdetail._id
+    );
     if (exists) {
       showAlert("warning", "Product already exists in wishlist!");
     } else {
-      dispatch(addWishlistItem(product._id));
+      dispatch(addWishlistItem(productdetail._id));
       showAlert("success", "Added to wishlist!");
     }
   };
@@ -112,32 +115,38 @@ const ProductDetail = () => {
               <i className="fa-solid fa-angle-right"></i>
             </li>
             <li>
-              <Link>{product?.productName}</Link>
+              <Link>{productdetail?.productName}</Link>
             </li>
           </ul>
         </div>
         <div className="ProductDetail row">
           <div className="imgSectionMain">
-            <img src={product?.productImage} alt="" />
-            <p className={product?.productDiscountPercentage===0 ? 'active':'discount'}>
-              {product?.productDiscountPercentage}
+            <img src={productdetail?.productImage} alt="" />
+            <p
+              className={
+                productdetail?.productDiscountPercentage === 0
+                  ? "active"
+                  : "discount"
+              }
+            >
+              {productdetail?.productDiscountPercentage}
               <MdOutlinePercent />
             </p>
           </div>
           <div className="contentSectionMain">
-            <h1>{product?.productName}</h1>
+            <h1>{productdetail?.productName}</h1>
             <hr />
 
             <div className="price">
               <p>Price:</p>
-              <p className="Promotional"> {product?.productPrice} </p>
-              <p className="List">${product?.priceNew}</p>
+              <p className="Promotional"> {productdetail?.productPrice} </p>
+              <p className="List">${productdetail?.priceNew}</p>
             </div>
 
             <div className="availability">
               <p>
                 <span>In Stock:</span>
-                {product?.productStock}
+                {productdetail?.productStock}
               </p>
 
               <p onClick={handleClick}>
@@ -161,22 +170,23 @@ const ProductDetail = () => {
             </div>
 
             <div className="btnAddHeart">
-              {
-                product?.productStock>0?
-                  (<button className="btnAdd" onClick={handleAddToCart} type="button">
-                    <i className="fa-solid fa-plus"></i>
-                    Add to Cart
-                  </button>)
-                :
-                (<button className="btnOutofStock" type="button">
+              {productdetail?.productStock > 0 ? (
+                <button
+                  className="btnAdd"
+                  onClick={handleAddToCart}
+                  type="button"
+                >
+                  <i className="fa-solid fa-plus"></i>
+                  Add to Cart
+                </button>
+              ) : (
+                <button className="btnOutofStock" type="button">
                   Out of Stock
-                </button>)
-              }
+                </button>
+              )}
               <div className="ProductDetail__heart">
                 <div>
-                  <FaRegHeart
-                   onClick={handleAddToWishlist}
-                   />
+                  <FaRegHeart onClick={handleAddToWishlist} />
                 </div>
               </div>
             </div>
@@ -184,7 +194,7 @@ const ProductDetail = () => {
             <div className="describe">
               <p>
                 Describe:
-                <span>{product?.productDescription}</span>
+                <span>{productdetail?.productDescription}</span>
               </p>
             </div>
           </div>

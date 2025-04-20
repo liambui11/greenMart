@@ -1,149 +1,148 @@
 @media (max-width: 992px) {
-    /* Khi màn hình nhỏ hơn 768px */
-    /* Định dnag lại thanh search và btn */
-    .input-group input[type="search"] {
-        height: 3.5rem !important;
-        font-size: 1.25rem;
-    }
+  /* Khi màn hình nhỏ hơn 768px */
+  /* Định dnag lại thanh search và btn */
+  .input-group input[type="search"] {
+    height: 3.5rem !important;
+    font-size: 1.25rem;
+  }
 
-    .input-group-append button {
-        height: 3.5rem !important;
-    }
+  .input-group-append button {
+    height: 3.5rem !important;
+  }
 
-    /* Định dạng lại btn Menu */
-    .directory1 .btn {
-        height: 3.5rem !important;
-        font-weight: bold;
-        font-size: 1.25rem;
-    }
-    /* ---------- */
-    /* Định dạng lại form cho nav */
-    .nvb {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        width: 80%;
-    }
+  /* Định dạng lại btn Menu */
+  .directory1 .btn {
+    height: 3.5rem !important;
+    font-weight: bold;
+    font-size: 1.25rem;
+  }
+  /* ---------- */
+  /* Định dạng lại form cho nav */
+  .nvb {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 80%;
+  }
 
-    .navbar-nav {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-        margin-top: 2rem;
-    }
+  .navbar-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 2rem;
+  }
 
-    .navbar-nav .nav-item {
-        width: auto;
-        text-align: center;
-        /* border: 1px solid black; */
-        margin-bottom: 3rem;
-    }
+  .navbar-nav .nav-item {
+    width: auto;
+    text-align: center;
+    /* border: 1px solid black; */
+    margin-bottom: 3rem;
+  }
 
-    .navbar-nav .nav-item:not(:last-child),
-    .navbar-nav .nav-item:last-child {
-        border-bottom: 1px solid #ccc;
-        width: 50%;
-    }
+  .navbar-nav .nav-item:not(:last-child),
+  .navbar-nav .nav-item:last-child {
+    border-bottom: 1px solid #ccc;
+    width: 50%;
+  }
 
-    .nvb ul li a:hover {
-        color: green !important;
-    }
+  .nvb ul li a:hover {
+    color: green !important;
+  }
 }
 
 @media (min-width: 992px) {
-    /* Dinh dang lai nut va dropdown*/
-    .directory2 .btn {
-        background-color: #0aad0a;
-        width: 23rem;
-        height: 5rem;
-        color: white;
-        font-weight: bold;
-        font-size: 1.5rem;
-        border: 2px solid #0aad0a;
-        border-radius: 2rem;
-    }
+  /* Dinh dang lai nut va dropdown*/
+  .directory2 .btn {
+    background-color: #0aad0a;
+    width: 23rem;
+    height: 5rem;
+    color: white;
+    font-weight: bold;
+    font-size: 1.5rem;
+    border: 2px solid #0aad0a;
+    border-radius: 2rem;
+  }
 
-    .directory2 .btn:hover {
-        background-color: green;
-        color: white;
-    }
+  .directory2 .btn:hover {
+    background-color: green;
+    color: white;
+  }
 
-    .directory2 .dropdown-menu {
-        margin-top: 2rem !important;
-        height: 30rem !important;
-        flex-direction: column;
-        /* justify-content: space-between !important; */
-        
-        background-color: white;
-        color: white;
-    }
+  .directory2 .dropdown-menu {
+    margin-top: 2rem !important;
+    height: 30rem !important;
+    flex-direction: column;
+    /* justify-content: space-between !important; */
 
-    .directory2 .dropdown-menu.show {
-        display: flex !important;
-    }
+    background-color: white;
+    color: white;
+  }
 
-    .directory2 .dropdown-menu .dropdown-item {
-        height: 4rem;
-        /* margin-top: 2rem !important; */
-        /* margin: auto !important; */
-        font-weight: 550;
-        font-size: 1.75rem;
-        border-bottom: 1px solid #ccc !important;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+  .directory2 .dropdown-menu.show {
+    display: flex !important;
+  }
 
-    .navbar .dropdown-menu {
-        border-radius: 1rem;
-        width: 25rem;
-        font-size: 1.5rem;
-        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    }
+  .directory2 .dropdown-menu .dropdown-item {
+    height: 4rem;
+    /* margin-top: 2rem !important; */
+    /* margin: auto !important; */
+    font-weight: 550;
+    font-size: 1.75rem;
+    border-bottom: 1px solid #ccc !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-    .nvb ul li a:hover {
-        color: green !important;
-    }
+  .navbar .dropdown-menu {
+    border-radius: 1rem;
+    width: 25rem;
+    font-size: 1.5rem;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  }
 
-    /* ---------- */
+  .nvb ul li a:hover {
+    color: green !important;
+  }
 
-    .navbar {
-        position: fixed;
-        top: 0;
-        z-index: 1000;
-        width: 100%;
-        background-color: white;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
+  /* ---------- */
+
+  .navbar {
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
 }
 
-.submenu1{
-    display: none;
+.submenu1 {
+  display: none;
 }
 
 .dropdown-submenu1:hover > .submenu1 {
-    display: block;
+  display: block;
 }
 
-.dropdown-submenu{
-    /* margin-left: 1rem; */
-    height: 4rem;
-    margin-top: 2rem !important;
-    font-weight: 550;
-    font-size: 1.75rem;
+.dropdown-submenu {
+  /* margin-left: 1rem; */
+  height: 4rem;
+  margin-top: 2rem !important;
+  font-weight: 550;
+  font-size: 1.75rem;
 }
-
 
 .dropdown-submenu:hover > .submenu {
-    display: block;
+  display: block;
 }
-  
+
 .submenu {
-    display: none;
-    left: 100%;
-    top: 0;
-    margin-top: 2rem;
-    min-width: 10rem;
-    max-height: 30rem !important;
+  display: none;
+  left: 100%;
+  top: 0;
+  margin-top: 2rem;
+  min-width: 10rem;
+  max-height: 30rem !important;
 }

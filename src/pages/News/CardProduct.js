@@ -14,15 +14,12 @@ function CardProduct({ item }) {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { showAlert } = useAlert(); 
+  const { showAlert } = useAlert();
   const cart = useSelector((state) => state.cartReducer.items || []);
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 
-
   const handleClick = () => {
-    navigate(`/productdetail/${item.productSlug}`, {
-      state: { item },
-    });
+    navigate(`/productdetail/${item.productSlug}`);
   };
 
   const handleAddToCard = () => {
@@ -108,7 +105,7 @@ function CardProductHovered(item) {
       return;
     }
 
-    dispatch(addWishlistItem(item.item._id)); 
+    dispatch(addWishlistItem(item.item._id));
     showAlert("success", "Wishlist updated!");
   };
 
