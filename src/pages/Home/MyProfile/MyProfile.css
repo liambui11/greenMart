@@ -1,110 +1,109 @@
 /* ----------My Profile---------- */
 .Profile {
-    margin: 4rem auto;
-    /* height: 100vh; */
-    color: green;
+  margin: 4rem auto;
+  /* height: 100vh; */
+  color: green;
 }
 
 .Profile__tittle {
-    margin: 2rem auto;
+  margin: 2rem auto;
 }
 
-.Profile__tittle h1{
-    font-weight: 700;
+.Profile__tittle h1 {
+  font-weight: 700;
 }
 
 .Profile__infor {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .Profile__infor__form {
-    width: 60%;
-    margin-left: 2%;
-    margin-right: 20%;
+  width: 60%;
+  margin-left: 2%;
+  margin-right: 20%;
 }
-
 
 .Profile__infor__form__btn {
-    height: 3rem;
-    width: 20rem;
-    border: none;
-    background-color: #0aad0a;
-    color: white;
+  height: 4rem;
+  width: 25rem;
+  font-size: larger;
+  border: none;
+  background-color: #0aad0a;
+  color: white;
 }
 
-.Profile__infor__form__btn:hover{
-    background-color: #bbb;
-    color: black;
+.Profile__infor__form__btn:hover {
+  background-color: #bbb;
+  color: black;
 }
 
 .Profile__infor__Fullname,
 .Profile__infor__Email,
 .Profile__infor__Address,
 .Profile__infor__Phone {
-    margin-bottom: 2rem;
+  margin-bottom: 2rem;
 }
 
 .Profile__infor__Fullname label,
 .Profile__infor__Email label,
 .Profile__infor__Address label,
-.Profile__infor__Phone label{
-    font-size: 2rem;
-    font-weight: 500;
+.Profile__infor__Phone label {
+  font-size: 2rem;
+  font-weight: 500;
 }
 
 .Profile__infor__Fullname input,
 .Profile__infor__Email input,
 .Profile__infor__Address input,
 .Profile__infor__Phone input {
-    height: 4rem;
-    /* font-size: 1.5rem; */
-    margin: 1.5rem 0;
-    font-size: 1.75rem;
-    font-weight: 500;
+  height: 4rem;
+  /* font-size: 1.5rem; */
+  margin: 1.5rem 0;
+  font-size: 1.75rem;
+  font-weight: 500;
 }
 
-
 .Profile__infor__avatar {
-    width: 40%;
-    margin: auto;
+  width: 40%;
+  margin: auto;
 }
 
 .Profile__infor__avatar__img {
-    border-radius: "50%";
-    object-fit: "cover";
-    border-radius: 50%;
-    display: block;
+  border-radius: "50%";
+  object-fit: "cover";
+  border-radius: 50%;
+  display: block;
 }
 
 .Profile__infor__avatar #fileInput {
-    display: none;
+  display: none;
 }
 
 .Profile__infor__avatar__btn {
-    background: #0aad0a;
-    border: none;
-    margin-top: 2rem;
-    color: white;
-    width: 20rem;
+  background: #0aad0a;
+  border: none;
+  margin-top: 2rem;
+  color: white;
+  width: 20rem;
 }
 
-.Profile__infor__avatar__btn:hover{
-    background-color: #bbb;
-    color: black;
+.Profile__infor__avatar__btn:hover {
+  background-color: #bbb;
+  color: black;
 }
 
 @media (max-width: 500px) {
-    .Profile__infor {
-        flex-direction: column;
-    }
-    .Profile__infor__form {
-        width: 100%;
-        margin: 0 auto;
-    }
-    .Profile__infor__avatar {
-        width: 100%;
-        margin: 2rem auto;
-    }
+  .Profile__infor {
+    flex-direction: column;
+  }
+  .Profile__infor__form {
+    width: 100%;
+    margin: 0 auto;
+  }
+  .Profile__infor__avatar {
+    width: 100%;
+    margin: 2rem auto;
+  }
 }

@@ -1,85 +1,82 @@
 .pageSearch {
-    margin: auto;
+  margin: auto;
 }
 
 .pageSearch__Tittle {
-    background-color: #ccc;
-    padding: 2rem;
-    margin: auto;
+  background-color: #ccc;
+  padding: 2rem;
+  margin: auto;
 }
 
-
 .pageSearch__info {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    margin: 3rem auto;
-    /* Cho responsive */
-
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin: 3rem auto;
+  /* Cho responsive */
 }
 
 /* .pageSearch__Filter {} */
 .pageSearch__Filter__content {
-    /* background-color: rgb(129, 126, 126); */
-    /* width: 20rem;
+  /* background-color: rgb(129, 126, 126); */
+  /* width: 20rem;
     height: 4rem; */
-    /* display: flex;
+  /* display: flex;
     justify-content: center;
     align-items: center; */
-    margin: auto 1rem;
-    border-radius: 1rem;
-    color: rgb(129, 126, 126);
-    font-size: large;
-    font-weight: 700;
+  margin: auto 1rem;
+  border-radius: 1rem;
+  color: rgb(129, 126, 126);
+  font-size: large;
+  font-weight: 700;
 }
 
 .pageSearch__Filter__btn {
-    width: 20rem;
-    height: 4rem;
-    border: 1px solid #0aad0a;
-    border-radius: 1rem;
-    color: #0aad0a;
-    margin: 1rem 1rem;
+  width: 20rem;
+  height: 4rem;
+  border: 1px solid #0aad0a;
+  border-radius: 1rem;
+  color: #0aad0a;
+  margin: 1rem 1rem;
 }
 
 .pageSearch__Filter__List {
-    position: absolute;
-    /* background: white; */
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin-top: 5px;
-    z-index: 10;
+  position: absolute;
+  /* background: white; */
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-top: 5px;
+  z-index: 10;
 }
 
 .pageSearch__Filter__List li {
-    list-style: none;
+  list-style: none;
 }
 
 .pageSearch__Filter__List li button {
-    width: 15rem;
-    height: 3rem;
-    border: 1px solid #0aad0a;
-    border-radius: 1rem;
-    margin: 0.5rem auto;
-    color: #0aad0a;
+  width: 15rem;
+  height: 3rem;
+  border: 1px solid #0aad0a;
+  border-radius: 1rem;
+  margin: 0.5rem auto;
+  color: #0aad0a;
 }
 
 .pageSearch__Filter__List li button:hover,
 .pageSearch__Filter__btn:hover {
-    background-color: #0aad0a;
-    color: white;
+  background-color: #0aad0a;
+  color: white;
 }
 
 .pageSearch__Filter {
-    position: relative;
-    /* để .__List bám vào container này */
+  position: relative;
 }
 
 .productList {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(23rem, 1fr));
-    place-items: center;
-    margin-bottom: 2rem;
-    /* display: flex; */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(23rem, 1fr));
+  place-items: center;
+  margin-bottom: 2rem;
+  /* display: flex; */
 }
