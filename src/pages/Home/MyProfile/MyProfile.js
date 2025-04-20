@@ -5,9 +5,11 @@ import Validation from "./MyProfileValidation";
 import "./MyProfile.css";
 import axiosInstance from "../../../untils/axiosInstance";
 import Swal from "sweetalert2";
+import OverlayLoading from "../../../components/OverlayLoading/OverlayLoading";
 
 const MyProfile = () => {
   const [file, setFile] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   const [values, setValues] = useState({
     name: "",
@@ -17,6 +19,7 @@ const MyProfile = () => {
   });
 
   useEffect(() => {
+    setIsLoading(true);
     const fetchUser = async () => {
       try {
         const res = await axiosInstance.get("/api/v1/users/detail");
@@ -34,6 +37,8 @@ const MyProfile = () => {
         }
       } catch (err) {
         console.error("Lỗi khi lấy thông tin user:", err);
+      } finally {
+        setIsLoading(false);
       }
     };
     fetchUser();
@@ -52,30 +57,25 @@ const MyProfile = () => {
     event.preventDefault();
     const validationErrors = Validation(values);
     setErrors(validationErrors);
-    console.log("bắt đầu chạy câpj nhật");
+    setIsLoading(true);
 
     if (Object.keys(validationErrors).length === 0) {
       try {
-        const res = await axiosInstance.put("/api/v1/users/update", {
-          userName: values.name,
-          userEmail: values.email,
-          userPhone: values.phone,
-          userAddress: values.address,
-        });
-        // const formData = new FormData();
-        // formData.append("name",values.name);
-        // formData.append("email",values.email);
-        // formData.append("address",values.address);
-        // formData.append("phone",values.phone);
-        // if(document.getElementById("fileInput").files[0]){
-        //     formData.append("avatar",document.getElementById("fileInput").files[0])
-        // }
+        const formData = new FormData();
+        formData.append("userName", values.name);
+        formData.append("userPhone", values.phone);
+        formData.append("userAddress", values.address);
 
-        // const res = await axiosInstance.put('/api/v1/users/update', formData,{
-        //     headers:{
-        //         "Content-Type": "multipart/form-data"
-        //     }
-        // })
+        const imageFile = document.getElementById("fileInput").files[0];
+        if (imageFile) {
+          formData.append("userAvatar", imageFile);
+        }
+
+        const res = await axiosInstance.put("/api/v1/users/update", formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        });
 
         if (res.data.code === 200) {
           Swal.fire({
@@ -88,6 +88,8 @@ const MyProfile = () => {
       } catch (error) {
         console.error("Lỗi khi cập nhật thông tin:", error);
         alert("Đã xảy ra lỗi khi cập nhật!");
+      } finally {
+        setIsLoading(false);
       }
     }
   };
@@ -196,7 +198,7 @@ const MyProfile = () => {
                   type="file"
                   id="fileInput"
                   onChange={handleButtonChange}
-                  accept="image/*"
+                  accept=".png, .webp, .avif, .jpeg, .jpg"
                 />
                 <button
                   className="Profile__infor__avatar__btn"
@@ -208,6 +210,7 @@ const MyProfile = () => {
               </label>
             </div>
           </div>
+          {isLoading && <OverlayLoading />}
         </div>
       </div>
     </div>

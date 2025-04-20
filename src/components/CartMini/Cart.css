@@ -125,6 +125,10 @@
   color: black;
 }
 
+.cart-button:hover .cart-icon {
+  color: green;
+}
+
 .cart-badge {
   position: absolute;
   top: -5px;
