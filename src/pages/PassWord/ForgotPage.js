@@ -1,11 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import OverlayLoading from "../../components/OverlayLoading/OverlayLoading";
+import axios from "axios";
 import "./ForgotPage.css"; // Import CSS
 
 function ForgotPassword() {
     const [email, setEmail] = useState("");
     const [errors, setErrors] = useState({});
     const navigate = useNavigate();
+    const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+    const [isLoading, setIsLoading] = useState(false);
+
+    useEffect(() => {
+        if (isAuthenticated) {
+            navigate("/");
+        }
+    }, [isAuthenticated, navigate]);
 
     const validateEmail = (email) => {
         if (!email) return "Email is required";
@@ -21,30 +32,33 @@ function ForgotPassword() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const emailError = validateEmail(email);
-
+    
         if (emailError) {
             setErrors({ email: emailError });
             return;
         }
-
-        // try {
-        //     const response = await fetch("/api/auth/forgot-password", {
-        //         method: "POST",
-        //         headers: { "Content-Type": "application/json" },
-        //         body: JSON.stringify({ email }),
-        //     });
-
-        //     const data = await response.json();
-        //     if (data.success) {
-        //         navigate("/password/otp", { state: { email } });
-        //     } else {
-        //         setErrors({ email: data.message || "Something went wrong!" });
-        //     }
-        // } catch (err) {
-        //     setErrors({ email: "Cannot connect to the server. Please try again." });
-        // }
-        navigate("/password/otp", { state: { email } });
+    
+        setIsLoading(true);
+        try {
+            const response = await axios.post("http://localhost:3000/api/v1/users/password/forgot", { email });
+    
+            if (response.status === 200) {
+                navigate("/password/otp", { state: { email } });
+            } else {
+                setErrors({ email: response.data.message || "Something went wrong!" });
+            }
+        } catch (err) {
+            if (err.response && err.response.data && err.response.data.message) {
+                setErrors({ email: err.response.data.message });
+            } else {
+                setErrors({ email: "Cannot connect to the server. Please try again." });
+            }
+        } finally {
+            setIsLoading(false); 
+        }
+        
     };
+    
 
     return (
         <div className="forgot-password-container">
@@ -65,6 +79,8 @@ function ForgotPassword() {
 
                 <button type="submit" className="forgot-password-btn">Continue</button>
             </form>
+
+            {isLoading && <OverlayLoading />}
         </div>
     );
 }

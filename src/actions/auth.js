@@ -3,6 +3,7 @@ import axios from "axios";
 
 export const loginUser = (email, password, showAlert) => {
   return async (dispatch) => {
+    dispatch({ type: "AUTH_LOADING" });
     try {
       const res = await axiosInstance.post("/api/v1/users/login", {
         userEmail: email,
@@ -28,6 +29,8 @@ export const loginUser = (email, password, showAlert) => {
       dispatch({ type: "LOGIN_FAILURE", payload: message });
       showAlert("error", message);
       return { success: false };
+    } finally {
+      dispatch({ type: "AUTH_DONE" }); 
     }
   };
 };
@@ -38,7 +41,7 @@ export const logoutUser = () => async (dispatch) => {
       "/api/v1/users/logout",
       {},
       {
-        baseURL: "https://localhost:3000",
+        baseURL: "http://localhost:3000",
         withCredentials: true,
       }
     );
@@ -51,9 +54,10 @@ export const logoutUser = () => async (dispatch) => {
 };
 
 export const checkAuth = () => async (dispatch) => {
+  dispatch({ type: "AUTH_LOADING" })
   try {
     const res = await axios.get("/api/v1/users/refresh-token", {
-      baseURL: "https://localhost:3000",  
+      baseURL: "http://localhost:3000",  
       withCredentials: true,
     });
 
@@ -68,5 +72,7 @@ export const checkAuth = () => async (dispatch) => {
   } catch (error) {
     console.error("Error during checkAuth:", error);
     dispatch({ type: "LOGOUT" });
+  } finally {
+    dispatch({ type: "AUTH_DONE" });
   }
 };

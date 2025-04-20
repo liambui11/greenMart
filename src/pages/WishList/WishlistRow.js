@@ -7,7 +7,7 @@ import { useAlert } from "../../Context/AlertContext";
 import "./css/WishlistRow.css";
 
 const WishlistRow = ({ item }) => {
-    const cart = useSelector(state => state.cartReducer);
+    const cart = useSelector(state => state.cartReducer.items);
     const dispatch = useDispatch();
     const { showAlert } = useAlert();
 

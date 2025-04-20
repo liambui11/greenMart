@@ -1,17 +1,30 @@
-const wishlistReducer = (state = [], action) => {
-  switch (action.type) {
-    case "SET_WISHLIST":
-      return action.payload;
+const initialState = {
+  items: [],
+  isLoading: false,
+};
 
-    case "ADD_WISHLIST_ITEM":
-      return [...state, action.payload];
+const wishlistReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case "WISHLIST_LOADING":
+      return { ...state, isLoading: true };
+
+    case "WISHLIST_DONE":
+      return { ...state, isLoading: false };
+
+    case "FETCH_WISHLIST_SUCCESS":
+    case "ADD_WISHLIST_SUCCESS":
+    case "SET_WISHLIST":
+      return { items: action.payload, isLoading: false };
 
     case "DELETE_WISHLIST_ITEM":
-      return state.filter(item => item.productID._id !== action.productID);
+      return {
+        items: state.items.filter(item => item.productID._id !== action.productID),
+        isLoading: false,
+      };
 
-      case "CLEAR_WISHLIST":
-      case "LOGOUT":
-        return [];
+    case "CLEAR_WISHLIST":
+    case "LOGOUT":
+      return { items: [], isLoading: false };
 
     default:
       return state;

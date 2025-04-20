@@ -20,7 +20,7 @@ function NavbarMiddle() {
         dispatch(logoutUser());
         // window.location.reload();
     };
-    const wishlist = useSelector((state) => state.wishlistReducer);
+    const wishlist = useSelector((state) => state.wishlistReducer.items);
     const totalQuantity = wishlist.length;
 
     const [searchQuery, setSearchQuery] = useState('');

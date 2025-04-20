@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "./ProductDetail.css";
-import { useState, useEffect } from "react";
 import { useLocation, useNavigate, Link } from "react-router-dom";
 import { FaRegHeart } from "react-icons/fa";
 import { MdOutlinePercent } from "react-icons/md";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart } from "../../../actions/cart";
+import { addWishlistItem } from "../../../actions/wishlist";
+import { useAlert } from "../../../Context/AlertContext";
 
 const ProductDetail = () => {
   useEffect(() => {
@@ -24,6 +27,11 @@ const ProductDetail = () => {
   const [productdetail, setProductdetail] = useState([]);
   const location = useLocation();
   const product = location.state?.item;
+  const cartItems = useSelector((state) => state.cartReducer.items);
+  const wishlistItems = useSelector((state) => state.wishlistReducer.items);
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const dispatch = useDispatch();
+  const { showAlert } = useAlert();
 
   console.log(`product:${product}`);
   const url = "https://localhost3000/api/v1/products/detail/";
@@ -61,8 +69,36 @@ const ProductDetail = () => {
   };
 
   const handleAddToCart = () => {
-    alert("Luân Loz tới nè cu")
-  }
+    if (!isAuthenticated) {
+      showAlert("error", "Please login to add items to cart!");
+      return;
+    }
+    const existingItem = cartItems.find((i) => i.productID._id === product._id);
+    const currentQuantity = existingItem?.quantity || 0;
+
+    if (currentQuantity + quantity > product.productStock) {
+      showAlert("error", "Quantity in cart exceeds stock.");
+      return;
+    }
+
+    dispatch(addToCart(product._id, quantity));
+    showAlert("success", "Added to cart!");
+  };
+
+  const handleAddToWishlist = () => {
+    if (!isAuthenticated) {
+      showAlert("error", "Please login to add items to wishlist!");
+      return;
+    }
+  
+    const exists = wishlistItems.find((i) => i.productID._id === product._id);
+    if (exists) {
+      showAlert("warning", "Product already exists in wishlist!");
+    } else {
+      dispatch(addWishlistItem(product._id));
+      showAlert("success", "Added to wishlist!");
+    }
+  };
 
   return (
     <nav>
@@ -138,7 +174,9 @@ const ProductDetail = () => {
               }
               <div className="ProductDetail__heart">
                 <div>
-                  <FaRegHeart />
+                  <FaRegHeart
+                   onClick={handleAddToWishlist}
+                   />
                 </div>
               </div>
             </div>

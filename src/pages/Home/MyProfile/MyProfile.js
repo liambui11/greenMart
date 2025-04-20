@@ -58,26 +58,27 @@ const MyProfile = () => {
         if(Object.keys(validationErrors).length===0){
             try{
 
-                const res = await axiosInstance.put('/api/v1/users/update', {
-                    userName: values.name,
-                    userEmail: values.email,
-                    userPhone: values.phone,
-                    userAddress: values.address,
-                });
-                // const formData = new FormData();
-                // formData.append("name",values.name);
-                // formData.append("email",values.email);
-                // formData.append("address",values.address);
-                // formData.append("phone",values.phone);
-                // if(document.getElementById("fileInput").files[0]){
-                //     formData.append("avatar",document.getElementById("fileInput").files[0])
-                // }
+                // const res = await axiosInstance.put('/api/v1/users/update', {
+                //     userName: values.name,
+                //     userEmail: values.email,
+                //     userPhone: values.phone,
+                //     userAddress: values.address,
+                // });
+                const formData = new FormData();
+                formData.append("userName", values.name);
+                formData.append("userPhone", values.phone);
+                formData.append("userAddress", values.address);
 
-                // const res = await axiosInstance.put('/api/v1/users/update', formData,{
-                //     headers:{
-                //         "Content-Type": "multipart/form-data"
-                //     }
-                // })
+                const imageFile = document.getElementById("fileInput").files[0];
+                if (imageFile) {
+                    formData.append("userAvatar", imageFile);
+                }
+
+                const res = await axiosInstance.put('/api/v1/users/update', formData,{
+                    headers:{
+                        "Content-Type": "multipart/form-data"
+                    }
+                })
 
                 if (res.data.code === 200) {
                     alert("Cập nhật thông tin thành công!");

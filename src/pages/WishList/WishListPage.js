@@ -7,7 +7,7 @@ import WishlistTable from "./WishlistTable";
 import "./css/WishListPage.css";
 
 const WishlistPage = () => {
-    const wishlist = useSelector((state) => state.wishlistReducer);
+    const wishlist = useSelector((state) => state.wishlistReducer.items);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 

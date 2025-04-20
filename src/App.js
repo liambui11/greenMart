@@ -1,17 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { checkAuth, logoutUser } from './actions/auth';
+import { checkAuth } from './actions/auth';
 import { fetchWishlist } from './actions/wishlist';
 import { fetchCart } from './actions/cart';
 import AllRoute from './components/AllRoute';
+import OverlayLoading from './components/OverlayLoading/OverlayLoading';
 import "bootstrap/dist/css/bootstrap.min.css";
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-import axiosInstance from './untils/axiosInstance';
 
 const App = () => {
     const dispatch = useDispatch();
-    const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);//người dùng đã đăng nhập chưa
-    const accessToken = useSelector((state) => state.auth.accessToken);
+
+    const { isAuthenticated, isLoading: isAuthLoading, accessToken } = useSelector((state) => state.auth);
+    const isWishlistLoading = useSelector((state) => state.wishlistReducer?.isLoading);
+    const isCartLoading = useSelector((state) => state.cartReducer?.isLoading);
+
+    const isAppLoading = isAuthLoading || isWishlistLoading || isCartLoading;
 
     // Nếu người dùng xóa local storage hoặc lấy token từ local chậm
     useEffect(() => {
@@ -20,42 +24,16 @@ const App = () => {
     }
     }, [accessToken, dispatch]);
 
-    const [userInfo, setUserInfo] = useState(null);
     useEffect(() => {
-        const fetchUserDetail = async () => {
-          try {
-            const res = await axiosInstance.get('/api/v1/users/detail');
-            if (res.data.code === 200) {
-              setUserInfo(res.data.info);
-            }
-          } catch (error) {
-            console.error("Failed to fetch user details", error);
-          }
-        };
-    
-        if (isAuthenticated) {
-          fetchUserDetail();
-          dispatch(fetchWishlist());
-          dispatch(fetchCart());
-        }
-      }, [isAuthenticated, dispatch]);
-
-    const handleLogout = () => {
-      dispatch(logoutUser());
-    };
-
+      if (isAuthenticated) {
+        dispatch(fetchWishlist());
+        dispatch(fetchCart());
+      }
+    }, [isAuthenticated, dispatch]);
     return (
         <>
-          <div>
-            <h1>GreenMart</h1>
-              {isAuthenticated ? <>
-                <p>Chào mừng! {userInfo?.userName || "người dùng"}</p>
-                <button className="btn btn-danger" onClick={handleLogout}>
-                  Đăng xuất
-                </button>
-              </> : <p>Chưa đăng nhập</p>}
-          </div>
-            <AllRoute/>
+          <AllRoute/>
+          {isAppLoading && <OverlayLoading />}
         </>
     );
 };

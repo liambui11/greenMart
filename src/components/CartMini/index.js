@@ -8,7 +8,7 @@ import { FaBagShopping } from "react-icons/fa6";
 import { useNavigate, useLocation } from "react-router-dom";
 
 function CartMini() {
-  const cart = useSelector((state) => state.cartReducer);
+  const cart = useSelector((state) => state.cartReducer.items);
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const dispatch = useDispatch();
   const navigate = useNavigate();

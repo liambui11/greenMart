@@ -8,7 +8,7 @@ import Swal from "sweetalert2";
 import "./CheckoutPage.css";
 
 const CheckoutPage = () => {
-  const cart = useSelector((state) => state.cartReducer);
+  const cart = useSelector((state) => state.cartReducer.items);
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const navigate = useNavigate();
   const dispatch = useDispatch();

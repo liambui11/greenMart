@@ -21,7 +21,7 @@ const CartPage = () => {
     }
   }, [dispatch, isAuthenticated, navigate]);
 
-  const cart = useSelector((state) => state.cartReducer);
+  const cart = useSelector((state) => state.cartReducer.items);
 
   const totalQuantity = cart.reduce((sum, item) => {
     return sum + item.quantity;
