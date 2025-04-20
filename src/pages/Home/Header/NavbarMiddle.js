@@ -23,7 +23,7 @@ function NavbarMiddle() {
     const wishlist = useSelector((state) => state.wishlistReducer.items);
     const totalQuantity = wishlist.length;
 
-    const [searchQuery, setSearchQuery] = useState('');
+    const [searchQuery, setSearchQuery] = useState("");
     const navigate = useNavigate();
 
     const handleSearch = () => {
