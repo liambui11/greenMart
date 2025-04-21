@@ -11,7 +11,6 @@ import "./Categories.css";
 
 import { Navigation, Autoplay } from "swiper/modules";
 import OverlayLoading from "../../components/OverlayLoading/OverlayLoading";
-// import { useNavigate } from "react-router-dom";
 
 function Categories() {
   const { categoriesBannerData } = useContext(NewsContext);

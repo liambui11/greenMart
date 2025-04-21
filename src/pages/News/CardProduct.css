@@ -74,6 +74,7 @@
   color: white;
   background-color: #0aad0a;
   border: #0aad0a;
+  text-align: center;
 }
 
 .card-product__add-button:hover {
@@ -82,8 +83,6 @@
 
 .card-product__add-button.out-of-stock {
   background-color: #db3030;
-  text-align: center;
-  cursor: not-allowed;
 }
 
 .card-product__hover {
