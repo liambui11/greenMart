@@ -117,7 +117,7 @@ function NavbarBottom() {
         >
           <div className="offcanvas-header pb-1">
             <Link>
-              <img src="/image/logo.png" alt="" width="200px" height="70px" />
+              <img src="/image/logoGM.png" alt="" width="200px" height="70px" />
             </Link>
             <button
               type="button"
@@ -152,7 +152,7 @@ function NavbarBottom() {
 
             {/* <!-- Button Directory --> */}
             {/* <!-- thanh dieu huong --> */}
-            <div className="directory1 d-block d-lg-none mb-4">
+            <div className="directory1 d-block d-lg-none mb-4 bg-">
               <a
                 className="btn btn-outline-success w-100 d-flex justify-content-center align-items-center dropdown-toggle collapsed"
                 data-bs-toggle="collapse"

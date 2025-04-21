@@ -23,6 +23,7 @@
     flex-direction: column;
     justify-content: center;
     width: 80%;
+    margin: auto;
   }
 
   .navbar-nav {
@@ -48,6 +49,9 @@
 
   .nvb ul li a:hover {
     color: green !important;
+  }
+  .nvb ul li a {
+    color: black !important;
   }
 }
 

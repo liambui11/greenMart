@@ -141,7 +141,7 @@ function NavbarMiddle() {
                     <div className="suggest__text-info">
                       {topDiscountProducts.map((item) => (
                         <div
-                          onClick={(e) => setSearchQuery(item.productName)}
+                          onMouseDown={() => setSearchQuery(item.productName)}
                           className="product__suggest-card"
                           key={item._id}
                           style={{ width: "200px" }}
@@ -162,7 +162,7 @@ function NavbarMiddle() {
                     <div className="suggest-info">
                       {categoriesData.map((item) => (
                         <div
-                          onClick={() => handleClickToCategoryDetail(item)}
+                          onMouseDown={() => handleClickToCategoryDetail(item)}
                           className="category__suggest-card"
                           key={item._id}
                         >
