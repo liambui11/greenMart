@@ -1,3 +1,9 @@
+.midnav {
+  background-color: white;
+  height: 12rem;
+  /* padding: 0 5rem; */
+}
+
 .list-inline-item {
   position: relative;
 }
@@ -19,8 +25,14 @@
 }
 
 .list-inline-item {
-  margin: 0 5px;
+  /* margin: 0 5px; */
+
   text-decoration: none;
+}
+
+.list-inline-item svg {
+  background-color: white;
+  color: #37723a;
 }
 
 .container .row div a:hover {
@@ -38,15 +50,16 @@
 }
 
 @media (min-width: 992px) {
-  .input-group input[type="search"],
   .input-group button {
     height: 5rem !important;
-    /* width: 20rem; */
-    font-size: 1.5rem;
-    background-color: #ddd;
-  }
-  .input-group button {
     width: 5rem !important;
+    font-size: 1.5rem;
+    /* background-color: #ddd; */
+  }
+
+  .midnav__btn {
+    background-color: #37723a;
+    color: white;
   }
 
   .search-dropdown {

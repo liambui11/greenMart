@@ -75,6 +75,7 @@
   object-fit: "cover";
   border-radius: 50%;
   display: block;
+  object-fit: cover;
 }
 
 .Profile__infor__avatar #fileInput {

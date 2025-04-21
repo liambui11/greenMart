@@ -5,7 +5,7 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { RxAvatar } from "react-icons/rx";
 import { IoMdHeartEmpty } from "react-icons/io";
 import { LuSquareMenu } from "react-icons/lu";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import CartMini from "../../../components/CartMini/index";
 import "./NavMiddle.css";
 import { useNavigate } from "react-router-dom";
@@ -25,11 +25,17 @@ function NavbarMiddle() {
 
   const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    setSearchQuery("");
+  }, [location.pathname]);
 
   const handleSearch = (e) => {
     e.preventDefault();
     if (searchQuery.trim() !== "") {
       navigate(`/search/${encodeURIComponent(searchQuery)}`);
+      setSearchQuery("");
     }
   };
 
@@ -84,9 +90,10 @@ function NavbarMiddle() {
   return (
     <div className="midnav py-4">
       <div className="container">
-        {/* <!-- LOGO --> */}
-        <div className="row w-100 align-items-center gx-lg-2 gx-0">
-          <div className="col-lg-3 col-md-6 col-5">
+        <div className="row align-items-center gx-lg-2 gx-0 m-0 p-0">
+          {/* <div className="col-lg-3 d-none d-lg-block">Nguyen Ngoc Long</div> */}
+          {/* <!-- LOGO --> */}
+          <div className="col-lg-3 col-md-6 col-5 d-flex justify-content-start align-items-center">
             <Link className="navbar-brand d-none d-lg-block">
               <img src="/image/logoGM.png" alt="" width="200px" height="90px" />
             </Link>
@@ -101,14 +108,15 @@ function NavbarMiddle() {
               </Link>
             </div>
           </div>
+
           {/* <!-- Thanh tìm kiếm --> */}
-          <div className="col-lg-6 d-none d-lg-block">
+          <div className="col-lg-6 d-none d-lg-block m-0 p-0">
             <form onSubmit={handleSearch}>
               <div className="input-group">
                 {/* <!-- Ô nhập tìm kiếm --> */}
                 <input
                   type="search"
-                  className="form-control form-control-lg rounded-start ms-5 h-100 border-0"
+                  className="form-control form-control-lg rounded-start-5 border-success bg-white"
                   placeholder="Search for products"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
@@ -117,7 +125,7 @@ function NavbarMiddle() {
                 />
                 {/* <!-- Nút tìm kiếm --> */}
                 <button
-                  className="btn btn-outline-secondary rounded-end h-100 border-0"
+                  className="midnav__btn rounded-end-5 h-100 border-0"
                   type="submit"
                 >
                   <FontAwesomeIcon
@@ -172,7 +180,7 @@ function NavbarMiddle() {
           <div className="col-lg-3 text-end col-md-6 col-7 d-flex justify-content-end align-items-center m-0">
             <div className="list-inline d-flex">
               {/* <!-- Heart --> */}
-              <div className="list-inline-item">
+              <div className="list-inline-item ps-3 pe-3">
                 <Link className="position-relative text-dark" to="/wishlist">
                   <IoMdHeartEmpty style={{ fontSize: "3rem" }} />
                   {totalQuantity > 0 && (
@@ -183,11 +191,11 @@ function NavbarMiddle() {
                 </Link>
               </div>
               {/* <!-- Cart --> */}
-              <div className="list-inline-item">
+              <div className="list-inline-item ps-3 pe-3">
                 <CartMini />
               </div>
               {/* <!-- LogIn --> */}
-              <div className="list-inline-item">
+              <div className="list-inline-item ps-3 pe-3">
                 <div className="dropdown">
                   <RxAvatar
                     data-bs-toggle="dropdown"
@@ -232,7 +240,7 @@ function NavbarMiddle() {
                 </div>
               </div>
               {/* <!-- List --> */}
-              <div className="list-inline-item d-inline-block d-lg-none">
+              <div className="list-inline-item ps-3 pe-3 d-inline-block d-lg-none">
                 <button
                   className="navbar-toggler collapsed"
                   type="button"
