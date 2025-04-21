@@ -56,10 +56,11 @@ const MyProfile = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const validationErrors = Validation(values);
+
     setErrors(validationErrors);
-    setIsLoading(true);
 
     if (Object.keys(validationErrors).length === 0) {
+      setIsLoading(true);
       try {
         const formData = new FormData();
         formData.append("userName", values.name);
