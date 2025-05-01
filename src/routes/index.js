@@ -1,4 +1,4 @@
-import LayoutDefault from '../layout/LayoutDefault/LayoutDefault';
+import LayoutDefault from "../layout/LayoutDefault/LayoutDefault";
 import LoginPage from "../pages/Login/Login";
 import RegisterPage from "../pages/Register/Register";
 import CartPage from "../pages/Cart/CartPage";
@@ -7,17 +7,18 @@ import ForgotPassword from "../pages/PassWord/ForgotPage";
 import OtpPage from "../pages/PassWord/OtpPage";
 import ResetPWPage from "../pages/PassWord/ResetPWPage";
 import CheckoutPage from "../pages/CheckOut/CheckoutPage";
-import HomeContent from '../pages/Home/HomeContent/HomeContent';
-import About from '../pages/About/About';
-import New from '../pages/News/News';
-import CategoryDetail from '../components/CategoryDetail/CategoryDetail';
-import ContactCompany from '../pages/Contact/ContactCompany';
-import Search from '../pages/Home/PageSearch/Search';
-import ProductDetail from '../pages/Home/ProductDetail/ProductDetail';
+import HomeContent from "../pages/Home/HomeContent/HomeContent";
+import About from "../pages/About/About";
+import New from "../pages/News/News";
+import CategoryDetail from "../components/CategoryDetail/CategoryDetail";
+import ContactCompany from "../pages/Contact/ContactCompany";
+import Search from "../pages/Home/PageSearch/Search";
+import ProductDetail from "../pages/Home/ProductDetail/ProductDetail";
 
-import ErrorPage from '../pages/ErrorPage/ErrorPage';
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
 
-import MyProfile from '../pages/Home/MyProfile/MyProfile';
+import MyProfile from "../pages/Home/MyProfile/MyProfile";
+import MyOrder from "../pages/MyOrder/MyOrder";
 
 export const routes = [
   {
@@ -30,11 +31,11 @@ export const routes = [
       },
       {
         path: "productdetail/:productSlug",
-        element: <ProductDetail />
+        element: <ProductDetail />,
       },
       {
         path: "search/:query",
-        element: <Search />
+        element: <Search />,
       },
       {
         path: "about",
@@ -50,7 +51,7 @@ export const routes = [
       },
       {
         path: "contact",
-        element: <ContactCompany />
+        element: <ContactCompany />,
       },
       {
         path: "login",
@@ -89,14 +90,17 @@ export const routes = [
         element: <MyProfile />,
       },
       {
+        path: "myorder",
+        element: <MyOrder />,
+      },
+      {
         path: "*",
-        element: <ErrorPage/>,
+        element: <ErrorPage />,
       },
     ],
   },
   {
     path: "*",
-    element: <ErrorPage />
-  }
-  
+    element: <ErrorPage />,
+  },
 ];

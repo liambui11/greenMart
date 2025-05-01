@@ -94,11 +94,11 @@ function NavbarMiddle() {
           {/* <div className="col-lg-3 d-none d-lg-block">Nguyen Ngoc Long</div> */}
           {/* <!-- LOGO --> */}
           <div className="col-lg-3 col-md-6 col-5 d-flex justify-content-start align-items-center">
-            <Link className="navbar-brand d-none d-lg-block">
+            <Link to="/" className="navbar-brand d-none d-lg-block">
               <img src="/image/logoGM.png" alt="" width="200px" height="90px" />
             </Link>
             <div className="d-flex justify-content-between w-100 d-lg-none">
-              <Link className="navbar-brand">
+              <Link to="/" className="navbar-brand">
                 <img
                   src="/image/logoGM.png"
                   alt=""
@@ -116,7 +116,7 @@ function NavbarMiddle() {
                 {/* <!-- Ô nhập tìm kiếm --> */}
                 <input
                   type="search"
-                  className="form-control form-control-lg rounded-start-5 border-success bg-white"
+                  className="form-control form-control-lg rounded-start-5 border-success bg-white fs-2"
                   placeholder="Search for products"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
@@ -141,7 +141,7 @@ function NavbarMiddle() {
                     <div className="suggest__text-info">
                       {topDiscountProducts.map((item) => (
                         <div
-                          onClick={(e) => setSearchQuery(item.productName)}
+                          onMouseDown={() => setSearchQuery(item.productName)}
                           className="product__suggest-card"
                           key={item._id}
                           style={{ width: "200px" }}
@@ -162,7 +162,7 @@ function NavbarMiddle() {
                     <div className="suggest-info">
                       {categoriesData.map((item) => (
                         <div
-                          onClick={() => handleClickToCategoryDetail(item)}
+                          onMouseDown={() => handleClickToCategoryDetail(item)}
                           className="category__suggest-card"
                           key={item._id}
                         >
@@ -209,17 +209,22 @@ function NavbarMiddle() {
                     {isAuthenticated ? (
                       <>
                         <li>
+                          <Link to="myprofile" className="dropdown-item fs-4">
+                            <strong>MyProfile</strong>
+                          </Link>
+                        </li>
+                        <li>
+                          <Link to="myorder" className="dropdown-item fs-4">
+                            <strong>MyOrder</strong>
+                          </Link>
+                        </li>
+                        <li>
                           <div
                             onClick={handleLogout}
                             className="dropdown-item fs-4"
                           >
                             <strong>LogOut</strong>
                           </div>
-                        </li>
-                        <li>
-                          <Link to="myprofile" className="dropdown-item fs-4">
-                            <strong>MyProfile</strong>
-                          </Link>
                         </li>
                       </>
                     ) : (

@@ -76,16 +76,13 @@ function Footer1() {
             <div className="about">
               <ul>
                 <li>
-                  <Link>About</Link>
+                  <Link to="/about">About</Link>
                 </li>
                 <li>
-                  <Link>Hotline</Link>
+                  <Link to="/contact">Hotline</Link>
                 </li>
                 <li>
-                  <Link>Company</Link>
-                </li>
-                <li>
-                  <Link>Help Center</Link>
+                  <Link to="/about">Company</Link>
                 </li>
               </ul>
             </div>
@@ -95,10 +92,10 @@ function Footer1() {
             <div className="policy">
               <ul>
                 <li>
-                  <Link>Sales Policy</Link>
+                  <Link to="/news">Sales Policy</Link>
                 </li>
                 <li>
-                  <Link>Payment</Link>
+                  <Link>Pay via courier</Link>
                 </li>
               </ul>
             </div>
@@ -108,10 +105,10 @@ function Footer1() {
             <div className="customer">
               <ul>
                 <li>
-                  <Link>Account</Link>
+                  <Link to="/login">Account</Link>
                 </li>
                 <li>
-                  <Link>Shopping</Link>
+                  <Link to="/myprofile">My Profile</Link>
                 </li>
               </ul>
             </div>

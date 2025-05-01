@@ -5,6 +5,7 @@ import { FaSortAmountUp } from "react-icons/fa";
 import { FaSortAmountDown } from "react-icons/fa";
 import { IoHome } from "react-icons/io5";
 import CardProduct from "../../News/CardProduct";
+import Pagination from "../Popular/Pagination";
 
 import {
   fetchProducts,
@@ -18,6 +19,11 @@ function Search() {
   const { query } = useParams();
   const [activeSort, setActiveSort] = useState(null);
   const [products, setProducts] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage, setPostsPerPage] = useState(8);
+  const lastPostIndex = currentPage * postsPerPage;
+  const firstPostIndex = lastPostIndex - postsPerPage;
+  const currentPosts = products.slice(firstPostIndex, lastPostIndex);
 
   useEffect(() => {
     const loadProducts = async () => {
@@ -40,6 +46,7 @@ function Search() {
       console.error("Lỗi khi sắp xếp sản phẩm:", err);
     }
   };
+
   return (
     <div className="pageSearch-container">
       <div className="pageSearch__Tittle">
@@ -83,6 +90,14 @@ function Search() {
             <CardProduct item={product} />
           </div>
         ))}
+      </div>
+      <div className="search--pagination">
+        <Pagination
+          totalPosts={products.length}
+          postsPerPage={postsPerPage}
+          setCurrentPage={setCurrentPage}
+          currentPage={currentPage}
+        />
       </div>
     </div>
   );

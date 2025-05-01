@@ -6,7 +6,7 @@ function SlideSection1() {
   const [current, setCurrent] = useState(0);
   const listRef = useRef(null);
   const images = useMemo(
-    () => ["/image/slideshow/page1.webp", "/image/slideshow/page2.webp"],
+    () => ["/image/slideshow/img9.jpg", "/image/slideshow/img10.jpg"],
     []
   );
   const contents = [
@@ -33,7 +33,7 @@ function SlideSection1() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrent((prev) => (prev === images.length - 1 ? 0 : prev + 1));
-    }, 2000);
+    }, 4000);
 
     return () => clearInterval(interval);
   }, [images]);
@@ -57,7 +57,7 @@ function SlideSection1() {
           </div>
 
           {/* <!-- Thẻ nội dung trong ảnh --> */}
-          {images.map((_, index) => (
+          {/* {images.map((_, index) => (
             <div
               key={index}
               className={`slideshow-content ${current === index ? "active" : ""}`}
@@ -67,7 +67,7 @@ function SlideSection1() {
               <p>{contents[index].description2}</p>
               <button>{contents[index].buttonText}</button>
             </div>
-          ))}
+          ))} */}
 
           <div className="container-dots">
             <span

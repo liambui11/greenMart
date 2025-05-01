@@ -1,5 +1,5 @@
-.Hotproduct {
-  /* width: 80%; */
+.Hotproduct-container {
+  width: 80%;
   /* border: 1px solid black; */
   margin: 5rem auto;
   position: relative;
@@ -8,7 +8,7 @@
 .hotproduct__Tittle {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .hotproduct__Tittle__viewAll {
@@ -28,15 +28,15 @@
 .hotproduct__Card {
   display: flex;
   flex-wrap: wrap;
-  gap: 2rem;
+  gap: 2%;
   overflow: hidden;
 }
 
 .hotproduct__Card__item {
-  width: 45%;
+  width: 48%;
   height: 300px !important;
   flex: 0 0 auto;
-  border-radius: 3rem;
+  border-radius: 2rem;
   margin: auto;
   position: relative;
 }

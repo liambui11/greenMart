@@ -15,14 +15,15 @@
 }
 
 .slideshow__list-images .img1 {
-  width: 100vw;
-  height: 60rem;
+  width: 80vw;
+  height: 50rem;
   object-fit: cover;
 }
 
 .slideshow__list-images {
   display: flex;
   flex-wrap: nowrap;
+  gap: 20vw;
   margin: 0;
   padding: 0;
 }

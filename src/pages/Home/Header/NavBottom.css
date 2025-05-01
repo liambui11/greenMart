@@ -23,6 +23,7 @@
     flex-direction: column;
     justify-content: center;
     width: 80%;
+    margin: auto;
   }
 
   .navbar-nav {
@@ -47,7 +48,11 @@
   }
 
   .nvb ul li a:hover {
-    color: green !important;
+    color: #f4c95d !important;
+  }
+  .nvb ul li a {
+    /* font-size: 5rem; */
+    color: black !important;
   }
 }
 
@@ -57,61 +62,70 @@
     /* background-color: #0aad0a; */
   }
   .nvb {
-    margin-left: 17.5rem;
+    margin-left: 17rem;
   }
 
   /* Dinh dang lai nut va dropdown*/
   .directory2 .btn {
-    /* background-color: #0aad0a; */
-    /* width: 23rem; */
-    /* height: 5rem; */
-    color: white;
-    font-weight: bold;
-    font-size: 1.5rem;
-    /* border: 2px solid #0aad0a; */
-    /* border-radius: 2rem; */
+    background-color: #f4c95d;
+    width: 23rem;
+    height: 5rem;
+    /* color: white; */
+    color: #37723a;
+    font-weight: 780;
+    font-size: 1.75rem;
+    border: none;
   }
 
   .directory2 .btn:hover {
-    /* background-color: green; */
-    color: white;
+    background-color: #37723a;
+    color: #f4c95d;
   }
 
   .directory2 .dropdown-menu {
     margin-top: 2rem !important;
-    height: 30rem !important;
+    /* height: auto; */
+    width: 25rem;
     flex-direction: column;
-    /* justify-content: space-between !important; */
-
-    background-color: white;
-    color: white;
+    justify-content: space-between !important;
+    margin-right: 0 !important;
+    /* background-color: aquamarine; */
+    /* color: white; */
   }
 
-  .directory2 .dropdown-menu.show {
-    display: flex !important;
+  .directory2 .dropdown-menu.show,
+  .directory2 .btn:focus {
+    display: block;
+    border-radius: 0;
+    color: #f4c95d !important;
   }
 
   .directory2 .dropdown-menu .dropdown-item {
-    height: 4rem;
-    /* margin-top: 2rem !important; */
-    /* margin: auto !important; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* background-color: aqua; */
     font-weight: 550;
     font-size: 1.75rem;
-    border-bottom: 1px solid #ccc !important;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    /* margin: 0 !important;
+    padding: 0 !important; */
+    /* border: 1px solid black !important; */
+    width: 100%;
+    /* padding: 0.75rem 1rem; */
   }
 
   .navbar .dropdown-menu {
     border-radius: 1rem;
-    width: 25rem;
+    /* width: 25rem; */
     font-size: 1.5rem;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); */
   }
 
   .nvb ul li a:hover {
-    color: green !important;
+    color: #f4c95d !important;
+  }
+  .nvb ul li a {
+    font-size: 2rem !important;
   }
 
   /* ---------- */
@@ -128,6 +142,7 @@
 
 .submenu1 {
   display: none;
+  border-radius: 0;
 }
 
 .dropdown-submenu1:hover > .submenu1 {
@@ -135,11 +150,12 @@
 }
 
 .dropdown-submenu {
-  /* margin-left: 1rem; */
-  height: 4rem;
-  margin-top: 2rem !important;
+  /* height: 4rem; */
   font-weight: 550;
   font-size: 1.75rem;
+  /* background-color: aqua; */
+  /* padding-right: 4.5rem; */
+  position: relative;
 }
 
 .dropdown-submenu:hover > .submenu {
@@ -148,9 +164,7 @@
 
 .submenu {
   display: none;
+  position: absolute;
+  top: -50%;
   left: 100%;
-  top: 0;
-  margin-top: 2rem;
-  min-width: 10rem;
-  max-height: 30rem !important;
 }
