@@ -9,10 +9,19 @@ function About() {
   return (
     <div className="about-container">
       <div className="about">
+        <div className="about__image">
+          <img
+            src="/image/about/about-banner.png"
+            // src="https://i.pinimg.com/736x/ad/86/bb/ad86bb034ff13d4cb0a506777571a2df.jpg"
+            alt=""
+            style={{ width: "55rem", objectFit: "contain" }}
+          ></img>
+        </div>
+
         <div className="about__content">
           <p className="about__content--intro">
-            <span className="highlight-text">Welcome to GreenMart</span> - Your
-            Trusted Destination for a Healthy and Green Lifestyle!
+            <span className="highlight-text">Welcome to GreenMart</span> <br />{" "}
+            Your Trusted Destination for a Healthy and Green Lifestyle!
           </p>
           <br />
           <p className="about__content--description">
@@ -54,15 +63,15 @@ function About() {
           <br />
           <p className="about__content--signature">
             Sincerely, <br />
-            <span className="highlight-text">GreenMart Team</span>
+            <span>GreenMart Team</span>
           </p>
         </div>
-        <div className="about__image">
+        {/* <div className="about__image">
           <img
             alt=""
             src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRAymK687EGokCfzgD9UTvy_6TQ7tvPlPw6xqgSbgvjDB3J9QQp"
           ></img>
-        </div>
+        </div> */}
       </div>
     </div>
   );

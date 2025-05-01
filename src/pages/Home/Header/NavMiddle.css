@@ -1,3 +1,9 @@
+.midnav {
+  background-color: white;
+  height: 12rem;
+  /* padding: 0 5rem; */
+}
+
 .list-inline-item {
   position: relative;
 }
@@ -6,8 +12,8 @@
   position: absolute;
   top: -10px;
   right: -10px;
-  background: rgb(3, 82, 13);
-  color: white;
+  background: #f4c95d;
+  color: rgb(3, 82, 13);
   font-size: 14px;
   font-weight: bold;
   border-radius: 50%;
@@ -19,16 +25,27 @@
 }
 
 .list-inline-item {
-  margin: 0 5px;
+  /* margin: 0 5px; */
+
   text-decoration: none;
 }
 
+.list-inline-item svg {
+  background-color: white;
+  color: #37723a;
+}
+
+.list-inline-item svg:hover {
+  background-color: white;
+  color: #f4c95d;
+}
+
 .container .row div a:hover {
-  color: green !important;
+  color: #f4c95d;
 }
 
 .container .row div .dropdown :hover {
-  color: green !important;
+  color: #f4c95d !important;
 }
 
 @media (max-width: 450px) {
@@ -38,15 +55,16 @@
 }
 
 @media (min-width: 992px) {
-  .input-group input[type="search"],
   .input-group button {
     height: 5rem !important;
-    /* width: 20rem; */
-    font-size: 1.5rem;
-    background-color: #ddd;
-  }
-  .input-group button {
     width: 5rem !important;
+    font-size: 1.5rem;
+    /* background-color: #ddd; */
+  }
+
+  .midnav__btn {
+    background-color: #37723a;
+    color: white;
   }
 
   .search-dropdown {

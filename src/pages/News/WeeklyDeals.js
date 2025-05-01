@@ -1,6 +1,6 @@
-import { useContext, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import ReactPaginate from "react-paginate";
-import { NewsContext } from "../../Context/NewsContext";
+// import { NewsContext } from "../../Context/NewsContext";
 import CardProduct from "./CardProduct";
 import Title from "./Title";
 import "./WeeklyDeals.css";
@@ -8,7 +8,7 @@ import { BiSolidChevronRight, BiSolidChevronLeft } from "react-icons/bi";
 import SkeletonCardProduct from "../../pages/News/SkeletonCardProduct";
 
 function WeeklyDeals() {
-  const [pageNumber, setPageNumber] = useState(0);
+  // const [pageNumber, setPageNumber] = useState(0);
   const [productsData, setProductsData] = useState([]);
   const [productsPaginationData, setProductsPaginationData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);

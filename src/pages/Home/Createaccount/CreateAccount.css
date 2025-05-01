@@ -1,62 +1,77 @@
-.createAccount {
-    border: 1px solid #0aad0a;
-    padding: 5rem 3rem;
-    background-color: #0aad0a;
-    border-radius: 1rem;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    gap: 2rem;
-    overflow: hidden;
+/* .CreateAccount {
+  width: 100% !important;
+} */
+.container__CreateAccount {
+  width: 100% !important;
+  border: 1px solid #d8ffb1;
+  padding: 0 4rem;
+  background-color: #d8ffb1;
+  border-radius: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  margin: 6rem 0 2rem;
 }
 
-.createAccount__img {
-    position: relative; /* bỏ absolute */
-    flex: 1;
-    min-width: 300px;
-    text-align: center;
+.CreateAccount__img {
+  position: relative;
+  flex: 1;
+  min-width: 30rem;
+  text-align: center;
 }
 
-.createAccount__content {
-    flex: 1;
-    min-width: 300px;
-    color: white;
+.Welcome__content {
+  padding-left: 15%;
+  flex: 1;
+  min-width: 30rem;
+  color: #f4c95d;
 }
 
-.createAccount__title h1 {
-    font-size: 3.5rem;
-    font-weight: 800;
-    color: white;
+.CreateAccount__content {
+  padding-left: 15%;
+  flex: 1;
+  min-width: 30rem;
+  color: #f4c95d;
 }
 
-.createAccount__title h2,
-.createAccount__title h3 {
-    color: #bbb;
+.CreateAccount__title h1 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: #f4c95d;
+  margin: 1rem 0;
 }
 
-.createAccount__email__btn {
-    background-color: white;
-    width: 15rem;
-    height: 5rem;
-    border-radius: 2rem;
-    border: none;
-    font-weight: 800;
+.CreateAccount__title h2,
+.CreateAccount__title h3 {
+  color: #bbb;
+  margin: 1rem 0;
 }
 
-.createAccount__email__btn:hover {
-    background-color: #bbb;
-    color: white;
+.CreateAccount__email__btn {
+  background-color: white;
+  width: 15rem;
+  height: 5rem;
+  border-radius: 2rem;
+  border: none;
+  font-weight: 800;
+  margin: 1rem 0;
+}
+
+.CreateAccount__email__btn:hover {
+  background-color: #bbb;
+  color: white;
 }
 
 @media (max-width: 786px) {
-    .createAccount {
-        flex-direction: column;
-        padding: 3rem 1rem;
-    }
+  .CreateAccount {
+    flex-direction: column;
+    padding: 3rem 1rem;
+  }
 
-    .createAccount__img img {
-        width: 100%;
-        max-width: 300px;
-    }
+  .CreateAccount__img img {
+    width: 100%;
+    max-width: 300px;
+  }
 }

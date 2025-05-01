@@ -2,26 +2,30 @@
 
 /* Xây dựng ảnh quảng cáo */
 .section1 {
-  /* width: 80%; */
   margin: 3rem auto;
+  padding: 0;
 }
 
 .slideshow {
-  width: 80vw;
-  margin: auto;
-  overflow: hidden !important;
-  position: relative !important;
+  width: 100%;
+  margin: 0;
+  overflow: hidden;
+  position: relative;
+  left: 0;
 }
 
-.list-images img {
-  width: 100%;
-  height: 600px;
+.slideshow__list-images .img1 {
+  width: 80vw;
+  height: 50rem;
   object-fit: cover;
 }
 
-.list-images {
+.slideshow__list-images {
   display: flex;
   flex-wrap: nowrap;
+  gap: 20vw;
+  margin: 0;
+  padding: 0;
 }
 
 /* ---------- */

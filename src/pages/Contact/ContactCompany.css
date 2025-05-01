@@ -1,54 +1,56 @@
+.Contact-container {
+  width: 80%;
+  margin: 3rem auto;
+}
 .Contact__title h2 {
-    margin-top: 3rem;
-    position: relative;
-    left: 40%;
-    font-size: 4rem;
+  margin-top: 3rem;
+  position: relative;
+  left: 40%;
+  font-size: 4rem;
 }
 
 .Contact__title p {
-    text-align: center;
+  text-align: center;
 }
 
 .Contact__infor {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(23rem, 1fr));
-    place-items: center;
-    gap: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(23rem, 1fr));
+  place-items: center;
+  gap: 2rem;
 }
 
 .Contact__infor__address,
 .Contact__infor__Phone,
 .Contact__infor__email {
-    border: 1px solid black;
-    width: 100%;
-    background-color: rgb(105, 105, 237);
-    height: 25rem;
-    margin: 1rem;
-    color: white;
-    border-radius: 2rem;
-    /* text-align: center; */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-
+  border: 1px solid f4c95d;
+  width: 100%;
+  background-color: #f4c95d;
+  height: 25rem;
+  margin: 1rem;
+  color: #37723a;
+  border-radius: 2rem;
+  /* text-align: center; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .Contact__infor__icon {
-    font-size: 5rem;
-    margin: auto 40%;
+  font-size: 5rem;
+  margin: auto 40%;
 }
 
 .Contact__infor__address p,
 .Contact__infor__Phone p,
 .Contact__infor__email p {
-    margin: auto;
+  margin: auto;
 }
 
-
 @media (max-width: 1024px) {
-    .Contact__infor {
-        grid-template-columns: 1fr;
-    }
+  .Contact__infor {
+    grid-template-columns: 1fr;
+  }
 }

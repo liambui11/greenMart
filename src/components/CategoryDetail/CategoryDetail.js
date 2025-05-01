@@ -4,7 +4,7 @@ import { MdOutlineSell } from "react-icons/md";
 import { TbChartBarPopular } from "react-icons/tb";
 import CardProduct from "../../pages/News/CardProduct";
 import { useEffect, useState, useRef } from "react";
-import { useParams, useLocation, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import SubCategory from "./SubCategory";
 import SortByItem from "./SortByItem";
 import SkeletonCardProduct from "../../pages/News/SkeletonCardProduct";
@@ -15,8 +15,11 @@ import OverlayLoading from "../../components/OverlayLoading/OverlayLoading.js";
 import { FaChevronRight } from "react-icons/fa";
 
 function CategoryDetail() {
+  const navigate = useNavigate();
+  const { categorySlug } = useParams();
+
   const [productsData, setProductsData] = useState([]);
-  const [productsPagination, setProductsPagination] = useState([]);
+  const [productsPagination, setProductsPagination] = useState();
   const [categoryTree, setCategoryTree] = useState();
   const [sortOption, setSortOption] = useState({
     sortKey: "productPosition",
@@ -26,13 +29,7 @@ function CategoryDetail() {
   const [isProductLoading, setIsProductLoading] = useState(true);
   const isFirstRender = useRef(true);
   const [currentPage, setCurrentPage] = useState(0);
-
-  const { categorySlug } = useParams();
-  const location = useLocation();
-  const currentCategory = location.state?.item;
-
-  const navigateToHome = useNavigate();
-  const navigateError = useNavigate();
+  // const [currentCategory, setCurrentCategory] = useState();
 
   useEffect(() => {
     isFirstRender.current = true;
@@ -51,20 +48,21 @@ function CategoryDetail() {
         setProductsData([]);
         isFirstRender.current = false;
         try {
-          const [resProducts, resCategories] = await Promise.all([
-            fetch(
-              `http://localhost:3000/api/v1/products/${categorySlug}?sortKey=${sortOption.sortKey}&sortValue=${sortOption.sortValue}`
-            ),
-            fetch(
-              `http://localhost:3000/api/v1/products-category/categorytree/${categorySlug}`
-            ),
-          ]);
+          const [resProducts, resCategories] =
+            await Promise.all([
+              fetch(
+                `http://localhost:3000/api/v1/products/${categorySlug}?sortKey=${sortOption.sortKey}&sortValue=${sortOption.sortValue}`
+              ),
+              fetch(
+                `http://localhost:3000/api/v1/products-category/categorytree/${categorySlug}`
+              ),
+            ]);
 
           const productsJson = await resProducts.json();
           const categoriesJson = await resCategories.json();
 
           if (!productsJson.info && !categoriesJson.info) {
-            navigateError("/ErrorPage", { replace: true });
+            navigate("/ErrorPage", { replace: true });
           }
 
           setProductsData(productsJson.info);
@@ -87,7 +85,7 @@ function CategoryDetail() {
 
           const productsJson = await resProducts.json();
           if (!productsJson.info) {
-            navigateError("/ErrorPage", { replace: true });
+            navigate("/ErrorPage", { replace: true });
           }
           setProductsData(productsJson.info);
         } catch (err) {
@@ -99,7 +97,7 @@ function CategoryDetail() {
     };
 
     fetchData();
-  }, [categorySlug, sortOption, navigateError]);
+  }, [categorySlug, sortOption, navigate]);
 
   const getSubCategoryList = (nodes) => {
     let result = [];
@@ -118,9 +116,6 @@ function CategoryDetail() {
   const subCategoryList = categoryTree?.children
     ? getSubCategoryList(categoryTree?.children)
     : [];
-
-  console.log(currentCategory);
-  console.log(productsData);
 
   const filterOptions = [
     {
@@ -160,7 +155,7 @@ function CategoryDetail() {
       );
       const productsJson = await resProducts.json();
       if (!productsJson.info) {
-        navigateError("/ErrorPage", { replace: true });
+        navigate("/ErrorPage", { replace: true });
       }
       setProductsData(productsJson.info);
     } catch (err) {
@@ -170,34 +165,35 @@ function CategoryDetail() {
     }
   };
 
-  const handleHomeClick = () => {
-    navigateToHome(`/`);
-  };
+  console.log("productsPagination:", productsPagination);
+  console.log("productsData:", productsData);
+  console.log("categoryTree:", categoryTree);
+
   return (
     <div className="category-detail-container">
       <div className="category-detail">
         <div className="category-detail__bread-crumb">
-          <span onClick={handleHomeClick}>Home</span> <FaChevronRight />
-          <span>{currentCategory?.categoryName}</span>
+          <span onClick={() => navigate(`/`)}>Home</span> <FaChevronRight />
+          <span>{categoryTree?.categoryName}</span>
         </div>
         <div
           className="category-detail__title"
           style={{
-            backgroundImage: `url(${currentCategory?.categoryImage})`,
+            backgroundImage: `url(${categoryTree?.categoryImage})`,
           }}
         >
-          {currentCategory?.categoryName}
+          {categoryTree?.categoryName}
         </div>
         <div className="category-detail__sublist">
           {subCategoryList.length > 0
             ? subCategoryList.map((item, index) => (
-                <SubCategory key={item} item={item} />
+                <SubCategory key={item?._id} item={item} />
               ))
             : isLoading
-            ? Array(4)
-                .fill()
-                .map((_, index) => <SkeletonSubCategory key={index} />)
-            : null}
+              ? Array(4)
+                  .fill()
+                  .map((_, index) => <SkeletonSubCategory key={index} />)
+              : null}
         </div>
         <div className="category-detail__list-item">
           <div className="list-item__sort">
@@ -205,10 +201,10 @@ function CategoryDetail() {
               {isLoading
                 ? "Loading..."
                 : productsPagination?.totalItem === 0
-                ? "No Products Found"
-                : productsPagination?.totalItem === 1
-                ? "1 Product Found"
-                : `${productsPagination?.totalItem} Products Found`}
+                  ? "No Products Found"
+                  : productsPagination?.totalItem === 1
+                    ? "1 Product Found"
+                    : `${productsPagination?.totalItem} Products Found`}
             </div>
             <div className="sort__title">Sort By</div>
             <div className="sort__options">

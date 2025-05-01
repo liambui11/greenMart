@@ -53,13 +53,25 @@ const MyProfile = () => {
     }));
   };
 
+  const handleInputPhone = (event) => {
+    const onlyNums = event.target.value.replace(/\D/g, "");
+    const validationErrors = Validation(values);
+
+    setErrors(validationErrors);
+    setValues((prev) => ({
+      ...prev,
+      [event.target.name]: onlyNums,
+    }));
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     const validationErrors = Validation(values);
+
     setErrors(validationErrors);
-    setIsLoading(true);
 
     if (Object.keys(validationErrors).length === 0) {
+      setIsLoading(true);
       try {
         const formData = new FormData();
         formData.append("userName", values.name);
@@ -83,7 +95,10 @@ const MyProfile = () => {
             icon: "success",
           });
         } else {
-          alert("Cập nhật thất bại!");
+          Swal.fire({
+            title: "Error Saved!",
+            icon: "error",
+          });
         }
       } catch (error) {
         console.error("Lỗi khi cập nhật thông tin:", error);
@@ -172,9 +187,10 @@ const MyProfile = () => {
                     type="tel"
                     placeholder="Enter Phone Number"
                     name="phone"
-                    onChange={handleInput}
+                    onChange={handleInputPhone}
                     value={values.phone}
                     className="form-control rounded-0"
+                    pattern="[0-9]*"
                   />
                   {errors.phone && (
                     <span className="text-danger">{errors.phone}</span>

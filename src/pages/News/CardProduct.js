@@ -4,10 +4,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./CardProduct.css";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { RiProhibited2Line } from "react-icons/ri";
 import { useAlert } from "../../Context/AlertContext";
 import { addWishlistItem } from "../../actions/wishlist";
 import { addToCart } from "../../actions/cart";
+import { MdOutlineRemoveShoppingCart } from "react-icons/md";
+import { MdOutlineShoppingCart } from "react-icons/md";
 
 function CardProduct({ item }) {
   const [isHovered, setIsHovered] = useState(false);
@@ -79,7 +80,11 @@ function CardProduct({ item }) {
           handleAddToCard();
         }}
       >
-        {item.productStock === 0 ? <RiProhibited2Line /> : "+ Add"}
+        {item.productStock === 0 ? (
+          <MdOutlineRemoveShoppingCart size={"2rem"} />
+        ) : (
+          <MdOutlineShoppingCart size={"2rem"} />
+        )}
       </a>
       <div className="card-product__hover">
         {isHovered && <CardProductHovered item={item} />}

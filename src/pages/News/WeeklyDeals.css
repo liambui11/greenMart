@@ -41,13 +41,13 @@
 
 .paginationButtons a:hover {
   color: white !important;
-  background-color: #0aad0a;
-  border: 0.2rem solid #0aad0a;
+  background-color: #37723a;
+  border: 0.2rem solid #37723a;
 }
 
 .paginationActive > a {
   color: white !important;
-  background-color: #0aad0a;
-  border: 0.2rem solid #0aad0a;
+  background-color: #37723a;
+  border: 0.2rem solid #37723a;
 }
 
