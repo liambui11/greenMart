@@ -325,14 +325,14 @@ const CheckoutPage = () => {
             </div>
           </div>
           <div className="col-md-6">
-            <label className="form-label">Promotion:</label>
+            {/* <label className="form-label">Promotion:</label>
             <input
               type="text"
               name="promotion"
               className="form-control"
               value={formValues.promotion}
               onChange={handleInputChange}
-            />
+            /> */}
           </div>
         </div>
 

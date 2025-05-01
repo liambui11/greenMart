@@ -41,8 +41,9 @@
 
 .table-head tr th {
   text-align: center;
-  background: #95d5b2;
+  background: #37723a;
   font-size: 16px;
+  color: white;
 }
 
 .checkout-table {

@@ -5,10 +5,14 @@ export const loginUser = (email, password, showAlert) => {
   return async (dispatch) => {
     dispatch({ type: "AUTH_LOADING" });
     try {
-      const res = await axiosInstance.post("/api/v1/users/login", {
-        userEmail: email,
-        userPassword: password,
-      }, { withCredentials: true });
+      const res = await axios.post(
+        "http://localhost:3000/api/v1/users/login",
+        {
+          userEmail: email,
+          userPassword: password,
+        },
+        { withCredentials: true }
+      );
 
       const data = res.data;
 
