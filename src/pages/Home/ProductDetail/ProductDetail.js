@@ -146,7 +146,7 @@ const ProductDetail = () => {
             <div className="availability">
               <p>
                 <span>In Stock:</span>
-                {productdetail?.productStock}
+                {productdetail?.productStock - quantity}
               </p>
 
               <p onClick={handleClick}>

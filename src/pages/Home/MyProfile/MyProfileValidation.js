@@ -13,10 +13,10 @@ function Validation(values) {
     error.email = "Email didn't match";
   }
 
-  if (!values.phone || values.phone.trim() === "") {
-    error.phone = "Phone number is required";
-  } else if (!/^0\d{9}$/.test(values.phone)) {
-    error.phone = "Phone must start with 0 and be exactly 10 digits";
+  if (values.phone && values.phone.trim() !== "") {
+    if (!/^0\d{9}$/.test(values.phone)) {
+      error.phone = "Phone must start with 0 and be exactly 10 digits";
+    }
   }
 
   return error;

@@ -95,7 +95,10 @@ const MyProfile = () => {
             icon: "success",
           });
         } else {
-          alert("Cập nhật thất bại!");
+          Swal.fire({
+            title: "Error Saved!",
+            icon: "error",
+          });
         }
       } catch (error) {
         console.error("Lỗi khi cập nhật thông tin:", error);

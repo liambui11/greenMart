@@ -126,15 +126,15 @@
 }
 
 .cart-button:hover .cart-icon {
-  color: green;
+  color: #f4c95d;
 }
 
 .cart-badge {
   position: absolute;
   top: -5px;
   right: -5px;
-  background: rgb(3, 82, 13);
-  color: white;
+  background: #f4c95d;
+  color: rgb(3, 82, 13);
   font-size: 14px;
   font-weight: bold;
   border-radius: 50%;

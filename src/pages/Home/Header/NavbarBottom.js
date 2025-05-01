@@ -41,19 +41,19 @@ const renderCategoryTree = (categories, navigate) => {
     });
   };
   return categories.map((category, index) => (
-    <li key={index} className="dropdown-submenu">
+    <li key={index} className="dropdown-submenu rounded-0">
       <div
         onClick={() => handleClick(category)}
         className="dropdown-item text-decoration-none"
       >
-        {category.categoryName}
+        <span>{category.categoryName}</span>
         {category.children && category.children.length > 0 && (
           <MdKeyboardArrowRight />
         )}
       </div>
 
       {category.children && category.children.length > 0 && (
-        <ul className="submenu dropdown-menu">
+        <ul className="submenu dropdown-menu ">
           {renderCategoryTree(category.children, navigate)}
         </ul>
       )}
@@ -177,7 +177,7 @@ function NavbarBottom() {
 
             {/* ---Màn hình lớn--- */}
             <div className="directory2 d-lg-flex justify-content-start align-items-center ">
-              <div className="dropdown d-none d-lg-flex justify-content-start align-items-center ">
+              <div className="dropdown d-none d-lg-flex justify-content-start align-items-start ">
                 <button
                   className="btn"
                   type="button"
@@ -191,7 +191,7 @@ function NavbarBottom() {
                   </span>
                 </button>
                 <ul
-                  className="dropdown-menu rounded-0"
+                  className="dropdown-menu rounded-0 me-0"
                   aria-labelledby="dropdownMenuButton1"
                 >
                   {renderCategoryTree(categoriesData, navigate)}

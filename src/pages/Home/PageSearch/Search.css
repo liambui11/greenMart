@@ -18,14 +18,7 @@
   /* Cho responsive */
 }
 
-/* .pageSearch__Filter {} */
 .pageSearch__Filter__content {
-  /* background-color: rgb(129, 126, 126); */
-  /* width: 20rem;
-    height: 4rem; */
-  /* display: flex;
-    justify-content: center;
-    align-items: center; */
   margin: auto 1rem;
   border-radius: 1rem;
   color: rgb(129, 126, 126);
@@ -85,4 +78,8 @@
   place-items: center;
   margin-bottom: 2rem;
   /* display: flex; */
+}
+
+.search--pagination {
+  margin: 3rem 0;
 }

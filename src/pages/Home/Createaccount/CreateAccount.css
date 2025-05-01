@@ -22,22 +22,31 @@
   text-align: center;
 }
 
+.Welcome__content {
+  padding-left: 15%;
+  flex: 1;
+  min-width: 30rem;
+  color: #f4c95d;
+}
+
 .CreateAccount__content {
   padding-left: 15%;
   flex: 1;
   min-width: 30rem;
-  color: white;
+  color: #f4c95d;
 }
 
 .CreateAccount__title h1 {
   font-size: 3.5rem;
   font-weight: 800;
-  color: white;
+  color: #f4c95d;
+  margin: 1rem 0;
 }
 
 .CreateAccount__title h2,
 .CreateAccount__title h3 {
   color: #bbb;
+  margin: 1rem 0;
 }
 
 .CreateAccount__email__btn {
@@ -47,6 +56,7 @@
   border-radius: 2rem;
   border: none;
   font-weight: 800;
+  margin: 1rem 0;
 }
 
 .CreateAccount__email__btn:hover {

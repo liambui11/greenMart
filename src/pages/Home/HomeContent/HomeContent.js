@@ -8,6 +8,7 @@ import MyCategory from "../myCategory/MyCategory";
 
 import { NewsProvider } from "../../../Context/NewsContext";
 import PopularProducts from "../../News/DailyBestSales";
+import BigSale from "../BigSale/BigSale";
 
 function HomeContent() {
   useEffect(() => {
@@ -21,6 +22,7 @@ function HomeContent() {
       <PopularProducts />
       <ContentHome2 />
       <Banner />
+      <BigSale />
       <HotProduct />
       <CreateAccount />
     </NewsProvider>
