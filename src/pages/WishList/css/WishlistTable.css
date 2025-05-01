@@ -1,19 +1,19 @@
 .wishlist__table-wrapper {
-    overflow-x: auto;
+  overflow-x: auto;
 }
 
 .wishlist__table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
 }
 
 .wishlist__table th,
 .wishlist__table td {
-    padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-    font-size: 16px;
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  font-size: 16px;
 }
 
 /* .wishlist__table th:first-child {
@@ -23,28 +23,26 @@
 .wishlist__table th:nth-child(3) {
     max-width: 210px;
 } */
-  
 
 .wishlish-table__header {
-    background: #95d5b2;
+  background: #37723a;
+  color: white;
 }
 
 .wishlist__table th {
-    text-align: center;
+  text-align: center;
 }
 
 .wishlist__image {
-    width: 50px;
-    height: 50px;
-    margin-right: 10px;
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
 }
 
 .wishlist__status {
-    display: inline-block;
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 12px;
-    font-weight: bold;
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: bold;
 }
-
-

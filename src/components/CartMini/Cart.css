@@ -75,7 +75,7 @@
 }
 
 .cart__total span {
-  color: #007bff;
+  color: #eab84b;
 }
 
 .cart__actions {
@@ -93,21 +93,23 @@
 }
 
 .cart__actions .btn-danger {
-  background-color: #8ecf89;
+  background-color: #f4c95d;
   color: white;
+  font-weight: 600;
 }
 
 .cart__actions .btn-danger:hover {
-  background-color: #6db06a;
+  background-color: #eab84b;
 }
 
 .cart__actions .btn-info {
-  background-color: #6fd2e2;
+  background-color: #37723a;
   color: white;
+  font-weight: 600;
 }
 
 .cart__actions .btn-info:hover {
-  background-color: #82a9af;
+  background-color: #2f6232;
 }
 
 .cart-button {
