@@ -17,7 +17,7 @@ const CheckoutPage = () => {
     if (!isAuthenticated) {
       navigate("/login");
     }
-    
+
     if (cart.length === 0) {
       navigate("/cart");
     }
@@ -26,7 +26,7 @@ const CheckoutPage = () => {
   useEffect(() => {
     const fetchUserDetail = async () => {
       try {
-        const res = await axiosInstance.get('/api/v1/users/detail');
+        const res = await axiosInstance.get("/api/v1/users/detail");
         if (res.data.code === 200) {
           const info = res.data.info;
           setFormValues((prev) => ({
@@ -40,7 +40,7 @@ const CheckoutPage = () => {
         console.error("Failed to fetch user details", error);
       }
     };
-  
+
     if (isAuthenticated) {
       fetchUserDetail();
     }
@@ -111,7 +111,7 @@ const CheckoutPage = () => {
           content: "my-swal-content",
         },
       });
-  
+
       if (result.isConfirmed) {
         try {
           const orderData = {
@@ -123,15 +123,16 @@ const CheckoutPage = () => {
             orderItemList: cart.map((item) => ({
               productID: item.productID._id,
               productPrice: item.productID.productPrice,
-              productDiscountPercentage: item.productID.productDiscountPercentage || 0,
+              productDiscountPercentage:
+                item.productID.productDiscountPercentage || 0,
               quantity: item.quantity,
             })),
             orderPaymentMethod: "cod",
             promotionID: formValues.promotion || null,
           };
-      
+
           const res = await axiosInstance.post("/api/v1/orders", orderData);
-      
+
           if (res.data.code === 200) {
             Swal.fire({
               title: "Order Confirmed!",
@@ -144,13 +145,14 @@ const CheckoutPage = () => {
                 content: "my-swal-content",
               },
             });
-      
+
             dispatch(deleteAll());
             navigate("/");
           } else {
             Swal.fire({
               title: "Error",
-              text: res.data.message || "Something went wrong. Please try again.",
+              text:
+                res.data.message || "Something went wrong. Please try again.",
               icon: "error",
               customClass: {
                 popup: "my-swal-popup",
@@ -173,7 +175,6 @@ const CheckoutPage = () => {
           });
         }
       }
-      
     }
   };
 
@@ -183,7 +184,7 @@ const CheckoutPage = () => {
       currency: "USD",
       minimumFractionDigits: 0,
       maximumFractionDigits: 2,
-  });  
+    });
 
   const calculateTotal = () => {
     return cart.reduce((total, item) => {
@@ -193,13 +194,16 @@ const CheckoutPage = () => {
       return total + discountedPrice * item.quantity;
     }, 0);
   };
-  
+
+  const totalQuantity = cart.reduce((sum, item) => {
+    return sum + item.quantity;
+  }, 0);
 
   return (
     <div className="container checkout-page">
       <h2 className="checkout-title">Checkout process</h2>
       <p className="checkout-subtitle">
-        You have {cart.length} items in your cart
+        You have {totalQuantity} items in your cart
       </p>
 
       <div className="table-responsive">
@@ -225,7 +229,8 @@ const CheckoutPage = () => {
                 </td>
                 <td>
                   {formatPrice(
-                    item.productID.productPrice * (1 - item.productID.productDiscountPercentage / 100)
+                    item.productID.productPrice *
+                      (1 - item.productID.productDiscountPercentage / 100)
                   )}
                 </td>
                 <td>{item.quantity}</td>
@@ -247,13 +252,13 @@ const CheckoutPage = () => {
           <p className="checkout-summary__label">
             Subtotal:{" "}
             <span className="checkout-summary__value">
-            {formatPrice(calculateTotal())}
+              {formatPrice(calculateTotal())}
             </span>
           </p>
           <p className="checkout-summary__label">
             Total:{" "}
             <span className="checkout-summary__value">
-            {formatPrice(calculateTotal())}
+              {formatPrice(calculateTotal())}
             </span>
           </p>
         </div>
@@ -304,9 +309,7 @@ const CheckoutPage = () => {
           <input
             type="text"
             name="address"
-            className={`form-control ${
-              formErrors.address ? "is-invalid" : ""
-            }`}
+            className={`form-control ${formErrors.address ? "is-invalid" : ""}`}
             value={formValues.address}
             onChange={handleInputChange}
             required
@@ -320,11 +323,16 @@ const CheckoutPage = () => {
           <div className="col-md-6">
             <label className="form-label">Payment Method:</label>
             <div className="form-check">
-              <input className="form-check-input" type="radio" checked readOnly />
+              <input
+                className="form-check-input"
+                type="radio"
+                checked
+                readOnly
+              />
               <label className="form-check-label">Pay on Delivery</label>
             </div>
           </div>
-          <div className="col-md-6">
+          {/* <div className="col-md-6">
             <label className="form-label">Promotion:</label>
             <input
               type="text"
@@ -333,7 +341,7 @@ const CheckoutPage = () => {
               value={formValues.promotion}
               onChange={handleInputChange}
             />
-          </div>
+          </div> */}
         </div>
 
         <div className="text-center mt-4">

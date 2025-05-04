@@ -12,16 +12,15 @@ function ContactCompany() {
       <div className="Contact__title">
         <h2>Get In Touch</h2>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. It is
-          expedited, sought after, where pain and blame are truthfully invented,
-          or conveniently welcomed.
+          Got questions or need support? The GreenMart team is here to help you
+          live greener and shop smarter — reach out to us anytime!
         </p>
       </div>
       <div className="Contact__infor">
         <div className="Contact__infor__address">
           <IoLocationOutline className="Contact__infor__icon" />
 
-          <p>120 Man Thien Street, Thu Duc City</p>
+          <p>97 Man Thien Street, Thu Duc City</p>
           <h3>Come to us</h3>
         </div>
         <div className="Contact__infor__Phone">
@@ -40,18 +39,19 @@ function ContactCompany() {
       <div className="Contact__Map">
         <iframe
           title="Google Maps location of GreenMart"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d21912.105415222715!2d106.79488348111515!3d10.858821672810153!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3175275bc75f790d%3A0xeff189fa708d0e16!2zQ8O0bmcgdmnDqm4gdsSDbiBow7NhIFN14buRaSBUacOqbg!5e0!3m2!1svi!2s!4v1744114627832!5m2!1svi!2s"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.520072541692!2d106.78408977517321!3d10.847992257869361!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752772b245dff1%3A0xb838977f3d419d!2zSOG7jWMgdmnhu4duIEPDtG5nIG5naOG7hyBCxrB1IENow61uaCBWaeG7hW4gVGjDtG5nIGPGoSBz4bufIHThuqFpIFRQLkhDTQ!5e0!3m2!1svi!2s!4v1745657326038!5m2!1svi!2s"
           style={{
             width: "100%",
             height: "100%",
             border: 0,
             borderRadius: "1rem",
-            padding: "3rem",
+            // padding: "3rem",
           }}
           allowFullScreen
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
         />
+
       </div>
     </div>
   );

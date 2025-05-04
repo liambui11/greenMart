@@ -23,12 +23,12 @@
 .Contact__infor__address,
 .Contact__infor__Phone,
 .Contact__infor__email {
-  border: 1px solid black;
+  border: 1px solid f4c95d;
   width: 100%;
-  background-color: rgb(105, 105, 237);
+  background-color: #f4c95d;
   height: 25rem;
   margin: 1rem;
-  color: white;
+  color: #37723a;
   border-radius: 2rem;
   /* text-align: center; */
   display: flex;

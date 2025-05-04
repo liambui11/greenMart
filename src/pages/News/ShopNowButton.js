@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 function ShopNowButton({ link = "#!" }) {
   const styles = {
     backgroundColor: "black",
@@ -9,11 +11,16 @@ function ShopNowButton({ link = "#!" }) {
     cursor: "pointer",
     display: "inline-flex",
     alignItems: "center",
-    fontSize: "1.5rem"
+    fontSize: "1.5rem",
   };
 
+  const navigate = useNavigate();
   return (
-    <a href={link} style={styles}>
+    <a
+      href={link}
+      style={styles}
+      onClick={() => navigate(`/productdetail/keto-chocolate-ice-cream`)}
+    >
       Shop Now{" "}
       <i
         className="fa-solid fa-arrow-right"

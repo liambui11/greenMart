@@ -1,45 +1,45 @@
 /* Định dạng chung cho bảng giỏ hàng */
 .cart-table {
-    margin-top: 20px;
-    overflow-x: auto;
+  margin-top: 20px;
+  overflow-x: auto;
 }
 
 .cart-table__table {
-    width: 100%;
-    border-collapse: collapse;
-    background: #ffffff;
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
 }
 
 .cart-table .cart-table__cell {
-    padding: 12px !important;
-    font-size: 16px; 
-    text-align: center;
-    border-bottom: 1px solid #74c69d;
-    background: #95d5b2 ;
+  padding: 12px !important;
+  font-size: 16px;
+  text-align: center;
+  border-bottom: 1px solid #37723a;
+  background: #37723a;
+  color: white;
 }
 
 .cart-table__cell img {
-    max-width: 50px;
-    border-radius: 5px;
+  max-width: 50px;
+  border-radius: 5px;
 }
 
 .cart-table__cell input[type="number"] {
-    width: 60px;
-    text-align: center;
-    border: 1px solid #74c69d;
-    border-radius: 5px;
-    padding: 5px;
+  width: 60px;
+  text-align: center;
+  border: 1px solid #37723a;
+  border-radius: 5px;
+  padding: 5px;
 }
 
 .cart-table__cell button {
-    background: none;
-    border: none;
-    color: #d62828;
-    cursor: pointer;
-    font-size: 1rem;
+  background: none;
+  border: none;
+  color: #d62828;
+  cursor: pointer;
+  font-size: 1rem;
 }
 
 .cart-table__cell button:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
-

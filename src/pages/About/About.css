@@ -1,13 +1,27 @@
+.about-container{
+  background-color: white;
+
+}
 
 .about {
   font-size: 2rem;
-  margin: 2rem 10%;
+  margin: 2rem 5%;
+  display: flex;
+  position: relative;
+  height: 100rem;
+}
+
+.about__image {
+  position: absolute;
+  top: -8rem;
+  left: 0;
 }
 
 .about__content {
-  background-color: #dfe2e1;
+  position: absolute;
+  width: 93rem;
   padding: 2rem;
-  border-radius: 2rem;
+  right: 0;
 }
 
 .about__content--intro {
@@ -15,12 +29,12 @@
 }
 
 .about__content--ordering > svg {
-  color: #006838;
+  color: #37723a;
   margin-right: 1.2rem;
 }
 
 .about__content--signature {
-  margin-left: 85%;
+  margin-left: 80%;
 }
 
 .about__content--signature > span {
@@ -29,17 +43,6 @@
 
 .highlight-text {
   font-weight: 600;
-  color: #006838;
-}
-
-.about__image {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 4rem 0;
-}
-.about__image > img {
-  width: 60%;
-  border-radius: 2rem;
+  color: #37723a;
+  font-size: 8rem;
 }

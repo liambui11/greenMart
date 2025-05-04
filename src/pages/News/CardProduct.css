@@ -72,18 +72,22 @@
   font-size: 1.3rem;
   font-weight: 600;
   color: white;
-  background-color: #0aad0a;
-  border: #0aad0a;
+  background-color: #37723a;
+  border: #37723a;
+  text-align: center;
 }
 
 .card-product__add-button:hover {
-  background-color: rgb(25, 88, 46);
+  background-color: #2f6232;
 }
 
 .card-product__add-button.out-of-stock {
   background-color: #db3030;
-  text-align: center;
-  cursor: not-allowed;
+}
+
+.card-product__add-button.out-of-stock:hover{
+  background-color: #db3030;
+  color: white;
 }
 
 .card-product__hover {
@@ -96,10 +100,10 @@
 }
 
 .fa-heart {
-  color: rgba(0, 0, 0, 0.5);
+  color: #37723a;
   height: 1.2rem;
   padding: 1.2rem;
-  border: 0.2rem solid rgba(0, 0, 0, 0.5);
+  border: 0.2rem solid #37723a;
   border-radius: 50%;
   margin: 0 1.2rem;
   /* z-index: 2; */
@@ -109,7 +113,7 @@
 
 .fa-heart:hover {
   transform: scale(1.1);
-  background-color: #0aad0a;
-  color: white;
-  border: 0.2rem solid #0aad0a;
+  background-color: #f4c95d;
+  color: #37723a;
+  border: 0.2rem solid #f4c95d;
 }

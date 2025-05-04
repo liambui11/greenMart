@@ -2,15 +2,11 @@ import { useNavigate } from "react-router-dom";
 import "./CategoriesCard.css";
 
 function CategoriesCard({ item }) {
-
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate(`/categorydetail/${item.categorySlug}`, {
-      state: { item },
-    });
+    navigate(`/categorydetail/${item.categorySlug}`);
   };
-
 
   return (
     <div className="categories-card-container">

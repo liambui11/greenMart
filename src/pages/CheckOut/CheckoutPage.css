@@ -1,12 +1,12 @@
 .checkout-page {
-  background-color: #e1ffef;
+  background-color: #f2f2f2;
   padding: 20px;
   border-radius: 10px;
   margin: 50px auto;
 }
 
 .checkout-title {
-  color: #006400;
+  color: #37723a;
   font-weight: bold;
   font-size: 32px;
 }
@@ -22,7 +22,7 @@
 .checkout-table th:not(:first-child),
 .checkout-table td:not(:first-child) {
   text-align: center;
-  vertical-align: middle; 
+  vertical-align: middle;
 }
 
 .checkout-summary {
@@ -35,14 +35,15 @@
 }
 
 .checkout-summary__value {
-  color: red;
+  color: #eab84b;
   font-weight: bold;
 }
 
 .table-head tr th {
   text-align: center;
-  background: #95d5b2;
+  background: #37723a;
   font-size: 16px;
+  color: white;
 }
 
 .checkout-table {

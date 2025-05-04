@@ -1,5 +1,3 @@
-
-
 .categories-container {
   margin: 3rem 10% 2rem;
   display: flex;
@@ -14,6 +12,7 @@
 .categories__navigation {
   margin-left: auto;
   margin-right: 3rem;
+  display: flex;
 }
 
 .categories__navigation > * {
@@ -25,9 +24,17 @@
   background-color: rgba(0, 0, 0, 0.098);
   border-radius: 50%;
 }
-.categories__navigation > *:hover{
-  background-color: #0aad0a;
+
+.swiper-nav-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.swiper-nav-button:hover {
   color: white;
+  background-color: #37723a;
 }
 
 .categories__cards .swiper-slide {
@@ -44,4 +51,3 @@
   place-items: center;
   grid-template-columns: repeat(auto-fit, minmax(520px, 1fr));
 }
-
