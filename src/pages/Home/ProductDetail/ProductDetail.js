@@ -139,8 +139,8 @@ const ProductDetail = () => {
 
             <div className="price">
               <p>Price:</p>
-              <p className="Promotional"> {productdetail?.productPrice} </p>
-              <p className="List">${productdetail?.priceNew}</p>
+              <p className="Promotional"> {productdetail?.priceNew} </p>
+              <p className="List">${productdetail?.productPrice}</p>
             </div>
 
             <div className="availability">

@@ -37,6 +37,7 @@
   height: 300px !important;
   flex: 0 0 auto;
   border-radius: 2rem;
+  box-shadow: 0 4px 6px #0aad0a;
   margin: auto;
   position: relative;
 }

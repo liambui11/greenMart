@@ -70,18 +70,19 @@
   .search-dropdown {
     position: absolute;
     background-color: white;
+    border: 0.1rem solid #f4c95d;
     width: 100%;
     height: 50vh;
-    max-width: 70rem;
+    max-width: 62rem;
     margin-top: 2rem;
     z-index: 1001;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 0 0 8px 8px;
-    padding: 1rem;
+    /* padding: 1rem; */
   }
 
   .suggest__text {
-    margin: 3rem 0;
+    margin: 2rem 0;
   }
   .suggest__text-title,
   .suggest-title {
@@ -93,10 +94,12 @@
   .suggest__text-info {
     display: flex;
     flex-wrap: wrap;
+    margin: 0;
   }
 
   .product__suggest-card {
-    margin-left: 0.5rem;
+    /* margin-left: 0.5rem; */
+    color: #f4c95d;
     margin-bottom: 0.5rem;
     cursor: pointer;
   }
@@ -112,14 +115,15 @@
     width: 20rem;
     height: 3rem;
     font-weight: 600;
-    border: 1px solid black;
+    border: 1px solid #0aad0a;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-left: 0.5rem;
     margin-bottom: 0.5rem;
     border-radius: 1rem;
-    background-color: #ddd;
+    background-color: #37723a;
+    color: #f4c95d;
     cursor: pointer;
   }
 

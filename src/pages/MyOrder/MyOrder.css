@@ -80,12 +80,12 @@
   margin: 3rem 0;
 }
 
-table {
+.myorder-table {
   width: 100%;
   border-collapse: collapse;
 }
 
-th,
+.myorder-table-thead-th,
 td {
   border: 1px solid #ddd;
   padding: 8px;

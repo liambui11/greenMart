@@ -40,33 +40,32 @@ function MyOrder() {
         </form>
       </div>
       <div className="myorder-content">
-        <div className="myorder-table">
-          <table>
-            <thead>
-              <tr>
-                <th>Product</th>
-                <th>Quantity</th>
-                <th>Condition</th>
-                <th>OriginalPrice</th>
-                <th>Promotion</th>
-                <th>PromotionalPrice</th>
+        <table className="myorder-table">
+          <thead className="myorder-table-thead">
+            <tr className="myorder-table-thead-tr">
+              <th className="myorder-table-thead-th">Product</th>
+              <th className="myorder-table-thead-th">Quantity</th>
+              <th className="myorder-table-thead-th">Condition</th>
+              <th className="myorder-table-thead-th">OriginalPrice</th>
+              <th className="myorder-table-thead-th">Promotion</th>
+              <th className="myorder-table-thead-th">PromotionalPrice</th>
+              <th className="myorder-table-thead-th">OrderDetail</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.map((item, index) => (
+              <tr className="myorder-table-thead-tr" key={index}>
+                <td className="myorder-table-thead-td">{item.name}</td>
+                <td className="myorder-table-thead-td">{item.quantity}</td>
+                <td className="myorder-table-thead-td">{item.condition}</td>
+                <td className="myorder-table-thead-td">{item.original}</td>
+                <td className="myorder-table-thead-td">{item.promotion}</td>
+                <td className="myorder-table-thead-td">{item.promotional}</td>
+                <td className="myorder-table-thead-td">See Detail</td>
               </tr>
-            </thead>
-            <tbody>
-              {data.map((item, index) => (
-                <tr key={index}>
-                  <td>{item.name}</td>
-                  <td>{item.quantity}</td>
-                  <td>{item.condition}</td>
-
-                  <td>{item.original}</td>
-                  <td>{item.promotion}</td>
-                  <td>{item.promotional}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   );

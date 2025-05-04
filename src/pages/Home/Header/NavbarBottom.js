@@ -6,6 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import { useNavigate } from "react-router-dom";
 import { MdKeyboardArrowRight } from "react-icons/md";
+import { IoIosArrowDown } from "react-icons/io";
 
 const renderCategoryTreeMobile = (categories, navigate) => {
   const handleClick = (item) => {
@@ -48,7 +49,7 @@ const renderCategoryTree = (categories, navigate) => {
       >
         <span>{category.categoryName}</span>
         {category.children && category.children.length > 0 && (
-          <MdKeyboardArrowRight />
+          <IoIosArrowDown />
         )}
       </div>
 
@@ -63,7 +64,7 @@ const renderCategoryTree = (categories, navigate) => {
 
 function NavbarBottom() {
   const [isSticky, setSticky] = useState(false);
-
+  // const [isHovered, setIsHovered] = useState(false);
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 100) {
@@ -191,7 +192,7 @@ function NavbarBottom() {
                   </span>
                 </button>
                 <ul
-                  className="dropdown-menu rounded-0 me-0"
+                  className="dropdown-menu me-0"
                   aria-labelledby="dropdownMenuButton1"
                 >
                   {renderCategoryTree(categoriesData, navigate)}
