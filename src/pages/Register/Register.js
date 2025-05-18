@@ -3,7 +3,9 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { loginUser } from "../../actions/auth";
-import { useAlert } from "../../Context/AlertContext"; 
+import { useAlert } from "../../Context/AlertContext";
+import { useGoogleLogin } from "@react-oauth/google"; 
+import GoogleButton from "../../components/Google/googleButton";
 import "./Register.css";
 
 const RegisterPage = () => {
@@ -126,6 +128,37 @@ const RegisterPage = () => {
     }
   };
 
+  // google
+  const login = useGoogleLogin({
+    onSuccess: async (tokenResponse) => {
+      const { access_token } = tokenResponse;
+
+      try {
+        const res = await fetch(`http://localhost:3000/api/v1/users/google-login`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ access_token }),
+          credentials: "include",
+        });
+
+        const data = await res.json();
+        if (res.ok) {
+          dispatch({ type: "LOGIN_SUCCESS", payload: { accessToken: data.accessToken } });
+          showAlert("success", "Google login successful!");
+          navigate("/");
+        } else {
+          showAlert("error", data.message || "Google login failed.");
+        }
+      } catch (error) {
+        console.error("Google login error:", error);
+        showAlert("error", "Google login failed.");
+      }
+    },
+    onError: () => showAlert("error", "Google login failed."),
+    scope: "openid email profile",
+  });
+
+
   return (
     <div className="register">
       <div className="container">
@@ -178,6 +211,14 @@ const RegisterPage = () => {
               <button type="submit" className="btn btn-success">
                 Sign Up
               </button>
+
+              <div className="register__divider">
+                <span className="register__divider-text">or continue with</span>
+              </div>
+              <div className="register__google-login">
+                <GoogleButton onClick={login}/>
+              </div>
+
             </form>
           </div>
 

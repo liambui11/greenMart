@@ -5,6 +5,8 @@ import "./Login.css";
 import { Link } from "react-router-dom";
 import { loginUser } from "../../actions/auth";
 import { useAlert } from "../../Context/AlertContext"; 
+import { useGoogleLogin } from '@react-oauth/google';
+import GoogleButton from "../../components/Google/googleButton";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -79,6 +81,38 @@ const LoginPage = () => {
     }
   };
 
+  // google
+  const login = useGoogleLogin({
+    onSuccess: async (tokenResponse) => {
+      const { access_token } = tokenResponse;
+
+      try {
+        const res = await fetch(`http://localhost:3000/api/v1/users/google-login`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ access_token }),
+          credentials: "include",
+        });
+
+        const data = await res.json();
+        if (res.ok) {
+          dispatch({ type: "LOGIN_SUCCESS", payload: { accessToken: data.accessToken } });
+          showAlert("success", "Google login successful!");
+          navigate("/");
+        } else {
+          showAlert("error", data.message || "Google login failed.");
+        }
+      } catch (error) {
+        console.error("Google login error:", error);
+        showAlert("error", "Google login failed.");
+      }
+    },
+    onError: () => showAlert("error", "Google login failed."),
+    scope: "openid email profile",
+  });
+
+
+
   return (
     <div className="login">
       <div className="container">
@@ -121,10 +155,8 @@ const LoginPage = () => {
               </div>
 
               <div className="login__form-footer">
-                <div className="login__checkbox-group">
-                  <input type="checkbox" id="remember-me" />
-                  <label htmlFor="remember-me">Remember me</label>
-                </div>
+                <GoogleButton onClick={login}/>
+
                 <Link to="/password/forgot">Forgot password?</Link>
               </div>
 
