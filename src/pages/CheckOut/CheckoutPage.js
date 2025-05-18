@@ -165,6 +165,12 @@ const CheckoutPage = () => {
           }
         } catch (error) {
           console.error("Order submission failed", error);
+
+          const errorMessage =
+            error?.response?.data?.message ||
+            error.message ||
+            "Unable to submit your order. Please try again later.";
+
           Swal.fire({
             title: "Error",
             text: errorMessage,
