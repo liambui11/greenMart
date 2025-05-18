@@ -125,11 +125,13 @@ const CheckoutPage = () => {
               productPrice: item.productID.productPrice,
               productDiscountPercentage:
                 item.productID.productDiscountPercentage || 0,
-              quantity: item.quantity,
+              quantity: Number(item.quantity),
             })),
             orderPaymentMethod: "cod",
             promotionID: formValues.promotion || null,
           };
+
+          console.log("Cart item sample:", orderData);
 
           const res = await axiosInstance.post("/api/v1/orders", orderData);
 
@@ -163,12 +165,6 @@ const CheckoutPage = () => {
           }
         } catch (error) {
           console.error("Order submission failed", error);
-
-          const errorMessage =
-            error?.response?.data?.message ||
-            error.message ||
-            "Unable to submit your order. Please try again later.";
-
           Swal.fire({
             title: "Error",
             text: errorMessage,
