@@ -19,6 +19,7 @@ const MyProfile = () => {
     address: "",
     phone: "",
     password: "",
+    loginType: "",
   });
 
   useEffect(() => {
@@ -34,6 +35,7 @@ const MyProfile = () => {
             address: user.userAddress || "",
             phone: user.userPhone || "",
             password: user.userPassword || "",
+            loginType: user.loginType || "",
           });
           if (user.userAvatar) {
             setFile(user.userAvatar);
@@ -133,7 +135,11 @@ const MyProfile = () => {
   };
 
   const handleChangePassword = () => {
-    navigationChangePass("/changepassword");
+    if (values.loginType === "google") {
+      navigationChangePass("/password/reset");
+    } else {
+      navigationChangePass("/changepassword");
+    }
   };
 
   return (
