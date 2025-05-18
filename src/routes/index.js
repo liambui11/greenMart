@@ -19,6 +19,8 @@ import ErrorPage from "../pages/ErrorPage/ErrorPage";
 
 import MyProfile from "../pages/Home/MyProfile/MyProfile";
 import MyOrder from "../pages/MyOrder/MyOrder";
+import Featuredproductviewall from "../pages/Home/Featuredproducts/Featuredproductviewall";
+import ChangePassword from "../pages/Home/MyProfile/Changepassword/ChangePassword";
 
 export const routes = [
   {
@@ -92,6 +94,14 @@ export const routes = [
       {
         path: "myorder",
         element: <MyOrder />,
+      },
+      {
+        path: "featured",
+        element: <Featuredproductviewall />,
+      },
+      {
+        path: "changepassword",
+        element: <ChangePassword />,
       },
       {
         path: "*",

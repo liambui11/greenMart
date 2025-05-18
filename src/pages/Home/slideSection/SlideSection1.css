@@ -1,5 +1,3 @@
-/* ----------SECTION1---------- */
-
 /* Xây dựng ảnh quảng cáo */
 .section1 {
   margin: 3rem auto;
@@ -32,8 +30,6 @@
   margin: 0;
   padding: 0;
 }
-
-/* ---------- */
 /* -----Content trong anhr----- */
 .slideshow-content {
   position: absolute;
@@ -53,14 +49,12 @@
 
 .slideshow-content.active {
   display: block;
-  /* Chỉ hiển thị nội dung được chọn */
 }
 
 .slideshow-content h6 {
   background-color: orange;
   width: 25rem;
   border-radius: 0.5rem;
-  /* width: 50%; */
   font-size: 1.5rem;
 }
 
@@ -73,16 +67,17 @@
 .slideshow-content h2 {
   font-size: 4rem;
   font-weight: bold;
+  color: green;
 }
 
 .slideshow-content p {
   font-size: 2.5rem;
-  color: #f4c95d;
+  color: #00bfff;
 }
 
 .slideshow-content button {
   font-size: 1.5rem;
-  color: #bbb;
+  color: whitesmoke;
   width: 13rem;
   height: 4rem;
   font-weight: bold;
@@ -96,13 +91,10 @@
   color: white;
 }
 
-/* ---------- */
-
 /* xây dựng dot chuyển ảnh */
 .container-dots {
   position: absolute;
   bottom: 10px;
-  /* Đảm bảo cách bottom 10px */
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -125,5 +117,31 @@
 .dot:hover {
   background-color: #717171;
 }
-
 /* ---------- */
+@media (max-width: 768px) {
+  .slideshow__list-images .img1 {
+    width: 90vw;
+    height: 20rem;
+  }
+  .slideshow__list-images {
+    gap: 10vw;
+  }
+
+  .slideshow-content {
+    width: 100%;
+  }
+  .slideshow-content h6 {
+    font-size: 1rem;
+  }
+  .slideshow-content h2 {
+    font-size: 1.8rem;
+  }
+  .slideshow-content p {
+    font-size: 1.5rem;
+  }
+  .slideshow-content button {
+    width: 8rem;
+    height: 2.5rem;
+    font-size: 1rem;
+  }
+}

@@ -33,21 +33,29 @@
 }
 
 .hotproduct__Card__item {
+  /* background: linear-gradient(to right, #edf1f3, #ffffff); */
+  /* background: linear-gradient(to right, rgb(238, 236, 236), #a8e6cf); */
+  background-color: #edf1f3;
   width: 48%;
   height: 300px !important;
   flex: 0 0 auto;
   border-radius: 2rem;
-  box-shadow: 0 4px 6px #0aad0a;
+  box-shadow: 0 4px 6px black;
   margin: auto;
   position: relative;
+  gap: 1px;
 }
 
 .hotproduct__Card__item__img {
-  width: 100%;
-  height: 100%;
+  background-color: transparent;
+  width: 40%;
+  height: 70%;
   background-size: cover;
   background-position: center;
   border-radius: 3rem;
+  position: absolute;
+  bottom: 10%;
+  right: 1px;
 }
 
 .hotproduct__Card__item__title {
@@ -65,13 +73,13 @@
 .hotproduct__Card__item__title h1 {
   font-weight: bold;
   font-size: 2.25rem;
-  color: rgb(84, 83, 83);
+  color: #f4c95d;
   /* margin-bottom: 2rem; */
 }
 
 .hotproduct__Card__item__title p {
   font-size: 1.5rem;
-  color: rgb(110, 105, 105);
+  color: #f4c95d;
 }
 
 .hotproduct__Card__item__title button {
@@ -79,10 +87,15 @@
   width: 10rem;
   height: 4rem;
   border-radius: 1rem;
-  background-color: #ddd;
+  background-color: green;
   color: white;
   text-decoration: none;
   border: none;
+}
+
+.hotproduct__Card__item__title button:hover {
+  color: white;
+  background-color: #0aad0a;
 }
 
 /* Màn hình lớn */

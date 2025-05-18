@@ -10,6 +10,7 @@ import { addToCart } from "../../../actions/cart";
 import { addWishlistItem } from "../../../actions/wishlist";
 import { useAlert } from "../../../Context/AlertContext";
 import { useParams } from "react-router-dom";
+import { IoIosArrowForward } from "react-icons/io";
 
 const ProductDetail = () => {
   const navigate = useNavigate();
@@ -112,7 +113,7 @@ const ProductDetail = () => {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <i className="fa-solid fa-angle-right"></i>
+              <IoIosArrowForward />
             </li>
             <li>
               <Link>{productdetail?.productName}</Link>
@@ -146,7 +147,7 @@ const ProductDetail = () => {
             <div className="availability">
               <p>
                 <span>In Stock:</span>
-                {productdetail?.productStock - quantity}
+                {Math.max(0, productdetail?.productStock - quantity)}
               </p>
 
               <p onClick={handleClick}>
@@ -185,8 +186,8 @@ const ProductDetail = () => {
                 </button>
               )}
               <div className="ProductDetail__heart">
-                <div>
-                  <FaRegHeart onClick={handleAddToWishlist} />
+                <div onClick={handleAddToWishlist}>
+                  <FaRegHeart />
                 </div>
               </div>
             </div>

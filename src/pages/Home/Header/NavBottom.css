@@ -143,21 +143,37 @@
 }
 
 .submenu1 {
-  display: none;
-  border-radius: 0;
+  max-height: 0;
+  opacity: 0;
+  visibility: hidden;
+  overflow: hidden;
+  transition:
+    max-height 1s ease,
+    opacity 1s ease,
+    visibility 1s ease;
+}
+
+.dropdown-item1 {
+  font-size: 1.75rem;
+}
+
+.dropdown-item1:hover {
+  background-color: #f4c95d;
 }
 
 .dropdown-submenu1:hover > .submenu1 {
-  display: block;
+  /* display: block;
+  cursor: pointer; */
+  max-height: 50rem;
+  opacity: 1;
+  visibility: visible;
 }
 
 .dropdown-submenu {
-  /* height: 4rem; */
   font-weight: 550;
   font-size: 1.75rem;
-  /* background-color: aqua; */
-  /* padding-right: 4.5rem; */
   position: relative;
+  cursor: pointer;
 }
 
 .dropdown-submenu:hover > .submenu {
@@ -170,4 +186,5 @@
   position: absolute;
   top: -50%;
   left: 100%;
+  cursor: pointer;
 }

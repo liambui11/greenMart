@@ -1,29 +1,45 @@
-import React from 'react'
-import './Footer3.css'
+import React from "react";
+import "./Footer3.css";
+import { FaFacebook } from "react-icons/fa";
+import { FaSquareInstagram } from "react-icons/fa6";
+import { FaTiktok } from "react-icons/fa";
+import { FaYoutube } from "react-icons/fa";
+import { FaSquareXTwitter } from "react-icons/fa6";
 function Footer3() {
-    return (
-        <section className="ss3">
-            <div className="container">
-                <div className="end">
-                    <div className="content">
-                        <h5>© 2025, Greenmart.com - Website system to
-                            sell necessities and clean food for free</h5>
-                    </div>
-                    <div className="socialMedia">
-                        <h5>Follow Us</h5>
-                        <div className="mxh">
-                            <a href="https://www.facebook.com/"><i className="fa-brands fa-facebook fa-2x"></i></a>
-                            <a href="https://www.instagram.com/"><i className="fa-brands fa-square-instagram fa-2x"></i></a>
-                            <a href="https://www.tiktok.com/foryou?lang=en"><i className="fa-brands fa-tiktok fa-2x"></i></a>
-                            <a href="https://www.youtube.com/"><i className="fa-brands fa-youtube fa-2x"></i></a>
-                            <a href="https://x.com/"><i className="fa-brands fa-square-twitter fa-2x"></i></a>
-                        </div>
-
-                    </div>
-                </div>
+  return (
+    <section className="footerss3">
+      <div className="container">
+        <div className="end">
+          <div className="content">
+            <h5>
+              © 2025, Greenmart.com - Website system to sell necessities and
+              clean food for free
+            </h5>
+          </div>
+          <div className="socialMedia">
+            <h5>Follow Us</h5>
+            <div className="mxh">
+              <a href="https://www.facebook.com/">
+                <FaFacebook />
+              </a>
+              <a href="https://www.instagram.com/">
+                <FaSquareInstagram />
+              </a>
+              <a href="https://www.tiktok.com/foryou?lang=en">
+                <FaTiktok />
+              </a>
+              <a href="https://www.youtube.com/">
+                <FaYoutube />
+              </a>
+              <a href="https://x.com/">
+                <FaSquareXTwitter />
+              </a>
             </div>
-        </section>
-    );
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 }
 
-export default Footer3
+export default Footer3;

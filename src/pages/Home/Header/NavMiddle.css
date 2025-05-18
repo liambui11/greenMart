@@ -48,9 +48,15 @@
   color: #f4c95d !important;
 }
 
+@media (max-width: 550px) {
+  .navbar-brand img {
+    width: 10rem;
+  }
+}
+
 @media (max-width: 450px) {
   .navbar-brand img {
-    max-width: 13rem;
+    display: none;
   }
 }
 

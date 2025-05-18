@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 // import { Link, useNavigate } from "react-router-dom";
 import "./BigSale.css";
 // import { fetchPopular } from "./PopularAPI";
-import Pagination from "../Popular/Pagination";
+// import Pagination from "../Popular/Pagination";
 import CardProduct from "../../News/CardProduct";
 import OverlayLoading from "../../../components/OverlayLoading/OverlayLoading";
 
@@ -13,20 +13,9 @@ function ContentHome2() {
   const [isLoading, setIsLoading] = useState(false);
   const API_BASE_URL = "http://localhost:3000/api/v1/products";
 
-  //   useEffect(() => {
-  //     const loadProducts = async () => {
-  //       try {
-  //         const data = await fetchPopular();
-  //         setProducts(data);
-  //       } catch (err) {
-  //         console.error("Lỗi khi lấy sản phẩm:", err);
-  //       }
-  //     };
-  //     loadProducts();
-  //   }, []);
   useEffect(() => {
     const fetchProducts = async () => {
-      //   setIsLoading(true);
+      setIsLoading(true);
       try {
         const response = await fetch(
           `${API_BASE_URL}?limitItems=8&sortKey=productDiscountPercentage&sortValue=desc`
@@ -55,7 +44,7 @@ function ContentHome2() {
       <div className="bigsale row">
         <div className="bigsale--title col-12">
           <h1>
-            <strong>BIG SALE PRODUCTS</strong>
+            <strong>Big Sale Products</strong>
           </h1>
         </div>
         <div className="bigsale__card">

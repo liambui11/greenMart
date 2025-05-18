@@ -25,16 +25,20 @@
   margin-right: 20%;
 }
 
-.Profile__infor__form__btn {
-  height: 4rem;
-  width: 25rem;
+.profile__infor__form__btn {
+  height: 3.5rem;
+  width: 20rem;
+  margin-left: 2rem;
+  margin-top: 1rem;
   font-size: larger;
   border: none;
   background-color: #0aad0a;
-  color: white;
+  border-radius: 0.5rem;
+  box-shadow: 1px 1px black;
+  color: #f4c95d;
 }
 
-.Profile__infor__form__btn:hover {
+.profile__infor__form__btn:hover {
   background-color: #bbb;
   color: black;
 }
@@ -59,7 +63,7 @@
 .Profile__infor__Address input,
 .Profile__infor__Phone input {
   height: 4rem;
-  /* font-size: 1.5rem; */
+  box-shadow: 1px 1px black;
   margin: 1.5rem 0;
   font-size: 1.75rem;
   font-weight: 500;
@@ -76,6 +80,7 @@
   border-radius: 50%;
   display: block;
   object-fit: cover;
+  box-shadow: 1px 0.5px 0.5px 0.5px black;
 }
 
 .Profile__infor__avatar #fileInput {
@@ -86,8 +91,10 @@
   background: #0aad0a;
   border: none;
   margin-top: 2rem;
-  color: white;
   width: 20rem;
+  border-radius: 0.5rem;
+  box-shadow: 1px 1px black;
+  color: #f4c95d;
 }
 
 .Profile__infor__avatar__btn:hover {

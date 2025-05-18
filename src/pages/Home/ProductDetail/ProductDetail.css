@@ -1,11 +1,14 @@
 /* ------TopSectionMain----- */
 .topSectionMain {
-  background-color: aliceblue;
+  background-color: #d3d3d3;
+  padding: 1rem 0;
 }
 
 .topSectionMain ul {
   list-style: none;
   display: flex;
+  justify-content: flex-start;
+  align-items: center;
   margin: 2rem 0;
 }
 
@@ -98,6 +101,7 @@
   margin-top: 3rem;
   font-weight: bold;
   font-size: 2rem;
+  color: #f4c95d;
 }
 
 .price .List {
@@ -112,7 +116,7 @@
 .availability p span {
   font-weight: bold;
   margin-right: 3rem;
-  color: #d3d3d3;
+  color: #f4c95d;
 }
 
 .Quantity {

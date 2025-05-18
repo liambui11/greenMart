@@ -18,11 +18,10 @@
   /* justify-content: center; */
   align-items: center;
 }
-.myorder-top-title-avatar {
-  width: 15rem;
-  height: 8rem;
+.myorder-top-title-avatar img {
+  width: 10rem;
+  height: 10rem;
   border-radius: 50%;
-  background-color: aqua;
   margin-right: 1rem;
 }
 
@@ -41,38 +40,55 @@
 }
 .myorder-top-info-sum-order {
   width: 50%;
-  height: 20rem;
-  background-color: aliceblue;
+  height: 10rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-right: 0.1rem solid black;
   font-size: 3rem;
   font-weight: 600;
+  color: #f4c95d;
+  border-radius: 2rem;
+  box-shadow: 0.1rem 0.1rem 0.1rem 0.1rem green;
+  margin-right: 0.5rem;
 }
 
 .myorder-top-info-sum-money {
   width: 50%;
-  height: 20rem;
-  background-color: aliceblue;
+  height: 10rem;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 3rem;
   font-weight: 600;
+  color: #f4c95d;
+  border-radius: 2rem;
+  box-shadow: 0.1rem 0.1rem 0.1rem 0.1rem green;
+  margin-left: 0.5rem;
 }
 
-.myorder-top-search select {
-  height: 4rem;
+.sortOrder {
+  height: 3.5rem;
+  border-radius: 1rem;
+  margin-right: 1rem;
+  border: 1px solid green;
+  margin-top: 3rem;
 }
 
 .myorder-top-search input {
-  width: 50rem;
-  height: 4rem;
+  width: 40rem;
+  height: 3.5rem;
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+  border: 1px solid green;
 }
 .myorder-top-search button {
+  background-color: green;
+  color: white;
+  font-weight: 600;
   width: 10rem;
-  height: 4rem;
+  height: 3.5rem;
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
   border: none;
 }
 
@@ -83,15 +99,39 @@
 .myorder-table {
   width: 100%;
   border-collapse: collapse;
+  border-radius: 1rem;
 }
 
-.myorder-table-thead-th,
-td {
-  border: 1px solid #ddd;
-  padding: 8px;
-  text-align: left;
+.myorder-table-thead-th {
+  background-color: #0aad0a;
+  color: #f4c95d;
+  border-collapse: separate;
+  /* border-radius: 1rem; */
+  padding: 2rem;
+  text-align: center;
+}
+.myorder-table-thead-td {
+  background-color: white;
+  padding: 3rem;
+  text-align: center;
 }
 
-th {
-  background-color: #f2f2f2;
+.myorder-table-thead-td-conditon {
+  background-color: #0aad0a;
+  width: 8rem;
+  margin: auto;
+  border-radius: 1rem;
+  color: white;
+  box-shadow: 1px 1px black;
+}
+
+.load-more-button {
+  background-color: #0aad0a;
+  width: 10rem;
+  height: 3rem;
+  margin-left: 50%;
+  border-radius: 1rem;
+  color: white;
+  border: none;
+  box-shadow: 1px 1px black;
 }
