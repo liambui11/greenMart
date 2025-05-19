@@ -2,12 +2,23 @@
 .cart-table {
   margin-top: 20px;
   overflow-x: auto;
+  max-height: 450px; 
+  overflow-y: auto;
+  position: relative;
 }
 
 .cart-table__table {
   width: 100%;
   border-collapse: collapse;
   background: #ffffff;
+}
+
+.cart-table__header th {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  border-bottom: 2px solid #ccc;
+  padding: 8px;
 }
 
 .cart-table .cart-table__cell {

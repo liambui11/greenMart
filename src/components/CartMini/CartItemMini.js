@@ -3,11 +3,13 @@ import { useDispatch } from "react-redux";
 import { deleteItem, updateQuantity } from "../../actions/cart";
 import { FaRegTrashCan } from "react-icons/fa6";
 import { useAlert } from "../../Context/AlertContext";
+import { useNavigate } from "react-router-dom";
 import "./CartItem.css";
 
 function CartItemMini({ item }) {
     const dispatch = useDispatch();
     const { showAlert } = useAlert();
+    const navigate = useNavigate();
     const [inputValue, setInputValue] = useState(item.quantity.toString());
 
     useEffect(() => {
@@ -73,14 +75,18 @@ function CartItemMini({ item }) {
         dispatch(deleteItem(item.productID._id));
     };
 
+    const goToProductDetail = () => {
+        navigate(`/productdetail/${item.productID.productSlug}`);
+    };
+
     return (
         <div className="cart__item">
-            <div className="cart__image">
+            <div className="cart__image" onClick={goToProductDetail} style={{ cursor: "pointer" }}>
                 <img src={item.productID.productImage} alt={item.productID.productName} />
             </div>
 
             <div className="cart__content">
-                <h4 className="cart__title">{item.productID.productName}</h4>
+                <h4 className="cart__title" onClick={goToProductDetail} style={{ cursor: "pointer" }}>{item.productID.productName}</h4>
                 <div className="cart__price">
                     {discountedPrice.toLocaleString("en-US", {
                         style: "currency",

@@ -81,24 +81,24 @@ function CartMini() {
           {cart.length > 0 ? (
             <>
               <CartList cart={cart} />
-              <div className="cart__footer">
-                <div className="cart__total">
-                  Total: <span>{formatUSD(total)}</span>
-                </div>
-                <div className="cart__actions">
-                  <button onClick={handleDeleteAll} className="btn btn-danger">
-                    Clear All
-                  </button>
-                  <button onClick={handleViewCart} className="btn btn-info">
-                    View Cart Details
-                  </button>
-                </div>
-              </div>
             </>
           ) : (
             <p className="empty-cart">🛒 Your cart is empty</p>
           )}
         </div>
+        <div className="cart__footer">
+            <div className="cart__total">
+              Total: <span>{formatUSD(total)}</span>
+            </div>
+            <div className="cart__actions">
+              <button onClick={handleDeleteAll} className="btn btn-danger">
+                Clear All
+              </button>
+              <button onClick={handleViewCart} className="btn btn-info">
+                View Cart Details
+              </button>
+            </div>
+          </div>
       </div>
     </>
   );
