@@ -9,6 +9,7 @@ import MyCategory from "../myCategory/MyCategory";
 import { NewsProvider } from "../../../Context/NewsContext";
 import PopularProducts from "../../News/DailyBestSales";
 import BigSale from "../BigSale/BigSale";
+import Featuredproduct from "../Featuredproducts/Featuredproduct";
 
 function HomeContent() {
   useEffect(() => {
@@ -19,6 +20,7 @@ function HomeContent() {
     <NewsProvider>
       <SlideSection1 />
       <MyCategory />
+      <Featuredproduct />
       <PopularProducts />
       <ContentHome2 />
       <Banner />

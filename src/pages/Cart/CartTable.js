@@ -4,7 +4,7 @@ import "./css/CartTable.css"; // Import CSS riêng
 
 const CartTable = ({ cart }) => {
   return (
-    <div className="cart-table table-responsive">
+    <div className="cart-table">
       <table className="cart-table__table table">
         <thead className="cart-table__header">
           <tr>

@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "./Search.css";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { FaSortAmountUp } from "react-icons/fa";
 import { FaSortAmountDown } from "react-icons/fa";
-import { IoHome } from "react-icons/io5";
 import CardProduct from "../../News/CardProduct";
 import Pagination from "../Popular/Pagination";
+import { IoIosArrowForward } from "react-icons/io";
 
 import {
   fetchProducts,
@@ -50,7 +50,12 @@ function Search() {
   return (
     <div className="pageSearch-container">
       <div className="pageSearch__Tittle">
-        <IoHome size={20} /> HOME / {query}
+        <Link to="/">Home</Link>
+        <IoIosArrowForward /> {query}
+      </div>
+      <div className="pagesearch-img">
+        <p>Result Of Search {query}</p>
+        <img src="/image/slideshow/online-shopping.png" alt="" />
       </div>
       <div className="pageSearch__info">
         <div className="pageSearch__Filter">

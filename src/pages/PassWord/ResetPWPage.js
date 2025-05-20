@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from "react-redux";
 import axiosInstance from "../../untils/axiosInstance";
 import { useAlert } from "../../Context/AlertContext";
-import { checkAuth} from '../../actions/auth';
+import { checkAuth } from "../../actions/auth";
 import "./ResetPWPage.css";
 
 const ResetPWPage = () => {
@@ -18,10 +18,15 @@ const ResetPWPage = () => {
 
   useEffect(() => {
     if (!accessToken) {
-        dispatch(checkAuth());
+      dispatch(checkAuth());
     }
   }, [accessToken, dispatch]);
-  
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      navigate("/login");
+    }
+  }, [dispatch, isAuthenticated, navigate]);
 
   const validateField = (name, value) => {
     let error = "";
@@ -50,32 +55,35 @@ const ResetPWPage = () => {
 
     if (name === "password") setPassword(value);
     if (name === "confirmPassword") setConfirmPassword(value);
-    
+
     validateField(name, value);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     const newErrors = {};
     if (!password) {
       newErrors.password = "Password is required";
     } else if (password.length < 6) {
       newErrors.password = "Password must be at least 6 characters";
     }
-  
+
     if (!confirmPassword) {
       newErrors.confirmPassword = "Please confirm your password";
     } else if (confirmPassword !== password) {
       newErrors.confirmPassword = "Passwords do not match";
     }
-  
+
     setErrors(newErrors);
-  
+
     if (Object.keys(newErrors).length === 0) {
       try {
         console.log(password);
-        const response = await axiosInstance.post("/api/v1/users/password/reset", { newPassword: password });
+        const response = await axiosInstance.post(
+          "/api/v1/users/password/reset",
+          { newPassword: password }
+        );
 
         if (response.status === 200) {
           showAlert("success", "Password reset successful!");
@@ -92,8 +100,6 @@ const ResetPWPage = () => {
       }
     }
   };
-  
-  
 
   return (
     <div className="reset-password">
@@ -110,7 +116,9 @@ const ResetPWPage = () => {
           onChange={handleChange}
           required
         />
-        {errors.password && <span className="error-message">{errors.password}</span>}
+        {errors.password && (
+          <span className="error-message">{errors.password}</span>
+        )}
 
         <label className="reset-password__label">Re-enter password</label>
         <input
@@ -121,9 +129,13 @@ const ResetPWPage = () => {
           onChange={handleChange}
           required
         />
-        {errors.confirmPassword && <span className="error-message">{errors.confirmPassword}</span>}
+        {errors.confirmPassword && (
+          <span className="error-message">{errors.confirmPassword}</span>
+        )}
 
-        <button className="reset-password__button" type="submit">Confirm</button>
+        <button className="reset-password__button" type="submit">
+          Confirm
+        </button>
       </form>
     </div>
   );

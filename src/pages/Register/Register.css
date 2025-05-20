@@ -128,6 +128,47 @@ body {
     transform: translateY(-2px);
 }
 
+.register__divider {
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.register__divider-text {
+  font-size: 14px;
+  color: #777;
+  position: relative;
+  display: inline-block;
+  padding: 0 10px;
+}
+
+.register__divider-text::before,
+.register__divider-text::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 40px;
+  height: 1px;
+  background-color: #ccc;
+}
+
+.register__divider-text::before {
+  left: -50px;
+}
+
+.register__divider-text::after {
+  right: -50px;
+}
+
+.register__google-login {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
 /* Responsive */
 @media (max-width: 992px) {
     .register .register__content {

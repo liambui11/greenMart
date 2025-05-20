@@ -3,11 +3,13 @@ import { useDispatch } from "react-redux";
 import { deleteItem, updateQuantity } from "../../actions/cart";
 import { FaRegTrashCan } from "react-icons/fa6";
 import { useAlert } from "../../Context/AlertContext";
+import { useNavigate } from "react-router-dom";
 import "./css/CartRow.css";
 
 const CartRow = ({ item }) => {
   const dispatch = useDispatch();
   const { showAlert } = useAlert();
+  const navigate = useNavigate();
 
   const [inputValue, setInputValue] = useState(item.quantity.toString());
 
@@ -51,9 +53,13 @@ const CartRow = ({ item }) => {
     }
   };
 
+  const goToProductDetail = () => {
+    navigate(`/productdetail/${item.productID.productSlug}`);
+  };
+
   return (
     <tr className="cart-row">
-      <td className="cart-row__product">
+      <td className="cart-row__product" onClick={goToProductDetail} style={{ cursor: "pointer" }} >
         <img className="cart-row__image" src={item.productID.productImage} alt={item.productID.productName} />
         <span className="cart-row__name">{item.productID.productName}</span>
       </td>

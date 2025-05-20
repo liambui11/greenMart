@@ -6,6 +6,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import { useNavigate } from "react-router-dom";
 import { MdKeyboardArrowRight } from "react-icons/md";
+import { IoIosArrowDown } from "react-icons/io";
+import { CiSearch } from "react-icons/ci";
 
 const renderCategoryTreeMobile = (categories, navigate) => {
   const handleClick = (item) => {
@@ -17,7 +19,7 @@ const renderCategoryTreeMobile = (categories, navigate) => {
     <li key={index} className="dropdown-submenu1 mb-2">
       <div
         onClick={() => handleClick(category)}
-        className="text-decoration-none text-dark d-block"
+        className="dropdown-item1 text-decoration-none text-dark d-block py-2"
       >
         {category.categoryName}
         {category.children && category.children.length > 0 && (
@@ -48,7 +50,7 @@ const renderCategoryTree = (categories, navigate) => {
       >
         <span>{category.categoryName}</span>
         {category.children && category.children.length > 0 && (
-          <MdKeyboardArrowRight />
+          <IoIosArrowDown />
         )}
       </div>
 
@@ -63,7 +65,7 @@ const renderCategoryTree = (categories, navigate) => {
 
 function NavbarBottom() {
   const [isSticky, setSticky] = useState(false);
-
+  // const [isHovered, setIsHovered] = useState(false);
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 100) {
@@ -143,7 +145,7 @@ function NavbarBottom() {
                       className="btn bg-light border-bottom border-top border-end ms-n10 rounded-0 rounded-end"
                       type="submit"
                     >
-                      <i className="fa-solid fa-magnifying-glass"></i>
+                      <CiSearch style={{ fontSize: "2rem" }} />
                     </button>
                   </span>
                 </div>
@@ -191,7 +193,7 @@ function NavbarBottom() {
                   </span>
                 </button>
                 <ul
-                  className="dropdown-menu rounded-0 me-0"
+                  className="dropdown-menu me-0"
                   aria-labelledby="dropdownMenuButton1"
                 >
                   {renderCategoryTree(categoriesData, navigate)}

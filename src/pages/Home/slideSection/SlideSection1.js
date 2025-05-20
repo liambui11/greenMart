@@ -6,25 +6,22 @@ function SlideSection1() {
   const [current, setCurrent] = useState(0);
   const listRef = useRef(null);
   const images = useMemo(
-    () => ["/image/slideshow/img9.jpg", "/image/slideshow/img10.jpg"],
+    () => [
+      "/image/slideshow/steak-with-spices-herbs-black-stone-background-meat-banner-top-view-free-space-your-text_187166-38018.jpg",
+      "/image/slideshow/fresh-green-salad.jpg",
+    ],
     []
   );
   const contents = [
     {
-      title: "Free Shipping-orders over $100",
-      description1: (
-        <>
-          Free Shipping to
-          <br />
-          First-Time Customers Only
-        </>
-      ),
-      description2: "After promotions and discounts are applied",
+      title: "Committed to your health, always.",
+      description1: "Greenmart – where only the best meats make the cut.",
+      description2: "Free shipping on your first order!",
       buttonText: "SHOP NOW",
     },
     {
-      title: "Opening Shop",
-      description1: "Enjoy exclusive deals and",
+      title: "Committed to your health, always.",
+      description1: "Greenmart – fresh, safe, and always the best.",
       description2: " Free shipping on your first order!",
       buttonText: "SHOP NOW",
     },
@@ -57,7 +54,7 @@ function SlideSection1() {
           </div>
 
           {/* <!-- Thẻ nội dung trong ảnh --> */}
-          {/* {images.map((_, index) => (
+          {images.map((_, index) => (
             <div
               key={index}
               className={`slideshow-content ${current === index ? "active" : ""}`}
@@ -67,7 +64,7 @@ function SlideSection1() {
               <p>{contents[index].description2}</p>
               <button>{contents[index].buttonText}</button>
             </div>
-          ))} */}
+          ))}
 
           <div className="container-dots">
             <span

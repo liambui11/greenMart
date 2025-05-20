@@ -4,7 +4,7 @@ import "./Footer1.css";
 
 function Footer1() {
   return (
-    <section className="ss1">
+    <section className="footerss1">
       <div className="container">
         <div className="top-footer row">
           <div className="footer-content col-md-2 col-sm-6">
@@ -13,7 +13,7 @@ function Footer1() {
                 <img
                   src="/image/favicon.png"
                   alt=""
-                  width="150px"
+                  width="130px"
                   height="100px"
                 />
               </Link>
@@ -73,7 +73,7 @@ function Footer1() {
           </div>
           <div className="footer-content col-md-2 col-sm-4">
             <h3>Get to know us</h3>
-            <div className="about">
+            <div className="footer-about">
               <ul>
                 <li>
                   <Link to="/about">About</Link>

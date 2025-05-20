@@ -1,11 +1,14 @@
 /* ------TopSectionMain----- */
 .topSectionMain {
-  background-color: aliceblue;
+  background-color: #d3d3d3;
+  padding: 1rem 0;
 }
 
 .topSectionMain ul {
   list-style: none;
   display: flex;
+  justify-content: flex-start;
+  align-items: center;
   margin: 2rem 0;
 }
 
@@ -98,6 +101,7 @@
   margin-top: 3rem;
   font-weight: bold;
   font-size: 2rem;
+  color: #f4c95d;
 }
 
 .price .List {
@@ -112,25 +116,27 @@
 .availability p span {
   font-weight: bold;
   margin-right: 3rem;
-  color: #d3d3d3;
+  color: #f4c95d;
 }
 
 .Quantity {
   display: flex;
-  background-color: white;
 }
 
 .Quantity button {
-  width: 2rem;
-  border: 0.5px solid black;
-  background-color: white;
+  width: 2.75rem;
+  height: 3rem;
+  border: 0.5px solid #d3d3d3;
 }
 
 .Quantity__num {
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 4rem;
-  border-top: 0.5px solid black;
-  border-bottom: 0.5px solid black;
+  border-top: 0.5px solid #d3d3d3;
+  border-bottom: 0.5px solid #d3d3d3;
+  /* border-bottom-left-radius: 1rem; */
 }
 
 .btnAddHeart {
@@ -176,7 +182,7 @@
 
 .btnAdd:hover,
 .ProductDetail__heart:hover {
-  background: green;
+  /* background: green; */
   color: #f4c95d;
 }
 
@@ -187,6 +193,8 @@
 .describe {
   margin-top: 3rem;
   color: #f4c95d;
+  font-size: 1.5rem;
+  font-weight: 600;
 }
 
 /* ---------- */

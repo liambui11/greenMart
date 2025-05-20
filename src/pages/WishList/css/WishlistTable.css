@@ -1,5 +1,8 @@
 .wishlist__table-wrapper {
   overflow-x: auto;
+  max-height: 450px; 
+  overflow-y: auto;
+  position: relative;
 }
 
 .wishlist__table {

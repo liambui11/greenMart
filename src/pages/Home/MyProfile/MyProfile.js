@@ -6,16 +6,20 @@ import "./MyProfile.css";
 import axiosInstance from "../../../untils/axiosInstance";
 import Swal from "sweetalert2";
 import OverlayLoading from "../../../components/OverlayLoading/OverlayLoading";
+import { useNavigate } from "react-router-dom";
 
 const MyProfile = () => {
   const [file, setFile] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const navigationChangePass = useNavigate();
 
   const [values, setValues] = useState({
     name: "",
     email: "",
     address: "",
     phone: "",
+    password: "",
+    loginType: "",
   });
 
   useEffect(() => {
@@ -30,6 +34,8 @@ const MyProfile = () => {
             email: user.userEmail || "",
             address: user.userAddress || "",
             phone: user.userPhone || "",
+            password: user.userPassword || "",
+            loginType: user.loginType || "",
           });
           if (user.userAvatar) {
             setFile(user.userAvatar);
@@ -47,9 +53,17 @@ const MyProfile = () => {
   const [errors, setErrors] = useState({});
 
   const handleInput = (event) => {
+    const { name, value } = event.target;
+
+    let newValue = value;
+
+    if (name === "name") {
+      newValue = value.replace(/[0-9]/g, "");
+    }
+
     setValues((prev) => ({
       ...prev,
-      [event.target.name]: event.target.value,
+      [name]: newValue,
     }));
   };
 
@@ -120,12 +134,20 @@ const MyProfile = () => {
     }
   };
 
+  const handleChangePassword = () => {
+    if (values.loginType === "google") {
+      navigationChangePass("/password/reset");
+    } else {
+      navigationChangePass("/changepassword");
+    }
+  };
+
   return (
     <div className="container">
       <div className="row">
         <div className="Profile">
           <div className="Profile__tittle">
-            <h1>MY PROFILE</h1>
+            <h1>My Profile</h1>
           </div>
           <div className="Profile__infor">
             <div className="Profile__infor__form">
@@ -196,8 +218,15 @@ const MyProfile = () => {
                     <span className="text-danger">{errors.phone}</span>
                   )}
                 </div>
-                <button type="submit" className="Profile__infor__form__btn">
+                <button type="submit" className="profile__infor__form__btn">
                   <strong>Save</strong>
+                </button>
+                <button
+                  type="button"
+                  className="profile__infor__form__btn"
+                  onClick={handleChangePassword}
+                >
+                  <strong>Update Password</strong>
                 </button>
               </form>
             </div>

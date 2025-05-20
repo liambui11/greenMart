@@ -91,7 +91,6 @@ function NavbarMiddle() {
     <div className="midnav py-4">
       <div className="container">
         <div className="row align-items-center gx-lg-2 gx-0 m-0 p-0">
-          {/* <div className="col-lg-3 d-none d-lg-block">Nguyen Ngoc Long</div> */}
           {/* <!-- LOGO --> */}
           <div className="col-lg-3 col-md-6 col-5 d-flex justify-content-start align-items-center">
             <Link to="/" className="navbar-brand d-none d-lg-block">
@@ -116,7 +115,7 @@ function NavbarMiddle() {
                 {/* <!-- Ô nhập tìm kiếm --> */}
                 <input
                   type="search"
-                  className="form-control form-control-lg rounded-start-5 border-success bg-white fs-2"
+                  className="form-control form-control-lg rounded-start-5 border-success bg-white fs-2 position-relative"
                   placeholder="Search for products"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
@@ -160,7 +159,7 @@ function NavbarMiddle() {
                       Category:
                     </div>
                     <div className="suggest-info">
-                      {categoriesData.map((item) => (
+                      {categoriesData.slice(0, 8).map((item) => (
                         <div
                           onMouseDown={() => handleClickToCategoryDetail(item)}
                           className="category__suggest-card"

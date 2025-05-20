@@ -1,26 +1,31 @@
 /* ---section3--- */
-.ss3 {
-    padding-top: 2rem;
-    height: 20rem;
-    background-color: #f5f5f5;
+.footerss3 {
+  padding: 5rem 0;
+  height: auto;
+  background-color: #f5f5f5;
+  /* border: 1px solid black; */
 }
 
 .end {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .socialMedia {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .socialMedia h5 {
-    margin-right: 5rem;
+  margin-right: 5rem;
 }
 
 .socialMedia .mxh a {
-    margin-right: 2rem;
+  margin-right: 2rem;
+}
+
+.socialMedia .mxh a svg {
+  font-size: 3rem;
 }
