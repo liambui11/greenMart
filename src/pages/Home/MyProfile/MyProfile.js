@@ -122,7 +122,12 @@ const MyProfile = () => {
         }
       } catch (error) {
         console.error("Lỗi khi cập nhật thông tin:", error);
-        alert("Đã xảy ra lỗi khi cập nhật!");
+        const errorMessage = error.response?.data?.message || "Đã xảy ra lỗi khi cập nhật!";
+      Swal.fire({
+        title: "Lỗi!",
+        text: errorMessage,
+        icon: "error",
+      });
       } finally {
         setIsLoading(false);
       }

@@ -22,11 +22,11 @@ const ResetPWPage = () => {
     }
   }, [accessToken, dispatch]);
 
-  useEffect(() => {
-    if (!isAuthenticated) {
-      navigate("/login");
-    }
-  }, [dispatch, isAuthenticated, navigate]);
+  // useEffect(() => {
+  //   if (!isAuthenticated) {
+  //     navigate("/login");
+  //   }
+  // }, [dispatch, isAuthenticated, navigate]);
 
   const validateField = (name, value) => {
     let error = "";
