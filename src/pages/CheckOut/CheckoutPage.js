@@ -68,8 +68,8 @@ const CheckoutPage = () => {
     if (name === "phoneNumber") {
       if (!value.trim()) {
         error = "Phone number is required";
-      } else if (!/^\d{9,11}$/.test(value)) {
-        error = "Invalid phone number format";
+      } else if (!/^0\d{9}$/.test(value)) {
+        error = "Phone number must start with 0 and have exactly 10 digits";
       }
     }
 
