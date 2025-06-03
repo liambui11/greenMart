@@ -19,7 +19,7 @@ function MyOrder() {
     orderData.forEach((order) => {
       sum += order.totalOrderAmount;
     });
-    return sum;
+    return (Math.floor(sum * 100) / 100).toFixed(2);
   };
 
   useEffect(() => {
@@ -179,7 +179,9 @@ function MyOrder() {
                   </td>
 
                   <td className="myorder-table-thead-td">
-                    {order.totalOrderAmount}
+                    {(Math.floor(order.totalOrderAmount * 100) / 100).toFixed(
+                      2
+                    )}
                   </td>
                 </tr>
               ))}
