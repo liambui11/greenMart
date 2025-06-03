@@ -69,6 +69,21 @@
   color: #2d6a4f;
 }
 
+.wishlist__price--old {
+  text-decoration: line-through;
+  color: #888;
+  margin-right: 8px;
+}
+
+.wishlist__price--new {
+  font-weight: bold;
+}
+
+.wishlist__price--regular {
+  font-weight: 500;
+}
+
+
 /* Cột sản phẩm (Name) sẽ căn trái */
 .wishlist-row__product {
   display: flex;
@@ -89,12 +104,12 @@
 }
 
 .wishlist__btn--primary:hover {
-  background-color: #006400; /* Màu xanh lá đậm hơn khi hover */
+  background-color: #006400;
 }
 
 /* Nút Contact us */
 .wishlist__btn--contact {
-  background-color: #001f3f; /* Màu xanh đậm */
+  background-color: #001f3f; 
   color: white;
   padding: 8px 15px;
   border-radius: 5px;
@@ -104,5 +119,5 @@
 }
 
 .wishlist__btn--contact:hover {
-  background-color: #000c1a; /* Màu xanh đậm hơn khi hover */
+  background-color: #000c1a;
 }

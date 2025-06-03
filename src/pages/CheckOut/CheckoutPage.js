@@ -50,7 +50,6 @@ const CheckoutPage = () => {
     fullName: "",
     phoneNumber: "",
     address: "",
-    promotion: "",
   });
 
   const [formErrors, setFormErrors] = useState({});
@@ -128,7 +127,6 @@ const CheckoutPage = () => {
               quantity: Number(item.quantity),
             })),
             orderPaymentMethod: "cod",
-            promotionID: formValues.promotion || null,
           };
 
           console.log("Cart item sample:", orderData);
