@@ -88,9 +88,15 @@ const MyProfile = () => {
       setIsLoading(true);
       try {
         const formData = new FormData();
-        formData.append("userName", values.name);
-        formData.append("userPhone", values.phone);
-        formData.append("userAddress", values.address);
+        if (values.name.trim()) {
+          formData.append("userName", values.name.trim());
+        }
+        if (values.phone.trim()) {
+          formData.append("userPhone", values.phone.trim());
+        }
+        if (values.address.trim()) {
+          formData.append("userAddress", values.address.trim());
+        }
 
         const imageFile = document.getElementById("fileInput").files[0];
         if (imageFile) {
