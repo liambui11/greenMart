@@ -84,7 +84,7 @@ function NavbarMiddle() {
     return product
       .filter((p) => p.productDiscountPercentage > 0)
       .sort((a, b) => b.productDiscountPercentage - a.productDiscountPercentage)
-      .slice(0, 5);
+      .slice(0, 6);
   }, [product]);
 
   return (
@@ -159,7 +159,7 @@ function NavbarMiddle() {
                       Category:
                     </div>
                     <div className="suggest-info">
-                      {categoriesData.slice(0, 8).map((item) => (
+                      {categoriesData.slice(0, 9).map((item) => (
                         <div
                           onMouseDown={() => handleClickToCategoryDetail(item)}
                           className="category__suggest-card"

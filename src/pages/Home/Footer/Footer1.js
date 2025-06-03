@@ -1,8 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Footer1.css";
 
 function Footer1() {
+  const [dataCategory, setDataCategory] = useState([]);
+  useEffect(() => {
+    const fetchCategoryData = async () => {
+      try {
+        const res = await fetch(
+          `http://localhost:3000/api/v1/products-category/categorytree`
+        );
+        const json = await res.json();
+        const parentCategories = json.info.filter(
+          (cat) => cat.categoryParentID === null
+        );
+        setDataCategory(parentCategories);
+      } catch (error) {
+        console.error("Faild fetch product:", error);
+      }
+    };
+    fetchCategoryData();
+  }, []);
+
   return (
     <section className="footerss1">
       <div className="container">
@@ -44,30 +63,14 @@ function Footer1() {
             <h3>Categories</h3>
             <div className="listProduct">
               <ul>
-                <li>
-                  <Link>Vegetables</Link>
-                </li>
-                <li>
-                  <Link>Meat</Link>
-                </li>
-                <li>
-                  <Link>Fruits</Link>
-                </li>
-                <li>
-                  <Link>Beer and Soft Drinks</Link>
-                </li>
-                <li>
-                  <Link>Noodles</Link>
-                </li>
-                <li>
-                  <Link>Duck and Chicken</Link>
-                </li>
-                <li>
-                  <Link>Eggs and Milk</Link>
-                </li>
-                <li>
-                  <Link>Confectionery</Link>
-                </li>
+                {dataCategory.map((category, index) => (
+                  <li key={index}>
+                    <Link to={`/categorydetail/${category.categorySlug}`}>
+                      {category.categoryName}
+                      {console.log("11111111111111111111111111111")}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
