@@ -147,7 +147,7 @@ const CheckoutPage = () => {
             });
 
             dispatch(deleteAll());
-            navigate("/");
+            navigate("/cart");
           } else {
             Swal.fire({
               title: "Error",
