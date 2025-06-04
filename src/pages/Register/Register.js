@@ -6,6 +6,7 @@ import { loginUser } from "../../actions/auth";
 import { useAlert } from "../../Context/AlertContext";
 import { useGoogleLogin } from "@react-oauth/google"; 
 import GoogleButton from "../../components/Google/googleButton";
+import errorCodes from "../../config/message";
 import "./Register.css";
 
 const RegisterPage = () => {
@@ -31,25 +32,25 @@ const RegisterPage = () => {
 
     if (name === "name") {
       if (!value.trim()) {
-        error = "Full Name is required";
+        error = errorCodes.register.VALIDATION_NAME_E001;
       } else if (value.length < 3) {
-        error = "Full Name must be at least 3 characters";
+        error = errorCodes.register.VALIDATION_NAME_E002;
       }
     }
 
     if (name === "email") {
       if (!value) {
-        error = "Email is required";
+        error = errorCodes.register.VALIDATION_EMAIL_E001;
       } else if (!/\S+@\S+\.\S+/.test(value)) {
-        error = "Invalid email format";
+        error = errorCodes.register.VALIDATION_EMAIL_E002;
       }
     }
 
     if (name === "password") {
       if (!value) {
-        error = "Password is required";
+        error = errorCodes.register.VALIDATION_PASSWORD_E001;
       } else if (value.length < 6) {
-        error = "Password must be at least 6 characters";
+        error = errorCodes.register.VALIDATION_PASSWORD_E002;
       }
     }
 
@@ -68,21 +69,21 @@ const RegisterPage = () => {
     const validationErrors = {};
 
     if (!formValues.name) {
-      validationErrors.name = "Full Name is required";
+      validationErrors.name = errorCodes.register.VALIDATION_NAME_E001;
     } else if (formValues.name.length < 3) {
-      validationErrors.name = "Full Name must be at least 3 characters";
+      validationErrors.name = errorCodes.register.VALIDATION_NAME_E002;
     }
 
     if (!formValues.email) {
-      validationErrors.email = "Email is required";
+      validationErrors.email = errorCodes.register.VALIDATION_EMAIL_E001;
     } else if (!/\S+@\S+\.\S+/.test(formValues.email)) {
-      validationErrors.email = "Invalid email format";
+      validationErrors.email = errorCodes.register.VALIDATION_EMAIL_E002;
     }
 
     if (!formValues.password) {
-      validationErrors.password = "Password is required";
+      validationErrors.password = errorCodes.register.VALIDATION_PASSWORD_E001;
     } else if (formValues.password.length < 6) {
-      validationErrors.password = "Password must be at least 6 characters";
+      validationErrors.password = errorCodes.register.VALIDATION_PASSWORD_E001;
     }
 
     if (Object.keys(validationErrors).length > 0) {
@@ -107,7 +108,7 @@ const RegisterPage = () => {
       const data = await response.json();
 
       if (!response.ok) {
-        showAlert("error", data.message || "Registration failed!");
+        showAlert("error", data.message || errorCodes.register.REGISTER_FAILED);
         return;
       }
 
@@ -116,15 +117,15 @@ const RegisterPage = () => {
       );
 
       if (result.success) {
-        showAlert("success", "Registration successful! Welcome!");
+        showAlert("success", errorCodes.register.REGISTER_SUCCESS);
         navigate("/");
 
       } else {
-        showAlert("error", result.message || "Registration failed!");
+        showAlert("error", result.message || errorCodes.register.REGISTER_FAILED);
       }
     } catch (error) {
       console.error("Registration fetch error:", error);
-      showAlert("error", "Server connection error");
+      showAlert("error", errorCodes.register.SERVER_ERROR);
     }
   };
 
@@ -144,17 +145,17 @@ const RegisterPage = () => {
         const data = await res.json();
         if (res.ok) {
           dispatch({ type: "LOGIN_SUCCESS", payload: { accessToken: data.accessToken } });
-          showAlert("success", "Google login successful!");
+          showAlert("success", errorCodes.login.GOOGLE_LOGIN_SUCCESS);
           navigate("/");
         } else {
-          showAlert("error", data.message || "Google login failed.");
+          showAlert("error", data.message || errorCodes.login.GOOGLE_LOGIN_FAILED);
         }
       } catch (error) {
         console.error("Google login error:", error);
-        showAlert("error", "Google login failed.");
+        showAlert("error", errorCodes.login.GOOGLE_LOGIN_FAILED);
       }
     },
-    onError: () => showAlert("error", "Google login failed."),
+    onError: () => showAlert("error", errorCodes.login.GOOGLE_LOGIN_FAILED),
     scope: "openid email profile",
   });
 

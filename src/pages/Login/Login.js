@@ -7,6 +7,7 @@ import { loginUser } from "../../actions/auth";
 import { useAlert } from "../../Context/AlertContext"; 
 import { useGoogleLogin } from '@react-oauth/google';
 import GoogleButton from "../../components/Google/googleButton";
+import errorCodes from "../../config/message";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -28,17 +29,17 @@ const LoginPage = () => {
 
     if (name === "email") {
       if (!value) {
-        error = "Email is required";
+        error = errorCodes.login.VALIDATION_EMAIL_E001;
       } else if (!/\S+@\S+\.\S+/.test(value)) {
-        error = "Invalid email format";
+        error = errorCodes.login.VALIDATION_EMAIL_E002;
       }
     }
 
     if (name === "password") {
       if (!value) {
-        error = "Password is required";
+        error = errorCodes.login.VALIDATION_PASSWORD_E001;
       } else if (value.length < 6) {
-        error = "Password must be at least 6 characters";
+        error = errorCodes.login.VALIDATION_PASSWORD_E002;
       }
     }
 
@@ -58,15 +59,15 @@ const LoginPage = () => {
     const validationErrors = {};
 
     if (!email) {
-      validationErrors.email = "Email is required";
+      validationErrors.email = errorCodes.login.VALIDATION_EMAIL_E001;
     } else if (!/\S+@\S+\.\S+/.test(email)) {
-      validationErrors.email = "Invalid email format";
+      validationErrors.email = errorCodes.login.VALIDATION_EMAIL_E002;
     }
 
     if (!password) {
-      validationErrors.password = "Password is required";
+      validationErrors.password = errorCodes.login.VALIDATION_PASSWORD_E001;
     } else if (password.length < 6) {
-      validationErrors.password = "Password must be at least 6 characters";
+      validationErrors.password = errorCodes.login.VALIDATION_PASSWORD_E002;
     }
 
     if (Object.keys(validationErrors).length > 0) {
@@ -76,7 +77,7 @@ const LoginPage = () => {
 
     const result = await dispatch(loginUser(email, password, showAlert));
     if (result.success) {
-      showAlert("success", "Login successful!");
+      showAlert("success", errorCodes.login.LOGIN_SUCCESS);
       navigate("/");
     }
   };
@@ -97,17 +98,17 @@ const LoginPage = () => {
         const data = await res.json();
         if (res.ok) {
           dispatch({ type: "LOGIN_SUCCESS", payload: { accessToken: data.accessToken } });
-          showAlert("success", "Google login successful!");
+          showAlert("success", errorCodes.login.GOOGLE_LOGIN_SUCCESS);
           navigate("/");
         } else {
-          showAlert("error", data.message || "Google login failed.");
+          showAlert("error", data.message || errorCodes.login.GOOGLE_LOGIN_FAILED);
         }
       } catch (error) {
         console.error("Google login error:", error);
-        showAlert("error", "Google login failed.");
+        showAlert("error", errorCodes.login.GOOGLE_LOGIN_FAILED);
       }
     },
-    onError: () => showAlert("error", "Google login failed."),
+    onError: () => showAlert("error", errorCodes.login.GOOGLE_LOGIN_FAILED),
     scope: "openid email profile",
   });
 
