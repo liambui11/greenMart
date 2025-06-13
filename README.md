@@ -5,11 +5,24 @@ Nhu yếu phẩm và thực phẩm là những sản phẩm thiết yếu trong 
 Một website chuyên biệt cho việc bán nhu yếu phẩm/thực phẩm sẽ giúp khách hàng dễ dàng tìm kiếm, mua sắm trực tuyến và giúp cửa hàng quản lý kho hàng, đơn hàng, khách hàng hiệu quả hơn.
 
 ## 🛠️ Công Nghệ Sử Dụng
-- Visual Studio Code: Môi trường phát triển tích hợp (IDE) được sử dụng để lập trình.
-- Postman: Công cụ kiểm thử API RESTful.
-- Git/GitHub: Quản lý mã nguồn và theo dõi phiên bản.
-- Nodejs: Lập trình phía server.
-- MongoDB: Quản lý cơ sở dữ liệu.
+| Công nghệ / Công cụ    | Mô tả                                                             |
+| ---------------------- | ----------------------------------------------------------------- |
+| **ReactJS**            | Thư viện JavaScript xây dựng giao diện người dùng dạng component. |
+| **React Router DOM**   | Điều hướng giữa các trang trong ứng dụng SPA.                     |
+| **Redux Toolkit**      | Quản lý trạng thái toàn cục hiệu quả và tối ưu.                   |
+| **Axios**              | Gửi HTTP request đến backend (RESTful API).                       |
+| **React Pagination**   | Hỗ trợ phân trang danh sách sản phẩm, hóa đơn,... trên giao diện. |
+| **Bootstrap**          | Thư viện CSS hỗ trợ thiết kế giao diện responsive nhanh chóng.    |
+| **Cloudinary**         | Lưu trữ và quản lý hình ảnh/video trên nền tảng đám mây.          |
+| **MongoDB**            | Cơ sở dữ liệu NoSQL để lưu trữ sản phẩm, người dùng, đơn hàng,... |
+| **JavaScript (ES6+)**  | Ngôn ngữ lập trình chính với cú pháp hiện đại.                    |
+| **HTML5 & CSS3**       | Xây dựng cấu trúc và định dạng giao diện.                         |
+| **Visual Studio Code** | Môi trường phát triển tích hợp (IDE) được sử dụng chính.          |
+| **Git & GitHub**       | Quản lý mã nguồn và hỗ trợ cộng tác nhóm.                         |
+| **Postman**            | Kiểm thử và mô phỏng API trong quá trình phát triển.              |
+
+
+
 
 ## 📂 Cấu Trúc Dự Án
 ```
@@ -32,7 +45,7 @@ GreenMartFrontEndClient/
 │   ├── App.js                      # File gốc App component
 │   ├── index.css                   # CSS chung
 │   ├── index.js                    # Entry point của ứng dụng React
-│   └── reportWebVitals.js         # Đo hiệu suất web (tuỳ chọn)
+│   └── reportWebVitals.js          # Đo hiệu suất web (tuỳ chọn)
 ├── .env                            # Biến môi trường (API endpoint,...)
 ├── README.md                       # Tệp giới thiệu dự án
 ├── .gitignore                      # Bỏ qua các tệp/thư mục không cần đẩy lên Git
@@ -44,7 +57,7 @@ GreenMartFrontEndClient/
 ## 🚀 Cài Đặt và Chạy Dự Án FrontEnd
 ### 1. Clone repository
 ```bash
-https://github.com/liambui11/greenMart.git
+git clone https://github.com/liambui11/greenMart.git
 cd GreenMartFrontEndClient
 ```
 
