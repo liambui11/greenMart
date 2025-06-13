@@ -142,8 +142,10 @@ const ProductDetail = () => {
 
             <div className="price">
               <p className="price-label">Price:</p>
-              <p className="Promotional"> {productdetail?.priceNew} </p>
-              <p className="List">${productdetail?.productPrice}</p>
+              <p className="Promotional"> ${productdetail?.priceNew} </p>
+              {productdetail?.productDiscountPercentage !== 0 && (
+                <p className="List">${productdetail?.productPrice}</p>
+              )}
             </div>
 
             <div className="availability">

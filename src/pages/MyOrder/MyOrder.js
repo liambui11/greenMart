@@ -155,7 +155,7 @@ function MyOrder() {
           </div>
 
           <div className="myorder-top-info-sum-money">
-            {sumPrice()} Sum Money
+            ${sumPrice()} Sum Money
           </div>
         </div>
 
@@ -236,7 +236,7 @@ function MyOrder() {
                     {order.orderStatus}
                   </td>
                   <td className="order-table-tbody-tr-td">
-                    {totalPrice.toLocaleString("vi-VN")}{" "}
+                    ${totalPrice.toLocaleString("vi-VN")}{" "}
                   </td>
                   <td className="order-table-tbody-tr-td">
                     <FaAlignJustify
