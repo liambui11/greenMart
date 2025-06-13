@@ -63,10 +63,11 @@ REACT_APP_GOOGLE_CLIENT_ID=1234567890-abcxyz123.apps.googleusercontent.com
 ```bash
 npm start
 ```
-##👥 Nhóm Thực Hiện
+
+## 👥 Nhóm Thực Hiện
 - Nguyễn Ngọc Long - N22DCCN149
 - Bùi Kinh Luân - N22DCCN151
 - Bùi Minh Quân - N22DCCN163
 
-##📄 License
+## 📄 License
 Dự án được thực hiện với mục đích học tập
