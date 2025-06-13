@@ -2,14 +2,16 @@ import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { deleteAll } from "../../actions/cart";
+import { fetchCart, deleteAll } from "../../actions/cart";
 import axiosInstance from "../../untils/axiosInstance";
 import Swal from "sweetalert2";
 import "./CheckoutPage.css";
+import OverlayLoading from "../../components/OverlayLoading/OverlayLoading";
 
 const CheckoutPage = () => {
   const cart = useSelector((state) => state.cartReducer.items);
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -113,6 +115,8 @@ const CheckoutPage = () => {
 
       if (result.isConfirmed) {
         try {
+          setIsSubmitting(true);
+
           const orderData = {
             customerInfor: {
               name: formValues.fullName,
@@ -146,7 +150,8 @@ const CheckoutPage = () => {
               },
             });
 
-            dispatch(deleteAll());
+            await dispatch(deleteAll());
+            await dispatch(fetchCart());
             navigate("/cart");
           } else {
             Swal.fire({
@@ -179,6 +184,9 @@ const CheckoutPage = () => {
               content: "my-swal-content",
             },
           });
+        }
+        finally {
+          setIsSubmitting(false);
         }
       }
     }
@@ -356,6 +364,7 @@ const CheckoutPage = () => {
           </button>
         </div>
       </form>
+      {isSubmitting && <OverlayLoading />}
     </div>
   );
 };
