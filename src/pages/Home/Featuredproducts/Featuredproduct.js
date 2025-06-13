@@ -59,15 +59,19 @@ function Featuredproduct() {
             <strong>Featured Products</strong>
           </h1>
           <div className="featuredproduct__tittle__arrow">
-            <IoIosArrowBack
+            <div
               onClick={prevSlide}
               className="featuredproduct__tittle__arrow__left"
-            />
+            >
+              <IoIosArrowBack />
+            </div>
 
-            <IoIosArrowForward
+            <div
               onClick={nextSlide}
               className="featuredproduct__tittle__arrow__right"
-            />
+            >
+              <IoIosArrowForward />
+            </div>
 
             <Link to="/featured" className="featuredproduct__tittle__viewall">
               ViewAll

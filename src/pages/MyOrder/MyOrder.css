@@ -167,19 +167,17 @@
     font-size: 2rem;
   }
 
-  .myorder-top-search {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    margin-top: 2rem;
+  .order-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
   }
 
-  .myorder-top-search input,
-  .myorder-top-search button,
-  .sortOrder {
-    width: 100%;
-    border-radius: 1rem;
-    margin-bottom: 1rem;
+  .order-table thead,
+  .order-table tbody,
+  .order-table-thread-tr-th,
+  .order-table-tbody-tr-td {
+    white-space: nowrap;
   }
 }
 

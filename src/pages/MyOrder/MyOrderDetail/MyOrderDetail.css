@@ -85,3 +85,67 @@
   border-radius: 8px;
   border: 1px solid #ddd;
 }
+
+@media (max-width: 768px) {
+  .myorder-detail {
+    width: 95%;
+    padding: 15px;
+  }
+
+  .myorder-detail-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .myorder-detail-top-title {
+    font-size: 22px;
+  }
+
+  .myorder-detail-info--bill-content,
+  .myorder-detail-info div {
+    font-size: 14px;
+  }
+
+  .myorder-detail-top-id p {
+    font-size: 13px;
+  }
+
+  .myorder-detail-top-info-bill {
+    font-size: 18px;
+  }
+
+  .myorder-detail-table-thread-tr-th,
+  .myorder-detail-table-tbody-tr-td {
+    padding: 8px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .myorder-detail {
+    padding: 10px;
+  }
+
+  .myorder-detail-top-title {
+    font-size: 20px;
+  }
+
+  .myorder-detail-info {
+    padding: 15px;
+  }
+
+  .myorder-detail-top-info-bill {
+    font-size: 16px;
+  }
+
+  .myorder-detail-table-content {
+    font-size: 12px;
+  }
+
+  .myorder-detail-table-thread-tr-th,
+  .myorder-detail-table-tbody-tr-td {
+    padding: 6px;
+    font-size: 12px;
+  }
+}
