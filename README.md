@@ -67,7 +67,7 @@ npm install
 ```
 
 ### 3. Cấu hình các biến môi trường
-Tạo file .env tại thư mục gốc và thêm nội dung:
+Tạo file `.env` tại thư mục gốc và thêm nội dung:
 ```bash
 REACT_APP_GOOGLE_CLIENT_ID=1234567890-abcxyz123.apps.googleusercontent.com
 ```
