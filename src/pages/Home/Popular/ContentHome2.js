@@ -34,6 +34,12 @@ function ContentHome2() {
               <strong>New Products</strong>
             </h1>
           </div>
+          <div className="newproduct-banner">
+            <div className="newproduct-banner-note">
+              New products have just hit the shelves.
+            </div>
+            <img alt="" src="/image/bannner/new-product.png" />
+          </div>
           <div className="popular__Card">
             {currentPosts.map((item, index) => (
               <div key={index} className="popular__Card__item">

@@ -11,10 +11,12 @@ import { addWishlistItem } from "../../../actions/wishlist";
 import { useAlert } from "../../../Context/AlertContext";
 import { useParams } from "react-router-dom";
 import { IoIosArrowForward } from "react-icons/io";
+import { FaPlus } from "react-icons/fa";
+import { FaMinus } from "react-icons/fa";
 
 const ProductDetail = () => {
   const navigate = useNavigate();
-  const { productSlug } = useParams(); // lấy slug từ URL
+  const { productSlug } = useParams();
 
   const [quantity, setQuantity] = useState(1);
   const [productdetail, setProductdetail] = useState(null);
@@ -139,18 +141,18 @@ const ProductDetail = () => {
             <hr />
 
             <div className="price">
-              <p>Price:</p>
+              <p className="price-label">Price:</p>
               <p className="Promotional"> {productdetail?.priceNew} </p>
               <p className="List">${productdetail?.productPrice}</p>
             </div>
 
             <div className="availability">
-              <p>
+              <p className="availability-stock-status">
                 <span>In Stock:</span>
                 {Math.max(0, productdetail?.productStock - quantity)}
               </p>
 
-              <p onClick={handleClick}>
+              <p onClick={handleClick} className="availability-type">
                 <span>Type:</span>
                 {productdetail?.category?.categoryName}
               </p>
@@ -162,11 +164,11 @@ const ProductDetail = () => {
                 className="subtract"
                 onClick={handleSubtract}
               >
-                -
+                <FaPlus />
               </button>
               <div className="Quantity__num">{quantity}</div>
               <button type="button" className="plus" onClick={handlePlus}>
-                +
+                <FaMinus />
               </button>
             </div>
 
@@ -193,9 +195,11 @@ const ProductDetail = () => {
             </div>
 
             <div className="describe">
-              <p>
+              <p className="describe-label">
                 Describe:
-                <span>{productdetail?.productDescription}</span>
+                <span className="describe-content">
+                  {productdetail?.productDescription}
+                </span>
               </p>
             </div>
           </div>

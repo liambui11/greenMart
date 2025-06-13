@@ -21,6 +21,7 @@ import MyProfile from "../pages/Home/MyProfile/MyProfile";
 import MyOrder from "../pages/MyOrder/MyOrder";
 import Featuredproductviewall from "../pages/Home/Featuredproducts/Featuredproductviewall";
 import ChangePassword from "../pages/Home/MyProfile/Changepassword/ChangePassword";
+import MyOrderDetail from "../pages/MyOrder/MyOrderDetail/MyOrderDetail";
 
 export const routes = [
   {
@@ -98,6 +99,10 @@ export const routes = [
       {
         path: "featured",
         element: <Featuredproductviewall />,
+      },
+      {
+        path: "myorder/myorderdetail/:id",
+        element: <MyOrderDetail />,
       },
       {
         path: "changepassword",

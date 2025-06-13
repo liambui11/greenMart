@@ -34,3 +34,13 @@ export const fetchOrderByPriceDescending = async (query) => {
     return [];
   }
 };
+
+export const fetchUser = async () => {
+  try {
+    const res = await axiosInstance.get("/api/v1/users/detail");
+    return res.data.info;
+  } catch (error) {
+    console.error("fetchMyOrderUser error:", error);
+    return [];
+  }
+};

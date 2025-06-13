@@ -23,7 +23,7 @@ function HomeContent() {
       <Featuredproduct />
       <PopularProducts />
       <ContentHome2 />
-      <Banner />
+      {/* <Banner /> */}
       <BigSale />
       <HotProduct />
       <CreateAccount />

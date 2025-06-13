@@ -27,7 +27,7 @@ function HotProduct() {
   return (
     <div className="Hotproduct-container">
       <div className="hotproduct row">
-        <div className="hotproduct__Tittle">
+        <div className="hotproduct-tittle">
           <h1>
             <strong>Hot Products Of Week</strong>
           </h1>

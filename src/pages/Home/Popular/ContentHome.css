@@ -1,49 +1,93 @@
 /* -----Popular------------------ */
 
 .Popular {
-    margin: 5rem auto;
+  margin: 5rem auto;
 }
 
-.popular--title {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 2rem;
+.popular--title h1 {
+  display: flex;
+  justify-content: space-between;
+  font-size: 3rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+
+.newproduct-banner {
+  background: linear-gradient(90deg, #fefcea 0%, #f1da36 100%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 4rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin: 3rem auto;
+  max-width: 1200px;
+}
+
+.newproduct-banner-note {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: #d62828;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  max-width: 60%;
+  line-height: 1.3;
+}
+
+.newproduct-banner img {
+  width: 30%;
+  max-width: 300px;
+  height: auto;
+  object-fit: contain;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 
 .popular__Card {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(23rem, 1fr));
-    place-items: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(23rem, 1fr));
+  place-items: center;
 }
 
 .popular__Tittle__viewAll {
-    border: 1px solid #ccc;
-    width: 10rem;
-    height: 4rem;
-    border-radius: 2rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    color: #ccc;
-    text-decoration: none;
+  border: 1px solid #ccc;
+  width: 10rem;
+  height: 4rem;
+  border-radius: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  color: #ccc;
+  text-decoration: none;
 }
 
 .popular__Card__item {
-    margin-top: 1.5rem;
-    /* background: aqua; */
-    width: 220px;
-    height: 300px !important;
-    flex: 0 0 auto;
+  margin-top: 1.5rem;
+  /* background: aqua; */
+  width: 220px;
+  height: 300px !important;
+  flex: 0 0 auto;
 }
 
 @media (max-width: 768px) {
-    .popular__Card {
-        margin: auto;
-    }
+  .popular__Card {
+    margin: auto;
+  }
 
-    .popular__Card__item {
-        margin: auto;
-    }
+  .popular__Card__item {
+    margin: auto;
+  }
 }

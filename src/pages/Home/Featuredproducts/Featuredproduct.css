@@ -14,6 +14,15 @@
   display: flex;
   justify-content: space-between;
   /* margin-bottom: 2rem; */
+  /* flex-direction: column;*/
+  align-items: center;
+}
+.featuredproduct--title h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #065f46;
+  text-align: center;
+  margin: 0;
 }
 
 .featuredproduct__tittle__viewall {
@@ -62,6 +71,24 @@
 .featuredproduct__tittle__arrow__left:hover,
 .featuredproduct__tittle__arrow__right:hover {
   background-color: rgb(80, 223, 80);
+}
+
+.featuredproduct__sign {
+  /* position: absolute;
+  right: 2rem;
+  top: 1rem; */
+  width: 80px;
+  height: auto;
+  animation: rotate 6s linear infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .featuredproduct__card__wrapper {

@@ -45,8 +45,15 @@ function ContentHome2() {
         <div className="bigsale--title col-12">
           <h1>
             <strong>Big Sale Products</strong>
+            <img alt="" src="/image/bannner/hot-sale.png" width={200} />
           </h1>
         </div>
+        {/* <div className="bigsale-banner">
+          <div className="bigsale-banner-note">
+            Our products with attractive promotions
+          </div>
+          <img alt="" src="/image/bannner/limit-hot-sale2.png" />
+        </div> */}
         <div className="bigsale__card">
           {currentPosts.map((item, index) => (
             <div key={index} className="bigsale__card__item">

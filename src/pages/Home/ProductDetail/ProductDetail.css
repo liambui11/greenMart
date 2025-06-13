@@ -41,9 +41,9 @@
 }
 
 .imgSectionMain img {
-  width: 100%;
+  width: 70%;
   height: 500px;
-  margin-right: 2rem;
+  margin: 0 2rem;
   object-fit: contain;
 }
 
@@ -70,6 +70,10 @@
   margin: auto;
 }
 
+.contentSectionMain h1 {
+  box-shadow: 2px 2px 0px 0px #888888;
+}
+
 .contentSectionMain h4 {
   color: rgb(94, 210, 94);
 }
@@ -93,14 +97,14 @@
 .price .List {
   margin-top: 3rem;
   font-weight: bold;
-  font-size: 2rem;
+  font-size: 3rem;
   margin-left: 3rem;
 }
 
 .price p {
   margin-top: 3rem;
-  font-weight: bold;
-  font-size: 2rem;
+  font-weight: 600;
+  font-size: 3rem;
   color: #f4c95d;
 }
 
@@ -109,18 +113,26 @@
   text-decoration-line: line-through;
 }
 
-.availability p {
+.availability-stock-status,
+.availability-type {
   margin-top: 2rem;
+  margin-right: 2rem;
+  color: green;
+  font-size: 2rem;
+  font-weight: 600;
 }
 
 .availability p span {
-  font-weight: bold;
+  font-weight: 600;
   margin-right: 3rem;
   color: #f4c95d;
+  font-size: 2.5rem;
 }
 
 .Quantity {
   display: flex;
+  font-size: 1.5rem;
+  margin-top: 2rem;
 }
 
 .Quantity button {
@@ -136,7 +148,7 @@
   width: 4rem;
   border-top: 0.5px solid #d3d3d3;
   border-bottom: 0.5px solid #d3d3d3;
-  /* border-bottom-left-radius: 1rem; */
+  font-weight: 600;
 }
 
 .btnAddHeart {
@@ -146,21 +158,25 @@
 .btnAdd {
   margin-top: 2rem;
   width: 50%;
-  height: 3rem;
+  height: 3.5rem;
   border-radius: 5px;
   background-color: rgb(94, 210, 94);
   color: white;
   border: none;
+  font-size: 1.75rem;
+  font-weight: 600;
 }
 
 .btnOutofStock {
   margin-top: 2rem;
   width: 50%;
-  height: 3rem;
+  height: 3.5rem;
   border-radius: 5px;
   background-color: red;
   color: white;
   border: none;
+  font-size: 1.75rem;
+  font-weight: 600;
 }
 
 .btnAddHeart .ProductDetail__heart {
@@ -173,6 +189,7 @@
   margin-left: 5rem;
   width: 4rem;
   height: 3rem;
+  font-weight: 600;
 }
 
 .ProductDetail__heart svg {
@@ -193,8 +210,13 @@
 .describe {
   margin-top: 3rem;
   color: #f4c95d;
-  font-size: 1.5rem;
+  font-size: 2.5rem;
   font-weight: 600;
+}
+
+.describe-content {
+  font-size: 2rem;
+  color: #d3d3d3;
 }
 
 /* ---------- */

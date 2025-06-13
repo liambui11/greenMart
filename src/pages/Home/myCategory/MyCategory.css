@@ -1,68 +1,74 @@
 .Category {
-    margin: auto;
+  margin: auto;
 }
 
 .category {
-    margin: 5rem 0 !important;
+  margin: 5rem 0 !important;
 }
 
 .category__Tittle {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.category__Tittle h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #065f46;
 }
 
 .category__Tittle__arrow {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .category__Tittle__arrow__left {
-    border: 1px solid #ccc;
-    width: 4rem;
-    height: 4rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 0.25rem;
-    border-radius: 2rem;
-    cursor: pointer;
-    font-size: large;
-    font-weight: 700;
+  border: 1px solid #ccc;
+  width: 4rem;
+  height: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0.25rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  font-size: large;
+  font-weight: 700;
 }
 
 .category__Tittle__arrow__right {
-    border: 1px solid #ccc;
-    width: 4rem;
-    height: 4rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 0.25rem;
-    border-radius: 2rem;
-    cursor: pointer;
-    font-size: large;
-    font-weight: 700;
+  border: 1px solid #ccc;
+  width: 4rem;
+  height: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0.25rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  font-size: large;
+  font-weight: 700;
 }
 
 .category__Tittle__arrow__left:hover,
 .category__Tittle__arrow__right:hover {
-    background-color: rgb(80, 223, 80);
+  background-color: rgb(80, 223, 80);
 }
 
 .category__Wrapper {
-    overflow: hidden;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    width: 100%;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
 }
 
 .category__Card {
-    display: flex;
-    transition: transform 1s ease-in-out;
-    gap: 26px;
+  display: flex;
+  transition: transform 1s ease-in-out;
+  gap: 26px;
 }
 
 /* .category__Card__item {

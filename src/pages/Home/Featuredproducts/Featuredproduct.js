@@ -72,6 +72,11 @@ function Featuredproduct() {
             <Link to="/featured" className="featuredproduct__tittle__viewall">
               ViewAll
             </Link>
+            <img
+              alt=""
+              src="/image/bannner/featured-product-sign-round.png"
+              className="featuredproduct__sign"
+            />
           </div>
         </div>
 

@@ -1,0 +1,87 @@
+.myorder-detail {
+  padding: 30px;
+  /* max-width: 1000px; */
+  width: 60%;
+  margin: 0 auto;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid black;
+}
+
+.myorder-detail-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.myorder-detail-top-title {
+  font-size: 28px;
+  font-weight: bold;
+  color: #333;
+}
+
+.myorder-detail-top-id p {
+  margin: 2px 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.myorder-detail-info {
+  margin-bottom: 30px;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-left: 4px solid #4caf50;
+  border-radius: 5px;
+}
+
+.myorder-detail-top-info-bill {
+  margin-bottom: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #222;
+}
+
+.myorder-detail-info--bill-content,
+.myorder-detail-info div {
+  font-size: 16px;
+  color: #444;
+  margin-bottom: 6px;
+}
+
+.myorder-detail-table {
+  overflow-x: auto;
+}
+
+.myorder-detail-table-content {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.myorder-detail-table-thread-tr {
+  background-color: #4caf50;
+  color: white;
+  text-align: left;
+}
+
+.myorder-detail-table-thread-tr-th,
+.myorder-detail-table-tbody-tr-td {
+  padding: 12px;
+  font-size: 14px;
+  border-bottom: 1px solid #ddd;
+}
+
+.myorder-detail-table-tbody-tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.myorder-detail-table-tbody-tr:hover {
+  background-color: #f1f1f1;
+  transition: all 0.2s ease;
+}
+
+.myorder-detail-table-tbody-tr-td img {
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
