@@ -20,7 +20,7 @@ function ContactCompany() {
         <div className="Contact__infor__address">
           <IoLocationOutline className="Contact__infor__icon" />
 
-          <p>97 Man Thien Street, Thu Duc City</p>
+          <p>97 Man Thien St., Hiep Phu Ward, Thu Duc City, Ho Chi Minh City</p>
           <h3>Come to us</h3>
         </div>
         <div className="Contact__infor__Phone">
@@ -51,7 +51,6 @@ function ContactCompany() {
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
         />
-
       </div>
     </div>
   );

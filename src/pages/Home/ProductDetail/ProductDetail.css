@@ -10,9 +10,15 @@
   justify-content: flex-start;
   align-items: center;
   margin: 2rem 0;
+  font-size: 1.75rem;
+  font-weight: 600;
 }
 
 .topSectionMain ul li i {
+  margin-right: 2rem;
+}
+
+.topSectionMain-icon {
   margin-right: 2rem;
 }
 
@@ -53,7 +59,8 @@
   right: 3rem;
   color: white;
   background-color: red;
-  width: 4rem;
+  width: 5rem;
+  border-radius: 1rem;
   text-align: center;
 }
 
@@ -153,6 +160,7 @@
 
 .btnAddHeart {
   display: flex;
+  cursor: pointer;
 }
 
 .btnAdd {

@@ -32,8 +32,8 @@ function Footer1() {
                 <img
                   src="/image/favicon.png"
                   alt=""
-                  width="130px"
-                  height="100px"
+                  width="150px"
+                  height="150px"
                 />
               </Link>
               <div className="tieuDe">
@@ -42,8 +42,8 @@ function Footer1() {
               </div>
               <div className="location">
                 <i className="fa-solid fa-location-dot"></i>
-                <span>Address: </span>351 ql13, Phường Hiệp Bình Phước, Quận Thủ
-                Đức, Thành phố Hồ Chí Minh
+                <span>Address: </span>97 Man Thien St., Hiep Phu Ward, Thu Duc
+                City, Ho Chi Minh City
               </div>
               <div className="call">
                 <i className="fa-solid fa-headset"></i>

@@ -115,7 +115,7 @@ const ProductDetail = () => {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <IoIosArrowForward />
+              <IoIosArrowForward className="topSectionMain-icon" />
             </li>
             <li>
               <Link>{productdetail?.productName}</Link>
@@ -149,7 +149,7 @@ const ProductDetail = () => {
             <div className="availability">
               <p className="availability-stock-status">
                 <span>In Stock:</span>
-                {Math.max(0, productdetail?.productStock - quantity)}
+                {Math.max(0, productdetail?.productStock)}
               </p>
 
               <p onClick={handleClick} className="availability-type">
@@ -164,11 +164,11 @@ const ProductDetail = () => {
                 className="subtract"
                 onClick={handleSubtract}
               >
-                <FaPlus />
+                <FaMinus />
               </button>
               <div className="Quantity__num">{quantity}</div>
               <button type="button" className="plus" onClick={handlePlus}>
-                <FaMinus />
+                <FaPlus />
               </button>
             </div>
 
