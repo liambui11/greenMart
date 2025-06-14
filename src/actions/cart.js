@@ -45,6 +45,8 @@ export const addToCart = (productID, quantity = 1) => async (dispatch, getState)
   } catch (err) {
     console.error('Add to cart failed', err);
     dispatch({ type: 'ADD_TO_CART_SUCCESS', payload: prevCart }); // rollback
+    const message = err.response?.data?.message || "Something went wrong!";
+    throw new Error(message);
   } finally {
     dispatch({ type: 'CART_DONE' });
   }

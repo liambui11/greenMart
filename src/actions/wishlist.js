@@ -46,6 +46,8 @@ export const addWishlistItem = (productID) => async (dispatch, getState) => {
   } catch (err) {
     console.error("Add wishlist failed", err);
     dispatch({ type: "SET_WISHLIST", payload: prevWishlist }); // rollback
+    const message = err.response?.data?.message || "Something went wrong!";
+    throw new Error(message);
   } finally {
     dispatch({ type: "WISHLIST_DONE" });
   }

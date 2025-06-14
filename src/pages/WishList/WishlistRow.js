@@ -13,7 +13,7 @@ const WishlistRow = ({ item }) => {
     const { showAlert } = useAlert();
     const navigate = useNavigate();
 
-    const handleAddToCart = () => {
+    const handleAddToCart = async () => {
         const existingItem = cart.find(cartItem => cartItem.productID._id === item._id);
         const currentQty = existingItem?.quantity || 0;
 
@@ -22,12 +22,16 @@ const WishlistRow = ({ item }) => {
             return;
         }
 
-        if (existingItem) {
-            dispatch(updateQuantity(item._id, existingItem.quantity + 1));
-            showAlert("success", "Quantity updated in cart.");
-        } else {
-            dispatch(addToCart(item._id, 1));
-            showAlert("success", "Added to cart successfully!");
+        try {
+            if (existingItem) {
+                await dispatch(updateQuantity(item._id, existingItem.quantity + 1));
+                showAlert("success", "Quantity updated in cart.");
+            } else {
+                await dispatch(addToCart(item._id, 1));
+                showAlert("success", "Added to cart successfully!");
+            }
+        } catch (err) {
+            showAlert("error", err.message || "Something went wrong!");
         }
     };
 

@@ -23,7 +23,7 @@ function CardProduct({ item }) {
     navigate(`/productdetail/${item.productSlug}`);
   };
 
-  const handleAddToCard = () => {
+  const handleAddToCard = async () => {
     if (!isAuthenticated) {
       showAlert("error", "Please login to add items to cart!");
       return;
@@ -36,8 +36,12 @@ function CardProduct({ item }) {
       return;
     }
 
-    dispatch(addToCart(item._id));
-    showAlert("success", "Added to cart!");
+    try {
+      await dispatch(addToCart(item._id));
+      showAlert("success", "Added to cart!");
+    } catch (err) {
+      showAlert("error", err.message);
+    }
   };
 
   return (
@@ -99,7 +103,7 @@ function CardProductHovered(item) {
   const wishlist = useSelector((state) => state.wishlistReducer.items || []);
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 
-  const handleAddWishList = () => {
+  const handleAddWishList = async () => {
     if (!isAuthenticated) {
       showAlert("error", "Please login to add items to wishlist!");
       return;
@@ -110,9 +114,13 @@ function CardProductHovered(item) {
       return;
     }
 
-    dispatch(addWishlistItem(item.item._id));
-    showAlert("success", "Wishlist updated!");
-  };
+    try {
+      await dispatch(addWishlistItem(item.item._id));
+      showAlert("success", "Added to wishlist!");
+    } catch (err) {
+      showAlert("error", err.message);
+    }
+};
 
   return (
     <div className="card-product-hovered-container">
