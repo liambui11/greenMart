@@ -1,23 +1,31 @@
-FROM node:14
+# Dockerfile
 
+# Base image
+FROM node:18 AS build
+
+# Set working directory
 WORKDIR /app
 
-COPY package.json package-lock.json ./
+# Copy project files
+COPY . .
+
+# Install dependencies
 RUN npm install
 
-COPY public ./public
-COPY src ./src
-COPY .env ./
-
-# 👉 Tăng giới hạn bộ nhớ lên 1.5GB
-ENV NODE_OPTIONS="--max-old-space-size=1536"
-
-# Build ứng dụng React
+# Build production
 RUN npm run build
 
-# Cài `serve` để chạy app production
-RUN npm install -g serve
+# Serve bằng nginx
+FROM nginx:stable-alpine
 
-EXPOSE 3001
+# Copy build React sang nginx folder
+COPY --from=build /app/build /usr/share/nginx/html
 
-CMD ["serve", "-s", "build", "--listen", "0.0.0.0:3001"]
+# Copy file cấu hình nginx (nếu có)
+# COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+# Expose port
+EXPOSE 80
+
+# Start nginx
+CMD ["nginx", "-g", "daemon off;"]
