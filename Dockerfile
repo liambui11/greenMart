@@ -7,7 +7,9 @@ FROM node:18 AS build
 WORKDIR /app
 
 # Copy project files
-COPY . .
+COPY public ./public
+COPY src ./src
+COPY .env ./
 
 # Install dependencies
 RUN npm install
@@ -25,7 +27,7 @@ COPY --from=build /app/build /usr/share/nginx/html
 # COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # Expose port
-EXPOSE 80
+EXPOSE 3001
 
 # Start nginx
 CMD ["nginx", "-g", "daemon off;"]
