@@ -7,12 +7,10 @@ FROM node:18 AS build
 WORKDIR /app
 
 # Copy project files
+COPY package.json package-lock.json ./
+RUN npm install
 COPY public ./public
 COPY src ./src
-COPY .env ./
-
-# Install dependencies
-RUN npm install
 
 # Build production
 RUN npm run build
