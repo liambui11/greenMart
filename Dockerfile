@@ -9,14 +9,15 @@ COPY public ./public
 COPY src ./src
 COPY .env ./
 
+# 👉 Tăng giới hạn bộ nhớ lên 1.5GB
+ENV NODE_OPTIONS="--max-old-space-size=1536"
+
 # Build ứng dụng React
 RUN npm run build
 
-# Cài `serve` để chạy ứng dụng production
+# Cài `serve` để chạy app production
 RUN npm install -g serve
 
-# Expose port 3001
 EXPOSE 3001
 
-# Khởi chạy ứng dụng với serve, lắng nghe 0.0.0.0 để container có thể truy cập từ bên ngoài
 CMD ["serve", "-s", "build", "--listen", "0.0.0.0:3001"]
