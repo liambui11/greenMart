@@ -1,4 +1,3 @@
-
 FROM node:14
 
 WORKDIR /app
@@ -10,6 +9,8 @@ COPY public ./public
 COPY src ./src
 COPY .env ./
 
+# Build ứng dụng React
+RUN npm run build
 
 # Cài `serve` để chạy ứng dụng production
 RUN npm install -g serve
