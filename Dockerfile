@@ -11,7 +11,7 @@ COPY package.json package-lock.json ./
 RUN npm install
 COPY public ./public
 COPY src ./src
-
+COPY .env ./
 # Build production
 RUN npm run build
 
