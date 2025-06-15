@@ -4,8 +4,8 @@ import { useSelector, useDispatch } from "react-redux";
 import "./Login.css";
 import { Link } from "react-router-dom";
 import { loginUser } from "../../actions/auth";
-import { useAlert } from "../../Context/AlertContext"; 
-import { useGoogleLogin } from '@react-oauth/google';
+import { useAlert } from "../../Context/AlertContext";
+import { useGoogleLogin } from "@react-oauth/google";
 import GoogleButton from "../../components/Google/googleButton";
 import errorCodes from "../../config/message";
 
@@ -16,7 +16,7 @@ const LoginPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
-  const { showAlert } = useAlert(); 
+  const { showAlert } = useAlert();
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -88,20 +88,29 @@ const LoginPage = () => {
       const { access_token } = tokenResponse;
 
       try {
-        const res = await fetch(`http://localhost:3000/api/v1/users/google-login`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ access_token }),
-          credentials: "include",
-        });
+        const res = await fetch(
+          `http://localhost:3000/api/v1/users/google-login`,
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ access_token }),
+            credentials: "include",
+          }
+        );
 
         const data = await res.json();
         if (res.ok) {
-          dispatch({ type: "LOGIN_SUCCESS", payload: { accessToken: data.accessToken } });
+          dispatch({
+            type: "LOGIN_SUCCESS",
+            payload: { accessToken: data.accessToken },
+          });
           showAlert("success", errorCodes.login.GOOGLE_LOGIN_SUCCESS);
           navigate("/");
         } else {
-          showAlert("error", data.message || errorCodes.login.GOOGLE_LOGIN_FAILED);
+          showAlert(
+            "error",
+            data.message || errorCodes.login.GOOGLE_LOGIN_FAILED
+          );
         }
       } catch (error) {
         console.error("Google login error:", error);
@@ -112,19 +121,21 @@ const LoginPage = () => {
     scope: "openid email profile",
   });
 
-
-
   return (
     <div className="login">
       <div className="container">
         <div className="row login__content">
           <div className="col-6 login__image-section">
-            <img src="/image/login-register/login_img.jpg" alt="Login Illustration" />
+            <img
+              src="/image/login-register/login_img.jpg"
+              alt="Login Illustration"
+            />
           </div>
           <div className="col-xl-6 col-lg-6 col-sm-12 login__form-box">
             <h1>Login</h1>
             <p>
-              If you don't have an account? <Link to="/register">Create a new account</Link>
+              If you don't have an account?{" "}
+              <Link to="/register">Create a new account</Link>
             </p>
             <h4>Welcome back.</h4>
             <hr />
@@ -139,7 +150,9 @@ const LoginPage = () => {
                   value={email}
                   onChange={handleChange}
                 />
-                {errors.email && <span className="error-message">{errors.email}</span>}
+                {errors.email && (
+                  <span className="error-message">{errors.email}</span>
+                )}
               </div>
 
               <div className="form-group">
@@ -152,16 +165,20 @@ const LoginPage = () => {
                   value={password}
                   onChange={handleChange}
                 />
-                {errors.password && <span className="error-message">{errors.password}</span>}
+                {errors.password && (
+                  <span className="error-message">{errors.password}</span>
+                )}
               </div>
 
               <div className="login__form-footer">
-                <GoogleButton onClick={login}/>
+                <GoogleButton onClick={login} />
 
                 <Link to="/password/forgot">Forgot password?</Link>
               </div>
 
-              <button type="submit" className="btn-submit">Login</button>
+              <button type="submit" className="btn-submit">
+                Login
+              </button>
             </form>
           </div>
         </div>
