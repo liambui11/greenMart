@@ -3,6 +3,7 @@ import "./SaleOffer.css";
 import { useNavigate } from "react-router-dom";
 
 function SaleOffer() {
+  const apiUrl = process.env.REACT_APP_API_URL;
   const [topSaleProducts, setTopSaleProducts] = useState([]);
   const navigate = useNavigate();
 
@@ -10,7 +11,7 @@ function SaleOffer() {
     const fetchData = async () => {
       try {
         const resTopProduct = await fetch(
-          "http://localhost:3000/api/v1/products?currentPage=1&limitItems=3&sortKey=productDiscountPercentage&sortValue=desc"
+          `${apiUrl}/api/v1/products?currentPage=1&limitItems=3&sortKey=productDiscountPercentage&sortValue=desc`
         );
         const jsonTopProduct = await resTopProduct.json();
         setTopSaleProducts(jsonTopProduct.info);
@@ -19,7 +20,7 @@ function SaleOffer() {
       }
     };
     fetchData();
-  }, []);
+  }, [apiUrl]);
   console.log(topSaleProducts);
   return (
     <div className="sale-offer-container">
