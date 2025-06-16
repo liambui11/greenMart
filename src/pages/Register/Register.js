@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { loginUser } from "../../actions/auth";
 import { useAlert } from "../../Context/AlertContext";
-import { useGoogleLogin } from "@react-oauth/google"; 
+import { useGoogleLogin } from "@react-oauth/google";
 import GoogleButton from "../../components/Google/googleButton";
 import errorCodes from "../../config/message";
 import "./Register.css";
@@ -19,7 +19,7 @@ const RegisterPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
-  const { showAlert } = useAlert(); 
+  const { showAlert } = useAlert();
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -92,18 +92,21 @@ const RegisterPage = () => {
     }
 
     try {
-      const response = await fetch("http://localhost:3000/api/v1/users/register", {
-        method: "POST",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          userName: formValues.name,
-          userEmail: formValues.email,
-          userPassword: formValues.password,
-        }),
-      });
+      const response = await fetch(
+        "http://localhost:3000/api/v1/users/register",
+        {
+          method: "POST",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            userName: formValues.name,
+            userEmail: formValues.email,
+            userPassword: formValues.password,
+          }),
+        }
+      );
 
       const data = await response.json();
 
@@ -119,9 +122,11 @@ const RegisterPage = () => {
       if (result.success) {
         showAlert("success", errorCodes.register.REGISTER_SUCCESS);
         navigate("/");
-
       } else {
-        showAlert("error", result.message || errorCodes.register.REGISTER_FAILED);
+        showAlert(
+          "error",
+          result.message || errorCodes.register.REGISTER_FAILED
+        );
       }
     } catch (error) {
       console.error("Registration fetch error:", error);
@@ -135,20 +140,29 @@ const RegisterPage = () => {
       const { access_token } = tokenResponse;
 
       try {
-        const res = await fetch(`http://localhost:3000/api/v1/users/google-login`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ access_token }),
-          credentials: "include",
-        });
+        const res = await fetch(
+          `http://localhost:3000/api/v1/users/google-login`,
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ access_token }),
+            credentials: "include",
+          }
+        );
 
         const data = await res.json();
         if (res.ok) {
-          dispatch({ type: "LOGIN_SUCCESS", payload: { accessToken: data.accessToken } });
+          dispatch({
+            type: "LOGIN_SUCCESS",
+            payload: { accessToken: data.accessToken },
+          });
           showAlert("success", errorCodes.login.GOOGLE_LOGIN_SUCCESS);
           navigate("/");
         } else {
-          showAlert("error", data.message || errorCodes.login.GOOGLE_LOGIN_FAILED);
+          showAlert(
+            "error",
+            data.message || errorCodes.login.GOOGLE_LOGIN_FAILED
+          );
         }
       } catch (error) {
         console.error("Google login error:", error);
@@ -158,7 +172,6 @@ const RegisterPage = () => {
     onError: () => showAlert("error", errorCodes.login.GOOGLE_LOGIN_FAILED),
     scope: "openid email profile",
   });
-
 
   return (
     <div className="register">
@@ -180,7 +193,9 @@ const RegisterPage = () => {
                   value={formValues.name}
                   onChange={handleInputChange}
                 />
-                {errors.name && <span className="error-message">{errors.name}</span>}
+                {errors.name && (
+                  <span className="error-message">{errors.name}</span>
+                )}
               </div>
 
               <div className="form-group">
@@ -193,7 +208,9 @@ const RegisterPage = () => {
                   value={formValues.email}
                   onChange={handleInputChange}
                 />
-                {errors.email && <span className="error-message">{errors.email}</span>}
+                {errors.email && (
+                  <span className="error-message">{errors.email}</span>
+                )}
               </div>
 
               <div className="form-group">
@@ -206,7 +223,9 @@ const RegisterPage = () => {
                   value={formValues.password}
                   onChange={handleInputChange}
                 />
-                {errors.password && <span className="error-message">{errors.password}</span>}
+                {errors.password && (
+                  <span className="error-message">{errors.password}</span>
+                )}
               </div>
 
               <button type="submit" className="btn btn-success">
@@ -217,14 +236,16 @@ const RegisterPage = () => {
                 <span className="register__divider-text">or continue with</span>
               </div>
               <div className="register__google-login">
-                <GoogleButton onClick={login}/>
+                <GoogleButton onClick={login} />
               </div>
-
             </form>
           </div>
 
           <div className="col-6 register__image-section">
-            <img src="/image/login-register/register_img.jpg" alt="Social Login Options" />
+            <img
+              src="/image/login-register/register_img.jpg"
+              alt="Social Login Options"
+            />
           </div>
         </div>
       </div>

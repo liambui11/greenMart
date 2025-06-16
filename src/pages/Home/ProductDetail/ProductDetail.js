@@ -69,7 +69,7 @@ const ProductDetail = () => {
     });
   };
 
-  const handleAddToCart = () => {
+  const handleAddToCart = async () => {
     if (!isAuthenticated) {
       showAlert("error", "Please login to add items to cart!");
       return;
@@ -85,11 +85,15 @@ const ProductDetail = () => {
       return;
     }
 
-    dispatch(addToCart(productdetail._id, quantity));
-    showAlert("success", "Added to cart!");
+    try {
+      await dispatch(addToCart(productdetail._id, quantity));
+      showAlert("success", "Added to cart!");
+    } catch (err) {
+      showAlert("error", err.message);
+    }
   };
 
-  const handleAddToWishlist = () => {
+  const handleAddToWishlist = async () => {
     if (!isAuthenticated) {
       showAlert("error", "Please login to add items to wishlist!");
       return;
@@ -101,8 +105,12 @@ const ProductDetail = () => {
     if (exists) {
       showAlert("warning", "Product already exists in wishlist!");
     } else {
-      dispatch(addWishlistItem(productdetail._id));
-      showAlert("success", "Added to wishlist!");
+      try {
+        await dispatch(addWishlistItem(productdetail._id));
+        showAlert("success", "Added to wishlist!");
+      } catch (err) {
+        showAlert("error", err.message);
+      }
     }
   };
 
