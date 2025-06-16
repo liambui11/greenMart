@@ -16,6 +16,7 @@ import { FaChevronRight } from "react-icons/fa";
 
 function CategoryDetail() {
   const navigate = useNavigate();
+  const apiUrl = process.env.REACT_APP_API_URL;
   const { categorySlug } = useParams();
 
   const [productsData, setProductsData] = useState([]);
@@ -48,15 +49,14 @@ function CategoryDetail() {
         setProductsData([]);
         isFirstRender.current = false;
         try {
-          const [resProducts, resCategories] =
-            await Promise.all([
-              fetch(
-                `http://localhost:3000/api/v1/products/${categorySlug}?sortKey=${sortOption.sortKey}&sortValue=${sortOption.sortValue}`
-              ),
-              fetch(
-                `http://localhost:3000/api/v1/products-category/categorytree/${categorySlug}`
-              ),
-            ]);
+          const [resProducts, resCategories] = await Promise.all([
+            fetch(
+              `${apiUrl}/api/v1/products/${categorySlug}?sortKey=${sortOption.sortKey}&sortValue=${sortOption.sortValue}`
+            ),
+            fetch(
+              `${apiUrl}/api/v1/products-category/categorytree/${categorySlug}`
+            ),
+          ]);
 
           const productsJson = await resProducts.json();
           const categoriesJson = await resCategories.json();
@@ -80,7 +80,7 @@ function CategoryDetail() {
         setCurrentPage(0);
         try {
           const resProducts = await fetch(
-            `http://localhost:3000/api/v1/products/${categorySlug}?sortKey=${sortOption.sortKey}&sortValue=${sortOption.sortValue}`
+            `${apiUrl}/api/v1/products/${categorySlug}?sortKey=${sortOption.sortKey}&sortValue=${sortOption.sortValue}`
           );
 
           const productsJson = await resProducts.json();
@@ -97,7 +97,7 @@ function CategoryDetail() {
     };
 
     fetchData();
-  }, [categorySlug, sortOption, navigate]);
+  }, [categorySlug, sortOption, navigate, apiUrl]);
 
   const getSubCategoryList = (nodes) => {
     let result = [];
@@ -151,7 +151,7 @@ function CategoryDetail() {
     setProductsData([]);
     try {
       const resProducts = await fetch(
-        `http://localhost:3000/api/v1/products/${categorySlug}?currentPage=${newPage}&limitItems=10&sortKey=${sortOption.sortKey}&sortValue=${sortOption.sortValue}`
+        `${apiUrl}/api/v1/products/${categorySlug}?currentPage=${newPage}&limitItems=10&sortKey=${sortOption.sortKey}&sortValue=${sortOption.sortValue}`
       );
       const productsJson = await resProducts.json();
       if (!productsJson.info) {

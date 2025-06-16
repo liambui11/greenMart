@@ -8,11 +8,13 @@ import Title from "./Title";
 import "swiper/css";
 import "swiper/css/navigation";
 import "./Categories.css";
+import REACT_APP_API_URL from "/.env";
 
 import { Navigation, Autoplay } from "swiper/modules";
 import OverlayLoading from "../../components/OverlayLoading/OverlayLoading";
 
 function Categories() {
+  const apiUrl = process.env.REACT_APP_API_URL;
   const { categoriesBannerData } = useContext(NewsContext);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -26,9 +28,7 @@ function Categories() {
     setIsLoading(true);
     const fetchData = async () => {
       try {
-        const res = await fetch(
-          "http://localhost:3000/api/v1/products-category"
-        );
+        const res = await fetch(`${apiUrl}/api/v1/products-category`);
         const json = await res.json();
         setCategoriesData(json.info);
       } catch (err) {
@@ -39,15 +39,10 @@ function Categories() {
     };
 
     fetchData();
-  }, []);
-
+  }, [apiUrl]);
 
   useEffect(() => {
-    if (
-      swiperRef.current?.swiper &&
-      prevRef.current &&
-      nextRef.current
-    ) {
+    if (swiperRef.current?.swiper && prevRef.current && nextRef.current) {
       const swiper = swiperRef.current.swiper;
       swiper.params.navigation.prevEl = prevRef.current;
       swiper.params.navigation.nextEl = nextRef.current;
@@ -77,7 +72,7 @@ function Categories() {
           className="categories__cards"
           slidesPerView="auto"
           spaceBetween={13}
-          loop={categoriesData.length > 2} 
+          loop={categoriesData.length > 2}
           autoplay={{
             delay: 3000,
             disableOnInteraction: false,

@@ -9,6 +9,7 @@ import SkeletonCardProduct from "../../pages/News/SkeletonCardProduct";
 
 function WeeklyDeals() {
   // const [pageNumber, setPageNumber] = useState(0);
+  const apiUrl = process.env.REACT_APP_API_URL;
   const [productsData, setProductsData] = useState([]);
   const [productsPaginationData, setProductsPaginationData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -18,7 +19,7 @@ function WeeklyDeals() {
       setIsLoading(true);
       try {
         const resProducts = await fetch(
-          `http://localhost:3000/api/v1/products?currentPage=1&limitItems=10`
+          `${apiUrl}/api/v1/products?currentPage=1&limitItems=10`
         );
 
         const productsJson = await resProducts.json();
@@ -31,7 +32,7 @@ function WeeklyDeals() {
       }
     };
     fetchData();
-  }, []);
+  }, [apiUrl]);
 
   const changePage = async ({ selected }) => {
     const newPage = selected + 1;
@@ -39,7 +40,7 @@ function WeeklyDeals() {
     setProductsData([]);
     try {
       const resProducts = await fetch(
-        `http://localhost:3000/api/v1/products?currentPage=${newPage}&limitItems=10`
+        `${apiUrl}/api/v1/products?currentPage=${newPage}&limitItems=10`
       );
 
       const productsJson = await resProducts.json();

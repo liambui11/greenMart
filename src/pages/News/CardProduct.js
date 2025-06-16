@@ -120,7 +120,7 @@ function CardProductHovered(item) {
     } catch (err) {
       showAlert("error", err.message);
     }
-};
+  };
 
   return (
     <div className="card-product-hovered-container">

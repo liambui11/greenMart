@@ -12,6 +12,7 @@ import SkeletonCardProduct from "./SkeletonCardProduct";
 import { Autoplay, Navigation } from "swiper/modules";
 
 function PopularProducts() {
+  const apiUrl = process.env.REACT_APP_API_URL;
   const { PopularProductsBannerData } = useContext(NewsContext);
 
   const swiperRef = useRef(null);
@@ -25,9 +26,7 @@ function PopularProducts() {
     const fetchData = async () => {
       setIsLoading(true);
       try {
-        const resProducts = await fetch(
-          `http://localhost:3000/api/v1/products`
-        );
+        const resProducts = await fetch(`${apiUrl}/api/v1/products`);
 
         const productsJson = await resProducts.json();
         setProductsData(productsJson.info);
@@ -38,7 +37,7 @@ function PopularProducts() {
       }
     };
     fetchData();
-  }, []);
+  }, [apiUrl]);
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -50,7 +49,7 @@ function PopularProducts() {
         swiper.navigation.init();
         swiper.navigation.update();
       }
-    }, 1000); 
+    }, 1000);
 
     return () => clearTimeout(timeout);
   }, [isLoading]);
