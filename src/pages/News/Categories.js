@@ -8,7 +8,6 @@ import Title from "./Title";
 import "swiper/css";
 import "swiper/css/navigation";
 import "./Categories.css";
-import REACT_APP_API_URL from "/.env";
 
 import { Navigation, Autoplay } from "swiper/modules";
 import OverlayLoading from "../../components/OverlayLoading/OverlayLoading";
