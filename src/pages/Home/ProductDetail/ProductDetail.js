@@ -27,7 +27,7 @@ const ProductDetail = () => {
   const dispatch = useDispatch();
   const { showAlert } = useAlert();
 
-  const url = "http://localhost:3000/api/v1/products/detail/";
+  const url = `${process.env.REACT_APP_API_URL}/api/v1/products/detail/`;
 
   useEffect(() => {
     window.scrollTo(0, 0);

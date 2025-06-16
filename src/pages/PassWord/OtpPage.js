@@ -15,9 +15,9 @@ const OtpPage = () => {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 
   useEffect(() => {
-      if (isAuthenticated) {
-          navigate("/");
-      }
+    if (isAuthenticated) {
+      navigate("/");
+    }
   }, [isAuthenticated, navigate]);
 
   const handleSubmit = async (e) => {
@@ -30,7 +30,7 @@ const OtpPage = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/v1/users/password/otp",
+        `${process.env.REACT_APP_API_URL}/api/v1/users/password/otp`,
         { email, otp },
         { withCredentials: true }
       );
@@ -56,22 +56,27 @@ const OtpPage = () => {
 
   const handleResendOTP = async () => {
     try {
-        const response = await axios.post("http://localhost:3000/api/v1/users/password/forgot", { email });
+      const response = await axios.post(
+        `${process.env.REACT_APP_API_URL}/api/v1/users/password/forgot`,
+        { email }
+      );
 
-        if (response.status === 200) {
-            showAlert("success", "OTP has been resent to your email.");
-        } else {
-            showAlert("error", response.data.message || "Something went wrong while resending OTP.");
-        }
+      if (response.status === 200) {
+        showAlert("success", "OTP has been resent to your email.");
+      } else {
+        showAlert(
+          "error",
+          response.data.message || "Something went wrong while resending OTP."
+        );
+      }
     } catch (err) {
-        if (err.response && err.response.data && err.response.data.message) {
-            showAlert("error", err.response.data.message);
-        } else {
-            showAlert("error", "Cannot connect to the server. Please try again.");
-        }
+      if (err.response && err.response.data && err.response.data.message) {
+        showAlert("error", err.response.data.message);
+      } else {
+        showAlert("error", "Cannot connect to the server. Please try again.");
+      }
     }
-};
-
+  };
 
   return (
     <div className="otp-container">
@@ -97,10 +102,13 @@ const OtpPage = () => {
             required
             className={`otp-input ${errors.otp ? "is-invalid" : ""}`}
           />
-          <span className="otp-resend" onClick={handleResendOTP} style={{ cursor: "pointer" }}>
+          <span
+            className="otp-resend"
+            onClick={handleResendOTP}
+            style={{ cursor: "pointer" }}
+          >
             Resend OTP
           </span>
-
         </div>
         {errors.otp && <p className="error-message">{errors.otp}</p>}
 

@@ -1,4 +1,4 @@
-const API_BASE_URL = "http://localhost:3000/api/v1/products";
+const API_BASE_URL = `${process.env.REACT_APP_API_URL}/api/v1/products`;
 
 export const fetchProductCategory = async () => {
   try {

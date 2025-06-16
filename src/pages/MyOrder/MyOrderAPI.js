@@ -1,5 +1,5 @@
 import axiosInstance from "../../untils/axiosInstance";
-const API_BASE_URL = "http://localhost:3000/api/v1/orders";
+const API_BASE_URL = `${process.env.REACT_APP_API_URL}/api/v1/orders`;
 
 export const fetchOrder = async (query) => {
   try {

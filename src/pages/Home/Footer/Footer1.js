@@ -8,7 +8,7 @@ function Footer1() {
     const fetchCategoryData = async () => {
       try {
         const res = await fetch(
-          `http://localhost:3000/api/v1/products-category/categorytree`
+          `${process.env.REACT_APP_API_URL}/api/v1/products-category/categorytree`
         );
         const json = await res.json();
         const parentCategories = json.info.filter(
