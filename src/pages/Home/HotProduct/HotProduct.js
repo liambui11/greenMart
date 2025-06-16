@@ -34,7 +34,7 @@ function HotProduct() {
         </div>
 
         <div className="hotproduct__Card">
-          {productHot.slice(3, 5).map((item, index) => (
+          {productHot.slice(0, 2).map((item, index) => (
             <div key={index} className="hotproduct__Card__item">
               <img
                 alt=""

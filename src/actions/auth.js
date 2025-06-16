@@ -6,7 +6,7 @@ export const loginUser = (email, password, showAlert) => {
     dispatch({ type: "AUTH_LOADING" });
     try {
       const res = await axios.post(
-        "http://localhost:3000/api/v1/users/login",
+        `${process.env.REACT_APP_API_URL}/api/v1/users/login`,
         {
           userEmail: email,
           userPassword: password,
@@ -34,7 +34,7 @@ export const loginUser = (email, password, showAlert) => {
       showAlert("error", message);
       return { success: false };
     } finally {
-      dispatch({ type: "AUTH_DONE" }); 
+      dispatch({ type: "AUTH_DONE" });
     }
   };
 };
@@ -45,7 +45,7 @@ export const logoutUser = () => async (dispatch) => {
       "/api/v1/users/logout",
       {},
       {
-        baseURL: "http://localhost:3000",
+        baseURL: `${process.env.REACT_APP_API_URL}`,
         withCredentials: true,
       }
     );
@@ -58,10 +58,10 @@ export const logoutUser = () => async (dispatch) => {
 };
 
 export const checkAuth = () => async (dispatch) => {
-  dispatch({ type: "AUTH_LOADING" })
+  dispatch({ type: "AUTH_LOADING" });
   try {
     const res = await axios.get("/api/v1/users/refresh-token", {
-      baseURL: "http://localhost:3000",  
+      baseURL: `${process.env.REACT_APP_API_URL}`,
       withCredentials: true,
     });
 

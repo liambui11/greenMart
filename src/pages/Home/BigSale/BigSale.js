@@ -11,7 +11,7 @@ function ContentHome2() {
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(8);
   const [isLoading, setIsLoading] = useState(false);
-  const API_BASE_URL = "http://localhost:3000/api/v1/products";
+  const API_BASE_URL = `${process.env.REACT_APP_API_URL}/api/v1/products`;
 
   useEffect(() => {
     const fetchProducts = async () => {

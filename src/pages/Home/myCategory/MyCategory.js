@@ -18,7 +18,7 @@ function MyCategory() {
     const fetchMyCategory = async () => {
       try {
         const res = await fetch(
-          "http://localhost:3000/api/v1/products-category"
+          `${process.env.REACT_APP_API_URL}/api/v1/products-category`
         );
         const data = await res.json();
         console.log("Dữ liệu trả về từ API:", data.info);

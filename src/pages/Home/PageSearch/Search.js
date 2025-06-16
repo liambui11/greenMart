@@ -85,7 +85,7 @@ function Search() {
             onClick={() => handleSort(fetchProductsByPromotion, "promotion")}
             className={`pageSearch__Filter__btn ${activeSort === "promotion" ? "active" : ""}`}
           >
-            By Promition
+            By Promotion
           </button>
         </div>
       </div>

@@ -89,7 +89,7 @@ const LoginPage = () => {
 
       try {
         const res = await fetch(
-          `http://localhost:3000/api/v1/users/google-login`,
+          `${process.env.REACT_APP_API_URL}/api/v1/users/google-login`,
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },

@@ -45,12 +45,14 @@ function NavbarMiddle() {
     const fetchData = async () => {
       try {
         const resProductCategory = await fetch(
-          "http://localhost:3000/api/v1/products-category"
+          `${process.env.REACT_APP_API_URL}/api/v1/products-category`
         );
         const jsonProductCategory = await resProductCategory.json();
         setCategoriesData(jsonProductCategory.info);
 
-        const res = await fetch("http://localhost:3000/api/v1/products");
+        const res = await fetch(
+          `${process.env.REACT_APP_API_URL}/api/v1/products`
+        );
         const json = await res.json();
         setProduct(json.info);
       } catch (err) {
@@ -64,7 +66,9 @@ function NavbarMiddle() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch("http://localhost:3000/api/v1/products");
+        const res = await fetch(
+          `${process.env.REACT_APP_API_URL}/api/v1/products`
+        );
         const json = await res.json();
         setProduct(json.info);
       } catch (err) {

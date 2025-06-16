@@ -4,15 +4,15 @@ import { store } from "../redux/store";
 import { checkAuth } from "../actions/auth";
 
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:3000", 
-  withCredentials: true, 
+  baseURL: `${process.env.REACT_APP_API_URL}`,
+  withCredentials: true,
 });
 
 let isRefreshing = false;
 let failedQueue = [];
 
 const processQueue = (error, token = null) => {
-  failedQueue.forEach(prom => {
+  failedQueue.forEach((prom) => {
     if (error) {
       prom.reject(error);
     } else {
@@ -53,7 +53,7 @@ axiosInstance.interceptors.request.use(
             failedQueue.push({
               resolve: (token) => {
                 config.headers.Authorization = `Bearer ${token}`;
-                resolve(config); 
+                resolve(config);
               },
               reject: (err) => reject(err),
             });
@@ -68,16 +68,17 @@ axiosInstance.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
-
 axiosInstance.interceptors.response.use(
-  response => response,
-  error => {
-    if (error.response && ( error.response.status === 401 || error.response.status === 403)) {
-      store.dispatch({ type: 'LOGOUT' });
+  (response) => response,
+  (error) => {
+    if (
+      error.response &&
+      (error.response.status === 401 || error.response.status === 403)
+    ) {
+      store.dispatch({ type: "LOGOUT" });
     }
     return Promise.reject(error);
   }
 );
-
 
 export default axiosInstance;
