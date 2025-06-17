@@ -253,6 +253,7 @@ function MyOrder() {
                       <MdCancelPresentation
                         style={{ color: "orange" }}
                         onClick={() => handleCancel(order)}
+                        className="order-table-tbody-tr-td-pending"
                       />
                     ) : order.orderStatus === "success" ? (
                       <FaCheck style={{ color: "green" }} />

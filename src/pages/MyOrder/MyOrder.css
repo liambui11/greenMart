@@ -120,6 +120,10 @@
   margin: 1rem 0;
 }
 
+.order-table-tbody-tr-td-pending {
+  cursor: pointer;
+}
+
 .load-more-button {
   background-color: #0aad0a;
   width: 10rem;

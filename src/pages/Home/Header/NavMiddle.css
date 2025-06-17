@@ -44,6 +44,10 @@
   color: #f4c95d;
 }
 
+.dropdown-item {
+  cursor: pointer;
+}
+
 .container .row div .dropdown :hover {
   color: #f4c95d !important;
 }
