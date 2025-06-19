@@ -57,14 +57,15 @@ function MyOrderDetail() {
               <th className="myorder-detail-table-thread-tr-th">Image</th>
               <th className="myorder-detail-table-thread-tr-th">Name</th>
               <th className="myorder-detail-table-thread-tr-th">Price</th>
-              <th className="myorder-detail-table-thread-tr-th">Promotion</th>
-              <th className="myorder-detail-table-thread-tr-th">NewPrice</th>
+              {/* <th className="myorder-detail-table-thread-tr-th">Promotion</th> */}
+              {/* <th className="myorder-detail-table-thread-tr-th">NewPrice</th> */}
               <th className="myorder-detail-table-thread-tr-th">Quantity</th>
             </tr>
           </thead>
           <tbody>
             {orderData?.products?.map((item, index) => {
-              const promotion = item.promotion || 0; // nếu có khuyến mãi
+              const promotion = item.productDiscountPercentage || 0; // nếu có khuyến mãi
+              console.log(promotion);
               const newPrice = item.productPrice * (1 - promotion);
               return (
                 <tr key={index} className="myorder-detail-table-tbody-tr">
@@ -85,12 +86,12 @@ function MyOrderDetail() {
                   <td className="myorder-detail-table-tbody-tr-td">
                     ${item.productPrice.toFixed(2)}
                   </td>
-                  <td className="myorder-detail-table-tbody-tr-td">
-                    {promotion > 0 ? `${promotion * 100}%` : "0%"}
-                  </td>
-                  <td className="myorder-detail-table-tbody-tr-td">
+                  {/* <td className="myorder-detail-table-tbody-tr-td">
+                    {item.productDiscountPercentage}%
+                  </td> */}
+                  {/* <td className="myorder-detail-table-tbody-tr-td">
                     ${newPrice.toFixed(2)}
-                  </td>
+                  </td> */}
                   <td className="myorder-detail-table-tbody-tr-td">
                     {item.quantity}
                   </td>
